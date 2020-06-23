@@ -1,0 +1,1796 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>src.DCA API documentation</title>
+<meta name="description" content="Created on Mon Mar 30 12:18:19 2020 …" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>src.DCA</code></h1>
+</header>
+<section id="section-intro">
+<p>Created on Mon Mar 30 12:18:19 2020</p>
+<p>@author: Ricardo Bustos-Ramirez</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># -*- coding: utf-8 -*-
+&#34;&#34;&#34;
+
+Created on Mon Mar 30 12:18:19 2020
+
+@author: Ricardo Bustos-Ramirez
+&#34;&#34;&#34;
+
+import sys
+import pyvisa
+import time
+import numpy as np
+import matplotlib.pyplot as plt
+import datetime
+import csv
+
+GLOBAL_TOUT =  100000 # IO time out in milliseconds
+
+switcherWaveformType = {
+    1: &#34;RAW&#34;,           # One data point in each time bucket w/no interpolation.
+    2: &#34;AVERAGE&#34;,       # Average of the first n hits in a time bucket, where n is the value in the count portion of the preamble.
+    3: &#34;VHISTOGRAM&#34;,    # Data is a vertical histogram. Histograms are transferred using the LONGLONG format.
+    4: &#34;HHISTOGRAM&#34;,    # Data is a horizontal histogram. Histograms are transferred using the LONGLONG format.
+    5: &#34;NOT USED&#34;,
+    6: &#34;INTERPOLATE&#34;,   # Last data point in each time bucket is stored, and additional data points between the acquired data points are filled by interpolation.
+    7: &#34;NOT USED&#34;,
+    8: &#34;NOT USED&#34;,
+    9: &#34;DIGITAL&#34;,       # Data consists of digital pod or bus values for each time bucket.
+    10: &#34;PDETECT&#34;       # Data consists of two data points in each time bucket: the minimum values and maximum values.
+}
+
+switcherWaveformFormat = {
+    0: &#34;ASCII&#34;,         # ASCII format.
+    1: &#34;BYTE&#34;,          # BYTE format.
+    2: &#34;WORD&#34;,          # WORD format.
+    3: &#34;LONG&#34;,          # LONG format.
+    4: &#34;LONGLONG&#34;,      # LONGLONG format.
+    5: &#34;FLOAT&#34;          # FLOAT format.
+}
+
+switcherWaveformCoupling = {
+    0: &#34;AC&#34;,            # AC coupling.
+    1: &#34;DC&#34;,            # DC coupling.
+    2: &#34;DCFIFTY&#34;,       # DC fitfy coupling.
+    3: &#34;LFREJECT&#34;       # LF reject coupling.
+}
+
+switcherWaveformUnits = {
+    0: &#34;UNKNOWN&#34;,       # UNKKOWN units.
+    1: &#34;V&#34;,             # VOLT units.
+    2: &#34;s&#34;,             # SECOND units.
+    3: &#34;CONSTANT&#34;,      # CONSTANT units.
+    4: &#34;A&#34;,             # AMPERE units.
+    5: &#34;dB&#34;             # DECIBEL units.
+}
+
+class DCA():
+    &#34;&#34;&#34;This class controls the high-speed data communication analyzer (DCA).
+    
+    The current script controls the DCA for capturing data and saving it to a CSV file.
+    
+    Typical usage example:
+        DCA = DCA()
+        print(DCA.list)
+        DCA.connect(&#39;GPIB0::7::INSTR&#39;)
+        #    DCA.check_channel()
+        filePath = &#39;H:\\Home\\UP\\Shared\\Ricardo\\Python Scripts\\Reference material&#39;
+        fileName  = &#39;DCAtest.txt&#39;
+        #    DCA.save_waveform(filePath, fileName)
+        DCA.acquire_waveform()
+    
+    Attributes:
+        connected: boolean
+            Connection state of the GPIB controller.
+        bool_sweep: boolean
+            If this attribute is True, the DCA is sweeping continuously.
+        idn: str
+            Instrument identifier as a complete string.
+        idnMfg: str
+            Instrument manufacturer (e.g. Agilent, Tektronix).
+        idnModel: str
+            Instrument model number.
+        idnSn: str
+            Instrument serial number.
+        idnFw: str
+            Instrument firmware version number.
+        scopeGeneration: str
+            Instrument generation (e.g. IV not X type scope)       
+        timeArray: array
+            Time vector, x-axis values of a captured trace after DCA.acquire_waveform(). 
+        waveformArray: array
+            Voltage vector, y-axis values of a captured trace after DCA.acquire_waveform().
+            
+    &#34;&#34;&#34;
+    def __init__(self,Port=None): 
+        self.connected = False
+        self.bool_sweep = False
+        
+#        self.start_wl = &#39;900.00&#39;
+#        self.stop_wl = &#39;1100.00&#39;
+#        self.span_wl = &#39;200.00&#39;
+#        self.rbw_wl = &#39;0.1&#39;
+#        self.sampling_points = &#39;1001&#39;
+#        self.range = &#39;SNHD&#39;
+#        self.average = &#39;1&#39;
+#        self.sensitivity = &#39;None&#39;
+#        self.reference_lvl = &#39;-00&#39;
+#        
+#        self.waveform = np.empty((0,1), dtype=np.float64)
+#        self.wavelength = np.empty((0,1), dtype=np.float64)
+        self.parent=self
+        self.list_devices()
+        self.idn=&#39;IDN&#39;
+        self.idnMfg = &#39;XX&#39;
+        self.idnModel = &#39;XX&#39;
+        self.idnSn = &#39;XX&#39;
+        self.idnFw = &#39;XX&#39;
+        self.scopeGeneration = &#39;XX&#39;
+#        self.connect()
+        
+#        self.csv_ctl = csv()
+        
+#    def OSA_acquireDATA(self, ch=&#39;A&#39;):
+#        tmp = OSA.ask(&#39;LDAT&#39;+ch)
+#        time.sleep(0.2)
+#        tmp2 = [float(k) for k in tmp.split(&#39;,&#39;)]
+#        waveform = array(tmp2[1:])
+#        tmp = OSA.ask(&#39;WDAT&#39;+ch)
+#        time.sleep(0.2)
+#        tmp2 = [float(k) for k in tmp.split(&#39;,&#39;)]
+#        wavelength = array(tmp2[1:])
+#        return waveform, wavelength
+#
+#    def createFilename(self, sMeaningful):
+#        timestamp = strftime(&#34;%Y-%m-%d_%H-%M-%S_&#34;, gmtime())
+#        return timestamp + sMeaningful +&#39;.npy&#39;
+        
+        self.timeArray = []
+        self.waveformArray = []
+    
+    def list_devices(self):
+        &#34;&#34;&#34;This method list the devices in the VISA manager.
+        &#34;&#34;&#34;
+        try:
+            self.rm = pyvisa.ResourceManager()
+            self.list = self.rm.list_resources()
+        except:
+            print(&#34;Couldn&#39;t find resource manager&#34;)
+                
+    def connect(self, device):
+        &#34;&#34;&#34;
+        Parameters
+        ----------
+        device: str
+            Address of the device (DCA).
+        &#34;&#34;&#34;
+        try:
+#            self.ser=serial.Serial(self.port,self.baud,bytesize=self.bytesize, 
+#                                   timeout = self.timeout, stopbits = self.stopbits,
+#                                   parity = self.parity, rtscts=self.rtscts)
+#            if self.ser.isOpen():
+#                self.print_message(&#39;Connected to laser &#39; + self.name + &#39; on port &#39; + self.port)
+#                self.connected = True
+            
+            self.handle = self.rm.open_resource(device)
+
+            self.print_message(&#39;connected to...&#39;)
+            self.idn = str(self.handle.query(&#34;*IDN?&#34;))
+#            print(self.idn)
+            self.idn = self.idn.split(&#39;,&#39;)
+            self.idnMfg = self.idn[0]      # Manufacturer
+            self.idnModel = self.idn[1]    # Model number
+            self.idnSn = self.idn[2]       # Serial number
+            self.idnFw = self.idn[3]       # FW
+            print(self.idnMfg + &#39;\nModel: &#39; + self.idnModel, &#39;\nSerial number: &#39; + self.idnSn + &#39;\nFW: &#39; + self.idnFw)
+            self.connected = True
+            
+            self.print_message(&#39;setting parameters&#39;)
+            
+            scopeTypeCheck = list(self.idnModel)
+            if scopeTypeCheck[3] == &#34;-&#34; or scopeTypeCheck[1] == &#34;9&#34;:
+                self.scopeGeneration = &#34;IVX&#34;
+                print(&#39;IVX type scope&#39;)
+            else:
+                self.scopeGeneration = &#34;IVnotX&#34;
+                print(&#39;IV not X type scope&#39;)
+            self.set_params()
+#            self.send_cmd(&#34;REN&#34;)
+#            time.sleep(1)
+            
+        except Exception as e:
+            self.print_message(e)
+            self.print_message(&#39; Couldn\&#39;t connect to &#39; + device)
+            sys.exit() # From InfiniiVision Script
+            
+    def set_params(self):
+        if self.connected:
+#            self.handle.write(&#39;STAWL&#39;+self.start_wl + &#39;, STPWL&#39;+self.stop_wl +
+#                              &#39;, RESOLN&#39;+self.resolution + &#39;, AVG&#39;+self.average +
+#                              &#39;, SMPL&#39;+ self.sampling_points + &#39;, &#39; + self.range)
+
+#            self.handle.write()
+            self.handle.timeout = GLOBAL_TOUT
+            ## Clear the instrument bus
+            self.handle.clear()
+
+            ## Clear any previously encountered errors
+            self.handle.write(&#34;*CLS&#34;)
+            self.handle.write(&#34;SYSTEM:HEADER OFF&#34;)
+    
+    def check_channel(self):
+        self.handle.write(&#34;:TIMebase:SCALe 100 NS&#34;) # Set timescale to something fast so we do not have to wait too long
+        er = str(self.handle.query(&#34;SYST:ERR?&#34;))
+        self.handle.write(&#34;:TIMebase:POSition 0&#34;)
+        self.handle.write(&#34;:TRIGger:MODE EDGE&#34;) # Set trigger type to edge
+        self.handle.write(&#34;:TRIGger:EDGE:SOURce LINE&#34;) # Set trigger source to LINE, so there is ANYTHING to trigger on ; triggers gets set below, so ok to leave this alone
+        self.handle.query(&#34;*OPC?&#34;) # 
+        self.handle.write(&#34;:SINGle&#34;) # Do a :SINGle to fill up the memory and check the memory size (this is not a proper synchronization, but will work here)
+        time.sleep(.5)
+    
+    def set_waveform_parameters(self, wvfFormat, wvfCoupling, xDisplayRange, yDisplayRange, xUnits, yUnits, wvfPoints, wvfType, wvfCount):
+        &#34;&#34;&#34;This function sets the waveform parameters captured with the WAVEFORM:PREAMBLE command, to be saved with the waveform.
+        ----------
+        Parameters
+        ----------
+        wvfCoupling: int
+            Input coupling of the waveform in numeric value
+        xDisplayRange: float
+            X-axis duration of the waveform, usually in [s]
+        yDisplayRange: float
+            Y-axis range of the waveform, usually in [V]
+        wvfPoints: int
+            Number of data points or data pairs contained in the waveform.
+        wvfType: int
+            Numeric value that describes how the waveform was acquired.
+        wvfCount: int
+            For average, is the fewest number of hits for all time buckets, for RAW and INTERPOLATE is 0 or 1.
+        &#34;&#34;&#34;
+        self.waveformChannel = &#34;CHANNEL 1&#34;
+        self.waveformFormat = switcherWaveformFormat.get(wvfFormat, &#34;Invalid waveform format: &#34; + str(wvfFormat))
+        self.waveformCoupling = switcherWaveformCoupling.get(wvfCoupling, &#34;Invalid waveform input coupling: &#34; + str(wvfCoupling))
+        self.waveformHorScale = xDisplayRange
+        self.waveformVerScale = yDisplayRange
+        self.waveformXUnits = switcherWaveformUnits.get(xUnits, &#34;Invalid X-Axis unit type: &#34; + str(xUnits))
+        self.waveformYUnits = switcherWaveformUnits.get(yUnits, &#34;Invalid Y-Axis unit type: &#34; + str(yUnits))
+        self.waveformSamplePoints = wvfPoints
+        self.waveformMode = switcherWaveformType.get(wvfType, &#34;Invalid waveform type: &#34; + str(wvfType))
+        self.waveformAverageCount = wvfCount
+        print(&#34;Waveform parameters \nSource: &#34; + self.waveformChannel + &#34;\nCoupling: &#34; + self.waveformCoupling +
+              &#34;\nVertical scale: &#34; + str(self.waveformVerScale) + &#34; &#34; + self.waveformYUnits  + 
+              &#34;\nHorizontal scale: &#34; + str(self.waveformHorScale) + &#34; &#34; + self.waveformXUnits +
+              &#34;\nSample points: &#34; + str(self.waveformSamplePoints) + &#34;\nAcquisition mode: &#34; + self.waveformMode +
+              &#34;\nAverage count: &#34; + str(self.waveformAverageCount))
+
+    def set_waveform_values(self, waveformAscii, xOrigin, xIncr, xReference, yOrigin, yIncr, yReference):
+        &#34;&#34;&#34;
+        Description
+        -----------
+        This function sets the waveform parameters captured with the WAVEFORM:PREAMBLE command, to be saved with the waveform.
+        ----------
+        Parameters
+        ----------
+        wvfCoupling: int
+            Input coupling of the waveform in numeric value
+        xDisplayRange: float
+            X-axis duration of the waveform, usually in [s]
+        yDisplayRange: float
+            Y-axis range of the waveform, usually in [V]
+        wvfPoints: int
+            Number of data points or data pairs contained in the waveform.
+        wvfType: int
+            Numeric value that describes how the waveform was acquired.
+        wvfCount: int
+            For average, is the fewest number of hits for all time buckets, for RAW and INTERPOLATE is 0 or 1.
+        &#34;&#34;&#34;
+        waveformAscii = waveformAscii.split(&#39;,&#39;)
+        print(len(waveformAscii))
+        waveformTime = []
+        waveformVolts = []
+        y = 0
+        n = 0
+        for y in waveformAscii:
+            y = float(y)
+            waveformTime.append(  xOrigin + xIncr * ( n - xReference ) )
+            waveformVolts.append( yOrigin + yIncr * ( y - yReference ) )            
+            n = n + 1
+        self.timeArray = np.array(waveformTime)
+        self.waveformArray = np.array(waveformVolts)     
+    
+    def get_waveform_time(self):
+        return self.timeArray
+    
+    def get_waveform_volts(self):
+        return self.waveformArray
+
+    def acquire_waveform(self):
+        self.handle.write(&#34;:WAVEFORM:FORMAT ASCII:ACQUIRE:AVERAGE ON:ACQUIRE:COUNT 8:ACQUIRE:POINTS  1024:MEAS:CLE:WAVEFORM:SOURCE CHANNEL1:DIGITIZE CHANNEL1&#34;)
+        time.sleep(1)
+        dcaStatus = self.handle.query(&#34;*OPC?&#34;)
+        print(&#34;DCA status: &#34; + dcaStatus)
+        time.sleep(1)
+        waveformParameters = self.handle.query(&#34;:WAVEFORM:PREAMBLE?&#34;)
+        print(&#39;Waveform parameters: &#39; + waveformParameters)
+        waveformParameters = waveformParameters.split(&#34;,&#34;)
+        
+        wvfFormat = int(waveformParameters[0])              # Waveform format (e.g: 0 - ASCII)
+        wvfType = int(waveformParameters[1])                # Waveform type (e.g: 1 - RAW, 2 - AVERAGE)
+        wvfPoints = int(waveformParameters[2])              # Number of data points (e.g: 1024)
+        wvfCount = int(waveformParameters[3])               # Average count (e.g: 8)
+        xIncr = float(waveformParameters[4])                # Duration between data points in X axis (e.g: 9.765625e-10 [s])
+        xOrigin = float(waveformParameters[5])              # X-axis value of the first data point (e.g. 2.4e-8 [s])
+        xReference = float(waveformParameters[6])           # Data points associated with the X origin (e.g: 0)
+        yIncr = float(waveformParameters[7])                # Duration between data points in Y axis (e.g: 8.4e-2 [V])
+        yOrigin = float(waveformParameters[8])              # Y-axis value of the first data point (e.g. 9e-12 [V])
+        yReference = float(waveformParameters[9])           # Data points associated with the Y origin (e.g: 0)
+        wvfCoupling = int(waveformParameters[10])           # Channel coupling (e.g: 0 - AC coupling, 1 - DC coupling, 2 - DC-50 coupling)
+        xDisplayRange = float(waveformParameters[11])       # X-axis duration of displayed waveform (e.g. 1e-6 [s])
+        xDisplayOrigin = float(waveformParameters[12])      # X-axis value at the edge of the display (e.g. 2.4e-8 [s])
+        yDisplayRange = float(waveformParameters[13])       # Y-axis voltage/range of displayed waveform (e.g. 8e-2 [V])
+        yDisplayOrigin = float(waveformParameters[14])      # Y-axis value at the center of the display (e.g. 0e0 [V])
+        wvfDate = waveformParameters[15].replace(&#39;&#34;&#39;,&#39;&#39;)    # String containing the date in the format DD MMM YYYY (e.g. 01 JAN 1997)
+        wvfTime = waveformParameters[16].replace(&#39;&#34;&#39;,&#39;&#39;)    # String containing the time in the format HH:MM:SS:TT (e.g. 09:54:55:89)
+        frameModel = waveformParameters[17].replace(&#39;&#34;&#39;,&#39;&#39;) # String contianing the model # and (:) serial # (e.g. 86100C:MY43490127)
+        wvfAcqMode = int(waveformParameters[19])            # Acquisition sampling mode of the waveform (e.g. 0 - High resolution)
+        wvfCompletion = int(waveformParameters[20])         # Percent of time buckets that are complete for the waveform (e.g. 0 - 100)
+        xUnits = int(waveformParameters[21])                # X-axis units (e.g. 2 - SECOND units)
+        yUnits = int(waveformParameters[22])                # Y-axis units (e.g. 1 - VOLT units)
+        maxBwLimit = float(waveformParameters[23])          # Estimated maximum bandwidth of the source waveform (e.g. 50e9 [Hz])
+        minBwLimit = float(waveformParameters[24])          # Estimated minimum bandwidth of the source waveform (e.g. 0 [Hz])
+        
+        waveformAscii = self.handle.query(&#34;:WAVEFORM:DATA?&#34;)
+        self.set_waveform_parameters(wvfFormat, wvfCoupling, xDisplayRange, yDisplayRange, xUnits, yUnits, wvfPoints, wvfType, wvfCount)
+        self.set_waveform_values(waveformAscii, xOrigin, xIncr, xReference, yOrigin, yIncr, yReference)
+        plt.plot(self.get_waveform_time(), self.get_waveform_volts(), &#39;b&#39;)
+    
+        
+    def save_waveform(self, filePath, fileName):
+        TYPE = &#34;ASCiixy&#34; # &#34;CSV&#34; or &#34;ASCiixy&#34; or &#34;BINary&#34;
+        self.handle.write(&#39;:SAVE:FILename &#34;&#39; + str(fileName) + &#39;&#34;&#39;)
+        self.handle.write(&#34;:SAVE:WAVeform:FORMat &#34; + str(TYPE))
+        
+        self.handle.write(&#34;:SAVE:WAVeform:LENGth 1000&#34;)
+        
+        print(&#34;Now saving waveforms to file.\n&#34;)
+        
+        self.handle.query(&#34;*CLS;*OPC?&#34;) # Clear all registers before issuing the command to save the data; this is necessary so we can properly determine when the scope is done saving data.
+        self.handle.write(&#39;:SAVE:WAVeform:STARt &#34;&#39; +  str(filePath) + &#39;\\&#39; + str(fileName) + &#39;&#34;&#39;)
+        
+        ## First definite IOC and IOF criterion:
+        IO_COMPLETE_BIT = 13 #  the IOC bit is bit-weigh 13 in the Operation Event Register
+        IO_COMPLETE_MASK = 1&lt;&lt; IO_COMPLETE_BIT # &lt;&lt; is a left shift; 1&lt;&lt;13 = 8192 = 2 raised to 13;
+        IO_COMPLETE = 1 &lt;&lt; IO_COMPLETE_BIT
+        IO_NOT_COMPLETE = 0
+        
+        IO_FAIL_BIT = 14 #  the IOC bit is bit-weigh 14 in the Operation Event Register
+        IO_FAIL_MASK = 1&lt;&lt; IO_FAIL_BIT # &lt;&lt; is a left shift; 1&lt;&lt;14 = 16384 = 2 raised to 14;
+        IO_FAIL = 1&lt;&lt; IO_FAIL_BIT
+        IO_NOT_FAIL = 0
+        
+        ## Define IOF and IOC initial states:
+        IOC_STATUS = 0
+        IOF_STATUS = 0
+        
+        self.handle.query(&#34;:OPER:EVENt?&#34;)
+        ## Begin checking for IO_Status
+        while IOF_STATUS ==  IO_NOT_FAIL and IOC_STATUS == IO_NOT_COMPLETE: # Note there is no time qualification here... it should just eventually be done, or fail... eventually.
+            Status = int(self.handle.query(&#34;:OPER:EVENt?&#34;)) # DO NOT use :OPERation
+            IOC_STATUS = Status &amp; IO_COMPLETE_MASK # A bitwise and of Status IO_COMPLETE_MASK
+            IOF_STATUS = Status &amp; IO_FAIL_MASK
+            if IOF_STATUS == IO_FAIL:
+                print(&#34;FAILED saving waveforms to USB stick.\n&#34;)
+                print(&#34;Check that a USB stick is inserted and that you can manually save a file to the USB tick.  If not, try a different USB stick.\n&#34;)
+                print(&#34;Aborting script and properly closing scope.\n&#34;)
+                self.handle.clear() # Clear scope communications interface
+                self.handle.close() # Close communications interface to scope
+                sys.exit()
+            if IOC_STATUS == IO_COMPLETE: # you need to do this last. If you were to remvoe the USB stick whiel it is saving, it will say that the IO operation is both failed and done...
+                print(&#34;Done saving waveforms to USB stick.\n&#34;)
+                break # Break out of while loop to avoid the wait time below
+            time.sleep(0.1) # Pause 100 ms to prevent excessive queries (probably ok to go faster)
+        
+        ##############################################################################################################################################################################
+        ##############################################################################################################################################################################
+        ## Done - cleanup
+        ##############################################################################################################################################################################
+        ##############################################################################################################################################################################
+        
+        self.handle.clear() # Clear scope communications interface
+        self.handle.close() # Close communications interface to scope
+#        
+        print(&#34;Done.&#34;)
+                
+    def close(self):
+        
+        self.handle.write(&#34;GTL&#34;)
+        time.sleep(1)
+        self.rm.close()
+        self.print_message(&#39;Connection to OSA closed&#39;)
+        
+    def send_cmd(self, cmd):
+        
+        self.handle.write(cmd)
+         
+        response = self.handle.read_raw()
+        return response
+    
+    def cont_sweep(self):
+
+        self.bool_sweep = True
+        self.handle.write(&#34;RPT&#34;)
+    
+    def single_sweep(self):
+
+        self.bool_sweep = True
+        self.handle.write(&#34;SGL&#34;)
+        time.sleep(1)
+        response = self.handle.query(&#34;SWEEP?&#34;)
+        while response != &#34;0\r\n&#34;:
+            time.sleep(1)
+            response = self.handle.query(&#34;SWEEP?&#34;)
+#            print(response)
+        self.bool_sweep = False
+
+    def grab_spectrum(self, channel = &#39;A&#39;):
+            try:            
+                tmp = self.handle.query(&#39;LDAT&#39;+channel)
+#                print(tmp)
+                time.sleep(1)
+                tmp2 = [float(k) for k in tmp.split(&#39;,&#39;)]
+                self.waveform = np.array(tmp2[1:])
+                print(self.waveform)
+            except ValueError:
+                self.close()
+                print(&#39;Acquisition error with spectrum values\r\n&#39;)
+            
+            try:                
+                tmp = self.handle.query(&#39;WDAT&#39;+channel)
+#                print(tmp)
+                time.sleep(1)
+                tmp2 = [float(k) for k in tmp.split(&#39;,&#39;)]
+                self.wavelength = np.array(tmp2[1:])
+                print(self.wavelength)
+            except ValueError:
+                self.close()
+                print(&#39;Acquisition error with wavelength values\r\n&#39;)  
+    
+    def get_span(self):
+        self.span_wl = self.handle.query(&#34;SPAN?&#34;)
+        time.sleep(1)
+        self.span_wl = self.span_wl.replace(&#34;\r&#34;,&#34;&#34;)
+        self.span_wl = self.span_wl.replace(&#34;\n&#34;,&#34;&#34;) 
+    
+    def get_rbw(self):
+        self.rbw_wl = self.handle.query(&#34;RESLN?&#34;)
+        time.sleep(1)
+        self.rbw_wl = self.rbw_wl.replace(&#34;\r&#34;,&#34;&#34;)
+        self.rbw_wl = self.rbw_wl.replace(&#34;\n&#34;,&#34;&#34;) 
+
+    def get_sensitivity(self):
+        sensitivity_num = self.handle.query(&#34;SENS?&#34;)
+        time.sleep(1)
+        sensitivity_num = sensitivity_num.replace(&#34;\r&#34;,&#34;&#34;)
+        sensitivity_num = sensitivity_num.replace(&#34;\n&#34;,&#34;&#34;)
+        sensitivity_num = int(sensitivity_num)
+        sensitivity_lvl = {
+                1: &#39;HIGH1&#39;,
+                2: &#39;HIGH2&#39;,
+                3: &#39;HIGH3&#39;,
+                4: &#39;NORM RANG HOLD&#39;,
+                5: &#39;NORM RANG AUTO&#39;,
+                6: &#39;MID&#39;
+                }
+        self.sensitivity = sensitivity_lvl.get(sensitivity_num)
+    
+    def get_ref_lvl(self):
+        self.reference_lvl = self.handle.query(&#34;REFL?&#34;)
+        time.sleep(1)
+        self.reference_lvl = self.reference_lvl.replace(&#34;\r&#34;,&#34;&#34;)
+        self.reference_lvl = self.reference_lvl.replace(&#34;\n&#34;,&#34;&#34;)
+        
+    def print_message(self, msg):
+        if __name__ == &#34;__main__&#34;:
+            print(msg)
+    
+    def save_csv(self, fileName):
+        try:
+            with open(fileName, &#39;w&#39;,newline=&#39;&#39;) as fileWriter:
+                self.csvWriter = csv.writer(fileWriter, delimiter = &#39;\t&#39;)
+                now_ = datetime.datetime.now()
+                timestamp = now_.strftime(&#39;%m/%d/%Y %H:%M hrs&#39;)
+                self.csvWriter.writerow([timestamp])
+#                self.csvWriter.writerow([&#34;Record length: &#34; + self.get_waveform_sample_points()])
+##                self.csvWriter.writerow([&#34;Sample interval: &#34; + self.sensitivity + &#34; (sec)&#34;])
+##                self.csvWriter.writerow([&#34;Trigger point: &#34; + self.rbw_wl + &#34; (samples)&#34;])
+#                self.csvWriter.writerow([&#34;Source: &#34; + self.get_waveform_channel()])
+##                self.csvWriter.writerow([&#34;Vertical units: &#34; + self.span_wl])
+#                self.csvWriter.writerow([&#34;Vertical scale: &#34; + self.get_waveform_vertical_scale()])
+##                self.csvWriter.writerow([&#34;Horizontal units: &#34; + self.span_wl])
+#                self.csvWriter.writerow([&#34;Horizontal scale: &#34; + self.get_waveform_horizontal_scale()])
+#                self.csvWriter.writerow([&#34;Acquisition mode: &#34; + self.get_waveform_mode()])
+##                self.csvWriter.writerow([&#34;Number of averages: &#34; + self.span_wl])
+                self.csvWriter.writerow([&#34;Time (s) Waveform (V)&#34;])
+                for (x,y) in zip(self.get_waveform_time(), self.get_waveform_volts()):
+                    self.csvWriter.writerow((&#39;{0:.12f}&#39;.format(x),&#39;{0:.12f}&#39;.format(y)))
+        except:
+            self.close()
+            print(&#34;Error while saving &#34; + fileName + &#34; file&#34;)
+    
+    def plot_waveform(self):
+        &#34;&#34;&#34;Plot the acquired waveform after function acquire_waveform().
+        &#34;&#34;&#34;
+        plt.plot(self.get_waveform_time(),self.get_waveform_volts(),&#39;b&#39;)
+        plt.axis([min(self.get_waveform_time()),max(self.get_waveform_time()),min(self.get_waveform_volts()),max(self.get_waveform_volts())])
+        plt.xlabel(&#39;Time (sec)&#39;)
+        plt.ylabel(&#39;Output (V)&#39;)
+        plt.show()
+
+if __name__ == &#34;__main__&#34;:
+    DCA = DCA()
+    print(DCA.list)
+    DCA.connect(&#39;GPIB0::4::INSTR&#39;)
+#    DCA.check_channel()
+    filePath = &#39;H:\\Home\\UP\\Shared\\Ricardo\\Python Scripts\\Reference material&#39;
+    fileName  = &#39;DCAtest.csv&#39;
+#    DCA.save_waveform(filePath, fileName)
+    DCA.acquire_waveform()
+    DCA.plot_waveformwaveform()
+#    DCA.save_csv(filePath + &#39;\\&#39; + fileName)
+#    OSA.single_sweep()
+#    time.sleep(1)
+#    print(&#39;Now&#39;)
+#    OSA.get_span()
+#    OSA.get_rbw()
+#    OSA.get_sensitivity()
+#    OSA.get_ref_lvl()
+#    OSA.grab_spectrum(&#39;B&#39;)
+#    now_ = datetime.datetime.now()
+#    timestamp = now_.strftime(&#34;%Y-%m-%d_%H-%M&#34;)
+#    filePath = &#39;H:\\Home\\UP\\Shared\\Ricardo\\Dual Tone Injection Locking\\CW PDH Laser\\CW Homemade\\THz EOM Comb\\EOM Comb with CW-PDH\\OSA&#39;
+#    fileName = &#39;llCW-FPE-PDH_PM-IM-30.001GHz-10dBm-1.16V_SOA_150mA_HWEDFA_680mW_1000mSMF_100m-HNLF-ND_Att-10mW_WS-AllPass_50-50-2&#39; + &#39;.csv &#39;
+##    np.savez(filename, wavelength=OSA.wavelength, waveform=OSA.waveform)
+##    OSA.save_csv(filePath + &#39;\\&#39; + fileName)
+#    OSA.close()
+#    
+#    plt.plot(OSA.wavelength,OSA.waveform,&#39;b&#39;)
+#    plt.axis([min(OSA.wavelength),max(OSA.wavelength),max([min(OSA.waveform),-75]),max(OSA.waveform)])
+#    plt.xlabel(&#39;Wavelength (nm)&#39;)
+#    plt.ylabel(&#39;Output (dB)&#39;)
+#    plt.show()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="src.DCA.DCA"><code class="flex name class">
+<span>class <span class="ident">DCA</span></span>
+<span>(</span><span>Port=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This class controls the high-speed data communication analyzer (DCA).</p>
+<p>The current script controls the DCA for capturing data and saving it to a CSV file.</p>
+<p>Typical usage example:
+DCA = DCA()
+print(DCA.list)
+DCA.connect('GPIB0::7::INSTR')
+#
+DCA.check_channel()
+filePath = 'H:\Home\UP\Shared\Ricardo\Python Scripts\Reference material'
+fileName
+= 'DCAtest.txt'
+#
+DCA.save_waveform(filePath, fileName)
+DCA.acquire_waveform()</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>connected</code></strong></dt>
+<dd>boolean
+Connection state of the GPIB controller.</dd>
+<dt><strong><code>bool_sweep</code></strong></dt>
+<dd>boolean
+If this attribute is True, the DCA is sweeping continuously.</dd>
+<dt><strong><code>idn</code></strong></dt>
+<dd>str
+Instrument identifier as a complete string.</dd>
+<dt><strong><code>idnMfg</code></strong></dt>
+<dd>str
+Instrument manufacturer (e.g. Agilent, Tektronix).</dd>
+<dt><strong><code>idnModel</code></strong></dt>
+<dd>str
+Instrument model number.</dd>
+<dt><strong><code>idnSn</code></strong></dt>
+<dd>str
+Instrument serial number.</dd>
+<dt><strong><code>idnFw</code></strong></dt>
+<dd>str
+Instrument firmware version number.</dd>
+<dt><strong><code>scopeGeneration</code></strong></dt>
+<dd>str
+Instrument generation (e.g. IV not X type scope)
+</dd>
+<dt><strong><code>timeArray</code></strong></dt>
+<dd>array
+Time vector, x-axis values of a captured trace after DCA.acquire_waveform(). </dd>
+<dt><strong><code>waveformArray</code></strong></dt>
+<dd>array
+Voltage vector, y-axis values of a captured trace after DCA.acquire_waveform().</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DCA():
+    &#34;&#34;&#34;This class controls the high-speed data communication analyzer (DCA).
+    
+    The current script controls the DCA for capturing data and saving it to a CSV file.
+    
+    Typical usage example:
+        DCA = DCA()
+        print(DCA.list)
+        DCA.connect(&#39;GPIB0::7::INSTR&#39;)
+        #    DCA.check_channel()
+        filePath = &#39;H:\\Home\\UP\\Shared\\Ricardo\\Python Scripts\\Reference material&#39;
+        fileName  = &#39;DCAtest.txt&#39;
+        #    DCA.save_waveform(filePath, fileName)
+        DCA.acquire_waveform()
+    
+    Attributes:
+        connected: boolean
+            Connection state of the GPIB controller.
+        bool_sweep: boolean
+            If this attribute is True, the DCA is sweeping continuously.
+        idn: str
+            Instrument identifier as a complete string.
+        idnMfg: str
+            Instrument manufacturer (e.g. Agilent, Tektronix).
+        idnModel: str
+            Instrument model number.
+        idnSn: str
+            Instrument serial number.
+        idnFw: str
+            Instrument firmware version number.
+        scopeGeneration: str
+            Instrument generation (e.g. IV not X type scope)       
+        timeArray: array
+            Time vector, x-axis values of a captured trace after DCA.acquire_waveform(). 
+        waveformArray: array
+            Voltage vector, y-axis values of a captured trace after DCA.acquire_waveform().
+            
+    &#34;&#34;&#34;
+    def __init__(self,Port=None): 
+        self.connected = False
+        self.bool_sweep = False
+        
+#        self.start_wl = &#39;900.00&#39;
+#        self.stop_wl = &#39;1100.00&#39;
+#        self.span_wl = &#39;200.00&#39;
+#        self.rbw_wl = &#39;0.1&#39;
+#        self.sampling_points = &#39;1001&#39;
+#        self.range = &#39;SNHD&#39;
+#        self.average = &#39;1&#39;
+#        self.sensitivity = &#39;None&#39;
+#        self.reference_lvl = &#39;-00&#39;
+#        
+#        self.waveform = np.empty((0,1), dtype=np.float64)
+#        self.wavelength = np.empty((0,1), dtype=np.float64)
+        self.parent=self
+        self.list_devices()
+        self.idn=&#39;IDN&#39;
+        self.idnMfg = &#39;XX&#39;
+        self.idnModel = &#39;XX&#39;
+        self.idnSn = &#39;XX&#39;
+        self.idnFw = &#39;XX&#39;
+        self.scopeGeneration = &#39;XX&#39;
+#        self.connect()
+        
+#        self.csv_ctl = csv()
+        
+#    def OSA_acquireDATA(self, ch=&#39;A&#39;):
+#        tmp = OSA.ask(&#39;LDAT&#39;+ch)
+#        time.sleep(0.2)
+#        tmp2 = [float(k) for k in tmp.split(&#39;,&#39;)]
+#        waveform = array(tmp2[1:])
+#        tmp = OSA.ask(&#39;WDAT&#39;+ch)
+#        time.sleep(0.2)
+#        tmp2 = [float(k) for k in tmp.split(&#39;,&#39;)]
+#        wavelength = array(tmp2[1:])
+#        return waveform, wavelength
+#
+#    def createFilename(self, sMeaningful):
+#        timestamp = strftime(&#34;%Y-%m-%d_%H-%M-%S_&#34;, gmtime())
+#        return timestamp + sMeaningful +&#39;.npy&#39;
+        
+        self.timeArray = []
+        self.waveformArray = []
+    
+    def list_devices(self):
+        &#34;&#34;&#34;This method list the devices in the VISA manager.
+        &#34;&#34;&#34;
+        try:
+            self.rm = pyvisa.ResourceManager()
+            self.list = self.rm.list_resources()
+        except:
+            print(&#34;Couldn&#39;t find resource manager&#34;)
+                
+    def connect(self, device):
+        &#34;&#34;&#34;
+        Parameters
+        ----------
+        device: str
+            Address of the device (DCA).
+        &#34;&#34;&#34;
+        try:
+#            self.ser=serial.Serial(self.port,self.baud,bytesize=self.bytesize, 
+#                                   timeout = self.timeout, stopbits = self.stopbits,
+#                                   parity = self.parity, rtscts=self.rtscts)
+#            if self.ser.isOpen():
+#                self.print_message(&#39;Connected to laser &#39; + self.name + &#39; on port &#39; + self.port)
+#                self.connected = True
+            
+            self.handle = self.rm.open_resource(device)
+
+            self.print_message(&#39;connected to...&#39;)
+            self.idn = str(self.handle.query(&#34;*IDN?&#34;))
+#            print(self.idn)
+            self.idn = self.idn.split(&#39;,&#39;)
+            self.idnMfg = self.idn[0]      # Manufacturer
+            self.idnModel = self.idn[1]    # Model number
+            self.idnSn = self.idn[2]       # Serial number
+            self.idnFw = self.idn[3]       # FW
+            print(self.idnMfg + &#39;\nModel: &#39; + self.idnModel, &#39;\nSerial number: &#39; + self.idnSn + &#39;\nFW: &#39; + self.idnFw)
+            self.connected = True
+            
+            self.print_message(&#39;setting parameters&#39;)
+            
+            scopeTypeCheck = list(self.idnModel)
+            if scopeTypeCheck[3] == &#34;-&#34; or scopeTypeCheck[1] == &#34;9&#34;:
+                self.scopeGeneration = &#34;IVX&#34;
+                print(&#39;IVX type scope&#39;)
+            else:
+                self.scopeGeneration = &#34;IVnotX&#34;
+                print(&#39;IV not X type scope&#39;)
+            self.set_params()
+#            self.send_cmd(&#34;REN&#34;)
+#            time.sleep(1)
+            
+        except Exception as e:
+            self.print_message(e)
+            self.print_message(&#39; Couldn\&#39;t connect to &#39; + device)
+            sys.exit() # From InfiniiVision Script
+            
+    def set_params(self):
+        if self.connected:
+#            self.handle.write(&#39;STAWL&#39;+self.start_wl + &#39;, STPWL&#39;+self.stop_wl +
+#                              &#39;, RESOLN&#39;+self.resolution + &#39;, AVG&#39;+self.average +
+#                              &#39;, SMPL&#39;+ self.sampling_points + &#39;, &#39; + self.range)
+
+#            self.handle.write()
+            self.handle.timeout = GLOBAL_TOUT
+            ## Clear the instrument bus
+            self.handle.clear()
+
+            ## Clear any previously encountered errors
+            self.handle.write(&#34;*CLS&#34;)
+            self.handle.write(&#34;SYSTEM:HEADER OFF&#34;)
+    
+    def check_channel(self):
+        self.handle.write(&#34;:TIMebase:SCALe 100 NS&#34;) # Set timescale to something fast so we do not have to wait too long
+        er = str(self.handle.query(&#34;SYST:ERR?&#34;))
+        self.handle.write(&#34;:TIMebase:POSition 0&#34;)
+        self.handle.write(&#34;:TRIGger:MODE EDGE&#34;) # Set trigger type to edge
+        self.handle.write(&#34;:TRIGger:EDGE:SOURce LINE&#34;) # Set trigger source to LINE, so there is ANYTHING to trigger on ; triggers gets set below, so ok to leave this alone
+        self.handle.query(&#34;*OPC?&#34;) # 
+        self.handle.write(&#34;:SINGle&#34;) # Do a :SINGle to fill up the memory and check the memory size (this is not a proper synchronization, but will work here)
+        time.sleep(.5)
+    
+    def set_waveform_parameters(self, wvfFormat, wvfCoupling, xDisplayRange, yDisplayRange, xUnits, yUnits, wvfPoints, wvfType, wvfCount):
+        &#34;&#34;&#34;This function sets the waveform parameters captured with the WAVEFORM:PREAMBLE command, to be saved with the waveform.
+        ----------
+        Parameters
+        ----------
+        wvfCoupling: int
+            Input coupling of the waveform in numeric value
+        xDisplayRange: float
+            X-axis duration of the waveform, usually in [s]
+        yDisplayRange: float
+            Y-axis range of the waveform, usually in [V]
+        wvfPoints: int
+            Number of data points or data pairs contained in the waveform.
+        wvfType: int
+            Numeric value that describes how the waveform was acquired.
+        wvfCount: int
+            For average, is the fewest number of hits for all time buckets, for RAW and INTERPOLATE is 0 or 1.
+        &#34;&#34;&#34;
+        self.waveformChannel = &#34;CHANNEL 1&#34;
+        self.waveformFormat = switcherWaveformFormat.get(wvfFormat, &#34;Invalid waveform format: &#34; + str(wvfFormat))
+        self.waveformCoupling = switcherWaveformCoupling.get(wvfCoupling, &#34;Invalid waveform input coupling: &#34; + str(wvfCoupling))
+        self.waveformHorScale = xDisplayRange
+        self.waveformVerScale = yDisplayRange
+        self.waveformXUnits = switcherWaveformUnits.get(xUnits, &#34;Invalid X-Axis unit type: &#34; + str(xUnits))
+        self.waveformYUnits = switcherWaveformUnits.get(yUnits, &#34;Invalid Y-Axis unit type: &#34; + str(yUnits))
+        self.waveformSamplePoints = wvfPoints
+        self.waveformMode = switcherWaveformType.get(wvfType, &#34;Invalid waveform type: &#34; + str(wvfType))
+        self.waveformAverageCount = wvfCount
+        print(&#34;Waveform parameters \nSource: &#34; + self.waveformChannel + &#34;\nCoupling: &#34; + self.waveformCoupling +
+              &#34;\nVertical scale: &#34; + str(self.waveformVerScale) + &#34; &#34; + self.waveformYUnits  + 
+              &#34;\nHorizontal scale: &#34; + str(self.waveformHorScale) + &#34; &#34; + self.waveformXUnits +
+              &#34;\nSample points: &#34; + str(self.waveformSamplePoints) + &#34;\nAcquisition mode: &#34; + self.waveformMode +
+              &#34;\nAverage count: &#34; + str(self.waveformAverageCount))
+
+    def set_waveform_values(self, waveformAscii, xOrigin, xIncr, xReference, yOrigin, yIncr, yReference):
+        &#34;&#34;&#34;
+        Description
+        -----------
+        This function sets the waveform parameters captured with the WAVEFORM:PREAMBLE command, to be saved with the waveform.
+        ----------
+        Parameters
+        ----------
+        wvfCoupling: int
+            Input coupling of the waveform in numeric value
+        xDisplayRange: float
+            X-axis duration of the waveform, usually in [s]
+        yDisplayRange: float
+            Y-axis range of the waveform, usually in [V]
+        wvfPoints: int
+            Number of data points or data pairs contained in the waveform.
+        wvfType: int
+            Numeric value that describes how the waveform was acquired.
+        wvfCount: int
+            For average, is the fewest number of hits for all time buckets, for RAW and INTERPOLATE is 0 or 1.
+        &#34;&#34;&#34;
+        waveformAscii = waveformAscii.split(&#39;,&#39;)
+        print(len(waveformAscii))
+        waveformTime = []
+        waveformVolts = []
+        y = 0
+        n = 0
+        for y in waveformAscii:
+            y = float(y)
+            waveformTime.append(  xOrigin + xIncr * ( n - xReference ) )
+            waveformVolts.append( yOrigin + yIncr * ( y - yReference ) )            
+            n = n + 1
+        self.timeArray = np.array(waveformTime)
+        self.waveformArray = np.array(waveformVolts)     
+    
+    def get_waveform_time(self):
+        return self.timeArray
+    
+    def get_waveform_volts(self):
+        return self.waveformArray
+
+    def acquire_waveform(self):
+        self.handle.write(&#34;:WAVEFORM:FORMAT ASCII:ACQUIRE:AVERAGE ON:ACQUIRE:COUNT 8:ACQUIRE:POINTS  1024:MEAS:CLE:WAVEFORM:SOURCE CHANNEL1:DIGITIZE CHANNEL1&#34;)
+        time.sleep(1)
+        dcaStatus = self.handle.query(&#34;*OPC?&#34;)
+        print(&#34;DCA status: &#34; + dcaStatus)
+        time.sleep(1)
+        waveformParameters = self.handle.query(&#34;:WAVEFORM:PREAMBLE?&#34;)
+        print(&#39;Waveform parameters: &#39; + waveformParameters)
+        waveformParameters = waveformParameters.split(&#34;,&#34;)
+        
+        wvfFormat = int(waveformParameters[0])              # Waveform format (e.g: 0 - ASCII)
+        wvfType = int(waveformParameters[1])                # Waveform type (e.g: 1 - RAW, 2 - AVERAGE)
+        wvfPoints = int(waveformParameters[2])              # Number of data points (e.g: 1024)
+        wvfCount = int(waveformParameters[3])               # Average count (e.g: 8)
+        xIncr = float(waveformParameters[4])                # Duration between data points in X axis (e.g: 9.765625e-10 [s])
+        xOrigin = float(waveformParameters[5])              # X-axis value of the first data point (e.g. 2.4e-8 [s])
+        xReference = float(waveformParameters[6])           # Data points associated with the X origin (e.g: 0)
+        yIncr = float(waveformParameters[7])                # Duration between data points in Y axis (e.g: 8.4e-2 [V])
+        yOrigin = float(waveformParameters[8])              # Y-axis value of the first data point (e.g. 9e-12 [V])
+        yReference = float(waveformParameters[9])           # Data points associated with the Y origin (e.g: 0)
+        wvfCoupling = int(waveformParameters[10])           # Channel coupling (e.g: 0 - AC coupling, 1 - DC coupling, 2 - DC-50 coupling)
+        xDisplayRange = float(waveformParameters[11])       # X-axis duration of displayed waveform (e.g. 1e-6 [s])
+        xDisplayOrigin = float(waveformParameters[12])      # X-axis value at the edge of the display (e.g. 2.4e-8 [s])
+        yDisplayRange = float(waveformParameters[13])       # Y-axis voltage/range of displayed waveform (e.g. 8e-2 [V])
+        yDisplayOrigin = float(waveformParameters[14])      # Y-axis value at the center of the display (e.g. 0e0 [V])
+        wvfDate = waveformParameters[15].replace(&#39;&#34;&#39;,&#39;&#39;)    # String containing the date in the format DD MMM YYYY (e.g. 01 JAN 1997)
+        wvfTime = waveformParameters[16].replace(&#39;&#34;&#39;,&#39;&#39;)    # String containing the time in the format HH:MM:SS:TT (e.g. 09:54:55:89)
+        frameModel = waveformParameters[17].replace(&#39;&#34;&#39;,&#39;&#39;) # String contianing the model # and (:) serial # (e.g. 86100C:MY43490127)
+        wvfAcqMode = int(waveformParameters[19])            # Acquisition sampling mode of the waveform (e.g. 0 - High resolution)
+        wvfCompletion = int(waveformParameters[20])         # Percent of time buckets that are complete for the waveform (e.g. 0 - 100)
+        xUnits = int(waveformParameters[21])                # X-axis units (e.g. 2 - SECOND units)
+        yUnits = int(waveformParameters[22])                # Y-axis units (e.g. 1 - VOLT units)
+        maxBwLimit = float(waveformParameters[23])          # Estimated maximum bandwidth of the source waveform (e.g. 50e9 [Hz])
+        minBwLimit = float(waveformParameters[24])          # Estimated minimum bandwidth of the source waveform (e.g. 0 [Hz])
+        
+        waveformAscii = self.handle.query(&#34;:WAVEFORM:DATA?&#34;)
+        self.set_waveform_parameters(wvfFormat, wvfCoupling, xDisplayRange, yDisplayRange, xUnits, yUnits, wvfPoints, wvfType, wvfCount)
+        self.set_waveform_values(waveformAscii, xOrigin, xIncr, xReference, yOrigin, yIncr, yReference)
+        plt.plot(self.get_waveform_time(), self.get_waveform_volts(), &#39;b&#39;)
+    
+        
+    def save_waveform(self, filePath, fileName):
+        TYPE = &#34;ASCiixy&#34; # &#34;CSV&#34; or &#34;ASCiixy&#34; or &#34;BINary&#34;
+        self.handle.write(&#39;:SAVE:FILename &#34;&#39; + str(fileName) + &#39;&#34;&#39;)
+        self.handle.write(&#34;:SAVE:WAVeform:FORMat &#34; + str(TYPE))
+        
+        self.handle.write(&#34;:SAVE:WAVeform:LENGth 1000&#34;)
+        
+        print(&#34;Now saving waveforms to file.\n&#34;)
+        
+        self.handle.query(&#34;*CLS;*OPC?&#34;) # Clear all registers before issuing the command to save the data; this is necessary so we can properly determine when the scope is done saving data.
+        self.handle.write(&#39;:SAVE:WAVeform:STARt &#34;&#39; +  str(filePath) + &#39;\\&#39; + str(fileName) + &#39;&#34;&#39;)
+        
+        ## First definite IOC and IOF criterion:
+        IO_COMPLETE_BIT = 13 #  the IOC bit is bit-weigh 13 in the Operation Event Register
+        IO_COMPLETE_MASK = 1&lt;&lt; IO_COMPLETE_BIT # &lt;&lt; is a left shift; 1&lt;&lt;13 = 8192 = 2 raised to 13;
+        IO_COMPLETE = 1 &lt;&lt; IO_COMPLETE_BIT
+        IO_NOT_COMPLETE = 0
+        
+        IO_FAIL_BIT = 14 #  the IOC bit is bit-weigh 14 in the Operation Event Register
+        IO_FAIL_MASK = 1&lt;&lt; IO_FAIL_BIT # &lt;&lt; is a left shift; 1&lt;&lt;14 = 16384 = 2 raised to 14;
+        IO_FAIL = 1&lt;&lt; IO_FAIL_BIT
+        IO_NOT_FAIL = 0
+        
+        ## Define IOF and IOC initial states:
+        IOC_STATUS = 0
+        IOF_STATUS = 0
+        
+        self.handle.query(&#34;:OPER:EVENt?&#34;)
+        ## Begin checking for IO_Status
+        while IOF_STATUS ==  IO_NOT_FAIL and IOC_STATUS == IO_NOT_COMPLETE: # Note there is no time qualification here... it should just eventually be done, or fail... eventually.
+            Status = int(self.handle.query(&#34;:OPER:EVENt?&#34;)) # DO NOT use :OPERation
+            IOC_STATUS = Status &amp; IO_COMPLETE_MASK # A bitwise and of Status IO_COMPLETE_MASK
+            IOF_STATUS = Status &amp; IO_FAIL_MASK
+            if IOF_STATUS == IO_FAIL:
+                print(&#34;FAILED saving waveforms to USB stick.\n&#34;)
+                print(&#34;Check that a USB stick is inserted and that you can manually save a file to the USB tick.  If not, try a different USB stick.\n&#34;)
+                print(&#34;Aborting script and properly closing scope.\n&#34;)
+                self.handle.clear() # Clear scope communications interface
+                self.handle.close() # Close communications interface to scope
+                sys.exit()
+            if IOC_STATUS == IO_COMPLETE: # you need to do this last. If you were to remvoe the USB stick whiel it is saving, it will say that the IO operation is both failed and done...
+                print(&#34;Done saving waveforms to USB stick.\n&#34;)
+                break # Break out of while loop to avoid the wait time below
+            time.sleep(0.1) # Pause 100 ms to prevent excessive queries (probably ok to go faster)
+        
+        ##############################################################################################################################################################################
+        ##############################################################################################################################################################################
+        ## Done - cleanup
+        ##############################################################################################################################################################################
+        ##############################################################################################################################################################################
+        
+        self.handle.clear() # Clear scope communications interface
+        self.handle.close() # Close communications interface to scope
+#        
+        print(&#34;Done.&#34;)
+                
+    def close(self):
+        
+        self.handle.write(&#34;GTL&#34;)
+        time.sleep(1)
+        self.rm.close()
+        self.print_message(&#39;Connection to OSA closed&#39;)
+        
+    def send_cmd(self, cmd):
+        
+        self.handle.write(cmd)
+         
+        response = self.handle.read_raw()
+        return response
+    
+    def cont_sweep(self):
+
+        self.bool_sweep = True
+        self.handle.write(&#34;RPT&#34;)
+    
+    def single_sweep(self):
+
+        self.bool_sweep = True
+        self.handle.write(&#34;SGL&#34;)
+        time.sleep(1)
+        response = self.handle.query(&#34;SWEEP?&#34;)
+        while response != &#34;0\r\n&#34;:
+            time.sleep(1)
+            response = self.handle.query(&#34;SWEEP?&#34;)
+#            print(response)
+        self.bool_sweep = False
+
+    def grab_spectrum(self, channel = &#39;A&#39;):
+            try:            
+                tmp = self.handle.query(&#39;LDAT&#39;+channel)
+#                print(tmp)
+                time.sleep(1)
+                tmp2 = [float(k) for k in tmp.split(&#39;,&#39;)]
+                self.waveform = np.array(tmp2[1:])
+                print(self.waveform)
+            except ValueError:
+                self.close()
+                print(&#39;Acquisition error with spectrum values\r\n&#39;)
+            
+            try:                
+                tmp = self.handle.query(&#39;WDAT&#39;+channel)
+#                print(tmp)
+                time.sleep(1)
+                tmp2 = [float(k) for k in tmp.split(&#39;,&#39;)]
+                self.wavelength = np.array(tmp2[1:])
+                print(self.wavelength)
+            except ValueError:
+                self.close()
+                print(&#39;Acquisition error with wavelength values\r\n&#39;)  
+    
+    def get_span(self):
+        self.span_wl = self.handle.query(&#34;SPAN?&#34;)
+        time.sleep(1)
+        self.span_wl = self.span_wl.replace(&#34;\r&#34;,&#34;&#34;)
+        self.span_wl = self.span_wl.replace(&#34;\n&#34;,&#34;&#34;) 
+    
+    def get_rbw(self):
+        self.rbw_wl = self.handle.query(&#34;RESLN?&#34;)
+        time.sleep(1)
+        self.rbw_wl = self.rbw_wl.replace(&#34;\r&#34;,&#34;&#34;)
+        self.rbw_wl = self.rbw_wl.replace(&#34;\n&#34;,&#34;&#34;) 
+
+    def get_sensitivity(self):
+        sensitivity_num = self.handle.query(&#34;SENS?&#34;)
+        time.sleep(1)
+        sensitivity_num = sensitivity_num.replace(&#34;\r&#34;,&#34;&#34;)
+        sensitivity_num = sensitivity_num.replace(&#34;\n&#34;,&#34;&#34;)
+        sensitivity_num = int(sensitivity_num)
+        sensitivity_lvl = {
+                1: &#39;HIGH1&#39;,
+                2: &#39;HIGH2&#39;,
+                3: &#39;HIGH3&#39;,
+                4: &#39;NORM RANG HOLD&#39;,
+                5: &#39;NORM RANG AUTO&#39;,
+                6: &#39;MID&#39;
+                }
+        self.sensitivity = sensitivity_lvl.get(sensitivity_num)
+    
+    def get_ref_lvl(self):
+        self.reference_lvl = self.handle.query(&#34;REFL?&#34;)
+        time.sleep(1)
+        self.reference_lvl = self.reference_lvl.replace(&#34;\r&#34;,&#34;&#34;)
+        self.reference_lvl = self.reference_lvl.replace(&#34;\n&#34;,&#34;&#34;)
+        
+    def print_message(self, msg):
+        if __name__ == &#34;__main__&#34;:
+            print(msg)
+    
+    def save_csv(self, fileName):
+        try:
+            with open(fileName, &#39;w&#39;,newline=&#39;&#39;) as fileWriter:
+                self.csvWriter = csv.writer(fileWriter, delimiter = &#39;\t&#39;)
+                now_ = datetime.datetime.now()
+                timestamp = now_.strftime(&#39;%m/%d/%Y %H:%M hrs&#39;)
+                self.csvWriter.writerow([timestamp])
+#                self.csvWriter.writerow([&#34;Record length: &#34; + self.get_waveform_sample_points()])
+##                self.csvWriter.writerow([&#34;Sample interval: &#34; + self.sensitivity + &#34; (sec)&#34;])
+##                self.csvWriter.writerow([&#34;Trigger point: &#34; + self.rbw_wl + &#34; (samples)&#34;])
+#                self.csvWriter.writerow([&#34;Source: &#34; + self.get_waveform_channel()])
+##                self.csvWriter.writerow([&#34;Vertical units: &#34; + self.span_wl])
+#                self.csvWriter.writerow([&#34;Vertical scale: &#34; + self.get_waveform_vertical_scale()])
+##                self.csvWriter.writerow([&#34;Horizontal units: &#34; + self.span_wl])
+#                self.csvWriter.writerow([&#34;Horizontal scale: &#34; + self.get_waveform_horizontal_scale()])
+#                self.csvWriter.writerow([&#34;Acquisition mode: &#34; + self.get_waveform_mode()])
+##                self.csvWriter.writerow([&#34;Number of averages: &#34; + self.span_wl])
+                self.csvWriter.writerow([&#34;Time (s) Waveform (V)&#34;])
+                for (x,y) in zip(self.get_waveform_time(), self.get_waveform_volts()):
+                    self.csvWriter.writerow((&#39;{0:.12f}&#39;.format(x),&#39;{0:.12f}&#39;.format(y)))
+        except:
+            self.close()
+            print(&#34;Error while saving &#34; + fileName + &#34; file&#34;)
+    
+    def plot_waveform(self):
+        &#34;&#34;&#34;Plot the acquired waveform after function acquire_waveform().
+        &#34;&#34;&#34;
+        plt.plot(self.get_waveform_time(),self.get_waveform_volts(),&#39;b&#39;)
+        plt.axis([min(self.get_waveform_time()),max(self.get_waveform_time()),min(self.get_waveform_volts()),max(self.get_waveform_volts())])
+        plt.xlabel(&#39;Time (sec)&#39;)
+        plt.ylabel(&#39;Output (V)&#39;)
+        plt.show()</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="src.DCA.DCA.acquire_waveform"><code class="name flex">
+<span>def <span class="ident">acquire_waveform</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def acquire_waveform(self):
+    self.handle.write(&#34;:WAVEFORM:FORMAT ASCII:ACQUIRE:AVERAGE ON:ACQUIRE:COUNT 8:ACQUIRE:POINTS  1024:MEAS:CLE:WAVEFORM:SOURCE CHANNEL1:DIGITIZE CHANNEL1&#34;)
+    time.sleep(1)
+    dcaStatus = self.handle.query(&#34;*OPC?&#34;)
+    print(&#34;DCA status: &#34; + dcaStatus)
+    time.sleep(1)
+    waveformParameters = self.handle.query(&#34;:WAVEFORM:PREAMBLE?&#34;)
+    print(&#39;Waveform parameters: &#39; + waveformParameters)
+    waveformParameters = waveformParameters.split(&#34;,&#34;)
+    
+    wvfFormat = int(waveformParameters[0])              # Waveform format (e.g: 0 - ASCII)
+    wvfType = int(waveformParameters[1])                # Waveform type (e.g: 1 - RAW, 2 - AVERAGE)
+    wvfPoints = int(waveformParameters[2])              # Number of data points (e.g: 1024)
+    wvfCount = int(waveformParameters[3])               # Average count (e.g: 8)
+    xIncr = float(waveformParameters[4])                # Duration between data points in X axis (e.g: 9.765625e-10 [s])
+    xOrigin = float(waveformParameters[5])              # X-axis value of the first data point (e.g. 2.4e-8 [s])
+    xReference = float(waveformParameters[6])           # Data points associated with the X origin (e.g: 0)
+    yIncr = float(waveformParameters[7])                # Duration between data points in Y axis (e.g: 8.4e-2 [V])
+    yOrigin = float(waveformParameters[8])              # Y-axis value of the first data point (e.g. 9e-12 [V])
+    yReference = float(waveformParameters[9])           # Data points associated with the Y origin (e.g: 0)
+    wvfCoupling = int(waveformParameters[10])           # Channel coupling (e.g: 0 - AC coupling, 1 - DC coupling, 2 - DC-50 coupling)
+    xDisplayRange = float(waveformParameters[11])       # X-axis duration of displayed waveform (e.g. 1e-6 [s])
+    xDisplayOrigin = float(waveformParameters[12])      # X-axis value at the edge of the display (e.g. 2.4e-8 [s])
+    yDisplayRange = float(waveformParameters[13])       # Y-axis voltage/range of displayed waveform (e.g. 8e-2 [V])
+    yDisplayOrigin = float(waveformParameters[14])      # Y-axis value at the center of the display (e.g. 0e0 [V])
+    wvfDate = waveformParameters[15].replace(&#39;&#34;&#39;,&#39;&#39;)    # String containing the date in the format DD MMM YYYY (e.g. 01 JAN 1997)
+    wvfTime = waveformParameters[16].replace(&#39;&#34;&#39;,&#39;&#39;)    # String containing the time in the format HH:MM:SS:TT (e.g. 09:54:55:89)
+    frameModel = waveformParameters[17].replace(&#39;&#34;&#39;,&#39;&#39;) # String contianing the model # and (:) serial # (e.g. 86100C:MY43490127)
+    wvfAcqMode = int(waveformParameters[19])            # Acquisition sampling mode of the waveform (e.g. 0 - High resolution)
+    wvfCompletion = int(waveformParameters[20])         # Percent of time buckets that are complete for the waveform (e.g. 0 - 100)
+    xUnits = int(waveformParameters[21])                # X-axis units (e.g. 2 - SECOND units)
+    yUnits = int(waveformParameters[22])                # Y-axis units (e.g. 1 - VOLT units)
+    maxBwLimit = float(waveformParameters[23])          # Estimated maximum bandwidth of the source waveform (e.g. 50e9 [Hz])
+    minBwLimit = float(waveformParameters[24])          # Estimated minimum bandwidth of the source waveform (e.g. 0 [Hz])
+    
+    waveformAscii = self.handle.query(&#34;:WAVEFORM:DATA?&#34;)
+    self.set_waveform_parameters(wvfFormat, wvfCoupling, xDisplayRange, yDisplayRange, xUnits, yUnits, wvfPoints, wvfType, wvfCount)
+    self.set_waveform_values(waveformAscii, xOrigin, xIncr, xReference, yOrigin, yIncr, yReference)
+    plt.plot(self.get_waveform_time(), self.get_waveform_volts(), &#39;b&#39;)</code></pre>
+</details>
+</dd>
+<dt id="src.DCA.DCA.check_channel"><code class="name flex">
+<span>def <span class="ident">check_channel</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def check_channel(self):
+    self.handle.write(&#34;:TIMebase:SCALe 100 NS&#34;) # Set timescale to something fast so we do not have to wait too long
+    er = str(self.handle.query(&#34;SYST:ERR?&#34;))
+    self.handle.write(&#34;:TIMebase:POSition 0&#34;)
+    self.handle.write(&#34;:TRIGger:MODE EDGE&#34;) # Set trigger type to edge
+    self.handle.write(&#34;:TRIGger:EDGE:SOURce LINE&#34;) # Set trigger source to LINE, so there is ANYTHING to trigger on ; triggers gets set below, so ok to leave this alone
+    self.handle.query(&#34;*OPC?&#34;) # 
+    self.handle.write(&#34;:SINGle&#34;) # Do a :SINGle to fill up the memory and check the memory size (this is not a proper synchronization, but will work here)
+    time.sleep(.5)</code></pre>
+</details>
+</dd>
+<dt id="src.DCA.DCA.close"><code class="name flex">
+<span>def <span class="ident">close</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def close(self):
+    
+    self.handle.write(&#34;GTL&#34;)
+    time.sleep(1)
+    self.rm.close()
+    self.print_message(&#39;Connection to OSA closed&#39;)</code></pre>
+</details>
+</dd>
+<dt id="src.DCA.DCA.connect"><code class="name flex">
+<span>def <span class="ident">connect</span></span>(<span>self, device)</span>
+</code></dt>
+<dd>
+<div class="desc"><h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>device</code></strong> :&ensp;<code>str</code></dt>
+<dd>Address of the device (DCA).</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def connect(self, device):
+        &#34;&#34;&#34;
+        Parameters
+        ----------
+        device: str
+            Address of the device (DCA).
+        &#34;&#34;&#34;
+        try:
+#            self.ser=serial.Serial(self.port,self.baud,bytesize=self.bytesize, 
+#                                   timeout = self.timeout, stopbits = self.stopbits,
+#                                   parity = self.parity, rtscts=self.rtscts)
+#            if self.ser.isOpen():
+#                self.print_message(&#39;Connected to laser &#39; + self.name + &#39; on port &#39; + self.port)
+#                self.connected = True
+            
+            self.handle = self.rm.open_resource(device)
+
+            self.print_message(&#39;connected to...&#39;)
+            self.idn = str(self.handle.query(&#34;*IDN?&#34;))
+#            print(self.idn)
+            self.idn = self.idn.split(&#39;,&#39;)
+            self.idnMfg = self.idn[0]      # Manufacturer
+            self.idnModel = self.idn[1]    # Model number
+            self.idnSn = self.idn[2]       # Serial number
+            self.idnFw = self.idn[3]       # FW
+            print(self.idnMfg + &#39;\nModel: &#39; + self.idnModel, &#39;\nSerial number: &#39; + self.idnSn + &#39;\nFW: &#39; + self.idnFw)
+            self.connected = True
+            
+            self.print_message(&#39;setting parameters&#39;)
+            
+            scopeTypeCheck = list(self.idnModel)
+            if scopeTypeCheck[3] == &#34;-&#34; or scopeTypeCheck[1] == &#34;9&#34;:
+                self.scopeGeneration = &#34;IVX&#34;
+                print(&#39;IVX type scope&#39;)
+            else:
+                self.scopeGeneration = &#34;IVnotX&#34;
+                print(&#39;IV not X type scope&#39;)
+            self.set_params()
+#            self.send_cmd(&#34;REN&#34;)
+#            time.sleep(1)
+            
+        except Exception as e:
+            self.print_message(e)
+            self.print_message(&#39; Couldn\&#39;t connect to &#39; + device)
+            sys.exit() # From InfiniiVision Script</code></pre>
+</details>
+</dd>
+<dt id="src.DCA.DCA.cont_sweep"><code class="name flex">
+<span>def <span class="ident">cont_sweep</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def cont_sweep(self):
+
+    self.bool_sweep = True
+    self.handle.write(&#34;RPT&#34;)</code></pre>
+</details>
+</dd>
+<dt id="src.DCA.DCA.get_rbw"><code class="name flex">
+<span>def <span class="ident">get_rbw</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_rbw(self):
+    self.rbw_wl = self.handle.query(&#34;RESLN?&#34;)
+    time.sleep(1)
+    self.rbw_wl = self.rbw_wl.replace(&#34;\r&#34;,&#34;&#34;)
+    self.rbw_wl = self.rbw_wl.replace(&#34;\n&#34;,&#34;&#34;) </code></pre>
+</details>
+</dd>
+<dt id="src.DCA.DCA.get_ref_lvl"><code class="name flex">
+<span>def <span class="ident">get_ref_lvl</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_ref_lvl(self):
+    self.reference_lvl = self.handle.query(&#34;REFL?&#34;)
+    time.sleep(1)
+    self.reference_lvl = self.reference_lvl.replace(&#34;\r&#34;,&#34;&#34;)
+    self.reference_lvl = self.reference_lvl.replace(&#34;\n&#34;,&#34;&#34;)</code></pre>
+</details>
+</dd>
+<dt id="src.DCA.DCA.get_sensitivity"><code class="name flex">
+<span>def <span class="ident">get_sensitivity</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_sensitivity(self):
+    sensitivity_num = self.handle.query(&#34;SENS?&#34;)
+    time.sleep(1)
+    sensitivity_num = sensitivity_num.replace(&#34;\r&#34;,&#34;&#34;)
+    sensitivity_num = sensitivity_num.replace(&#34;\n&#34;,&#34;&#34;)
+    sensitivity_num = int(sensitivity_num)
+    sensitivity_lvl = {
+            1: &#39;HIGH1&#39;,
+            2: &#39;HIGH2&#39;,
+            3: &#39;HIGH3&#39;,
+            4: &#39;NORM RANG HOLD&#39;,
+            5: &#39;NORM RANG AUTO&#39;,
+            6: &#39;MID&#39;
+            }
+    self.sensitivity = sensitivity_lvl.get(sensitivity_num)</code></pre>
+</details>
+</dd>
+<dt id="src.DCA.DCA.get_span"><code class="name flex">
+<span>def <span class="ident">get_span</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_span(self):
+    self.span_wl = self.handle.query(&#34;SPAN?&#34;)
+    time.sleep(1)
+    self.span_wl = self.span_wl.replace(&#34;\r&#34;,&#34;&#34;)
+    self.span_wl = self.span_wl.replace(&#34;\n&#34;,&#34;&#34;) </code></pre>
+</details>
+</dd>
+<dt id="src.DCA.DCA.get_waveform_time"><code class="name flex">
+<span>def <span class="ident">get_waveform_time</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_waveform_time(self):
+    return self.timeArray</code></pre>
+</details>
+</dd>
+<dt id="src.DCA.DCA.get_waveform_volts"><code class="name flex">
+<span>def <span class="ident">get_waveform_volts</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_waveform_volts(self):
+    return self.waveformArray</code></pre>
+</details>
+</dd>
+<dt id="src.DCA.DCA.grab_spectrum"><code class="name flex">
+<span>def <span class="ident">grab_spectrum</span></span>(<span>self, channel='A')</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def grab_spectrum(self, channel = &#39;A&#39;):
+            try:            
+                tmp = self.handle.query(&#39;LDAT&#39;+channel)
+#                print(tmp)
+                time.sleep(1)
+                tmp2 = [float(k) for k in tmp.split(&#39;,&#39;)]
+                self.waveform = np.array(tmp2[1:])
+                print(self.waveform)
+            except ValueError:
+                self.close()
+                print(&#39;Acquisition error with spectrum values\r\n&#39;)
+            
+            try:                
+                tmp = self.handle.query(&#39;WDAT&#39;+channel)
+#                print(tmp)
+                time.sleep(1)
+                tmp2 = [float(k) for k in tmp.split(&#39;,&#39;)]
+                self.wavelength = np.array(tmp2[1:])
+                print(self.wavelength)
+            except ValueError:
+                self.close()
+                print(&#39;Acquisition error with wavelength values\r\n&#39;)  </code></pre>
+</details>
+</dd>
+<dt id="src.DCA.DCA.list_devices"><code class="name flex">
+<span>def <span class="ident">list_devices</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method list the devices in the VISA manager.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def list_devices(self):
+    &#34;&#34;&#34;This method list the devices in the VISA manager.
+    &#34;&#34;&#34;
+    try:
+        self.rm = pyvisa.ResourceManager()
+        self.list = self.rm.list_resources()
+    except:
+        print(&#34;Couldn&#39;t find resource manager&#34;)</code></pre>
+</details>
+</dd>
+<dt id="src.DCA.DCA.plot_waveform"><code class="name flex">
+<span>def <span class="ident">plot_waveform</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Plot the acquired waveform after function acquire_waveform().</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def plot_waveform(self):
+    &#34;&#34;&#34;Plot the acquired waveform after function acquire_waveform().
+    &#34;&#34;&#34;
+    plt.plot(self.get_waveform_time(),self.get_waveform_volts(),&#39;b&#39;)
+    plt.axis([min(self.get_waveform_time()),max(self.get_waveform_time()),min(self.get_waveform_volts()),max(self.get_waveform_volts())])
+    plt.xlabel(&#39;Time (sec)&#39;)
+    plt.ylabel(&#39;Output (V)&#39;)
+    plt.show()</code></pre>
+</details>
+</dd>
+<dt id="src.DCA.DCA.print_message"><code class="name flex">
+<span>def <span class="ident">print_message</span></span>(<span>self, msg)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def print_message(self, msg):
+    if __name__ == &#34;__main__&#34;:
+        print(msg)</code></pre>
+</details>
+</dd>
+<dt id="src.DCA.DCA.save_csv"><code class="name flex">
+<span>def <span class="ident">save_csv</span></span>(<span>self, fileName)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def save_csv(self, fileName):
+        try:
+            with open(fileName, &#39;w&#39;,newline=&#39;&#39;) as fileWriter:
+                self.csvWriter = csv.writer(fileWriter, delimiter = &#39;\t&#39;)
+                now_ = datetime.datetime.now()
+                timestamp = now_.strftime(&#39;%m/%d/%Y %H:%M hrs&#39;)
+                self.csvWriter.writerow([timestamp])
+#                self.csvWriter.writerow([&#34;Record length: &#34; + self.get_waveform_sample_points()])
+##                self.csvWriter.writerow([&#34;Sample interval: &#34; + self.sensitivity + &#34; (sec)&#34;])
+##                self.csvWriter.writerow([&#34;Trigger point: &#34; + self.rbw_wl + &#34; (samples)&#34;])
+#                self.csvWriter.writerow([&#34;Source: &#34; + self.get_waveform_channel()])
+##                self.csvWriter.writerow([&#34;Vertical units: &#34; + self.span_wl])
+#                self.csvWriter.writerow([&#34;Vertical scale: &#34; + self.get_waveform_vertical_scale()])
+##                self.csvWriter.writerow([&#34;Horizontal units: &#34; + self.span_wl])
+#                self.csvWriter.writerow([&#34;Horizontal scale: &#34; + self.get_waveform_horizontal_scale()])
+#                self.csvWriter.writerow([&#34;Acquisition mode: &#34; + self.get_waveform_mode()])
+##                self.csvWriter.writerow([&#34;Number of averages: &#34; + self.span_wl])
+                self.csvWriter.writerow([&#34;Time (s) Waveform (V)&#34;])
+                for (x,y) in zip(self.get_waveform_time(), self.get_waveform_volts()):
+                    self.csvWriter.writerow((&#39;{0:.12f}&#39;.format(x),&#39;{0:.12f}&#39;.format(y)))
+        except:
+            self.close()
+            print(&#34;Error while saving &#34; + fileName + &#34; file&#34;)</code></pre>
+</details>
+</dd>
+<dt id="src.DCA.DCA.save_waveform"><code class="name flex">
+<span>def <span class="ident">save_waveform</span></span>(<span>self, filePath, fileName)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def save_waveform(self, filePath, fileName):
+        TYPE = &#34;ASCiixy&#34; # &#34;CSV&#34; or &#34;ASCiixy&#34; or &#34;BINary&#34;
+        self.handle.write(&#39;:SAVE:FILename &#34;&#39; + str(fileName) + &#39;&#34;&#39;)
+        self.handle.write(&#34;:SAVE:WAVeform:FORMat &#34; + str(TYPE))
+        
+        self.handle.write(&#34;:SAVE:WAVeform:LENGth 1000&#34;)
+        
+        print(&#34;Now saving waveforms to file.\n&#34;)
+        
+        self.handle.query(&#34;*CLS;*OPC?&#34;) # Clear all registers before issuing the command to save the data; this is necessary so we can properly determine when the scope is done saving data.
+        self.handle.write(&#39;:SAVE:WAVeform:STARt &#34;&#39; +  str(filePath) + &#39;\\&#39; + str(fileName) + &#39;&#34;&#39;)
+        
+        ## First definite IOC and IOF criterion:
+        IO_COMPLETE_BIT = 13 #  the IOC bit is bit-weigh 13 in the Operation Event Register
+        IO_COMPLETE_MASK = 1&lt;&lt; IO_COMPLETE_BIT # &lt;&lt; is a left shift; 1&lt;&lt;13 = 8192 = 2 raised to 13;
+        IO_COMPLETE = 1 &lt;&lt; IO_COMPLETE_BIT
+        IO_NOT_COMPLETE = 0
+        
+        IO_FAIL_BIT = 14 #  the IOC bit is bit-weigh 14 in the Operation Event Register
+        IO_FAIL_MASK = 1&lt;&lt; IO_FAIL_BIT # &lt;&lt; is a left shift; 1&lt;&lt;14 = 16384 = 2 raised to 14;
+        IO_FAIL = 1&lt;&lt; IO_FAIL_BIT
+        IO_NOT_FAIL = 0
+        
+        ## Define IOF and IOC initial states:
+        IOC_STATUS = 0
+        IOF_STATUS = 0
+        
+        self.handle.query(&#34;:OPER:EVENt?&#34;)
+        ## Begin checking for IO_Status
+        while IOF_STATUS ==  IO_NOT_FAIL and IOC_STATUS == IO_NOT_COMPLETE: # Note there is no time qualification here... it should just eventually be done, or fail... eventually.
+            Status = int(self.handle.query(&#34;:OPER:EVENt?&#34;)) # DO NOT use :OPERation
+            IOC_STATUS = Status &amp; IO_COMPLETE_MASK # A bitwise and of Status IO_COMPLETE_MASK
+            IOF_STATUS = Status &amp; IO_FAIL_MASK
+            if IOF_STATUS == IO_FAIL:
+                print(&#34;FAILED saving waveforms to USB stick.\n&#34;)
+                print(&#34;Check that a USB stick is inserted and that you can manually save a file to the USB tick.  If not, try a different USB stick.\n&#34;)
+                print(&#34;Aborting script and properly closing scope.\n&#34;)
+                self.handle.clear() # Clear scope communications interface
+                self.handle.close() # Close communications interface to scope
+                sys.exit()
+            if IOC_STATUS == IO_COMPLETE: # you need to do this last. If you were to remvoe the USB stick whiel it is saving, it will say that the IO operation is both failed and done...
+                print(&#34;Done saving waveforms to USB stick.\n&#34;)
+                break # Break out of while loop to avoid the wait time below
+            time.sleep(0.1) # Pause 100 ms to prevent excessive queries (probably ok to go faster)
+        
+        ##############################################################################################################################################################################
+        ##############################################################################################################################################################################
+        ## Done - cleanup
+        ##############################################################################################################################################################################
+        ##############################################################################################################################################################################
+        
+        self.handle.clear() # Clear scope communications interface
+        self.handle.close() # Close communications interface to scope
+#        
+        print(&#34;Done.&#34;)</code></pre>
+</details>
+</dd>
+<dt id="src.DCA.DCA.send_cmd"><code class="name flex">
+<span>def <span class="ident">send_cmd</span></span>(<span>self, cmd)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def send_cmd(self, cmd):
+    
+    self.handle.write(cmd)
+     
+    response = self.handle.read_raw()
+    return response</code></pre>
+</details>
+</dd>
+<dt id="src.DCA.DCA.set_params"><code class="name flex">
+<span>def <span class="ident">set_params</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def set_params(self):
+        if self.connected:
+#            self.handle.write(&#39;STAWL&#39;+self.start_wl + &#39;, STPWL&#39;+self.stop_wl +
+#                              &#39;, RESOLN&#39;+self.resolution + &#39;, AVG&#39;+self.average +
+#                              &#39;, SMPL&#39;+ self.sampling_points + &#39;, &#39; + self.range)
+
+#            self.handle.write()
+            self.handle.timeout = GLOBAL_TOUT
+            ## Clear the instrument bus
+            self.handle.clear()
+
+            ## Clear any previously encountered errors
+            self.handle.write(&#34;*CLS&#34;)
+            self.handle.write(&#34;SYSTEM:HEADER OFF&#34;)</code></pre>
+</details>
+</dd>
+<dt id="src.DCA.DCA.set_waveform_parameters"><code class="name flex">
+<span>def <span class="ident">set_waveform_parameters</span></span>(<span>self, wvfFormat, wvfCoupling, xDisplayRange, yDisplayRange, xUnits, yUnits, wvfPoints, wvfType, wvfCount)</span>
+</code></dt>
+<dd>
+<div class="desc"><h2 id="this-function-sets-the-waveform-parameters-captured-with-the-waveformpreamble-command-to-be-saved-with-the-waveform">This function sets the waveform parameters captured with the WAVEFORM:PREAMBLE command, to be saved with the waveform.</h2>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>wvfCoupling</code></strong> :&ensp;<code>int</code></dt>
+<dd>Input coupling of the waveform in numeric value</dd>
+<dt><strong><code>xDisplayRange</code></strong> :&ensp;<code>float</code></dt>
+<dd>X-axis duration of the waveform, usually in [s]</dd>
+<dt><strong><code>yDisplayRange</code></strong> :&ensp;<code>float</code></dt>
+<dd>Y-axis range of the waveform, usually in [V]</dd>
+<dt><strong><code>wvfPoints</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of data points or data pairs contained in the waveform.</dd>
+<dt><strong><code>wvfType</code></strong> :&ensp;<code>int</code></dt>
+<dd>Numeric value that describes how the waveform was acquired.</dd>
+<dt><strong><code>wvfCount</code></strong> :&ensp;<code>int</code></dt>
+<dd>For average, is the fewest number of hits for all time buckets, for RAW and INTERPOLATE is 0 or 1.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_waveform_parameters(self, wvfFormat, wvfCoupling, xDisplayRange, yDisplayRange, xUnits, yUnits, wvfPoints, wvfType, wvfCount):
+    &#34;&#34;&#34;This function sets the waveform parameters captured with the WAVEFORM:PREAMBLE command, to be saved with the waveform.
+    ----------
+    Parameters
+    ----------
+    wvfCoupling: int
+        Input coupling of the waveform in numeric value
+    xDisplayRange: float
+        X-axis duration of the waveform, usually in [s]
+    yDisplayRange: float
+        Y-axis range of the waveform, usually in [V]
+    wvfPoints: int
+        Number of data points or data pairs contained in the waveform.
+    wvfType: int
+        Numeric value that describes how the waveform was acquired.
+    wvfCount: int
+        For average, is the fewest number of hits for all time buckets, for RAW and INTERPOLATE is 0 or 1.
+    &#34;&#34;&#34;
+    self.waveformChannel = &#34;CHANNEL 1&#34;
+    self.waveformFormat = switcherWaveformFormat.get(wvfFormat, &#34;Invalid waveform format: &#34; + str(wvfFormat))
+    self.waveformCoupling = switcherWaveformCoupling.get(wvfCoupling, &#34;Invalid waveform input coupling: &#34; + str(wvfCoupling))
+    self.waveformHorScale = xDisplayRange
+    self.waveformVerScale = yDisplayRange
+    self.waveformXUnits = switcherWaveformUnits.get(xUnits, &#34;Invalid X-Axis unit type: &#34; + str(xUnits))
+    self.waveformYUnits = switcherWaveformUnits.get(yUnits, &#34;Invalid Y-Axis unit type: &#34; + str(yUnits))
+    self.waveformSamplePoints = wvfPoints
+    self.waveformMode = switcherWaveformType.get(wvfType, &#34;Invalid waveform type: &#34; + str(wvfType))
+    self.waveformAverageCount = wvfCount
+    print(&#34;Waveform parameters \nSource: &#34; + self.waveformChannel + &#34;\nCoupling: &#34; + self.waveformCoupling +
+          &#34;\nVertical scale: &#34; + str(self.waveformVerScale) + &#34; &#34; + self.waveformYUnits  + 
+          &#34;\nHorizontal scale: &#34; + str(self.waveformHorScale) + &#34; &#34; + self.waveformXUnits +
+          &#34;\nSample points: &#34; + str(self.waveformSamplePoints) + &#34;\nAcquisition mode: &#34; + self.waveformMode +
+          &#34;\nAverage count: &#34; + str(self.waveformAverageCount))</code></pre>
+</details>
+</dd>
+<dt id="src.DCA.DCA.set_waveform_values"><code class="name flex">
+<span>def <span class="ident">set_waveform_values</span></span>(<span>self, waveformAscii, xOrigin, xIncr, xReference, yOrigin, yIncr, yReference)</span>
+</code></dt>
+<dd>
+<div class="desc"><h2 id="description">Description</h2>
+<h2 id="this-function-sets-the-waveform-parameters-captured-with-the-waveformpreamble-command-to-be-saved-with-the-waveform">This function sets the waveform parameters captured with the WAVEFORM:PREAMBLE command, to be saved with the waveform.</h2>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>wvfCoupling</code></strong> :&ensp;<code>int</code></dt>
+<dd>Input coupling of the waveform in numeric value</dd>
+<dt><strong><code>xDisplayRange</code></strong> :&ensp;<code>float</code></dt>
+<dd>X-axis duration of the waveform, usually in [s]</dd>
+<dt><strong><code>yDisplayRange</code></strong> :&ensp;<code>float</code></dt>
+<dd>Y-axis range of the waveform, usually in [V]</dd>
+<dt><strong><code>wvfPoints</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of data points or data pairs contained in the waveform.</dd>
+<dt><strong><code>wvfType</code></strong> :&ensp;<code>int</code></dt>
+<dd>Numeric value that describes how the waveform was acquired.</dd>
+<dt><strong><code>wvfCount</code></strong> :&ensp;<code>int</code></dt>
+<dd>For average, is the fewest number of hits for all time buckets, for RAW and INTERPOLATE is 0 or 1.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_waveform_values(self, waveformAscii, xOrigin, xIncr, xReference, yOrigin, yIncr, yReference):
+    &#34;&#34;&#34;
+    Description
+    -----------
+    This function sets the waveform parameters captured with the WAVEFORM:PREAMBLE command, to be saved with the waveform.
+    ----------
+    Parameters
+    ----------
+    wvfCoupling: int
+        Input coupling of the waveform in numeric value
+    xDisplayRange: float
+        X-axis duration of the waveform, usually in [s]
+    yDisplayRange: float
+        Y-axis range of the waveform, usually in [V]
+    wvfPoints: int
+        Number of data points or data pairs contained in the waveform.
+    wvfType: int
+        Numeric value that describes how the waveform was acquired.
+    wvfCount: int
+        For average, is the fewest number of hits for all time buckets, for RAW and INTERPOLATE is 0 or 1.
+    &#34;&#34;&#34;
+    waveformAscii = waveformAscii.split(&#39;,&#39;)
+    print(len(waveformAscii))
+    waveformTime = []
+    waveformVolts = []
+    y = 0
+    n = 0
+    for y in waveformAscii:
+        y = float(y)
+        waveformTime.append(  xOrigin + xIncr * ( n - xReference ) )
+        waveformVolts.append( yOrigin + yIncr * ( y - yReference ) )            
+        n = n + 1
+    self.timeArray = np.array(waveformTime)
+    self.waveformArray = np.array(waveformVolts)     </code></pre>
+</details>
+</dd>
+<dt id="src.DCA.DCA.single_sweep"><code class="name flex">
+<span>def <span class="ident">single_sweep</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def single_sweep(self):
+
+        self.bool_sweep = True
+        self.handle.write(&#34;SGL&#34;)
+        time.sleep(1)
+        response = self.handle.query(&#34;SWEEP?&#34;)
+        while response != &#34;0\r\n&#34;:
+            time.sleep(1)
+            response = self.handle.query(&#34;SWEEP?&#34;)
+#            print(response)
+        self.bool_sweep = False</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="src" href="index.html">src</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="src.DCA.DCA" href="#src.DCA.DCA">DCA</a></code></h4>
+<ul class="">
+<li><code><a title="src.DCA.DCA.acquire_waveform" href="#src.DCA.DCA.acquire_waveform">acquire_waveform</a></code></li>
+<li><code><a title="src.DCA.DCA.check_channel" href="#src.DCA.DCA.check_channel">check_channel</a></code></li>
+<li><code><a title="src.DCA.DCA.close" href="#src.DCA.DCA.close">close</a></code></li>
+<li><code><a title="src.DCA.DCA.connect" href="#src.DCA.DCA.connect">connect</a></code></li>
+<li><code><a title="src.DCA.DCA.cont_sweep" href="#src.DCA.DCA.cont_sweep">cont_sweep</a></code></li>
+<li><code><a title="src.DCA.DCA.get_rbw" href="#src.DCA.DCA.get_rbw">get_rbw</a></code></li>
+<li><code><a title="src.DCA.DCA.get_ref_lvl" href="#src.DCA.DCA.get_ref_lvl">get_ref_lvl</a></code></li>
+<li><code><a title="src.DCA.DCA.get_sensitivity" href="#src.DCA.DCA.get_sensitivity">get_sensitivity</a></code></li>
+<li><code><a title="src.DCA.DCA.get_span" href="#src.DCA.DCA.get_span">get_span</a></code></li>
+<li><code><a title="src.DCA.DCA.get_waveform_time" href="#src.DCA.DCA.get_waveform_time">get_waveform_time</a></code></li>
+<li><code><a title="src.DCA.DCA.get_waveform_volts" href="#src.DCA.DCA.get_waveform_volts">get_waveform_volts</a></code></li>
+<li><code><a title="src.DCA.DCA.grab_spectrum" href="#src.DCA.DCA.grab_spectrum">grab_spectrum</a></code></li>
+<li><code><a title="src.DCA.DCA.list_devices" href="#src.DCA.DCA.list_devices">list_devices</a></code></li>
+<li><code><a title="src.DCA.DCA.plot_waveform" href="#src.DCA.DCA.plot_waveform">plot_waveform</a></code></li>
+<li><code><a title="src.DCA.DCA.print_message" href="#src.DCA.DCA.print_message">print_message</a></code></li>
+<li><code><a title="src.DCA.DCA.save_csv" href="#src.DCA.DCA.save_csv">save_csv</a></code></li>
+<li><code><a title="src.DCA.DCA.save_waveform" href="#src.DCA.DCA.save_waveform">save_waveform</a></code></li>
+<li><code><a title="src.DCA.DCA.send_cmd" href="#src.DCA.DCA.send_cmd">send_cmd</a></code></li>
+<li><code><a title="src.DCA.DCA.set_params" href="#src.DCA.DCA.set_params">set_params</a></code></li>
+<li><code><a title="src.DCA.DCA.set_waveform_parameters" href="#src.DCA.DCA.set_waveform_parameters">set_waveform_parameters</a></code></li>
+<li><code><a title="src.DCA.DCA.set_waveform_values" href="#src.DCA.DCA.set_waveform_values">set_waveform_values</a></code></li>
+<li><code><a title="src.DCA.DCA.single_sweep" href="#src.DCA.DCA.single_sweep">single_sweep</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

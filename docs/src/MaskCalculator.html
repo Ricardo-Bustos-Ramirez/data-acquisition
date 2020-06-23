@@ -1,0 +1,1432 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>src.MaskCalculator API documentation</title>
+<meta name="description" content="Created on Tue Jun 25 15:52:45 2019 …" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>src.MaskCalculator</code></h1>
+</header>
+<section id="section-intro">
+<p>Created on Tue Jun 25 15:52:45 2019</p>
+<p>@author: Ricardo Bustos Ramirez</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># -*- coding: utf-8 -*-
+&#34;&#34;&#34;
+Created on Tue Jun 25 15:52:45 2019
+
+@author: Ricardo Bustos Ramirez
+&#34;&#34;&#34;
+
+import matplotlib.pyplot as plt
+import csv
+import numpy as np
+import tkinter as tk
+from tkinter import filedialog
+
+class MaskCalculator():
+    &#34;&#34;&#34;This class calculates the mask for harmonic injection locking.
+    
+    Attributes
+    ----------
+    wsPhase: int
+        Phase values of the waveshaper in radians.
+    wsPort: int
+        Output port of the waveshaper (usually 1).
+    wavelength: list
+        List that contains the current wavelength values of the optical spectrum (from OSA) used to generate mask.
+        .. math:: \lambda_{opt}=[\lambda_{opt,0},\lambda_{opt,1},...,\lambda_{opt,N-1},\lambda_{opt,N}]
+    spectrum: list
+        List that contains the current output values of the optical spectrum (from OSA) used to generate mask.
+        .. math:: A_{opt}=[A_{opt,0},A_{opt,1},...,A_{opt,N-1},A_{opt,N}]
+    freq_sep: int
+        Nominal repetition rate of the EOM comb used to generate mask, currently 30 GHz.
+    freq_sep: float
+        Nominal repetition rate in wavelength at 1550 nm, currently 0.24 nm.
+    combline_spectrum: list
+        List containing the spectral values of the peaks of the comb lines of the optical spectrum used to generate mask.
+        .. math:: A_{OFC}=[]
+    &#34;&#34;&#34;
+    def __init__(self):
+        self.wsPhase = 0
+        self.wsPort = 1
+        self.header = []
+        self.wavelength = []
+        self.spectrum = []
+        self.freq_sep = 30 # 30 GHz
+        self.wavelength_sep = 0.24 # Equivalent nm to 30 GHz at 1550 nm
+#        self.spectrum_waveshaper_harmonic = []
+        # Spectrum points for mask
+        self.combline_spectrum = []
+        self.combline_wavelength = []
+        self.combline_frequency = []
+        self.c0 = 299792458  # Light speed in m/s
+        self.frequency_offset = 192.682-192.63 # Difference between waveshaper and OSA
+        self.frequency_waveshaper = []
+        self.spectrum_waveshaper = []
+#        self.frequency_waveshaper_mask = []
+#        self.spectrum_waveshaper_mask = []
+    
+    def printMask(self,frequency_waveshaper,spectrum_waveshaper):
+        &#34;&#34;&#34;This method prints the frequency and attenuation array in a Finisar 1000M compatible format.
+        
+        The method prints the frequency and corresponding spectral output as:
+        
+            192.637 00.000  0   1
+            192.647 00.000  0   1
+            192.657 50.000  0   1
+            ...
+            
+        Where the last two values are the spectral phase (usually 0) and output port (usually 1).
+        
+        Parameters
+        ----------
+        frequency_waveshaper: list
+            Mask frequency values (in THz).
+        spectrum_waveshaper: list
+            Mask attenuation values (in dB ranging 0-50).
+        &#34;&#34;&#34;
+        for x, y in zip(frequency_waveshaper,spectrum_waveshaper):
+            if abs(y) &lt; 10:
+                print(&#34;{0:.3f}\t0{1:.3f}\t{2}\t{3}&#34;.format(x,y,self.wsPhase,self.wsPort))
+            else:
+                print(&#34;{0:.3f}\t{1:.3f}\t{2}\t{3}&#34;.format(x,y,self.wsPhase,self.wsPort))
+   
+    def saveMask(self,filePath,fileName,frequency_waveshaper_mask,spectrum_waveshaper_mask):
+        &#34;&#34;&#34;This method saves in a WSP file the frequency and attenuation array in a Finisar 1000M compatible format.
+        
+        The method saves a WSP file that contains the frequency and corresponding spectral output as:
+        
+            192.637 00.000  0   1
+            192.647 00.000  0   1
+            192.657 50.000  0   1
+            ...
+            
+        Where the last two values are the spectral phase (usually 0) and output port (usually 1).
+        
+        Parameters
+        ----------
+        filePath: str
+            Path for saving the file.
+        fileName: str
+            Mask file name.
+        frequency_waveshaper: list
+            Mask frequency values (in THz).
+        spectrum_waveshaper: list
+            Mask attenuation values (in dB ranging 0-50).
+        &#34;&#34;&#34;
+        fileWriter = open(filePath + &#39;\\&#39; + fileName, &#39;w&#39;)
+        for x, y in zip(frequency_waveshaper_mask,spectrum_waveshaper_mask):
+            if abs(y) &lt; 10:
+                fileWriter.write(&#34;{0:.3f}\t0{1:.3f}\t{2}\t{3}\r&#34;.format(x,y,self.wsPhase,self.wsPort))
+            else:
+                fileWriter.write(&#34;{0:.3f}\t{1:.3f}\t{2}\t{3}\r&#34;.format(x,y,self.wsPhase,self.wsPort))
+        fileWriter.close()
+        
+    
+    def calculateHarmonicMask(self,spectrum_waveshaper,offset1,offset2):
+        &#34;&#34;&#34;This method calculates a mask for harmonic injection locking with two modes.
+        
+        A method to calculate a mask with two axial modes set by the offset values from the central axial mode.
+        
+        Parameters
+        ----------
+        spectrum_waveshaper: list
+            Contains the waveshaper spectral values
+        
+        &#34;&#34;&#34;
+        spectrum_waveshaper_harmonic = []
+        number_of_comblines = int((len(spectrum_waveshaper)/2)-2)
+        center_combline = int(number_of_comblines/2) + 1
+        center_combline = int(input(&#34;Is &#34; + str(center_combline) + &#34; the center combline? Input combline number: &#34;))
+        combline_1 = center_combline + offset1
+        combline_2 = center_combline + offset2
+        #    print(number_of_comblines)
+        #    print(center_combline)
+        for (i,x) in zip(range(len(spectrum_waveshaper)),spectrum_waveshaper):
+            if (i == combline_1*2 or i == combline_1*2+1 or i == combline_2*2 or i == combline_2*2+1):
+                spectrum_waveshaper_harmonic.append(x)
+            else:
+                spectrum_waveshaper_harmonic.append(50)
+        spectrum_waveshaper_harmonic = [x-min(spectrum_waveshaper_harmonic) if x!=50 else x for x in spectrum_waveshaper_harmonic]
+        return spectrum_waveshaper_harmonic
+
+    def calculate3ToneHarmonicMask(self,spectrum_waveshaper,offset1,offset2):
+        spectrum_waveshaper_harmonic = []
+        number_of_comblines = int((len(spectrum_waveshaper)/2)-2)
+        center_combline = int(number_of_comblines/2) + 1
+        center_combline = int(input(&#34;Is &#34; + str(center_combline) + &#34; the center combline? Input combline number: &#34;))
+        combline_1 = center_combline + offset1
+        combline_2 = center_combline + offset2
+        #    print(number_of_comblines)
+        #    print(center_combline)
+        for (i,x) in zip(range(len(spectrum_waveshaper)),spectrum_waveshaper):
+            if (i == combline_1*2 or i == combline_1*2+1 or i == combline_2*2 or i == combline_2*2+1):
+                spectrum_waveshaper_harmonic.append(x)
+            elif (i == center_combline*2 or i == center_combline*2+1):
+                spectrum_waveshaper_harmonic.append(x) # To not take this value into account for minimum value.
+            else:
+                spectrum_waveshaper_harmonic.append(50)
+        min_spectrum_waveshaper_harmonic = min(spectrum_waveshaper_harmonic)
+        spectrum_waveshaper_harmonic = [x-min_spectrum_waveshaper_harmonic if x!=50 else x for x in spectrum_waveshaper_harmonic]
+        #spectrum_waveshaper_harmonic = [0 if x==70 else x for x in spectrum_waveshaper_harmonic]
+        return spectrum_waveshaper_harmonic
+    
+    def calculateMultiToneHarmonicMask(self, spectrum_waveshaper,offset,flatSpectrum):
+        spectrum_waveshaper_harmonic = []
+        number_of_comblines = int((len(spectrum_waveshaper)/2)-2)
+        center_combline = int(number_of_comblines/2) + 1
+        center_combline = int(input(&#34;Is &#34; + str(center_combline) + &#34; the center combline? Input combline number: &#34;))
+        combline = []
+        print(len(spectrum_waveshaper)/2)
+        for k in range(int(len(spectrum_waveshaper)/2-2)): # -2 comes from the two extra values that aren&#39;t axial modes
+            if (k-center_combline)%offset == 0:
+                combline.append(2*k)
+                combline.append(2*k+1)
+            else:
+                pass
+#        print(combline)
+        for (i,x) in zip(range(len(spectrum_waveshaper)),spectrum_waveshaper):
+            if i == 0 or i == 1 or i == len(spectrum_waveshaper)-2 or i == len(spectrum_waveshaper)-1:            
+                spectrum_waveshaper_harmonic.append(50)
+            elif (combline.count(i-2) == 1):
+                if flatSpectrum == True:
+                    spectrum_waveshaper_harmonic.append(x)
+                else:
+                    spectrum_waveshaper_harmonic.append(0)
+            else:
+                spectrum_waveshaper_harmonic.append(50)
+        
+        min_spectrum_waveshaper_harmonic = min(spectrum_waveshaper_harmonic)
+        spectrum_waveshaper_harmonic = [x-min_spectrum_waveshaper_harmonic if x!=50 else x for x in spectrum_waveshaper_harmonic]
+        #spectrum_waveshaper_harmonic = [0 if x==70 else x for x in spectrum_waveshaper_harmonic]
+        return spectrum_waveshaper_harmonic
+        
+    
+    def plotMaskAndOriginal(self,spectrum_waveshaper_mask):
+        plt.plot(self.combline_frequency,self.combline_spectrum,&#39;ro&#39;)
+#        plot_number = []
+        plot_number_mask = []
+        for (x,y) in zip(self.spectrum_waveshaper,spectrum_waveshaper_mask):
+#            plot_number.append(min(self.combline_spectrum)+x)
+            plot_number_mask.append(-y)
+#        plt.plot(self.frequency_waveshaper,plot_number,&#39;b&#39;)
+        plt.plot(self.frequency_waveshaper,plot_number_mask,&#39;k&#39;)
+        plt.show()
+    
+    def read_csv(self, fileName):
+        with open(fileName, &#39;r&#39;) as fileReader:
+            self.csvReader = csv.reader(fileReader, delimiter =&#39;\t&#39;)
+            for row in self.csvReader:
+                if(len(row) &gt; 1):
+#                separated_row = row[0].split(&#39;,&#39;)
+#                my_array = np.asarray(separated_row)
+#                self.wavelength.append(float(my_array[0]))
+#                self.spectrum.append(float(my_array[-1]))
+                    self.wavelength.append(float(row[0]))
+                    self.spectrum.append(float(row[1]))
+                else:
+                    self.header.append(row)
+            # Define useful constants for mask calculation
+            self.max_wavelength = max(self.wavelength)
+            self.min_wavelength = min(self.wavelength)            
+            self.len_wavelength = len(self.wavelength)
+            self.wavelength_span = self.max_wavelength - self.min_wavelength
+            self.max_spectrum = max(self.spectrum)
+            self.min_spectrum = min(self.spectrum)            
+            self.len_spectrum = len(self.spectrum)
+            self.spectrum_span = self.max_spectrum - self.min_spectrum       
+            
+    def createMaskArray(self):        
+        section_wavelength = self.wavelength_span/self.wavelength_sep
+#        print(section_wavelength)
+        index_30GHz_span = int(self.len_wavelength/section_wavelength)
+#        print(index_30GHz_span)
+        spectrum_max_index = self.spectrum.index(self.max_spectrum)
+#        print(self.spectrum[spectrum_max_index])
+        if int((spectrum_max_index%index_30GHz_span)-(index_30GHz_span/2)) &gt; 0:
+            initial_index = int((spectrum_max_index%index_30GHz_span)-(index_30GHz_span/2))
+        else:
+            initial_index = int((spectrum_max_index%index_30GHz_span)+(index_30GHz_span/2))
+#        print(initial_index)
+#        print(self.wavelength[initial_index])
+        # Make sure is only an even number of comblines
+        section_wavelength = int(section_wavelength)
+#        print(section_wavelength)
+        if (section_wavelength % 2) == 0:
+            section_wavelength -= 1
+        for i in range(section_wavelength):
+#            print(i)
+            sub_spectrum = self.spectrum[initial_index+i*index_30GHz_span:initial_index+(i+1)*index_30GHz_span]
+            self.combline_spectrum.append(max(sub_spectrum))
+            max_index = initial_index + i*index_30GHz_span + sub_spectrum.index(self.combline_spectrum[i])
+            self.combline_wavelength.append(self.wavelength[max_index])
+        for x in self.combline_wavelength:
+            self.combline_frequency.append(((self.c0/(x*1e-9))*1e-12)-self.frequency_offset)
+        self.combline_frequency.sort()
+#        print(self.combline_frequency) 
+    
+    def createFlatMask(self):
+        &#34;&#34;&#34;This method creates a flat mask for the spectrum.
+        
+        This method creates two lists:
+        
+        1. frequency_waveshaper: List with frequency values centered at axial mode (stored in frequency_waveshaper) peaks +/- waveshaper minimum step size.        
+        2. spectrum_waveshaper: List with corresponding spectral values that attenuate to create a flat spectral output (using value stored in combline_spectrum).        
+        .. math:: f_{WS}=[f_{0}-4\Delta_{WS},f_{0}-2\Delta_{WS},f_{0}-\Delta_{WS} ,f_{0}+\Delta_{WS} ,...,f_{N-1}-\Delta_{WS} ,f_{N-1}+\Delta_{WS} ,f_{N}-\Delta_{WS} ,f_{N}+\Delta_{WS} ,f_{N}+2\Delta_{WS},f_{N}+4\Delta_{WS}]        
+        .. math:: A_{WS}=[             50 dB,             50 dB,A_{0}-min\{A_{n}\},A_{0}-min\{A_{n}\},...,A_{N-1}-min\{A_{n}\},A_{N-1}-min\{A_{n}\},A_{N}-min\{A_{n}\},A_{N}-min\{A_{n}\},             50 dB,             50 dB]
+        &#34;&#34;&#34;
+        # Now we are going to make the mask for the waveshaper       
+        delta_waveshaper = 0.005    # Delta/2 between points in the waveshaper
+
+        for x in self.combline_frequency:
+            self.frequency_waveshaper.append(x-delta_waveshaper)
+            self.frequency_waveshaper.append(x+delta_waveshaper)
+        self.frequency_waveshaper.append(self.frequency_waveshaper[-1]+(delta_waveshaper*2))
+        self.frequency_waveshaper.append(self.frequency_waveshaper[-1]+(delta_waveshaper*2))
+        self.frequency_waveshaper.append(self.frequency_waveshaper[0]-(delta_waveshaper*2))
+        self.frequency_waveshaper.append(self.frequency_waveshaper[0]-(delta_waveshaper*4))
+        
+        self.frequency_waveshaper.sort()
+    #    print(frequency_waveshaper)
+        
+        min_combline_spectrum = min(self.combline_spectrum)
+        self.spectrum_waveshaper.append(50)
+        self.spectrum_waveshaper.append(50)
+        for x in self.combline_spectrum:
+            self.spectrum_waveshaper.append(x-min_combline_spectrum)
+            self.spectrum_waveshaper.append(x-min_combline_spectrum)
+        self.spectrum_waveshaper.append(50)
+        self.spectrum_waveshaper.append(50)
+    
+    def createHarmonicMask(self, maskFilePath, maskFileName,combLineNumber):
+        spectrum_waveshaper_harmonic = self.calculateHarmonicMask(self.spectrum_waveshaper,-combLineNumber,combLineNumber)
+#           self.printMask(maskCalc.frequency_waveshaper,spectrum_waveshaper_60GHz)
+#           maskFileName = &#39;60GHz-Spacing.wsp&#39;
+        self.saveMask(maskFilePath,maskFileName,self.frequency_waveshaper,spectrum_waveshaper_harmonic)
+        self.plotMaskAndOriginal(spectrum_waveshaper_harmonic)
+        
+    def createArbHarmonicMask(self, maskFilePath, maskFileName, combLineNumber1,combLineNumber2):
+        spectrum_waveshaper_harmonic = self.calculateHarmonicMask(self.spectrum_waveshaper,combLineNumber1,combLineNumber2)
+#           self.printMask(maskCalc.frequency_waveshaper,spectrum_waveshaper_60GHz)
+#           maskFileName = &#39;60GHz-Spacing.wsp&#39;
+        self.saveMask(maskFilePath,maskFileName,self.frequency_waveshaper,spectrum_waveshaper_harmonic)
+        self.plotMaskAndOriginal(spectrum_waveshaper_harmonic)
+
+    def create3ToneHarmonicMask(self, maskFilePath, maskFileName, combLineNumber):
+        spectrum_waveshaper_harmonic = self.calculate3ToneHarmonicMask(self.spectrum_waveshaper,-combLineNumber,combLineNumber)
+#           self.printMask(maskCalc.frequency_waveshaper,spectrum_waveshaper_60GHz)
+#           maskFileName = &#39;60GHz-Spacing.wsp&#39;
+        self.saveMask(maskFilePath,maskFileName,self.frequency_waveshaper,spectrum_waveshaper_harmonic)
+        self.plotMaskAndOriginal(spectrum_waveshaper_harmonic)
+    
+    def createMultiToneHarmonicMask(self, maskFilePath, maskFileName, combLineNumber,flatSpectrum):
+        spectrum_waveshaper_harmonic = self.calculateMultiToneHarmonicMask(self.spectrum_waveshaper,combLineNumber,flatSpectrum)
+#           self.printMask(maskCalc.frequency_waveshaper,spectrum_waveshaper_60GHz)
+#           maskFileName = &#39;60GHz-Spacing.wsp&#39;
+        self.saveMask(maskFilePath,maskFileName,self.frequency_waveshaper,spectrum_waveshaper_harmonic)
+        self.plotMaskAndOriginal(spectrum_waveshaper_harmonic)
+    
+    def createSetHarmonicMask(self, filePath, initSpacing, endSpacing):
+        # Save 60 GHz comb
+        initSpacingIndex = initSpacing // 60
+        endSpacingIndex = endSpacing // 60
+        for n in range(initSpacingIndex,endSpacingIndex+1):
+            combSpacing = str(n*60)
+            print(combSpacing + &#39; GHz Spacing&#39;)
+            fileName = combSpacing  + &#39;GHz-Spacing.wsp&#39;
+            self.createHarmonicMask(filePath, fileName, n)      
+    
+    def createSetArbHarmonicMask(self, filePath, centralCombLine, initSpacing, endSpacing):
+        # Save 60 GHz comb
+        initSpacingIndex = initSpacing // 60
+        endSpacingIndex = endSpacing // 60
+        for n in range(initSpacingIndex,endSpacingIndex+1):
+            combSpacing = str(n*60)
+            print(combSpacing + &#39; GHz Spacing&#39;)
+            fileName = combSpacing  + &#39;GHz-Spacing.wsp&#39;
+            harmonicCombNumber = centralCombLine + 2*n
+            self.createArbHarmonicMask(filePath, fileName, harmonicCombNumber, centralCombLine)
+    
+    def createSet3ToneHarmonicMask(self, filePath, initSpacing, endSpacing):
+        # Save 60 GHz comb
+        initSpacingIndex = initSpacing // 60
+        endSpacingIndex = endSpacing // 60
+        for n in range(initSpacingIndex,endSpacingIndex+1):
+            combSpacing = str(n*60)
+            print(combSpacing + &#39; GHz Spacing&#39;)
+            fileName = combSpacing  + &#39;GHz-Spacing.wsp&#39;
+            harmonicCombNumber = 2*n
+            self.create3ToneHarmonicMask(filePath, fileName, harmonicCombNumber)
+    
+    def createSetMultiToneHarmonicMask(self, filePath, initSpacing, endSpacing, flatSpectrum):
+        # Save 30 GHz comb
+        initSpacingIndex = initSpacing // 30
+        endSpacingIndex = endSpacing // 30
+        for n in range(initSpacingIndex,endSpacingIndex+1):
+            combSpacing = str(n*30)
+            print(combSpacing + &#39; GHz Spacing&#39;)
+            fileName = combSpacing  + &#39;GHz-Spacing.wsp&#39;
+            harmonicCombNumber = n
+            self.createMultiToneHarmonicMask(filePath, fileName, harmonicCombNumber, flatSpectrum)        
+
+if __name__ == &#34;__main__&#34;:
+    
+    maskCalc = MaskCalculator()
+    filePath = &#39;H:\\Home\\UP\\Shared\\Ricardo\\Dual Tone Injection Locking\\CW PDH Laser\\CW Homemade\\Enhanced WS Design\\EOM Comb\\OSA&#39;
+    fileName = filePath + &#39;\\&#39; + &#39;OSA_CW-FPE-PDHlocked_PM-PM-10dBm_SOA-450mA_WS-Pass_Att-0_50-50_2019-07-02_12-53.csv&#39;
+#    print(filePath)
+
+    root = tk.Tk()
+    root.withdraw()
+    
+    fileName = filedialog.askopenfilename()
+    
+    maskCalc.read_csv(fileName)
+    maskCalc.createMaskArray()
+
+    plt.plot(maskCalc.wavelength,maskCalc.spectrum,&#39;b&#39;)
+    plt.plot(maskCalc.combline_wavelength,maskCalc.combline_spectrum,&#39;ro&#39;)
+    plt.axis([min(maskCalc.wavelength),max(maskCalc.wavelength),max([min(maskCalc.spectrum),-80]),max(maskCalc.spectrum)+5])
+    plt.xlabel(&#39;Wavelength (nm)&#39;)
+    plt.ylabel(&#39;Output (dB)&#39;)
+    plt.show() 
+
+    maskCalc.createFlatMask()
+    
+    filePath = &#39;C:\\Users\\ri679647\\Desktop\\Dual Tone IL Mask\\2019\\CW 0.5THz Python&#39;
+    # Save flat etalon response
+    maskCalc.printMask(maskCalc.frequency_waveshaper,maskCalc.spectrum_waveshaper)
+    fileName = &#39;30GHz-Spacing-Flat.wsp&#39;
+    maskCalc.saveMask(filePath,fileName,maskCalc.frequency_waveshaper,maskCalc.spectrum_waveshaper)
+    maskCalc.plotMaskAndOriginal(maskCalc.spectrum_waveshaper)
+    print(&#34;\r&#34;)
+    
+    # Save 60 GHz comb
+    print(&#39;60 GHz Spacing&#39;)
+    fileName = &#39;60GHz-Spacing.wsp&#39;
+    maskCalc.createHarmonicMask(filePath, fileName, 1)
+
+    # Save 120 GHz comb
+    print(&#39;120 GHz Spacing&#39;)
+    fileName = &#39;120GHz-Spacing.wsp&#39;
+    maskCalc.createHarmonicMask(filePath, fileName, 2)
+
+    # Save 180 GHz comb (red)
+    print(&#39;180 GHz Spacing&#39;)
+    fileName = &#39;180GHz-Spacing.wsp&#39;
+    maskCalc.createHarmonicMask(filePath, fileName, 3)
+    
+    # Save 240 GHz comb (red)
+    print(&#39;240 GHz Spacing&#39;)
+    fileName = &#39;240GHz-Spacing.wsp&#39;
+    maskCalc.createHarmonicMask(filePath, fileName, 4)
+
+    # Save 300 GHz comb (red)
+    print(&#39;300 GHz Spacing&#39;)
+    fileName = &#39;300GHz-Spacing.wsp&#39;
+    maskCalc.createHarmonicMask(filePath, fileName, 5)
+    
+    # Save 360 GHz comb (red)
+    print(&#39;360 GHz Spacing&#39;)
+    fileName = &#39;360GHz-Spacing.wsp&#39;
+    maskCalc.createHarmonicMask(filePath, fileName, 6)
+
+    # Save 420 GHz comb (red)
+    print(&#39;420 GHz Spacing&#39;)
+    fileName = &#39;420GHz-Spacing.wsp&#39;
+    maskCalc.createHarmonicMask(filePath, fileName, 7)
+#    
+#    # Save 480 GHz comb (red)
+#    print(&#39;480 GHz Spacing&#39;)
+#    fileName = &#39;480GHz-Spacing.wsp&#39;
+#    maskCalc.createHarmonicMask(filePath, fileName, 8)
+#
+#    # Save 540 GHz comb (red)
+#    print(&#39;540 GHz Spacing&#39;)
+#    fileName = &#39;540GHz-Spacing.wsp&#39;
+#    maskCalc.createHarmonicMask(filePath, fileName, 9)
+
+
+    
+        
+    
+    
+    </code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="src.MaskCalculator.MaskCalculator"><code class="flex name class">
+<span>class <span class="ident">MaskCalculator</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>This class calculates the mask for harmonic injection locking.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>wsPhase</code></strong> :&ensp;<code>int</code></dt>
+<dd>Phase values of the waveshaper in radians.</dd>
+<dt><strong><code>wsPort</code></strong> :&ensp;<code>int</code></dt>
+<dd>Output port of the waveshaper (usually 1).</dd>
+<dt><strong><code>wavelength</code></strong> :&ensp;<code>list</code></dt>
+<dd>List that contains the current wavelength values of the optical spectrum (from OSA) used to generate mask.
+[
+]</dd>
+<dt><strong><code>spectrum</code></strong> :&ensp;<code>list</code></dt>
+<dd>List that contains the current output values of the optical spectrum (from OSA) used to generate mask.
+[
+]</dd>
+<dt><strong><code>freq_sep</code></strong> :&ensp;<code>int</code></dt>
+<dd>Nominal repetition rate of the EOM comb used to generate mask, currently 30 GHz.</dd>
+<dt><strong><code>freq_sep</code></strong> :&ensp;<code>float</code></dt>
+<dd>Nominal repetition rate in wavelength at 1550 nm, currently 0.24 nm.</dd>
+<dt><strong><code>combline_spectrum</code></strong> :&ensp;<code>list</code></dt>
+<dd>List containing the spectral values of the peaks of the comb lines of the optical spectrum used to generate mask.
+[
+]</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MaskCalculator():
+    &#34;&#34;&#34;This class calculates the mask for harmonic injection locking.
+    
+    Attributes
+    ----------
+    wsPhase: int
+        Phase values of the waveshaper in radians.
+    wsPort: int
+        Output port of the waveshaper (usually 1).
+    wavelength: list
+        List that contains the current wavelength values of the optical spectrum (from OSA) used to generate mask.
+        .. math:: \lambda_{opt}=[\lambda_{opt,0},\lambda_{opt,1},...,\lambda_{opt,N-1},\lambda_{opt,N}]
+    spectrum: list
+        List that contains the current output values of the optical spectrum (from OSA) used to generate mask.
+        .. math:: A_{opt}=[A_{opt,0},A_{opt,1},...,A_{opt,N-1},A_{opt,N}]
+    freq_sep: int
+        Nominal repetition rate of the EOM comb used to generate mask, currently 30 GHz.
+    freq_sep: float
+        Nominal repetition rate in wavelength at 1550 nm, currently 0.24 nm.
+    combline_spectrum: list
+        List containing the spectral values of the peaks of the comb lines of the optical spectrum used to generate mask.
+        .. math:: A_{OFC}=[]
+    &#34;&#34;&#34;
+    def __init__(self):
+        self.wsPhase = 0
+        self.wsPort = 1
+        self.header = []
+        self.wavelength = []
+        self.spectrum = []
+        self.freq_sep = 30 # 30 GHz
+        self.wavelength_sep = 0.24 # Equivalent nm to 30 GHz at 1550 nm
+#        self.spectrum_waveshaper_harmonic = []
+        # Spectrum points for mask
+        self.combline_spectrum = []
+        self.combline_wavelength = []
+        self.combline_frequency = []
+        self.c0 = 299792458  # Light speed in m/s
+        self.frequency_offset = 192.682-192.63 # Difference between waveshaper and OSA
+        self.frequency_waveshaper = []
+        self.spectrum_waveshaper = []
+#        self.frequency_waveshaper_mask = []
+#        self.spectrum_waveshaper_mask = []
+    
+    def printMask(self,frequency_waveshaper,spectrum_waveshaper):
+        &#34;&#34;&#34;This method prints the frequency and attenuation array in a Finisar 1000M compatible format.
+        
+        The method prints the frequency and corresponding spectral output as:
+        
+            192.637 00.000  0   1
+            192.647 00.000  0   1
+            192.657 50.000  0   1
+            ...
+            
+        Where the last two values are the spectral phase (usually 0) and output port (usually 1).
+        
+        Parameters
+        ----------
+        frequency_waveshaper: list
+            Mask frequency values (in THz).
+        spectrum_waveshaper: list
+            Mask attenuation values (in dB ranging 0-50).
+        &#34;&#34;&#34;
+        for x, y in zip(frequency_waveshaper,spectrum_waveshaper):
+            if abs(y) &lt; 10:
+                print(&#34;{0:.3f}\t0{1:.3f}\t{2}\t{3}&#34;.format(x,y,self.wsPhase,self.wsPort))
+            else:
+                print(&#34;{0:.3f}\t{1:.3f}\t{2}\t{3}&#34;.format(x,y,self.wsPhase,self.wsPort))
+   
+    def saveMask(self,filePath,fileName,frequency_waveshaper_mask,spectrum_waveshaper_mask):
+        &#34;&#34;&#34;This method saves in a WSP file the frequency and attenuation array in a Finisar 1000M compatible format.
+        
+        The method saves a WSP file that contains the frequency and corresponding spectral output as:
+        
+            192.637 00.000  0   1
+            192.647 00.000  0   1
+            192.657 50.000  0   1
+            ...
+            
+        Where the last two values are the spectral phase (usually 0) and output port (usually 1).
+        
+        Parameters
+        ----------
+        filePath: str
+            Path for saving the file.
+        fileName: str
+            Mask file name.
+        frequency_waveshaper: list
+            Mask frequency values (in THz).
+        spectrum_waveshaper: list
+            Mask attenuation values (in dB ranging 0-50).
+        &#34;&#34;&#34;
+        fileWriter = open(filePath + &#39;\\&#39; + fileName, &#39;w&#39;)
+        for x, y in zip(frequency_waveshaper_mask,spectrum_waveshaper_mask):
+            if abs(y) &lt; 10:
+                fileWriter.write(&#34;{0:.3f}\t0{1:.3f}\t{2}\t{3}\r&#34;.format(x,y,self.wsPhase,self.wsPort))
+            else:
+                fileWriter.write(&#34;{0:.3f}\t{1:.3f}\t{2}\t{3}\r&#34;.format(x,y,self.wsPhase,self.wsPort))
+        fileWriter.close()
+        
+    
+    def calculateHarmonicMask(self,spectrum_waveshaper,offset1,offset2):
+        &#34;&#34;&#34;This method calculates a mask for harmonic injection locking with two modes.
+        
+        A method to calculate a mask with two axial modes set by the offset values from the central axial mode.
+        
+        Parameters
+        ----------
+        spectrum_waveshaper: list
+            Contains the waveshaper spectral values
+        
+        &#34;&#34;&#34;
+        spectrum_waveshaper_harmonic = []
+        number_of_comblines = int((len(spectrum_waveshaper)/2)-2)
+        center_combline = int(number_of_comblines/2) + 1
+        center_combline = int(input(&#34;Is &#34; + str(center_combline) + &#34; the center combline? Input combline number: &#34;))
+        combline_1 = center_combline + offset1
+        combline_2 = center_combline + offset2
+        #    print(number_of_comblines)
+        #    print(center_combline)
+        for (i,x) in zip(range(len(spectrum_waveshaper)),spectrum_waveshaper):
+            if (i == combline_1*2 or i == combline_1*2+1 or i == combline_2*2 or i == combline_2*2+1):
+                spectrum_waveshaper_harmonic.append(x)
+            else:
+                spectrum_waveshaper_harmonic.append(50)
+        spectrum_waveshaper_harmonic = [x-min(spectrum_waveshaper_harmonic) if x!=50 else x for x in spectrum_waveshaper_harmonic]
+        return spectrum_waveshaper_harmonic
+
+    def calculate3ToneHarmonicMask(self,spectrum_waveshaper,offset1,offset2):
+        spectrum_waveshaper_harmonic = []
+        number_of_comblines = int((len(spectrum_waveshaper)/2)-2)
+        center_combline = int(number_of_comblines/2) + 1
+        center_combline = int(input(&#34;Is &#34; + str(center_combline) + &#34; the center combline? Input combline number: &#34;))
+        combline_1 = center_combline + offset1
+        combline_2 = center_combline + offset2
+        #    print(number_of_comblines)
+        #    print(center_combline)
+        for (i,x) in zip(range(len(spectrum_waveshaper)),spectrum_waveshaper):
+            if (i == combline_1*2 or i == combline_1*2+1 or i == combline_2*2 or i == combline_2*2+1):
+                spectrum_waveshaper_harmonic.append(x)
+            elif (i == center_combline*2 or i == center_combline*2+1):
+                spectrum_waveshaper_harmonic.append(x) # To not take this value into account for minimum value.
+            else:
+                spectrum_waveshaper_harmonic.append(50)
+        min_spectrum_waveshaper_harmonic = min(spectrum_waveshaper_harmonic)
+        spectrum_waveshaper_harmonic = [x-min_spectrum_waveshaper_harmonic if x!=50 else x for x in spectrum_waveshaper_harmonic]
+        #spectrum_waveshaper_harmonic = [0 if x==70 else x for x in spectrum_waveshaper_harmonic]
+        return spectrum_waveshaper_harmonic
+    
+    def calculateMultiToneHarmonicMask(self, spectrum_waveshaper,offset,flatSpectrum):
+        spectrum_waveshaper_harmonic = []
+        number_of_comblines = int((len(spectrum_waveshaper)/2)-2)
+        center_combline = int(number_of_comblines/2) + 1
+        center_combline = int(input(&#34;Is &#34; + str(center_combline) + &#34; the center combline? Input combline number: &#34;))
+        combline = []
+        print(len(spectrum_waveshaper)/2)
+        for k in range(int(len(spectrum_waveshaper)/2-2)): # -2 comes from the two extra values that aren&#39;t axial modes
+            if (k-center_combline)%offset == 0:
+                combline.append(2*k)
+                combline.append(2*k+1)
+            else:
+                pass
+#        print(combline)
+        for (i,x) in zip(range(len(spectrum_waveshaper)),spectrum_waveshaper):
+            if i == 0 or i == 1 or i == len(spectrum_waveshaper)-2 or i == len(spectrum_waveshaper)-1:            
+                spectrum_waveshaper_harmonic.append(50)
+            elif (combline.count(i-2) == 1):
+                if flatSpectrum == True:
+                    spectrum_waveshaper_harmonic.append(x)
+                else:
+                    spectrum_waveshaper_harmonic.append(0)
+            else:
+                spectrum_waveshaper_harmonic.append(50)
+        
+        min_spectrum_waveshaper_harmonic = min(spectrum_waveshaper_harmonic)
+        spectrum_waveshaper_harmonic = [x-min_spectrum_waveshaper_harmonic if x!=50 else x for x in spectrum_waveshaper_harmonic]
+        #spectrum_waveshaper_harmonic = [0 if x==70 else x for x in spectrum_waveshaper_harmonic]
+        return spectrum_waveshaper_harmonic
+        
+    
+    def plotMaskAndOriginal(self,spectrum_waveshaper_mask):
+        plt.plot(self.combline_frequency,self.combline_spectrum,&#39;ro&#39;)
+#        plot_number = []
+        plot_number_mask = []
+        for (x,y) in zip(self.spectrum_waveshaper,spectrum_waveshaper_mask):
+#            plot_number.append(min(self.combline_spectrum)+x)
+            plot_number_mask.append(-y)
+#        plt.plot(self.frequency_waveshaper,plot_number,&#39;b&#39;)
+        plt.plot(self.frequency_waveshaper,plot_number_mask,&#39;k&#39;)
+        plt.show()
+    
+    def read_csv(self, fileName):
+        with open(fileName, &#39;r&#39;) as fileReader:
+            self.csvReader = csv.reader(fileReader, delimiter =&#39;\t&#39;)
+            for row in self.csvReader:
+                if(len(row) &gt; 1):
+#                separated_row = row[0].split(&#39;,&#39;)
+#                my_array = np.asarray(separated_row)
+#                self.wavelength.append(float(my_array[0]))
+#                self.spectrum.append(float(my_array[-1]))
+                    self.wavelength.append(float(row[0]))
+                    self.spectrum.append(float(row[1]))
+                else:
+                    self.header.append(row)
+            # Define useful constants for mask calculation
+            self.max_wavelength = max(self.wavelength)
+            self.min_wavelength = min(self.wavelength)            
+            self.len_wavelength = len(self.wavelength)
+            self.wavelength_span = self.max_wavelength - self.min_wavelength
+            self.max_spectrum = max(self.spectrum)
+            self.min_spectrum = min(self.spectrum)            
+            self.len_spectrum = len(self.spectrum)
+            self.spectrum_span = self.max_spectrum - self.min_spectrum       
+            
+    def createMaskArray(self):        
+        section_wavelength = self.wavelength_span/self.wavelength_sep
+#        print(section_wavelength)
+        index_30GHz_span = int(self.len_wavelength/section_wavelength)
+#        print(index_30GHz_span)
+        spectrum_max_index = self.spectrum.index(self.max_spectrum)
+#        print(self.spectrum[spectrum_max_index])
+        if int((spectrum_max_index%index_30GHz_span)-(index_30GHz_span/2)) &gt; 0:
+            initial_index = int((spectrum_max_index%index_30GHz_span)-(index_30GHz_span/2))
+        else:
+            initial_index = int((spectrum_max_index%index_30GHz_span)+(index_30GHz_span/2))
+#        print(initial_index)
+#        print(self.wavelength[initial_index])
+        # Make sure is only an even number of comblines
+        section_wavelength = int(section_wavelength)
+#        print(section_wavelength)
+        if (section_wavelength % 2) == 0:
+            section_wavelength -= 1
+        for i in range(section_wavelength):
+#            print(i)
+            sub_spectrum = self.spectrum[initial_index+i*index_30GHz_span:initial_index+(i+1)*index_30GHz_span]
+            self.combline_spectrum.append(max(sub_spectrum))
+            max_index = initial_index + i*index_30GHz_span + sub_spectrum.index(self.combline_spectrum[i])
+            self.combline_wavelength.append(self.wavelength[max_index])
+        for x in self.combline_wavelength:
+            self.combline_frequency.append(((self.c0/(x*1e-9))*1e-12)-self.frequency_offset)
+        self.combline_frequency.sort()
+#        print(self.combline_frequency) 
+    
+    def createFlatMask(self):
+        &#34;&#34;&#34;This method creates a flat mask for the spectrum.
+        
+        This method creates two lists:
+        
+        1. frequency_waveshaper: List with frequency values centered at axial mode (stored in frequency_waveshaper) peaks +/- waveshaper minimum step size.        
+        2. spectrum_waveshaper: List with corresponding spectral values that attenuate to create a flat spectral output (using value stored in combline_spectrum).        
+        .. math:: f_{WS}=[f_{0}-4\Delta_{WS},f_{0}-2\Delta_{WS},f_{0}-\Delta_{WS} ,f_{0}+\Delta_{WS} ,...,f_{N-1}-\Delta_{WS} ,f_{N-1}+\Delta_{WS} ,f_{N}-\Delta_{WS} ,f_{N}+\Delta_{WS} ,f_{N}+2\Delta_{WS},f_{N}+4\Delta_{WS}]        
+        .. math:: A_{WS}=[             50 dB,             50 dB,A_{0}-min\{A_{n}\},A_{0}-min\{A_{n}\},...,A_{N-1}-min\{A_{n}\},A_{N-1}-min\{A_{n}\},A_{N}-min\{A_{n}\},A_{N}-min\{A_{n}\},             50 dB,             50 dB]
+        &#34;&#34;&#34;
+        # Now we are going to make the mask for the waveshaper       
+        delta_waveshaper = 0.005    # Delta/2 between points in the waveshaper
+
+        for x in self.combline_frequency:
+            self.frequency_waveshaper.append(x-delta_waveshaper)
+            self.frequency_waveshaper.append(x+delta_waveshaper)
+        self.frequency_waveshaper.append(self.frequency_waveshaper[-1]+(delta_waveshaper*2))
+        self.frequency_waveshaper.append(self.frequency_waveshaper[-1]+(delta_waveshaper*2))
+        self.frequency_waveshaper.append(self.frequency_waveshaper[0]-(delta_waveshaper*2))
+        self.frequency_waveshaper.append(self.frequency_waveshaper[0]-(delta_waveshaper*4))
+        
+        self.frequency_waveshaper.sort()
+    #    print(frequency_waveshaper)
+        
+        min_combline_spectrum = min(self.combline_spectrum)
+        self.spectrum_waveshaper.append(50)
+        self.spectrum_waveshaper.append(50)
+        for x in self.combline_spectrum:
+            self.spectrum_waveshaper.append(x-min_combline_spectrum)
+            self.spectrum_waveshaper.append(x-min_combline_spectrum)
+        self.spectrum_waveshaper.append(50)
+        self.spectrum_waveshaper.append(50)
+    
+    def createHarmonicMask(self, maskFilePath, maskFileName,combLineNumber):
+        spectrum_waveshaper_harmonic = self.calculateHarmonicMask(self.spectrum_waveshaper,-combLineNumber,combLineNumber)
+#           self.printMask(maskCalc.frequency_waveshaper,spectrum_waveshaper_60GHz)
+#           maskFileName = &#39;60GHz-Spacing.wsp&#39;
+        self.saveMask(maskFilePath,maskFileName,self.frequency_waveshaper,spectrum_waveshaper_harmonic)
+        self.plotMaskAndOriginal(spectrum_waveshaper_harmonic)
+        
+    def createArbHarmonicMask(self, maskFilePath, maskFileName, combLineNumber1,combLineNumber2):
+        spectrum_waveshaper_harmonic = self.calculateHarmonicMask(self.spectrum_waveshaper,combLineNumber1,combLineNumber2)
+#           self.printMask(maskCalc.frequency_waveshaper,spectrum_waveshaper_60GHz)
+#           maskFileName = &#39;60GHz-Spacing.wsp&#39;
+        self.saveMask(maskFilePath,maskFileName,self.frequency_waveshaper,spectrum_waveshaper_harmonic)
+        self.plotMaskAndOriginal(spectrum_waveshaper_harmonic)
+
+    def create3ToneHarmonicMask(self, maskFilePath, maskFileName, combLineNumber):
+        spectrum_waveshaper_harmonic = self.calculate3ToneHarmonicMask(self.spectrum_waveshaper,-combLineNumber,combLineNumber)
+#           self.printMask(maskCalc.frequency_waveshaper,spectrum_waveshaper_60GHz)
+#           maskFileName = &#39;60GHz-Spacing.wsp&#39;
+        self.saveMask(maskFilePath,maskFileName,self.frequency_waveshaper,spectrum_waveshaper_harmonic)
+        self.plotMaskAndOriginal(spectrum_waveshaper_harmonic)
+    
+    def createMultiToneHarmonicMask(self, maskFilePath, maskFileName, combLineNumber,flatSpectrum):
+        spectrum_waveshaper_harmonic = self.calculateMultiToneHarmonicMask(self.spectrum_waveshaper,combLineNumber,flatSpectrum)
+#           self.printMask(maskCalc.frequency_waveshaper,spectrum_waveshaper_60GHz)
+#           maskFileName = &#39;60GHz-Spacing.wsp&#39;
+        self.saveMask(maskFilePath,maskFileName,self.frequency_waveshaper,spectrum_waveshaper_harmonic)
+        self.plotMaskAndOriginal(spectrum_waveshaper_harmonic)
+    
+    def createSetHarmonicMask(self, filePath, initSpacing, endSpacing):
+        # Save 60 GHz comb
+        initSpacingIndex = initSpacing // 60
+        endSpacingIndex = endSpacing // 60
+        for n in range(initSpacingIndex,endSpacingIndex+1):
+            combSpacing = str(n*60)
+            print(combSpacing + &#39; GHz Spacing&#39;)
+            fileName = combSpacing  + &#39;GHz-Spacing.wsp&#39;
+            self.createHarmonicMask(filePath, fileName, n)      
+    
+    def createSetArbHarmonicMask(self, filePath, centralCombLine, initSpacing, endSpacing):
+        # Save 60 GHz comb
+        initSpacingIndex = initSpacing // 60
+        endSpacingIndex = endSpacing // 60
+        for n in range(initSpacingIndex,endSpacingIndex+1):
+            combSpacing = str(n*60)
+            print(combSpacing + &#39; GHz Spacing&#39;)
+            fileName = combSpacing  + &#39;GHz-Spacing.wsp&#39;
+            harmonicCombNumber = centralCombLine + 2*n
+            self.createArbHarmonicMask(filePath, fileName, harmonicCombNumber, centralCombLine)
+    
+    def createSet3ToneHarmonicMask(self, filePath, initSpacing, endSpacing):
+        # Save 60 GHz comb
+        initSpacingIndex = initSpacing // 60
+        endSpacingIndex = endSpacing // 60
+        for n in range(initSpacingIndex,endSpacingIndex+1):
+            combSpacing = str(n*60)
+            print(combSpacing + &#39; GHz Spacing&#39;)
+            fileName = combSpacing  + &#39;GHz-Spacing.wsp&#39;
+            harmonicCombNumber = 2*n
+            self.create3ToneHarmonicMask(filePath, fileName, harmonicCombNumber)
+    
+    def createSetMultiToneHarmonicMask(self, filePath, initSpacing, endSpacing, flatSpectrum):
+        # Save 30 GHz comb
+        initSpacingIndex = initSpacing // 30
+        endSpacingIndex = endSpacing // 30
+        for n in range(initSpacingIndex,endSpacingIndex+1):
+            combSpacing = str(n*30)
+            print(combSpacing + &#39; GHz Spacing&#39;)
+            fileName = combSpacing  + &#39;GHz-Spacing.wsp&#39;
+            harmonicCombNumber = n
+            self.createMultiToneHarmonicMask(filePath, fileName, harmonicCombNumber, flatSpectrum)        </code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="src.MaskCalculator.MaskCalculator.calculate3ToneHarmonicMask"><code class="name flex">
+<span>def <span class="ident">calculate3ToneHarmonicMask</span></span>(<span>self, spectrum_waveshaper, offset1, offset2)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def calculate3ToneHarmonicMask(self,spectrum_waveshaper,offset1,offset2):
+    spectrum_waveshaper_harmonic = []
+    number_of_comblines = int((len(spectrum_waveshaper)/2)-2)
+    center_combline = int(number_of_comblines/2) + 1
+    center_combline = int(input(&#34;Is &#34; + str(center_combline) + &#34; the center combline? Input combline number: &#34;))
+    combline_1 = center_combline + offset1
+    combline_2 = center_combline + offset2
+    #    print(number_of_comblines)
+    #    print(center_combline)
+    for (i,x) in zip(range(len(spectrum_waveshaper)),spectrum_waveshaper):
+        if (i == combline_1*2 or i == combline_1*2+1 or i == combline_2*2 or i == combline_2*2+1):
+            spectrum_waveshaper_harmonic.append(x)
+        elif (i == center_combline*2 or i == center_combline*2+1):
+            spectrum_waveshaper_harmonic.append(x) # To not take this value into account for minimum value.
+        else:
+            spectrum_waveshaper_harmonic.append(50)
+    min_spectrum_waveshaper_harmonic = min(spectrum_waveshaper_harmonic)
+    spectrum_waveshaper_harmonic = [x-min_spectrum_waveshaper_harmonic if x!=50 else x for x in spectrum_waveshaper_harmonic]
+    #spectrum_waveshaper_harmonic = [0 if x==70 else x for x in spectrum_waveshaper_harmonic]
+    return spectrum_waveshaper_harmonic</code></pre>
+</details>
+</dd>
+<dt id="src.MaskCalculator.MaskCalculator.calculateHarmonicMask"><code class="name flex">
+<span>def <span class="ident">calculateHarmonicMask</span></span>(<span>self, spectrum_waveshaper, offset1, offset2)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method calculates a mask for harmonic injection locking with two modes.</p>
+<p>A method to calculate a mask with two axial modes set by the offset values from the central axial mode.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>spectrum_waveshaper</code></strong> :&ensp;<code>list</code></dt>
+<dd>Contains the waveshaper spectral values</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def calculateHarmonicMask(self,spectrum_waveshaper,offset1,offset2):
+    &#34;&#34;&#34;This method calculates a mask for harmonic injection locking with two modes.
+    
+    A method to calculate a mask with two axial modes set by the offset values from the central axial mode.
+    
+    Parameters
+    ----------
+    spectrum_waveshaper: list
+        Contains the waveshaper spectral values
+    
+    &#34;&#34;&#34;
+    spectrum_waveshaper_harmonic = []
+    number_of_comblines = int((len(spectrum_waveshaper)/2)-2)
+    center_combline = int(number_of_comblines/2) + 1
+    center_combline = int(input(&#34;Is &#34; + str(center_combline) + &#34; the center combline? Input combline number: &#34;))
+    combline_1 = center_combline + offset1
+    combline_2 = center_combline + offset2
+    #    print(number_of_comblines)
+    #    print(center_combline)
+    for (i,x) in zip(range(len(spectrum_waveshaper)),spectrum_waveshaper):
+        if (i == combline_1*2 or i == combline_1*2+1 or i == combline_2*2 or i == combline_2*2+1):
+            spectrum_waveshaper_harmonic.append(x)
+        else:
+            spectrum_waveshaper_harmonic.append(50)
+    spectrum_waveshaper_harmonic = [x-min(spectrum_waveshaper_harmonic) if x!=50 else x for x in spectrum_waveshaper_harmonic]
+    return spectrum_waveshaper_harmonic</code></pre>
+</details>
+</dd>
+<dt id="src.MaskCalculator.MaskCalculator.calculateMultiToneHarmonicMask"><code class="name flex">
+<span>def <span class="ident">calculateMultiToneHarmonicMask</span></span>(<span>self, spectrum_waveshaper, offset, flatSpectrum)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def calculateMultiToneHarmonicMask(self, spectrum_waveshaper,offset,flatSpectrum):
+        spectrum_waveshaper_harmonic = []
+        number_of_comblines = int((len(spectrum_waveshaper)/2)-2)
+        center_combline = int(number_of_comblines/2) + 1
+        center_combline = int(input(&#34;Is &#34; + str(center_combline) + &#34; the center combline? Input combline number: &#34;))
+        combline = []
+        print(len(spectrum_waveshaper)/2)
+        for k in range(int(len(spectrum_waveshaper)/2-2)): # -2 comes from the two extra values that aren&#39;t axial modes
+            if (k-center_combline)%offset == 0:
+                combline.append(2*k)
+                combline.append(2*k+1)
+            else:
+                pass
+#        print(combline)
+        for (i,x) in zip(range(len(spectrum_waveshaper)),spectrum_waveshaper):
+            if i == 0 or i == 1 or i == len(spectrum_waveshaper)-2 or i == len(spectrum_waveshaper)-1:            
+                spectrum_waveshaper_harmonic.append(50)
+            elif (combline.count(i-2) == 1):
+                if flatSpectrum == True:
+                    spectrum_waveshaper_harmonic.append(x)
+                else:
+                    spectrum_waveshaper_harmonic.append(0)
+            else:
+                spectrum_waveshaper_harmonic.append(50)
+        
+        min_spectrum_waveshaper_harmonic = min(spectrum_waveshaper_harmonic)
+        spectrum_waveshaper_harmonic = [x-min_spectrum_waveshaper_harmonic if x!=50 else x for x in spectrum_waveshaper_harmonic]
+        #spectrum_waveshaper_harmonic = [0 if x==70 else x for x in spectrum_waveshaper_harmonic]
+        return spectrum_waveshaper_harmonic</code></pre>
+</details>
+</dd>
+<dt id="src.MaskCalculator.MaskCalculator.create3ToneHarmonicMask"><code class="name flex">
+<span>def <span class="ident">create3ToneHarmonicMask</span></span>(<span>self, maskFilePath, maskFileName, combLineNumber)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def create3ToneHarmonicMask(self, maskFilePath, maskFileName, combLineNumber):
+        spectrum_waveshaper_harmonic = self.calculate3ToneHarmonicMask(self.spectrum_waveshaper,-combLineNumber,combLineNumber)
+#           self.printMask(maskCalc.frequency_waveshaper,spectrum_waveshaper_60GHz)
+#           maskFileName = &#39;60GHz-Spacing.wsp&#39;
+        self.saveMask(maskFilePath,maskFileName,self.frequency_waveshaper,spectrum_waveshaper_harmonic)
+        self.plotMaskAndOriginal(spectrum_waveshaper_harmonic)</code></pre>
+</details>
+</dd>
+<dt id="src.MaskCalculator.MaskCalculator.createArbHarmonicMask"><code class="name flex">
+<span>def <span class="ident">createArbHarmonicMask</span></span>(<span>self, maskFilePath, maskFileName, combLineNumber1, combLineNumber2)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def createArbHarmonicMask(self, maskFilePath, maskFileName, combLineNumber1,combLineNumber2):
+        spectrum_waveshaper_harmonic = self.calculateHarmonicMask(self.spectrum_waveshaper,combLineNumber1,combLineNumber2)
+#           self.printMask(maskCalc.frequency_waveshaper,spectrum_waveshaper_60GHz)
+#           maskFileName = &#39;60GHz-Spacing.wsp&#39;
+        self.saveMask(maskFilePath,maskFileName,self.frequency_waveshaper,spectrum_waveshaper_harmonic)
+        self.plotMaskAndOriginal(spectrum_waveshaper_harmonic)</code></pre>
+</details>
+</dd>
+<dt id="src.MaskCalculator.MaskCalculator.createFlatMask"><code class="name flex">
+<span>def <span class="ident">createFlatMask</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method creates a flat mask for the spectrum.</p>
+<p>This method creates two lists:</p>
+<ol>
+<li>frequency_waveshaper: List with frequency values centered at axial mode (stored in frequency_waveshaper) peaks +/- waveshaper minimum step size.
+</li>
+<li>spectrum_waveshaper: List with corresponding spectral values that attenuate to create a flat spectral output (using value stored in combline_spectrum).
+<br>
+[
+]
+[
+]</li>
+</ol></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def createFlatMask(self):
+    &#34;&#34;&#34;This method creates a flat mask for the spectrum.
+    
+    This method creates two lists:
+    
+    1. frequency_waveshaper: List with frequency values centered at axial mode (stored in frequency_waveshaper) peaks +/- waveshaper minimum step size.        
+    2. spectrum_waveshaper: List with corresponding spectral values that attenuate to create a flat spectral output (using value stored in combline_spectrum).        
+    .. math:: f_{WS}=[f_{0}-4\Delta_{WS},f_{0}-2\Delta_{WS},f_{0}-\Delta_{WS} ,f_{0}+\Delta_{WS} ,...,f_{N-1}-\Delta_{WS} ,f_{N-1}+\Delta_{WS} ,f_{N}-\Delta_{WS} ,f_{N}+\Delta_{WS} ,f_{N}+2\Delta_{WS},f_{N}+4\Delta_{WS}]        
+    .. math:: A_{WS}=[             50 dB,             50 dB,A_{0}-min\{A_{n}\},A_{0}-min\{A_{n}\},...,A_{N-1}-min\{A_{n}\},A_{N-1}-min\{A_{n}\},A_{N}-min\{A_{n}\},A_{N}-min\{A_{n}\},             50 dB,             50 dB]
+    &#34;&#34;&#34;
+    # Now we are going to make the mask for the waveshaper       
+    delta_waveshaper = 0.005    # Delta/2 between points in the waveshaper
+
+    for x in self.combline_frequency:
+        self.frequency_waveshaper.append(x-delta_waveshaper)
+        self.frequency_waveshaper.append(x+delta_waveshaper)
+    self.frequency_waveshaper.append(self.frequency_waveshaper[-1]+(delta_waveshaper*2))
+    self.frequency_waveshaper.append(self.frequency_waveshaper[-1]+(delta_waveshaper*2))
+    self.frequency_waveshaper.append(self.frequency_waveshaper[0]-(delta_waveshaper*2))
+    self.frequency_waveshaper.append(self.frequency_waveshaper[0]-(delta_waveshaper*4))
+    
+    self.frequency_waveshaper.sort()
+#    print(frequency_waveshaper)
+    
+    min_combline_spectrum = min(self.combline_spectrum)
+    self.spectrum_waveshaper.append(50)
+    self.spectrum_waveshaper.append(50)
+    for x in self.combline_spectrum:
+        self.spectrum_waveshaper.append(x-min_combline_spectrum)
+        self.spectrum_waveshaper.append(x-min_combline_spectrum)
+    self.spectrum_waveshaper.append(50)
+    self.spectrum_waveshaper.append(50)</code></pre>
+</details>
+</dd>
+<dt id="src.MaskCalculator.MaskCalculator.createHarmonicMask"><code class="name flex">
+<span>def <span class="ident">createHarmonicMask</span></span>(<span>self, maskFilePath, maskFileName, combLineNumber)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def createHarmonicMask(self, maskFilePath, maskFileName,combLineNumber):
+        spectrum_waveshaper_harmonic = self.calculateHarmonicMask(self.spectrum_waveshaper,-combLineNumber,combLineNumber)
+#           self.printMask(maskCalc.frequency_waveshaper,spectrum_waveshaper_60GHz)
+#           maskFileName = &#39;60GHz-Spacing.wsp&#39;
+        self.saveMask(maskFilePath,maskFileName,self.frequency_waveshaper,spectrum_waveshaper_harmonic)
+        self.plotMaskAndOriginal(spectrum_waveshaper_harmonic)</code></pre>
+</details>
+</dd>
+<dt id="src.MaskCalculator.MaskCalculator.createMaskArray"><code class="name flex">
+<span>def <span class="ident">createMaskArray</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def createMaskArray(self):        
+        section_wavelength = self.wavelength_span/self.wavelength_sep
+#        print(section_wavelength)
+        index_30GHz_span = int(self.len_wavelength/section_wavelength)
+#        print(index_30GHz_span)
+        spectrum_max_index = self.spectrum.index(self.max_spectrum)
+#        print(self.spectrum[spectrum_max_index])
+        if int((spectrum_max_index%index_30GHz_span)-(index_30GHz_span/2)) &gt; 0:
+            initial_index = int((spectrum_max_index%index_30GHz_span)-(index_30GHz_span/2))
+        else:
+            initial_index = int((spectrum_max_index%index_30GHz_span)+(index_30GHz_span/2))
+#        print(initial_index)
+#        print(self.wavelength[initial_index])
+        # Make sure is only an even number of comblines
+        section_wavelength = int(section_wavelength)
+#        print(section_wavelength)
+        if (section_wavelength % 2) == 0:
+            section_wavelength -= 1
+        for i in range(section_wavelength):
+#            print(i)
+            sub_spectrum = self.spectrum[initial_index+i*index_30GHz_span:initial_index+(i+1)*index_30GHz_span]
+            self.combline_spectrum.append(max(sub_spectrum))
+            max_index = initial_index + i*index_30GHz_span + sub_spectrum.index(self.combline_spectrum[i])
+            self.combline_wavelength.append(self.wavelength[max_index])
+        for x in self.combline_wavelength:
+            self.combline_frequency.append(((self.c0/(x*1e-9))*1e-12)-self.frequency_offset)
+        self.combline_frequency.sort()</code></pre>
+</details>
+</dd>
+<dt id="src.MaskCalculator.MaskCalculator.createMultiToneHarmonicMask"><code class="name flex">
+<span>def <span class="ident">createMultiToneHarmonicMask</span></span>(<span>self, maskFilePath, maskFileName, combLineNumber, flatSpectrum)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def createMultiToneHarmonicMask(self, maskFilePath, maskFileName, combLineNumber,flatSpectrum):
+        spectrum_waveshaper_harmonic = self.calculateMultiToneHarmonicMask(self.spectrum_waveshaper,combLineNumber,flatSpectrum)
+#           self.printMask(maskCalc.frequency_waveshaper,spectrum_waveshaper_60GHz)
+#           maskFileName = &#39;60GHz-Spacing.wsp&#39;
+        self.saveMask(maskFilePath,maskFileName,self.frequency_waveshaper,spectrum_waveshaper_harmonic)
+        self.plotMaskAndOriginal(spectrum_waveshaper_harmonic)</code></pre>
+</details>
+</dd>
+<dt id="src.MaskCalculator.MaskCalculator.createSet3ToneHarmonicMask"><code class="name flex">
+<span>def <span class="ident">createSet3ToneHarmonicMask</span></span>(<span>self, filePath, initSpacing, endSpacing)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def createSet3ToneHarmonicMask(self, filePath, initSpacing, endSpacing):
+    # Save 60 GHz comb
+    initSpacingIndex = initSpacing // 60
+    endSpacingIndex = endSpacing // 60
+    for n in range(initSpacingIndex,endSpacingIndex+1):
+        combSpacing = str(n*60)
+        print(combSpacing + &#39; GHz Spacing&#39;)
+        fileName = combSpacing  + &#39;GHz-Spacing.wsp&#39;
+        harmonicCombNumber = 2*n
+        self.create3ToneHarmonicMask(filePath, fileName, harmonicCombNumber)</code></pre>
+</details>
+</dd>
+<dt id="src.MaskCalculator.MaskCalculator.createSetArbHarmonicMask"><code class="name flex">
+<span>def <span class="ident">createSetArbHarmonicMask</span></span>(<span>self, filePath, centralCombLine, initSpacing, endSpacing)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def createSetArbHarmonicMask(self, filePath, centralCombLine, initSpacing, endSpacing):
+    # Save 60 GHz comb
+    initSpacingIndex = initSpacing // 60
+    endSpacingIndex = endSpacing // 60
+    for n in range(initSpacingIndex,endSpacingIndex+1):
+        combSpacing = str(n*60)
+        print(combSpacing + &#39; GHz Spacing&#39;)
+        fileName = combSpacing  + &#39;GHz-Spacing.wsp&#39;
+        harmonicCombNumber = centralCombLine + 2*n
+        self.createArbHarmonicMask(filePath, fileName, harmonicCombNumber, centralCombLine)</code></pre>
+</details>
+</dd>
+<dt id="src.MaskCalculator.MaskCalculator.createSetHarmonicMask"><code class="name flex">
+<span>def <span class="ident">createSetHarmonicMask</span></span>(<span>self, filePath, initSpacing, endSpacing)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def createSetHarmonicMask(self, filePath, initSpacing, endSpacing):
+    # Save 60 GHz comb
+    initSpacingIndex = initSpacing // 60
+    endSpacingIndex = endSpacing // 60
+    for n in range(initSpacingIndex,endSpacingIndex+1):
+        combSpacing = str(n*60)
+        print(combSpacing + &#39; GHz Spacing&#39;)
+        fileName = combSpacing  + &#39;GHz-Spacing.wsp&#39;
+        self.createHarmonicMask(filePath, fileName, n)      </code></pre>
+</details>
+</dd>
+<dt id="src.MaskCalculator.MaskCalculator.createSetMultiToneHarmonicMask"><code class="name flex">
+<span>def <span class="ident">createSetMultiToneHarmonicMask</span></span>(<span>self, filePath, initSpacing, endSpacing, flatSpectrum)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def createSetMultiToneHarmonicMask(self, filePath, initSpacing, endSpacing, flatSpectrum):
+    # Save 30 GHz comb
+    initSpacingIndex = initSpacing // 30
+    endSpacingIndex = endSpacing // 30
+    for n in range(initSpacingIndex,endSpacingIndex+1):
+        combSpacing = str(n*30)
+        print(combSpacing + &#39; GHz Spacing&#39;)
+        fileName = combSpacing  + &#39;GHz-Spacing.wsp&#39;
+        harmonicCombNumber = n
+        self.createMultiToneHarmonicMask(filePath, fileName, harmonicCombNumber, flatSpectrum)        </code></pre>
+</details>
+</dd>
+<dt id="src.MaskCalculator.MaskCalculator.plotMaskAndOriginal"><code class="name flex">
+<span>def <span class="ident">plotMaskAndOriginal</span></span>(<span>self, spectrum_waveshaper_mask)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def plotMaskAndOriginal(self,spectrum_waveshaper_mask):
+        plt.plot(self.combline_frequency,self.combline_spectrum,&#39;ro&#39;)
+#        plot_number = []
+        plot_number_mask = []
+        for (x,y) in zip(self.spectrum_waveshaper,spectrum_waveshaper_mask):
+#            plot_number.append(min(self.combline_spectrum)+x)
+            plot_number_mask.append(-y)
+#        plt.plot(self.frequency_waveshaper,plot_number,&#39;b&#39;)
+        plt.plot(self.frequency_waveshaper,plot_number_mask,&#39;k&#39;)
+        plt.show()</code></pre>
+</details>
+</dd>
+<dt id="src.MaskCalculator.MaskCalculator.printMask"><code class="name flex">
+<span>def <span class="ident">printMask</span></span>(<span>self, frequency_waveshaper, spectrum_waveshaper)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method prints the frequency and attenuation array in a Finisar 1000M compatible format.</p>
+<p>The method prints the frequency and corresponding spectral output as:</p>
+<pre><code>192.637 00.000  0   1
+192.647 00.000  0   1
+192.657 50.000  0   1
+...
+</code></pre>
+<p>Where the last two values are the spectral phase (usually 0) and output port (usually 1).</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>frequency_waveshaper</code></strong> :&ensp;<code>list</code></dt>
+<dd>Mask frequency values (in THz).</dd>
+<dt><strong><code>spectrum_waveshaper</code></strong> :&ensp;<code>list</code></dt>
+<dd>Mask attenuation values (in dB ranging 0-50).</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def printMask(self,frequency_waveshaper,spectrum_waveshaper):
+    &#34;&#34;&#34;This method prints the frequency and attenuation array in a Finisar 1000M compatible format.
+    
+    The method prints the frequency and corresponding spectral output as:
+    
+        192.637 00.000  0   1
+        192.647 00.000  0   1
+        192.657 50.000  0   1
+        ...
+        
+    Where the last two values are the spectral phase (usually 0) and output port (usually 1).
+    
+    Parameters
+    ----------
+    frequency_waveshaper: list
+        Mask frequency values (in THz).
+    spectrum_waveshaper: list
+        Mask attenuation values (in dB ranging 0-50).
+    &#34;&#34;&#34;
+    for x, y in zip(frequency_waveshaper,spectrum_waveshaper):
+        if abs(y) &lt; 10:
+            print(&#34;{0:.3f}\t0{1:.3f}\t{2}\t{3}&#34;.format(x,y,self.wsPhase,self.wsPort))
+        else:
+            print(&#34;{0:.3f}\t{1:.3f}\t{2}\t{3}&#34;.format(x,y,self.wsPhase,self.wsPort))</code></pre>
+</details>
+</dd>
+<dt id="src.MaskCalculator.MaskCalculator.read_csv"><code class="name flex">
+<span>def <span class="ident">read_csv</span></span>(<span>self, fileName)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def read_csv(self, fileName):
+        with open(fileName, &#39;r&#39;) as fileReader:
+            self.csvReader = csv.reader(fileReader, delimiter =&#39;\t&#39;)
+            for row in self.csvReader:
+                if(len(row) &gt; 1):
+#                separated_row = row[0].split(&#39;,&#39;)
+#                my_array = np.asarray(separated_row)
+#                self.wavelength.append(float(my_array[0]))
+#                self.spectrum.append(float(my_array[-1]))
+                    self.wavelength.append(float(row[0]))
+                    self.spectrum.append(float(row[1]))
+                else:
+                    self.header.append(row)
+            # Define useful constants for mask calculation
+            self.max_wavelength = max(self.wavelength)
+            self.min_wavelength = min(self.wavelength)            
+            self.len_wavelength = len(self.wavelength)
+            self.wavelength_span = self.max_wavelength - self.min_wavelength
+            self.max_spectrum = max(self.spectrum)
+            self.min_spectrum = min(self.spectrum)            
+            self.len_spectrum = len(self.spectrum)
+            self.spectrum_span = self.max_spectrum - self.min_spectrum       </code></pre>
+</details>
+</dd>
+<dt id="src.MaskCalculator.MaskCalculator.saveMask"><code class="name flex">
+<span>def <span class="ident">saveMask</span></span>(<span>self, filePath, fileName, frequency_waveshaper_mask, spectrum_waveshaper_mask)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method saves in a WSP file the frequency and attenuation array in a Finisar 1000M compatible format.</p>
+<p>The method saves a WSP file that contains the frequency and corresponding spectral output as:</p>
+<pre><code>192.637 00.000  0   1
+192.647 00.000  0   1
+192.657 50.000  0   1
+...
+</code></pre>
+<p>Where the last two values are the spectral phase (usually 0) and output port (usually 1).</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>filePath</code></strong> :&ensp;<code>str</code></dt>
+<dd>Path for saving the file.</dd>
+<dt><strong><code>fileName</code></strong> :&ensp;<code>str</code></dt>
+<dd>Mask file name.</dd>
+<dt><strong><code>frequency_waveshaper</code></strong> :&ensp;<code>list</code></dt>
+<dd>Mask frequency values (in THz).</dd>
+<dt><strong><code>spectrum_waveshaper</code></strong> :&ensp;<code>list</code></dt>
+<dd>Mask attenuation values (in dB ranging 0-50).</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def saveMask(self,filePath,fileName,frequency_waveshaper_mask,spectrum_waveshaper_mask):
+    &#34;&#34;&#34;This method saves in a WSP file the frequency and attenuation array in a Finisar 1000M compatible format.
+    
+    The method saves a WSP file that contains the frequency and corresponding spectral output as:
+    
+        192.637 00.000  0   1
+        192.647 00.000  0   1
+        192.657 50.000  0   1
+        ...
+        
+    Where the last two values are the spectral phase (usually 0) and output port (usually 1).
+    
+    Parameters
+    ----------
+    filePath: str
+        Path for saving the file.
+    fileName: str
+        Mask file name.
+    frequency_waveshaper: list
+        Mask frequency values (in THz).
+    spectrum_waveshaper: list
+        Mask attenuation values (in dB ranging 0-50).
+    &#34;&#34;&#34;
+    fileWriter = open(filePath + &#39;\\&#39; + fileName, &#39;w&#39;)
+    for x, y in zip(frequency_waveshaper_mask,spectrum_waveshaper_mask):
+        if abs(y) &lt; 10:
+            fileWriter.write(&#34;{0:.3f}\t0{1:.3f}\t{2}\t{3}\r&#34;.format(x,y,self.wsPhase,self.wsPort))
+        else:
+            fileWriter.write(&#34;{0:.3f}\t{1:.3f}\t{2}\t{3}\r&#34;.format(x,y,self.wsPhase,self.wsPort))
+    fileWriter.close()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="src" href="index.html">src</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="src.MaskCalculator.MaskCalculator" href="#src.MaskCalculator.MaskCalculator">MaskCalculator</a></code></h4>
+<ul class="">
+<li><code><a title="src.MaskCalculator.MaskCalculator.calculate3ToneHarmonicMask" href="#src.MaskCalculator.MaskCalculator.calculate3ToneHarmonicMask">calculate3ToneHarmonicMask</a></code></li>
+<li><code><a title="src.MaskCalculator.MaskCalculator.calculateHarmonicMask" href="#src.MaskCalculator.MaskCalculator.calculateHarmonicMask">calculateHarmonicMask</a></code></li>
+<li><code><a title="src.MaskCalculator.MaskCalculator.calculateMultiToneHarmonicMask" href="#src.MaskCalculator.MaskCalculator.calculateMultiToneHarmonicMask">calculateMultiToneHarmonicMask</a></code></li>
+<li><code><a title="src.MaskCalculator.MaskCalculator.create3ToneHarmonicMask" href="#src.MaskCalculator.MaskCalculator.create3ToneHarmonicMask">create3ToneHarmonicMask</a></code></li>
+<li><code><a title="src.MaskCalculator.MaskCalculator.createArbHarmonicMask" href="#src.MaskCalculator.MaskCalculator.createArbHarmonicMask">createArbHarmonicMask</a></code></li>
+<li><code><a title="src.MaskCalculator.MaskCalculator.createFlatMask" href="#src.MaskCalculator.MaskCalculator.createFlatMask">createFlatMask</a></code></li>
+<li><code><a title="src.MaskCalculator.MaskCalculator.createHarmonicMask" href="#src.MaskCalculator.MaskCalculator.createHarmonicMask">createHarmonicMask</a></code></li>
+<li><code><a title="src.MaskCalculator.MaskCalculator.createMaskArray" href="#src.MaskCalculator.MaskCalculator.createMaskArray">createMaskArray</a></code></li>
+<li><code><a title="src.MaskCalculator.MaskCalculator.createMultiToneHarmonicMask" href="#src.MaskCalculator.MaskCalculator.createMultiToneHarmonicMask">createMultiToneHarmonicMask</a></code></li>
+<li><code><a title="src.MaskCalculator.MaskCalculator.createSet3ToneHarmonicMask" href="#src.MaskCalculator.MaskCalculator.createSet3ToneHarmonicMask">createSet3ToneHarmonicMask</a></code></li>
+<li><code><a title="src.MaskCalculator.MaskCalculator.createSetArbHarmonicMask" href="#src.MaskCalculator.MaskCalculator.createSetArbHarmonicMask">createSetArbHarmonicMask</a></code></li>
+<li><code><a title="src.MaskCalculator.MaskCalculator.createSetHarmonicMask" href="#src.MaskCalculator.MaskCalculator.createSetHarmonicMask">createSetHarmonicMask</a></code></li>
+<li><code><a title="src.MaskCalculator.MaskCalculator.createSetMultiToneHarmonicMask" href="#src.MaskCalculator.MaskCalculator.createSetMultiToneHarmonicMask">createSetMultiToneHarmonicMask</a></code></li>
+<li><code><a title="src.MaskCalculator.MaskCalculator.plotMaskAndOriginal" href="#src.MaskCalculator.MaskCalculator.plotMaskAndOriginal">plotMaskAndOriginal</a></code></li>
+<li><code><a title="src.MaskCalculator.MaskCalculator.printMask" href="#src.MaskCalculator.MaskCalculator.printMask">printMask</a></code></li>
+<li><code><a title="src.MaskCalculator.MaskCalculator.read_csv" href="#src.MaskCalculator.MaskCalculator.read_csv">read_csv</a></code></li>
+<li><code><a title="src.MaskCalculator.MaskCalculator.saveMask" href="#src.MaskCalculator.MaskCalculator.saveMask">saveMask</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

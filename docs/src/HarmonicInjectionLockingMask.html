@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>src.HarmonicInjectionLockingMask API documentation</title>
+<meta name="description" content="Created on Wed Oct 30 11:49:40 2019 …" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>src.HarmonicInjectionLockingMask</code></h1>
+</header>
+<section id="section-intro">
+<p>Created on Wed Oct 30 11:49:40 2019</p>
+<p>@author: ri679647</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># -*- coding: utf-8 -*-
+&#34;&#34;&#34;
+Created on Wed Oct 30 11:49:40 2019
+
+@author: ri679647
+&#34;&#34;&#34;
+
+from src.MaskCalculator import MaskCalculator
+from src.OSA import OSA as OSA6317B
+from src.WaveShaperManager import WaveShaperManager
+import time
+#import datetime
+import matplotlib.pyplot as plt
+
+class MasterOpticalFrequencyCombManager():
+    def __init__(self):
+        self.osaGpibAddress = &#39;GPIB0::27::INSTR&#39;
+        self.filePathOsa = &#39;H:\\Home\\UP\\Shared\\Ricardo\\Dual Tone Injection Locking\\OEWaves\\Python\\OSA&#39;
+        self.filePathWS = &#39;C:\\Users\\ri679647\\Desktop\\Dual Tone IL Mask\\2020\\Python&#39;
+        self.osaManager = OSA6317B()
+        self.wvmngr = WaveShaperManager(&#34;ws1&#34;)
+        self.maskCalc = MaskCalculator()
+        self.osaManager.connect(self.osaGpibAddress)
+    
+    def saveOsaSpectrum(self, fileName, channel):
+        self.osaManager.connect(self.osaGpibAddress)
+        self.osaManager.single_sweep()
+        time.sleep(1)
+        self.osaManager.get_span()
+        self.osaManager.get_rbw()
+        self.osaManager.get_sensitivity()
+        self.osaManager.get_ref_lvl()
+        self.osaManager.grab_spectrum(channel)
+        self.osaManager.save_csv(self.filePathOsa + &#39;\\&#39; + fileName)
+#        self.osaManager.close()
+        # Print captured spectrum
+        plt.plot(self.osaManager.wavelength, self.osaManager.waveform,&#39;b&#39;)
+        plt.axis([min(self.osaManager.wavelength),max(self.osaManager.wavelength),max([min(self.osaManager.waveform),-75]),max(self.osaManager.waveform)])
+        plt.xlabel(&#39;Wavelength (nm)&#39;)
+        plt.ylabel(&#39;Output (dB)&#39;)
+        plt.show()
+    
+    def createThzMask(self, fileNameOFC, minFreqSpacing, maxFreqSpacing):
+        # Read file and create mask array
+        self.maskCalc.read_csv(self.filePathOsa + &#39;\\&#39; + fileNameOFC)
+        self.maskCalc.createMaskArray()
+    
+        plt.plot(self.maskCalc.wavelength, self.maskCalc.spectrum,&#39;b&#39;)
+        plt.plot(self.maskCalc.combline_wavelength, self.maskCalc.combline_spectrum,&#39;ro&#39;)
+        plt.axis([min(self.maskCalc.wavelength), max(self.maskCalc.wavelength), max([min(self.maskCalc.spectrum),-80]), max(self.maskCalc.spectrum)+5])
+        plt.xlabel(&#39;Wavelength (nm)&#39;)
+        plt.ylabel(&#39;Output (dB)&#39;)
+        plt.show()
+        
+        # Create 30 GHz flat mask
+        self.maskCalc.createFlatMask()
+        # Save flat mask
+        self.maskCalc.printMask(self.maskCalc.frequency_waveshaper, self.maskCalc.spectrum_waveshaper)
+        fileName = &#39;30GHz-Spacing-Flat.wsp&#39;
+        self.maskCalc.saveMask(self.filePathWS, fileName, self.maskCalc.frequency_waveshaper, self.maskCalc.spectrum_waveshaper)
+        self.maskCalc.plotMaskAndOriginal(self.maskCalc.spectrum_waveshaper)
+        
+        # Create harmonic masks
+        self.maskCalc.createSetHarmonicMask(self.filePathWS, minFreqSpacing, maxFreqSpacing)
+    
+    def createArbThzMask(self, fileNameOFC, centralCombLine, minFreqSpacing, maxFreqSpacing):
+        # Read file and create mask array
+        self.maskCalc.read_csv(self.filePathOsa + &#39;\\&#39; + fileNameOFC)
+        self.maskCalc.createMaskArray()
+    
+        plt.plot(self.maskCalc.wavelength, self.maskCalc.spectrum,&#39;b&#39;)
+        plt.plot(self.maskCalc.combline_wavelength, self.maskCalc.combline_spectrum,&#39;ro&#39;)
+        plt.axis([min(self.maskCalc.wavelength), max(self.maskCalc.wavelength), max([min(self.maskCalc.spectrum),-80]), max(self.maskCalc.spectrum)+5])
+        plt.xlabel(&#39;Wavelength (nm)&#39;)
+        plt.ylabel(&#39;Output (dB)&#39;)
+        plt.show()
+        
+        # Create 30 GHz flat mask
+        self.maskCalc.createFlatMask()
+        # Save flat mask
+        self.maskCalc.printMask(self.maskCalc.frequency_waveshaper, self.maskCalc.spectrum_waveshaper)
+        fileName = &#39;30GHz-Spacing-Flat.wsp&#39;
+        self.maskCalc.saveMask(self.filePathWS, fileName, self.maskCalc.frequency_waveshaper, self.maskCalc.spectrum_waveshaper)
+        self.maskCalc.plotMaskAndOriginal(self.maskCalc.spectrum_waveshaper)
+        
+        # Create harmonic masks
+        self.maskCalc.createSetArbHarmonicMask(self.filePathWS, centralCombLine, minFreqSpacing, maxFreqSpacing)
+
+    def create3ToneThzMask(self, fileNameOFC, minFreqSpacing, maxFreqSpacing):
+        # Read file and create mask array
+        self.maskCalc.read_csv(self.filePathOsa + &#39;\\&#39; + fileNameOFC)
+        self.maskCalc.createMaskArray()
+    
+        plt.plot(self.maskCalc.wavelength, self.maskCalc.spectrum,&#39;b&#39;)
+        plt.plot(self.maskCalc.combline_wavelength, self.maskCalc.combline_spectrum,&#39;ro&#39;)
+        plt.axis([min(self.maskCalc.wavelength), max(self.maskCalc.wavelength), max([min(self.maskCalc.spectrum),-80]), max(self.maskCalc.spectrum)+5])
+        plt.xlabel(&#39;Wavelength (nm)&#39;)
+        plt.ylabel(&#39;Output (dB)&#39;)
+        plt.show()
+        
+        # Create 30 GHz flat mask
+        self.maskCalc.createFlatMask()
+        # Save flat mask
+        self.maskCalc.printMask(self.maskCalc.frequency_waveshaper, self.maskCalc.spectrum_waveshaper)
+        fileName = &#39;30GHz-Spacing-Flat.wsp&#39;
+        self.maskCalc.saveMask(self.filePathWS, fileName, self.maskCalc.frequency_waveshaper, self.maskCalc.spectrum_waveshaper)
+        self.maskCalc.plotMaskAndOriginal(self.maskCalc.spectrum_waveshaper)
+        
+        # Create harmonic masks
+        self.maskCalc.createSet3ToneHarmonicMask(self.filePathWS, minFreqSpacing, maxFreqSpacing)
+        
+    def createMultiToneThzMask(self, fileNameOFC, minFreqSpacing, maxFreqSpacing, flatSpectrum):
+        # Read file and create mask array
+        self.maskCalc.read_csv(self.filePathOsa + &#39;\\&#39; + fileNameOFC)
+        self.maskCalc.createMaskArray()
+    
+        plt.plot(self.maskCalc.wavelength, self.maskCalc.spectrum,&#39;b&#39;)
+        plt.plot(self.maskCalc.combline_wavelength, self.maskCalc.combline_spectrum,&#39;ro&#39;)
+        plt.axis([min(self.maskCalc.wavelength), max(self.maskCalc.wavelength), max([min(self.maskCalc.spectrum),-80]), max(self.maskCalc.spectrum)+5])
+        plt.xlabel(&#39;Wavelength (nm)&#39;)
+        plt.ylabel(&#39;Output (dB)&#39;)
+        plt.show()
+        
+        # Create 30 GHz flat mask
+        self.maskCalc.createFlatMask()
+        # Save flat mask
+        self.maskCalc.printMask(self.maskCalc.frequency_waveshaper, self.maskCalc.spectrum_waveshaper)
+        fileName = &#39;30GHz-Spacing-Flat.wsp&#39;
+        self.maskCalc.saveMask(self.filePathWS, fileName, self.maskCalc.frequency_waveshaper, self.maskCalc.spectrum_waveshaper)
+        self.maskCalc.plotMaskAndOriginal(self.maskCalc.spectrum_waveshaper)
+        
+        # Create harmonic masks
+        self.maskCalc.createSetMultiToneHarmonicMask(self.filePathWS, minFreqSpacing, maxFreqSpacing, flatSpectrum)    
+    
+    def setOfcBlocked(self):
+        self.wvmngr.connect_to_waveshaper()
+        self.wvmngr.block_all()
+        self.wvmngr.disconnect_from_waveshaper()
+    
+    def setOfcAllPass(self):
+        self.wvmngr.connect_to_waveshaper()
+        self.wvmngr.pass_all()
+        self.wvmngr.disconnect_from_waveshaper()
+    
+    def loadHarmonicProfile(self, OfcFreqSpacing):
+        fileProfile = self.filePathWS + &#39;\\&#39; + OfcFreqSpacing + &#39;GHz-Spacing.wsp&#39;
+        profileName = OfcFreqSpacing + &#39;GHz-Spacing&#39;
+        self.wvmngr.load_profile_from_file(fileProfile, profileName)
+
+    def setHarmonicProfile(self, OfcFreqSpacing):
+        profileName = OfcFreqSpacing + &#39;GHz-Spacing&#39;
+        self.wvmngr.connect_to_waveshaper()
+        self.wvmngr.block_all()
+        self.wvmngr.load_profile_to_waveshaper(profileName)
+        self.wvmngr.disconnect_from_waveshaper()
+    
+    def closePorts(self):
+        self.osaManager.close()
+        
+
+if __name__ == &#34;__main__&#34;:
+    
+    # Take Original EOM Comb
+#    fileName = &#39;OEW_SOA-max_FPE_EDFAmax_1PM-IM-29.9286GHz-10dBm-0.31V_SOA_150mA_EDFA_350mW_1000mSMF_100m-HNLF-ND_Att-30mW_WS&#39; + &#39;.csv
+#    fileName = &#39;Test-OEW_SOA-max_FPE_EDFAmax_1PM-IM-30GHz-10dBm-1.31V_SOA_EDFA_1200mW_1000mSMF_100m-HNLF-ND_Att-100mW_WS&#39; + &#39;.csv&#39;
+    fileName = &#39;OEW_FPE_EOM-29.934GHz_HNLF-ZD.csv&#39;
+    masterOfcMngr = MasterOpticalFrequencyCombManager()
+    masterOfcMngr.setOfcAllPass()
+    masterOfcMngr.saveOsaSpectrum(fileName, &#39;B&#39;)
+    
+#    Create Mask Array
+#    masterOfcMngr.createMultiToneThzMask(fileName, 60, 300, False)
+    masterOfcMngr.createThzMask(fileName, 60, 300)
+    
+    # Save harmonic OFC master
+    fileBaseline = &#39;OEW_FPE_EOM-29.934GHz_HNLF-ZD_WS_&#39;
+#    ofcSpacingList = [&#39;60&#39;,&#39;90&#39;,&#39;120&#39;,&#39;150&#39;,&#39;180&#39;,&#39;210&#39;,&#39;240&#39;,&#39;270&#39;,&#39;300&#39;]
+    ofcSpacingList = [&#39;60&#39;,&#39;120&#39;,&#39;180&#39;]
+    for ofcSpacing in ofcSpacingList:
+        print(&#39;OFC Spacing: &#39; + ofcSpacing + &#39; GHz&#39;)
+        input(&#34;Press Enter to continue...&#34;)
+        ofcFileName = fileBaseline + ofcSpacing + &#39;GHz-Spacing.csv &#39;
+        masterOfcMngr.loadHarmonicProfile(ofcSpacing)
+        masterOfcMngr.setHarmonicProfile(ofcSpacing)
+        masterOfcMngr.saveOsaSpectrum(ofcFileName, &#39;B&#39;)
+
+    masterOfcMngr.closePorts()
+        
+
+    
+    
+    
+    </code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="src.HarmonicInjectionLockingMask.MasterOpticalFrequencyCombManager"><code class="flex name class">
+<span>class <span class="ident">MasterOpticalFrequencyCombManager</span></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MasterOpticalFrequencyCombManager():
+    def __init__(self):
+        self.osaGpibAddress = &#39;GPIB0::27::INSTR&#39;
+        self.filePathOsa = &#39;H:\\Home\\UP\\Shared\\Ricardo\\Dual Tone Injection Locking\\OEWaves\\Python\\OSA&#39;
+        self.filePathWS = &#39;C:\\Users\\ri679647\\Desktop\\Dual Tone IL Mask\\2020\\Python&#39;
+        self.osaManager = OSA6317B()
+        self.wvmngr = WaveShaperManager(&#34;ws1&#34;)
+        self.maskCalc = MaskCalculator()
+        self.osaManager.connect(self.osaGpibAddress)
+    
+    def saveOsaSpectrum(self, fileName, channel):
+        self.osaManager.connect(self.osaGpibAddress)
+        self.osaManager.single_sweep()
+        time.sleep(1)
+        self.osaManager.get_span()
+        self.osaManager.get_rbw()
+        self.osaManager.get_sensitivity()
+        self.osaManager.get_ref_lvl()
+        self.osaManager.grab_spectrum(channel)
+        self.osaManager.save_csv(self.filePathOsa + &#39;\\&#39; + fileName)
+#        self.osaManager.close()
+        # Print captured spectrum
+        plt.plot(self.osaManager.wavelength, self.osaManager.waveform,&#39;b&#39;)
+        plt.axis([min(self.osaManager.wavelength),max(self.osaManager.wavelength),max([min(self.osaManager.waveform),-75]),max(self.osaManager.waveform)])
+        plt.xlabel(&#39;Wavelength (nm)&#39;)
+        plt.ylabel(&#39;Output (dB)&#39;)
+        plt.show()
+    
+    def createThzMask(self, fileNameOFC, minFreqSpacing, maxFreqSpacing):
+        # Read file and create mask array
+        self.maskCalc.read_csv(self.filePathOsa + &#39;\\&#39; + fileNameOFC)
+        self.maskCalc.createMaskArray()
+    
+        plt.plot(self.maskCalc.wavelength, self.maskCalc.spectrum,&#39;b&#39;)
+        plt.plot(self.maskCalc.combline_wavelength, self.maskCalc.combline_spectrum,&#39;ro&#39;)
+        plt.axis([min(self.maskCalc.wavelength), max(self.maskCalc.wavelength), max([min(self.maskCalc.spectrum),-80]), max(self.maskCalc.spectrum)+5])
+        plt.xlabel(&#39;Wavelength (nm)&#39;)
+        plt.ylabel(&#39;Output (dB)&#39;)
+        plt.show()
+        
+        # Create 30 GHz flat mask
+        self.maskCalc.createFlatMask()
+        # Save flat mask
+        self.maskCalc.printMask(self.maskCalc.frequency_waveshaper, self.maskCalc.spectrum_waveshaper)
+        fileName = &#39;30GHz-Spacing-Flat.wsp&#39;
+        self.maskCalc.saveMask(self.filePathWS, fileName, self.maskCalc.frequency_waveshaper, self.maskCalc.spectrum_waveshaper)
+        self.maskCalc.plotMaskAndOriginal(self.maskCalc.spectrum_waveshaper)
+        
+        # Create harmonic masks
+        self.maskCalc.createSetHarmonicMask(self.filePathWS, minFreqSpacing, maxFreqSpacing)
+    
+    def createArbThzMask(self, fileNameOFC, centralCombLine, minFreqSpacing, maxFreqSpacing):
+        # Read file and create mask array
+        self.maskCalc.read_csv(self.filePathOsa + &#39;\\&#39; + fileNameOFC)
+        self.maskCalc.createMaskArray()
+    
+        plt.plot(self.maskCalc.wavelength, self.maskCalc.spectrum,&#39;b&#39;)
+        plt.plot(self.maskCalc.combline_wavelength, self.maskCalc.combline_spectrum,&#39;ro&#39;)
+        plt.axis([min(self.maskCalc.wavelength), max(self.maskCalc.wavelength), max([min(self.maskCalc.spectrum),-80]), max(self.maskCalc.spectrum)+5])
+        plt.xlabel(&#39;Wavelength (nm)&#39;)
+        plt.ylabel(&#39;Output (dB)&#39;)
+        plt.show()
+        
+        # Create 30 GHz flat mask
+        self.maskCalc.createFlatMask()
+        # Save flat mask
+        self.maskCalc.printMask(self.maskCalc.frequency_waveshaper, self.maskCalc.spectrum_waveshaper)
+        fileName = &#39;30GHz-Spacing-Flat.wsp&#39;
+        self.maskCalc.saveMask(self.filePathWS, fileName, self.maskCalc.frequency_waveshaper, self.maskCalc.spectrum_waveshaper)
+        self.maskCalc.plotMaskAndOriginal(self.maskCalc.spectrum_waveshaper)
+        
+        # Create harmonic masks
+        self.maskCalc.createSetArbHarmonicMask(self.filePathWS, centralCombLine, minFreqSpacing, maxFreqSpacing)
+
+    def create3ToneThzMask(self, fileNameOFC, minFreqSpacing, maxFreqSpacing):
+        # Read file and create mask array
+        self.maskCalc.read_csv(self.filePathOsa + &#39;\\&#39; + fileNameOFC)
+        self.maskCalc.createMaskArray()
+    
+        plt.plot(self.maskCalc.wavelength, self.maskCalc.spectrum,&#39;b&#39;)
+        plt.plot(self.maskCalc.combline_wavelength, self.maskCalc.combline_spectrum,&#39;ro&#39;)
+        plt.axis([min(self.maskCalc.wavelength), max(self.maskCalc.wavelength), max([min(self.maskCalc.spectrum),-80]), max(self.maskCalc.spectrum)+5])
+        plt.xlabel(&#39;Wavelength (nm)&#39;)
+        plt.ylabel(&#39;Output (dB)&#39;)
+        plt.show()
+        
+        # Create 30 GHz flat mask
+        self.maskCalc.createFlatMask()
+        # Save flat mask
+        self.maskCalc.printMask(self.maskCalc.frequency_waveshaper, self.maskCalc.spectrum_waveshaper)
+        fileName = &#39;30GHz-Spacing-Flat.wsp&#39;
+        self.maskCalc.saveMask(self.filePathWS, fileName, self.maskCalc.frequency_waveshaper, self.maskCalc.spectrum_waveshaper)
+        self.maskCalc.plotMaskAndOriginal(self.maskCalc.spectrum_waveshaper)
+        
+        # Create harmonic masks
+        self.maskCalc.createSet3ToneHarmonicMask(self.filePathWS, minFreqSpacing, maxFreqSpacing)
+        
+    def createMultiToneThzMask(self, fileNameOFC, minFreqSpacing, maxFreqSpacing, flatSpectrum):
+        # Read file and create mask array
+        self.maskCalc.read_csv(self.filePathOsa + &#39;\\&#39; + fileNameOFC)
+        self.maskCalc.createMaskArray()
+    
+        plt.plot(self.maskCalc.wavelength, self.maskCalc.spectrum,&#39;b&#39;)
+        plt.plot(self.maskCalc.combline_wavelength, self.maskCalc.combline_spectrum,&#39;ro&#39;)
+        plt.axis([min(self.maskCalc.wavelength), max(self.maskCalc.wavelength), max([min(self.maskCalc.spectrum),-80]), max(self.maskCalc.spectrum)+5])
+        plt.xlabel(&#39;Wavelength (nm)&#39;)
+        plt.ylabel(&#39;Output (dB)&#39;)
+        plt.show()
+        
+        # Create 30 GHz flat mask
+        self.maskCalc.createFlatMask()
+        # Save flat mask
+        self.maskCalc.printMask(self.maskCalc.frequency_waveshaper, self.maskCalc.spectrum_waveshaper)
+        fileName = &#39;30GHz-Spacing-Flat.wsp&#39;
+        self.maskCalc.saveMask(self.filePathWS, fileName, self.maskCalc.frequency_waveshaper, self.maskCalc.spectrum_waveshaper)
+        self.maskCalc.plotMaskAndOriginal(self.maskCalc.spectrum_waveshaper)
+        
+        # Create harmonic masks
+        self.maskCalc.createSetMultiToneHarmonicMask(self.filePathWS, minFreqSpacing, maxFreqSpacing, flatSpectrum)    
+    
+    def setOfcBlocked(self):
+        self.wvmngr.connect_to_waveshaper()
+        self.wvmngr.block_all()
+        self.wvmngr.disconnect_from_waveshaper()
+    
+    def setOfcAllPass(self):
+        self.wvmngr.connect_to_waveshaper()
+        self.wvmngr.pass_all()
+        self.wvmngr.disconnect_from_waveshaper()
+    
+    def loadHarmonicProfile(self, OfcFreqSpacing):
+        fileProfile = self.filePathWS + &#39;\\&#39; + OfcFreqSpacing + &#39;GHz-Spacing.wsp&#39;
+        profileName = OfcFreqSpacing + &#39;GHz-Spacing&#39;
+        self.wvmngr.load_profile_from_file(fileProfile, profileName)
+
+    def setHarmonicProfile(self, OfcFreqSpacing):
+        profileName = OfcFreqSpacing + &#39;GHz-Spacing&#39;
+        self.wvmngr.connect_to_waveshaper()
+        self.wvmngr.block_all()
+        self.wvmngr.load_profile_to_waveshaper(profileName)
+        self.wvmngr.disconnect_from_waveshaper()
+    
+    def closePorts(self):
+        self.osaManager.close()</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="src.HarmonicInjectionLockingMask.MasterOpticalFrequencyCombManager.closePorts"><code class="name flex">
+<span>def <span class="ident">closePorts</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def closePorts(self):
+    self.osaManager.close()</code></pre>
+</details>
+</dd>
+<dt id="src.HarmonicInjectionLockingMask.MasterOpticalFrequencyCombManager.create3ToneThzMask"><code class="name flex">
+<span>def <span class="ident">create3ToneThzMask</span></span>(<span>self, fileNameOFC, minFreqSpacing, maxFreqSpacing)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def create3ToneThzMask(self, fileNameOFC, minFreqSpacing, maxFreqSpacing):
+    # Read file and create mask array
+    self.maskCalc.read_csv(self.filePathOsa + &#39;\\&#39; + fileNameOFC)
+    self.maskCalc.createMaskArray()
+
+    plt.plot(self.maskCalc.wavelength, self.maskCalc.spectrum,&#39;b&#39;)
+    plt.plot(self.maskCalc.combline_wavelength, self.maskCalc.combline_spectrum,&#39;ro&#39;)
+    plt.axis([min(self.maskCalc.wavelength), max(self.maskCalc.wavelength), max([min(self.maskCalc.spectrum),-80]), max(self.maskCalc.spectrum)+5])
+    plt.xlabel(&#39;Wavelength (nm)&#39;)
+    plt.ylabel(&#39;Output (dB)&#39;)
+    plt.show()
+    
+    # Create 30 GHz flat mask
+    self.maskCalc.createFlatMask()
+    # Save flat mask
+    self.maskCalc.printMask(self.maskCalc.frequency_waveshaper, self.maskCalc.spectrum_waveshaper)
+    fileName = &#39;30GHz-Spacing-Flat.wsp&#39;
+    self.maskCalc.saveMask(self.filePathWS, fileName, self.maskCalc.frequency_waveshaper, self.maskCalc.spectrum_waveshaper)
+    self.maskCalc.plotMaskAndOriginal(self.maskCalc.spectrum_waveshaper)
+    
+    # Create harmonic masks
+    self.maskCalc.createSet3ToneHarmonicMask(self.filePathWS, minFreqSpacing, maxFreqSpacing)</code></pre>
+</details>
+</dd>
+<dt id="src.HarmonicInjectionLockingMask.MasterOpticalFrequencyCombManager.createArbThzMask"><code class="name flex">
+<span>def <span class="ident">createArbThzMask</span></span>(<span>self, fileNameOFC, centralCombLine, minFreqSpacing, maxFreqSpacing)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def createArbThzMask(self, fileNameOFC, centralCombLine, minFreqSpacing, maxFreqSpacing):
+    # Read file and create mask array
+    self.maskCalc.read_csv(self.filePathOsa + &#39;\\&#39; + fileNameOFC)
+    self.maskCalc.createMaskArray()
+
+    plt.plot(self.maskCalc.wavelength, self.maskCalc.spectrum,&#39;b&#39;)
+    plt.plot(self.maskCalc.combline_wavelength, self.maskCalc.combline_spectrum,&#39;ro&#39;)
+    plt.axis([min(self.maskCalc.wavelength), max(self.maskCalc.wavelength), max([min(self.maskCalc.spectrum),-80]), max(self.maskCalc.spectrum)+5])
+    plt.xlabel(&#39;Wavelength (nm)&#39;)
+    plt.ylabel(&#39;Output (dB)&#39;)
+    plt.show()
+    
+    # Create 30 GHz flat mask
+    self.maskCalc.createFlatMask()
+    # Save flat mask
+    self.maskCalc.printMask(self.maskCalc.frequency_waveshaper, self.maskCalc.spectrum_waveshaper)
+    fileName = &#39;30GHz-Spacing-Flat.wsp&#39;
+    self.maskCalc.saveMask(self.filePathWS, fileName, self.maskCalc.frequency_waveshaper, self.maskCalc.spectrum_waveshaper)
+    self.maskCalc.plotMaskAndOriginal(self.maskCalc.spectrum_waveshaper)
+    
+    # Create harmonic masks
+    self.maskCalc.createSetArbHarmonicMask(self.filePathWS, centralCombLine, minFreqSpacing, maxFreqSpacing)</code></pre>
+</details>
+</dd>
+<dt id="src.HarmonicInjectionLockingMask.MasterOpticalFrequencyCombManager.createMultiToneThzMask"><code class="name flex">
+<span>def <span class="ident">createMultiToneThzMask</span></span>(<span>self, fileNameOFC, minFreqSpacing, maxFreqSpacing, flatSpectrum)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def createMultiToneThzMask(self, fileNameOFC, minFreqSpacing, maxFreqSpacing, flatSpectrum):
+    # Read file and create mask array
+    self.maskCalc.read_csv(self.filePathOsa + &#39;\\&#39; + fileNameOFC)
+    self.maskCalc.createMaskArray()
+
+    plt.plot(self.maskCalc.wavelength, self.maskCalc.spectrum,&#39;b&#39;)
+    plt.plot(self.maskCalc.combline_wavelength, self.maskCalc.combline_spectrum,&#39;ro&#39;)
+    plt.axis([min(self.maskCalc.wavelength), max(self.maskCalc.wavelength), max([min(self.maskCalc.spectrum),-80]), max(self.maskCalc.spectrum)+5])
+    plt.xlabel(&#39;Wavelength (nm)&#39;)
+    plt.ylabel(&#39;Output (dB)&#39;)
+    plt.show()
+    
+    # Create 30 GHz flat mask
+    self.maskCalc.createFlatMask()
+    # Save flat mask
+    self.maskCalc.printMask(self.maskCalc.frequency_waveshaper, self.maskCalc.spectrum_waveshaper)
+    fileName = &#39;30GHz-Spacing-Flat.wsp&#39;
+    self.maskCalc.saveMask(self.filePathWS, fileName, self.maskCalc.frequency_waveshaper, self.maskCalc.spectrum_waveshaper)
+    self.maskCalc.plotMaskAndOriginal(self.maskCalc.spectrum_waveshaper)
+    
+    # Create harmonic masks
+    self.maskCalc.createSetMultiToneHarmonicMask(self.filePathWS, minFreqSpacing, maxFreqSpacing, flatSpectrum)    </code></pre>
+</details>
+</dd>
+<dt id="src.HarmonicInjectionLockingMask.MasterOpticalFrequencyCombManager.createThzMask"><code class="name flex">
+<span>def <span class="ident">createThzMask</span></span>(<span>self, fileNameOFC, minFreqSpacing, maxFreqSpacing)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def createThzMask(self, fileNameOFC, minFreqSpacing, maxFreqSpacing):
+    # Read file and create mask array
+    self.maskCalc.read_csv(self.filePathOsa + &#39;\\&#39; + fileNameOFC)
+    self.maskCalc.createMaskArray()
+
+    plt.plot(self.maskCalc.wavelength, self.maskCalc.spectrum,&#39;b&#39;)
+    plt.plot(self.maskCalc.combline_wavelength, self.maskCalc.combline_spectrum,&#39;ro&#39;)
+    plt.axis([min(self.maskCalc.wavelength), max(self.maskCalc.wavelength), max([min(self.maskCalc.spectrum),-80]), max(self.maskCalc.spectrum)+5])
+    plt.xlabel(&#39;Wavelength (nm)&#39;)
+    plt.ylabel(&#39;Output (dB)&#39;)
+    plt.show()
+    
+    # Create 30 GHz flat mask
+    self.maskCalc.createFlatMask()
+    # Save flat mask
+    self.maskCalc.printMask(self.maskCalc.frequency_waveshaper, self.maskCalc.spectrum_waveshaper)
+    fileName = &#39;30GHz-Spacing-Flat.wsp&#39;
+    self.maskCalc.saveMask(self.filePathWS, fileName, self.maskCalc.frequency_waveshaper, self.maskCalc.spectrum_waveshaper)
+    self.maskCalc.plotMaskAndOriginal(self.maskCalc.spectrum_waveshaper)
+    
+    # Create harmonic masks
+    self.maskCalc.createSetHarmonicMask(self.filePathWS, minFreqSpacing, maxFreqSpacing)</code></pre>
+</details>
+</dd>
+<dt id="src.HarmonicInjectionLockingMask.MasterOpticalFrequencyCombManager.loadHarmonicProfile"><code class="name flex">
+<span>def <span class="ident">loadHarmonicProfile</span></span>(<span>self, OfcFreqSpacing)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def loadHarmonicProfile(self, OfcFreqSpacing):
+    fileProfile = self.filePathWS + &#39;\\&#39; + OfcFreqSpacing + &#39;GHz-Spacing.wsp&#39;
+    profileName = OfcFreqSpacing + &#39;GHz-Spacing&#39;
+    self.wvmngr.load_profile_from_file(fileProfile, profileName)</code></pre>
+</details>
+</dd>
+<dt id="src.HarmonicInjectionLockingMask.MasterOpticalFrequencyCombManager.saveOsaSpectrum"><code class="name flex">
+<span>def <span class="ident">saveOsaSpectrum</span></span>(<span>self, fileName, channel)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def saveOsaSpectrum(self, fileName, channel):
+        self.osaManager.connect(self.osaGpibAddress)
+        self.osaManager.single_sweep()
+        time.sleep(1)
+        self.osaManager.get_span()
+        self.osaManager.get_rbw()
+        self.osaManager.get_sensitivity()
+        self.osaManager.get_ref_lvl()
+        self.osaManager.grab_spectrum(channel)
+        self.osaManager.save_csv(self.filePathOsa + &#39;\\&#39; + fileName)
+#        self.osaManager.close()
+        # Print captured spectrum
+        plt.plot(self.osaManager.wavelength, self.osaManager.waveform,&#39;b&#39;)
+        plt.axis([min(self.osaManager.wavelength),max(self.osaManager.wavelength),max([min(self.osaManager.waveform),-75]),max(self.osaManager.waveform)])
+        plt.xlabel(&#39;Wavelength (nm)&#39;)
+        plt.ylabel(&#39;Output (dB)&#39;)
+        plt.show()</code></pre>
+</details>
+</dd>
+<dt id="src.HarmonicInjectionLockingMask.MasterOpticalFrequencyCombManager.setHarmonicProfile"><code class="name flex">
+<span>def <span class="ident">setHarmonicProfile</span></span>(<span>self, OfcFreqSpacing)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setHarmonicProfile(self, OfcFreqSpacing):
+    profileName = OfcFreqSpacing + &#39;GHz-Spacing&#39;
+    self.wvmngr.connect_to_waveshaper()
+    self.wvmngr.block_all()
+    self.wvmngr.load_profile_to_waveshaper(profileName)
+    self.wvmngr.disconnect_from_waveshaper()</code></pre>
+</details>
+</dd>
+<dt id="src.HarmonicInjectionLockingMask.MasterOpticalFrequencyCombManager.setOfcAllPass"><code class="name flex">
+<span>def <span class="ident">setOfcAllPass</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setOfcAllPass(self):
+    self.wvmngr.connect_to_waveshaper()
+    self.wvmngr.pass_all()
+    self.wvmngr.disconnect_from_waveshaper()</code></pre>
+</details>
+</dd>
+<dt id="src.HarmonicInjectionLockingMask.MasterOpticalFrequencyCombManager.setOfcBlocked"><code class="name flex">
+<span>def <span class="ident">setOfcBlocked</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setOfcBlocked(self):
+    self.wvmngr.connect_to_waveshaper()
+    self.wvmngr.block_all()
+    self.wvmngr.disconnect_from_waveshaper()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="src" href="index.html">src</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="src.HarmonicInjectionLockingMask.MasterOpticalFrequencyCombManager" href="#src.HarmonicInjectionLockingMask.MasterOpticalFrequencyCombManager">MasterOpticalFrequencyCombManager</a></code></h4>
+<ul class="">
+<li><code><a title="src.HarmonicInjectionLockingMask.MasterOpticalFrequencyCombManager.closePorts" href="#src.HarmonicInjectionLockingMask.MasterOpticalFrequencyCombManager.closePorts">closePorts</a></code></li>
+<li><code><a title="src.HarmonicInjectionLockingMask.MasterOpticalFrequencyCombManager.create3ToneThzMask" href="#src.HarmonicInjectionLockingMask.MasterOpticalFrequencyCombManager.create3ToneThzMask">create3ToneThzMask</a></code></li>
+<li><code><a title="src.HarmonicInjectionLockingMask.MasterOpticalFrequencyCombManager.createArbThzMask" href="#src.HarmonicInjectionLockingMask.MasterOpticalFrequencyCombManager.createArbThzMask">createArbThzMask</a></code></li>
+<li><code><a title="src.HarmonicInjectionLockingMask.MasterOpticalFrequencyCombManager.createMultiToneThzMask" href="#src.HarmonicInjectionLockingMask.MasterOpticalFrequencyCombManager.createMultiToneThzMask">createMultiToneThzMask</a></code></li>
+<li><code><a title="src.HarmonicInjectionLockingMask.MasterOpticalFrequencyCombManager.createThzMask" href="#src.HarmonicInjectionLockingMask.MasterOpticalFrequencyCombManager.createThzMask">createThzMask</a></code></li>
+<li><code><a title="src.HarmonicInjectionLockingMask.MasterOpticalFrequencyCombManager.loadHarmonicProfile" href="#src.HarmonicInjectionLockingMask.MasterOpticalFrequencyCombManager.loadHarmonicProfile">loadHarmonicProfile</a></code></li>
+<li><code><a title="src.HarmonicInjectionLockingMask.MasterOpticalFrequencyCombManager.saveOsaSpectrum" href="#src.HarmonicInjectionLockingMask.MasterOpticalFrequencyCombManager.saveOsaSpectrum">saveOsaSpectrum</a></code></li>
+<li><code><a title="src.HarmonicInjectionLockingMask.MasterOpticalFrequencyCombManager.setHarmonicProfile" href="#src.HarmonicInjectionLockingMask.MasterOpticalFrequencyCombManager.setHarmonicProfile">setHarmonicProfile</a></code></li>
+<li><code><a title="src.HarmonicInjectionLockingMask.MasterOpticalFrequencyCombManager.setOfcAllPass" href="#src.HarmonicInjectionLockingMask.MasterOpticalFrequencyCombManager.setOfcAllPass">setOfcAllPass</a></code></li>
+<li><code><a title="src.HarmonicInjectionLockingMask.MasterOpticalFrequencyCombManager.setOfcBlocked" href="#src.HarmonicInjectionLockingMask.MasterOpticalFrequencyCombManager.setOfcBlocked">setOfcBlocked</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

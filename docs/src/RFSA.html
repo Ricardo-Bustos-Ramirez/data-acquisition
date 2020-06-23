@@ -1,0 +1,1064 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>src.RFSA API documentation</title>
+<meta name="description" content="Created on Sat Jan 26 15:59:17 2019 …" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>src.RFSA</code></h1>
+</header>
+<section id="section-intro">
+<p>Created on Sat Jan 26 15:59:17 2019</p>
+<p>@author: st452223</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># -*- coding: utf-8 -*-
+&#34;&#34;&#34;
+Created on Sat Jan 26 15:59:17 2019
+
+@author: st452223
+&#34;&#34;&#34;
+
+# -*- coding: utf-8 -*-
+&#34;&#34;&#34;
+Created on Mon Jun 11 16:46:27 2018
+
+@author: st452223
+&#34;&#34;&#34;
+
+import visa
+import time
+import numpy as np
+import datetime
+import matplotlib.pyplot as plt
+import csv
+
+GLOBAL_TOUT =  100000   # IO time out in milliseconds
+START_FREQUENCY = 100   # HP8566B start frequency limit
+STOP_FREQUENCY = 22e9   # HP8566B stop frequency limit
+
+switcherFrequencyMultiplier = {
+    0: &#34;HZ&#34;,    # 1e0 Hz: Hz.
+    1: &#34;Kz&#34;,    # 1e3 Hz: kHz.
+    2: &#34;MZ&#34;,    # 1e6 Hz: MHz.
+    3: &#34;GZ&#34;,    # 1e9 Hz: GHz.
+}
+
+switcherFrequencyMultiplierReverse = {
+    &#34;HZ&#34;: 1e0,    # 1e0 Hz: Hz.
+    &#34;KZ&#34;: 1e3,    # 1e3 Hz: kHz.
+    &#34;MZ&#34;: 1e6,    # 1e6 Hz: MHz.
+    &#34;GZ&#34;: 1e9,    # 1e9 Hz: GHz.
+}
+
+class RFSA():
+    def __init__(self,Port=None): 
+        self.connected = False
+        self.bool_sweep = False
+        
+        # freqs are in MHz
+        self.start_freq = 0
+        self.stop_freq = 200
+        self.center_freq = 100
+        self.span        = 200
+        self.list_devices()
+    
+    
+    def list_devices(self):
+        try:
+            self.rm = visa.ResourceManager()
+            self.list = self.rm.list_resources()
+        except:
+            print(&#34;couldn&#39;t find resource manager&#34;)
+                
+    def connect(self, device): 
+        try:
+#            self.ser=serial.Serial(self.port,self.baud,bytesize=self.bytesize, 
+#                                   timeout = self.timeout, stopbits = self.stopbits,
+#                                   parity = self.parity, rtscts=self.rtscts)
+#            if self.ser.isOpen():
+#                self.print_message(&#39;Connected to laser &#39; + self.name + &#39; on port &#39; + self.port)
+            self.connected = True
+            self.handle = self.rm.open_resource(device)
+            self.print_message(&#39;Hopefully connected to RFSA&#39;)
+            print(self.handle)
+#            self.handle.write(&#34;*CLS&#34;)
+            self.set_params()
+        except Exception as e:
+            self.print_message(e)
+            self.print_message(&#39; Couldn\&#39;t connect&#39;)
+            
+    def set_params(self):
+        if self.connected:
+#            self.send_cmd(&#39;OUTPUT 718; &#34;*FA%dMZ;&#34;&#39; %(self.start_freq))
+#            self.send_cmd(&#39;OUTPUT 718; &#34;*FB%dMZ;&#34;&#39; %self.stop_freq)
+#            self.handle.write(&#39;STAWL&#39;+self.start_wl + &#39;, STPWL&#39;+self.stop_wl +
+#                              &#39;, RESOLN&#39;+self.resolution + &#39;, AVG&#39;+self.average +
+#                              &#39;, SMPL&#39;+ self.sampling_points + &#39;, &#39; + self.range)
+
+#            self.handle.write()
+            self.handle.timeout = GLOBAL_TOUT
+            ## Clear the instrument bus. This command resets the HPIB bus so we have to skip it
+#            self.handle.clear() 
+
+            ## Clear any previously encountered errors
+            self.handle.write(&#34;*CLS&#34;)            
+            
+    def close(self):
+        self.rm.close()
+        self.print_message(&#39;Connection to RFSA closed&#39;)
+        
+    def send_cmd(self, cmd):     
+        self.handle.write(cmd)
+    
+    def convert_number_to_frequency_command(self, frequencyNumber):
+        &#34;&#34;&#34;This method converts a frequency number into a string that the RFSA will recognize.
+        
+        Parameters
+        ----------
+        frequencyNumber: float
+            Frequency in a numeric format in Hz. e.g. 5.213e9
+        
+        Returns
+        -------
+        frequencyCommand: str
+            Frequency in a string format compatible with RFSA. e.g. &#34;5.213GZ&#34;
+        &#34;&#34;&#34;
+#        print(&#34;Frequency number:&#34;, frequencyNumber)
+        frequencyMultiplierIndex = 0
+        while frequencyNumber &gt; 1e3:
+            frequencyMultiplierIndex = frequencyMultiplierIndex + 1
+            frequencyNumber = frequencyNumber/1e3
+        frequencyMultiplier = switcherFrequencyMultiplier.get(frequencyMultiplierIndex, &#34;XX&#34;)
+        if frequencyMultiplier == &#34;XX&#34;:
+            print(&#34;Invalid frequency multiplier: &#34; + str(frequencyMultiplierIndex))
+        frequencyCommand = str(frequencyNumber) + frequencyMultiplier
+        print(frequencyCommand)
+        return frequencyCommand
+    
+    def convert_frequency_command_to_number(self, frequencyCommand):
+        &#34;&#34;&#34;This method converts a frequency command from the RFSA into a float number in Hz.
+        
+        Parameters
+        ----------
+        frequencyCommand: str
+            Frequency in a string format compatible with RFSA. e.g. &#34;5213000000&#34;
+        
+        Returns
+        -------
+        frequencyNumber: float
+            Frequency in a numeric format in Hz. e.g. 5.213e9
+
+        &#34;&#34;&#34;
+#        print(&#34;Frequency command:&#34;, frequencyCommand)
+        try:
+            frequencyNumber = float(frequencyCommand)
+        except:
+            &#34;Entered frequency command is not compatible with RFSA.&#34;    
+            frequencyNumber = 100e9
+        return frequencyNumber
+
+    
+    def set_start_frequency(self, startFrequency):
+        &#34;&#34;&#34;This method sets the start frequency for the RFSA.
+        
+        This method sets the start frequency from the HP8566B using FA command.
+        
+        Parameters
+        ----------
+        startFrequency: float
+            Start frequency in Hz.
+        &#34;&#34;&#34;
+        if startFrequency &gt;= START_FREQUENCY:
+            stopFrequency = self.get_stop_frequency()
+            if startFrequency &lt; stopFrequency:
+                startFrequencyCommand = self.convert_number_to_frequency_command(startFrequency)
+                self.handle.write(&#39;FA &#39; + startFrequencyCommand)
+            else:
+                print(&#34;Start frequency&#34;, startFrequency, &#34;Hz, higher than stop frequency&#34;, stopFrequency, &#34;Hz.&#34;)
+        else:
+            print(&#34;Start frequency&#34;, startFrequency, &#34;Hz, outside of RFSA limits.&#34;)
+    
+    def get_start_frequency(self):
+        &#34;&#34;&#34;This method gets the start frequency for the RFSA.
+        
+        This method gets the start frequency from the HP8566B using FA? command.
+        
+        Returns
+        -------
+        startFrequency: float
+            Start frequency in Hz.
+        &#34;&#34;&#34;
+        startFrequencyCommand = self.handle.query(&#39;FA?&#39;)
+#        print(&#34;FA?&#34;, startFrequencyCommand)
+        self.startFrequency = self.convert_frequency_command_to_number(startFrequencyCommand)
+        return self.startFrequency
+
+    def set_stop_frequency(self, stopFrequency):
+        &#34;&#34;&#34;This method sets the stop frequency for the RFSA.
+        
+        This method sets the stop frequency from the HP8566B using FB command.
+        
+        Parameters
+        ----------
+        stopFrequency: float
+            Stop frequency in Hz.
+        &#34;&#34;&#34;
+        if startFrequency &lt;= STOP_FREQUENCY:
+            startFrequency = self.get_start_frequency()
+            if stopFrequency &gt; startFrequency:
+                stopFrequencyCommand = self.convert_number_to_frequency_command(stopFrequency)
+                self.handle.write(&#39;FB &#39; + stopFrequencyCommand)
+            else:
+                print(&#34;Stop frequency&#34;, stopFrequency, &#34;Hz, lower than start frequency&#34;, startFrequency, &#34;Hz.&#34;)
+        else:
+            print(&#34;Stop frequency&#34;, stopFrequency, &#34;Hz, outside of RFSA limits.&#34;)
+    
+    def get_stop_frequency(self):
+        &#34;&#34;&#34;This method gets the stop frequency for the RFSA.
+        
+        This method gets the stop frequency from the HP8566B using FA? command.
+        
+        Returns
+        -------
+        startFrequency: float
+            Stop frequency in Hz.
+        &#34;&#34;&#34;
+        stopFrequencyCommand = self.handle.query(&#39;FB?&#39;)
+#        print(&#34;FB?&#34;, stopFrequencyCommand)
+        self.stopFrequency = self.convert_frequency_command_to_number(stopFrequencyCommand)
+        return self.stopFrequency
+  
+    def get_spectrum(self):
+        &#34;&#34;&#34;This method acquires the waveform stored in trace A and saves it in spectrum and freqs.
+        &#34;&#34;&#34;
+        # stop continuous measurements and draw trace A
+#        self.send_cmd(&#39;IP;LF;&#39;)
+#        self.send_cmd(&#39;OUTPUT 718; &#34;CF%dMZ;SP%dMZ;S2;TS;&#34;&#39; %(self.center_freq, self.span))
+#        self.send_cmd(&#39;CF98MZ;SP40MZ;S2;TS;&#39;)
+#        self.send_cmd(&#39;S2;TS;&#39;)
+       # self.send_cmd(&#39;OUTPUT 718; &#34;*FA%dMZ;*FB%dMZ;S2;TS;&#34;&#39; %(self.start_freq, self.start_freq))
+#        self.send_cmd(&#39;OUTPUT 718; &#34;O1;TA&#34;&#39;)
+#        self.send_cmd(&#39;SNGLS&#39;)                          # Single sweep
+        self.centralFrequency = self.handle.query(&#39;CF?&#39;)     # Central frequency query
+#        frequencySpan = self.handle.query(&#39;SP?&#39;)        # Span
+        self.resolutionBandwidth = self.handle.query(&#39;RB?&#39;)  # Resolution bandwidth
+        self.videoBandwidth = self.handle.query(&#39;VB?&#39;)       # Video bandwidth
+        startFrequency = self.get_start_frequency()     # Obtain trace start frequency
+        stopFrequency = self.get_stop_frequency()       # Obtain trace start frequency
+        traceA = self.handle.query(&#39;TA&#39;)                # Query waveform from trace A
+
+#        Testing labels
+#        print(type(traceA))
+#        print(startFrequency)
+#        print(stopFrequency)
+#        print(&#34;RBW:&#34;, self.resolutionBandwidth, &#34;Hz&#34;)
+#        print(&#34;VBW:&#34;, self.videoBandwidth, &#34;Hz&#34;)
+#        print(&#34;Central frequency:&#34;, self.centralFrequency, &#34;Hz&#34;)
+        self.spectrum = np.array([float(k) for k in traceA.splitlines()])
+        self.freqs    = np.linspace(startFrequency, stopFrequency, len(self.spectrum))
+
+    def save_csv(self, fileName):
+        try:
+            with open(fileName, &#39;w&#39;,newline=&#39;&#39;) as fileWriter:
+                self.csvWriter = csv.writer(fileWriter, delimiter = &#39;\t&#39;)
+                now_ = datetime.datetime.now()
+                timestamp = now_.strftime(&#39;%m/%d/%Y %H:%M hrs&#39;)
+                self.csvWriter.writerow([timestamp])
+#                self.csvWriter.writerow([&#34;Reference Level: &#34; + self.reference_lvl + &#34; (dB)&#34;])
+#                self.csvWriter.writerow([&#34;Sensitivity: &#34; + self.sensitivity])
+                self.csvWriter.writerow([&#34;Resolution bandwidth: &#34; + self.resolutionBandwidth + &#34; (Hz)&#34;])
+                self.csvWriter.writerow([&#34;Video bandwidth: &#34; + self.videoBandwidth + &#34; (Hz)&#34;])
+                self.csvWriter.writerow([&#34;Cental frequency: &#34; + self.centralFrequency + &#34; (Hz)&#34;])
+#                self.csvWriter.writerow([&#34;Span: &#34; + self.span_wl + &#34; (nm)&#34;])
+#                self.csvWriter.writerow([&#34;Wavelength (nm) Amplitude (dB)&#34;])
+                for (x,y) in zip(self.freqs, self.spectrum):
+                    self.csvWriter.writerow((&#39;{0:.3f}&#39;.format(x),&#39;{0:.3f}&#39;.format(y)))
+        except:
+            self.close()
+            print(&#34;Error while saving &#34; + fileName + &#34; file&#34;)
+        
+    def print_message(self, msg):
+        if __name__ == &#34;__main__&#34;:
+            print(msg)
+
+    def plot_waveform(self):
+        &#34;&#34;&#34;Plot the acquired waveform after function get_spectrum().
+        &#34;&#34;&#34;
+        frequencyArray = self.freqs
+        spectrumArray = self.spectrum
+        plt.plot(frequencyArray, spectrumArray,&#39;b&#39;)
+        plt.axis([min(frequencyArray), max(frequencyArray), min(spectrumArray), max(spectrumArray)])
+        plt.xlabel(&#39;Frequency (Hz)&#39;)
+        plt.ylabel(&#39;Output (dB)&#39;)
+        plt.show()
+
+if __name__ == &#34;__main__&#34;:
+    RFSA = RFSA()
+    print(RFSA.list)
+    RFSA.connect(&#39;GPIB0::18::INSTR&#39;)
+    RFSA.get_spectrum()
+
+    print(RFSA.freqs)
+    print(RFSA.spectrum)
+    RFSA.close()
+
+    RFSA.plot_waveform()
+    filePath = &#39;H:\\Home\\UP\\Shared\\Ricardo\\Python Scripts\\Test files&#39;
+    fileSubPathRfsa = &#39;RFSA&#39;
+    fileName = &#39;RFSA_&#39; + &#39;Test_&#39; + timestamp + &#39;.csv &#39;
+    RFSA.save_csv(filePath + &#39;\\&#39; + fileSubPathRfsa + &#39;\\&#39; + fileName)
+    
+
+    </code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="src.RFSA.RFSA"><code class="flex name class">
+<span>class <span class="ident">RFSA</span></span>
+<span>(</span><span>Port=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class RFSA():
+    def __init__(self,Port=None): 
+        self.connected = False
+        self.bool_sweep = False
+        
+        # freqs are in MHz
+        self.start_freq = 0
+        self.stop_freq = 200
+        self.center_freq = 100
+        self.span        = 200
+        self.list_devices()
+    
+    
+    def list_devices(self):
+        try:
+            self.rm = visa.ResourceManager()
+            self.list = self.rm.list_resources()
+        except:
+            print(&#34;couldn&#39;t find resource manager&#34;)
+                
+    def connect(self, device): 
+        try:
+#            self.ser=serial.Serial(self.port,self.baud,bytesize=self.bytesize, 
+#                                   timeout = self.timeout, stopbits = self.stopbits,
+#                                   parity = self.parity, rtscts=self.rtscts)
+#            if self.ser.isOpen():
+#                self.print_message(&#39;Connected to laser &#39; + self.name + &#39; on port &#39; + self.port)
+            self.connected = True
+            self.handle = self.rm.open_resource(device)
+            self.print_message(&#39;Hopefully connected to RFSA&#39;)
+            print(self.handle)
+#            self.handle.write(&#34;*CLS&#34;)
+            self.set_params()
+        except Exception as e:
+            self.print_message(e)
+            self.print_message(&#39; Couldn\&#39;t connect&#39;)
+            
+    def set_params(self):
+        if self.connected:
+#            self.send_cmd(&#39;OUTPUT 718; &#34;*FA%dMZ;&#34;&#39; %(self.start_freq))
+#            self.send_cmd(&#39;OUTPUT 718; &#34;*FB%dMZ;&#34;&#39; %self.stop_freq)
+#            self.handle.write(&#39;STAWL&#39;+self.start_wl + &#39;, STPWL&#39;+self.stop_wl +
+#                              &#39;, RESOLN&#39;+self.resolution + &#39;, AVG&#39;+self.average +
+#                              &#39;, SMPL&#39;+ self.sampling_points + &#39;, &#39; + self.range)
+
+#            self.handle.write()
+            self.handle.timeout = GLOBAL_TOUT
+            ## Clear the instrument bus. This command resets the HPIB bus so we have to skip it
+#            self.handle.clear() 
+
+            ## Clear any previously encountered errors
+            self.handle.write(&#34;*CLS&#34;)            
+            
+    def close(self):
+        self.rm.close()
+        self.print_message(&#39;Connection to RFSA closed&#39;)
+        
+    def send_cmd(self, cmd):     
+        self.handle.write(cmd)
+    
+    def convert_number_to_frequency_command(self, frequencyNumber):
+        &#34;&#34;&#34;This method converts a frequency number into a string that the RFSA will recognize.
+        
+        Parameters
+        ----------
+        frequencyNumber: float
+            Frequency in a numeric format in Hz. e.g. 5.213e9
+        
+        Returns
+        -------
+        frequencyCommand: str
+            Frequency in a string format compatible with RFSA. e.g. &#34;5.213GZ&#34;
+        &#34;&#34;&#34;
+#        print(&#34;Frequency number:&#34;, frequencyNumber)
+        frequencyMultiplierIndex = 0
+        while frequencyNumber &gt; 1e3:
+            frequencyMultiplierIndex = frequencyMultiplierIndex + 1
+            frequencyNumber = frequencyNumber/1e3
+        frequencyMultiplier = switcherFrequencyMultiplier.get(frequencyMultiplierIndex, &#34;XX&#34;)
+        if frequencyMultiplier == &#34;XX&#34;:
+            print(&#34;Invalid frequency multiplier: &#34; + str(frequencyMultiplierIndex))
+        frequencyCommand = str(frequencyNumber) + frequencyMultiplier
+        print(frequencyCommand)
+        return frequencyCommand
+    
+    def convert_frequency_command_to_number(self, frequencyCommand):
+        &#34;&#34;&#34;This method converts a frequency command from the RFSA into a float number in Hz.
+        
+        Parameters
+        ----------
+        frequencyCommand: str
+            Frequency in a string format compatible with RFSA. e.g. &#34;5213000000&#34;
+        
+        Returns
+        -------
+        frequencyNumber: float
+            Frequency in a numeric format in Hz. e.g. 5.213e9
+
+        &#34;&#34;&#34;
+#        print(&#34;Frequency command:&#34;, frequencyCommand)
+        try:
+            frequencyNumber = float(frequencyCommand)
+        except:
+            &#34;Entered frequency command is not compatible with RFSA.&#34;    
+            frequencyNumber = 100e9
+        return frequencyNumber
+
+    
+    def set_start_frequency(self, startFrequency):
+        &#34;&#34;&#34;This method sets the start frequency for the RFSA.
+        
+        This method sets the start frequency from the HP8566B using FA command.
+        
+        Parameters
+        ----------
+        startFrequency: float
+            Start frequency in Hz.
+        &#34;&#34;&#34;
+        if startFrequency &gt;= START_FREQUENCY:
+            stopFrequency = self.get_stop_frequency()
+            if startFrequency &lt; stopFrequency:
+                startFrequencyCommand = self.convert_number_to_frequency_command(startFrequency)
+                self.handle.write(&#39;FA &#39; + startFrequencyCommand)
+            else:
+                print(&#34;Start frequency&#34;, startFrequency, &#34;Hz, higher than stop frequency&#34;, stopFrequency, &#34;Hz.&#34;)
+        else:
+            print(&#34;Start frequency&#34;, startFrequency, &#34;Hz, outside of RFSA limits.&#34;)
+    
+    def get_start_frequency(self):
+        &#34;&#34;&#34;This method gets the start frequency for the RFSA.
+        
+        This method gets the start frequency from the HP8566B using FA? command.
+        
+        Returns
+        -------
+        startFrequency: float
+            Start frequency in Hz.
+        &#34;&#34;&#34;
+        startFrequencyCommand = self.handle.query(&#39;FA?&#39;)
+#        print(&#34;FA?&#34;, startFrequencyCommand)
+        self.startFrequency = self.convert_frequency_command_to_number(startFrequencyCommand)
+        return self.startFrequency
+
+    def set_stop_frequency(self, stopFrequency):
+        &#34;&#34;&#34;This method sets the stop frequency for the RFSA.
+        
+        This method sets the stop frequency from the HP8566B using FB command.
+        
+        Parameters
+        ----------
+        stopFrequency: float
+            Stop frequency in Hz.
+        &#34;&#34;&#34;
+        if startFrequency &lt;= STOP_FREQUENCY:
+            startFrequency = self.get_start_frequency()
+            if stopFrequency &gt; startFrequency:
+                stopFrequencyCommand = self.convert_number_to_frequency_command(stopFrequency)
+                self.handle.write(&#39;FB &#39; + stopFrequencyCommand)
+            else:
+                print(&#34;Stop frequency&#34;, stopFrequency, &#34;Hz, lower than start frequency&#34;, startFrequency, &#34;Hz.&#34;)
+        else:
+            print(&#34;Stop frequency&#34;, stopFrequency, &#34;Hz, outside of RFSA limits.&#34;)
+    
+    def get_stop_frequency(self):
+        &#34;&#34;&#34;This method gets the stop frequency for the RFSA.
+        
+        This method gets the stop frequency from the HP8566B using FA? command.
+        
+        Returns
+        -------
+        startFrequency: float
+            Stop frequency in Hz.
+        &#34;&#34;&#34;
+        stopFrequencyCommand = self.handle.query(&#39;FB?&#39;)
+#        print(&#34;FB?&#34;, stopFrequencyCommand)
+        self.stopFrequency = self.convert_frequency_command_to_number(stopFrequencyCommand)
+        return self.stopFrequency
+  
+    def get_spectrum(self):
+        &#34;&#34;&#34;This method acquires the waveform stored in trace A and saves it in spectrum and freqs.
+        &#34;&#34;&#34;
+        # stop continuous measurements and draw trace A
+#        self.send_cmd(&#39;IP;LF;&#39;)
+#        self.send_cmd(&#39;OUTPUT 718; &#34;CF%dMZ;SP%dMZ;S2;TS;&#34;&#39; %(self.center_freq, self.span))
+#        self.send_cmd(&#39;CF98MZ;SP40MZ;S2;TS;&#39;)
+#        self.send_cmd(&#39;S2;TS;&#39;)
+       # self.send_cmd(&#39;OUTPUT 718; &#34;*FA%dMZ;*FB%dMZ;S2;TS;&#34;&#39; %(self.start_freq, self.start_freq))
+#        self.send_cmd(&#39;OUTPUT 718; &#34;O1;TA&#34;&#39;)
+#        self.send_cmd(&#39;SNGLS&#39;)                          # Single sweep
+        self.centralFrequency = self.handle.query(&#39;CF?&#39;)     # Central frequency query
+#        frequencySpan = self.handle.query(&#39;SP?&#39;)        # Span
+        self.resolutionBandwidth = self.handle.query(&#39;RB?&#39;)  # Resolution bandwidth
+        self.videoBandwidth = self.handle.query(&#39;VB?&#39;)       # Video bandwidth
+        startFrequency = self.get_start_frequency()     # Obtain trace start frequency
+        stopFrequency = self.get_stop_frequency()       # Obtain trace start frequency
+        traceA = self.handle.query(&#39;TA&#39;)                # Query waveform from trace A
+
+#        Testing labels
+#        print(type(traceA))
+#        print(startFrequency)
+#        print(stopFrequency)
+#        print(&#34;RBW:&#34;, self.resolutionBandwidth, &#34;Hz&#34;)
+#        print(&#34;VBW:&#34;, self.videoBandwidth, &#34;Hz&#34;)
+#        print(&#34;Central frequency:&#34;, self.centralFrequency, &#34;Hz&#34;)
+        self.spectrum = np.array([float(k) for k in traceA.splitlines()])
+        self.freqs    = np.linspace(startFrequency, stopFrequency, len(self.spectrum))
+
+    def save_csv(self, fileName):
+        try:
+            with open(fileName, &#39;w&#39;,newline=&#39;&#39;) as fileWriter:
+                self.csvWriter = csv.writer(fileWriter, delimiter = &#39;\t&#39;)
+                now_ = datetime.datetime.now()
+                timestamp = now_.strftime(&#39;%m/%d/%Y %H:%M hrs&#39;)
+                self.csvWriter.writerow([timestamp])
+#                self.csvWriter.writerow([&#34;Reference Level: &#34; + self.reference_lvl + &#34; (dB)&#34;])
+#                self.csvWriter.writerow([&#34;Sensitivity: &#34; + self.sensitivity])
+                self.csvWriter.writerow([&#34;Resolution bandwidth: &#34; + self.resolutionBandwidth + &#34; (Hz)&#34;])
+                self.csvWriter.writerow([&#34;Video bandwidth: &#34; + self.videoBandwidth + &#34; (Hz)&#34;])
+                self.csvWriter.writerow([&#34;Cental frequency: &#34; + self.centralFrequency + &#34; (Hz)&#34;])
+#                self.csvWriter.writerow([&#34;Span: &#34; + self.span_wl + &#34; (nm)&#34;])
+#                self.csvWriter.writerow([&#34;Wavelength (nm) Amplitude (dB)&#34;])
+                for (x,y) in zip(self.freqs, self.spectrum):
+                    self.csvWriter.writerow((&#39;{0:.3f}&#39;.format(x),&#39;{0:.3f}&#39;.format(y)))
+        except:
+            self.close()
+            print(&#34;Error while saving &#34; + fileName + &#34; file&#34;)
+        
+    def print_message(self, msg):
+        if __name__ == &#34;__main__&#34;:
+            print(msg)
+
+    def plot_waveform(self):
+        &#34;&#34;&#34;Plot the acquired waveform after function get_spectrum().
+        &#34;&#34;&#34;
+        frequencyArray = self.freqs
+        spectrumArray = self.spectrum
+        plt.plot(frequencyArray, spectrumArray,&#39;b&#39;)
+        plt.axis([min(frequencyArray), max(frequencyArray), min(spectrumArray), max(spectrumArray)])
+        plt.xlabel(&#39;Frequency (Hz)&#39;)
+        plt.ylabel(&#39;Output (dB)&#39;)
+        plt.show()</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="src.RFSA.RFSA.close"><code class="name flex">
+<span>def <span class="ident">close</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def close(self):
+    self.rm.close()
+    self.print_message(&#39;Connection to RFSA closed&#39;)</code></pre>
+</details>
+</dd>
+<dt id="src.RFSA.RFSA.connect"><code class="name flex">
+<span>def <span class="ident">connect</span></span>(<span>self, device)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def connect(self, device): 
+        try:
+#            self.ser=serial.Serial(self.port,self.baud,bytesize=self.bytesize, 
+#                                   timeout = self.timeout, stopbits = self.stopbits,
+#                                   parity = self.parity, rtscts=self.rtscts)
+#            if self.ser.isOpen():
+#                self.print_message(&#39;Connected to laser &#39; + self.name + &#39; on port &#39; + self.port)
+            self.connected = True
+            self.handle = self.rm.open_resource(device)
+            self.print_message(&#39;Hopefully connected to RFSA&#39;)
+            print(self.handle)
+#            self.handle.write(&#34;*CLS&#34;)
+            self.set_params()
+        except Exception as e:
+            self.print_message(e)
+            self.print_message(&#39; Couldn\&#39;t connect&#39;)</code></pre>
+</details>
+</dd>
+<dt id="src.RFSA.RFSA.convert_frequency_command_to_number"><code class="name flex">
+<span>def <span class="ident">convert_frequency_command_to_number</span></span>(<span>self, frequencyCommand)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method converts a frequency command from the RFSA into a float number in Hz.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>frequencyCommand</code></strong> :&ensp;<code>str</code></dt>
+<dd>Frequency in a string format compatible with RFSA. e.g. "5213000000"</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>frequencyNumber</code></strong> :&ensp;<code>float</code></dt>
+<dd>Frequency in a numeric format in Hz. e.g. 5.213e9</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def convert_frequency_command_to_number(self, frequencyCommand):
+        &#34;&#34;&#34;This method converts a frequency command from the RFSA into a float number in Hz.
+        
+        Parameters
+        ----------
+        frequencyCommand: str
+            Frequency in a string format compatible with RFSA. e.g. &#34;5213000000&#34;
+        
+        Returns
+        -------
+        frequencyNumber: float
+            Frequency in a numeric format in Hz. e.g. 5.213e9
+
+        &#34;&#34;&#34;
+#        print(&#34;Frequency command:&#34;, frequencyCommand)
+        try:
+            frequencyNumber = float(frequencyCommand)
+        except:
+            &#34;Entered frequency command is not compatible with RFSA.&#34;    
+            frequencyNumber = 100e9
+        return frequencyNumber</code></pre>
+</details>
+</dd>
+<dt id="src.RFSA.RFSA.convert_number_to_frequency_command"><code class="name flex">
+<span>def <span class="ident">convert_number_to_frequency_command</span></span>(<span>self, frequencyNumber)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method converts a frequency number into a string that the RFSA will recognize.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>frequencyNumber</code></strong> :&ensp;<code>float</code></dt>
+<dd>Frequency in a numeric format in Hz. e.g. 5.213e9</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>frequencyCommand</code></strong> :&ensp;<code>str</code></dt>
+<dd>Frequency in a string format compatible with RFSA. e.g. "5.213GZ"</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def convert_number_to_frequency_command(self, frequencyNumber):
+        &#34;&#34;&#34;This method converts a frequency number into a string that the RFSA will recognize.
+        
+        Parameters
+        ----------
+        frequencyNumber: float
+            Frequency in a numeric format in Hz. e.g. 5.213e9
+        
+        Returns
+        -------
+        frequencyCommand: str
+            Frequency in a string format compatible with RFSA. e.g. &#34;5.213GZ&#34;
+        &#34;&#34;&#34;
+#        print(&#34;Frequency number:&#34;, frequencyNumber)
+        frequencyMultiplierIndex = 0
+        while frequencyNumber &gt; 1e3:
+            frequencyMultiplierIndex = frequencyMultiplierIndex + 1
+            frequencyNumber = frequencyNumber/1e3
+        frequencyMultiplier = switcherFrequencyMultiplier.get(frequencyMultiplierIndex, &#34;XX&#34;)
+        if frequencyMultiplier == &#34;XX&#34;:
+            print(&#34;Invalid frequency multiplier: &#34; + str(frequencyMultiplierIndex))
+        frequencyCommand = str(frequencyNumber) + frequencyMultiplier
+        print(frequencyCommand)
+        return frequencyCommand</code></pre>
+</details>
+</dd>
+<dt id="src.RFSA.RFSA.get_spectrum"><code class="name flex">
+<span>def <span class="ident">get_spectrum</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method acquires the waveform stored in trace A and saves it in spectrum and freqs.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def get_spectrum(self):
+        &#34;&#34;&#34;This method acquires the waveform stored in trace A and saves it in spectrum and freqs.
+        &#34;&#34;&#34;
+        # stop continuous measurements and draw trace A
+#        self.send_cmd(&#39;IP;LF;&#39;)
+#        self.send_cmd(&#39;OUTPUT 718; &#34;CF%dMZ;SP%dMZ;S2;TS;&#34;&#39; %(self.center_freq, self.span))
+#        self.send_cmd(&#39;CF98MZ;SP40MZ;S2;TS;&#39;)
+#        self.send_cmd(&#39;S2;TS;&#39;)
+       # self.send_cmd(&#39;OUTPUT 718; &#34;*FA%dMZ;*FB%dMZ;S2;TS;&#34;&#39; %(self.start_freq, self.start_freq))
+#        self.send_cmd(&#39;OUTPUT 718; &#34;O1;TA&#34;&#39;)
+#        self.send_cmd(&#39;SNGLS&#39;)                          # Single sweep
+        self.centralFrequency = self.handle.query(&#39;CF?&#39;)     # Central frequency query
+#        frequencySpan = self.handle.query(&#39;SP?&#39;)        # Span
+        self.resolutionBandwidth = self.handle.query(&#39;RB?&#39;)  # Resolution bandwidth
+        self.videoBandwidth = self.handle.query(&#39;VB?&#39;)       # Video bandwidth
+        startFrequency = self.get_start_frequency()     # Obtain trace start frequency
+        stopFrequency = self.get_stop_frequency()       # Obtain trace start frequency
+        traceA = self.handle.query(&#39;TA&#39;)                # Query waveform from trace A
+
+#        Testing labels
+#        print(type(traceA))
+#        print(startFrequency)
+#        print(stopFrequency)
+#        print(&#34;RBW:&#34;, self.resolutionBandwidth, &#34;Hz&#34;)
+#        print(&#34;VBW:&#34;, self.videoBandwidth, &#34;Hz&#34;)
+#        print(&#34;Central frequency:&#34;, self.centralFrequency, &#34;Hz&#34;)
+        self.spectrum = np.array([float(k) for k in traceA.splitlines()])
+        self.freqs    = np.linspace(startFrequency, stopFrequency, len(self.spectrum))</code></pre>
+</details>
+</dd>
+<dt id="src.RFSA.RFSA.get_start_frequency"><code class="name flex">
+<span>def <span class="ident">get_start_frequency</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method gets the start frequency for the RFSA.</p>
+<p>This method gets the start frequency from the HP8566B using FA? command.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>startFrequency</code></strong> :&ensp;<code>float</code></dt>
+<dd>Start frequency in Hz.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def get_start_frequency(self):
+        &#34;&#34;&#34;This method gets the start frequency for the RFSA.
+        
+        This method gets the start frequency from the HP8566B using FA? command.
+        
+        Returns
+        -------
+        startFrequency: float
+            Start frequency in Hz.
+        &#34;&#34;&#34;
+        startFrequencyCommand = self.handle.query(&#39;FA?&#39;)
+#        print(&#34;FA?&#34;, startFrequencyCommand)
+        self.startFrequency = self.convert_frequency_command_to_number(startFrequencyCommand)
+        return self.startFrequency</code></pre>
+</details>
+</dd>
+<dt id="src.RFSA.RFSA.get_stop_frequency"><code class="name flex">
+<span>def <span class="ident">get_stop_frequency</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method gets the stop frequency for the RFSA.</p>
+<p>This method gets the stop frequency from the HP8566B using FA? command.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>startFrequency</code></strong> :&ensp;<code>float</code></dt>
+<dd>Stop frequency in Hz.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def get_stop_frequency(self):
+        &#34;&#34;&#34;This method gets the stop frequency for the RFSA.
+        
+        This method gets the stop frequency from the HP8566B using FA? command.
+        
+        Returns
+        -------
+        startFrequency: float
+            Stop frequency in Hz.
+        &#34;&#34;&#34;
+        stopFrequencyCommand = self.handle.query(&#39;FB?&#39;)
+#        print(&#34;FB?&#34;, stopFrequencyCommand)
+        self.stopFrequency = self.convert_frequency_command_to_number(stopFrequencyCommand)
+        return self.stopFrequency</code></pre>
+</details>
+</dd>
+<dt id="src.RFSA.RFSA.list_devices"><code class="name flex">
+<span>def <span class="ident">list_devices</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def list_devices(self):
+    try:
+        self.rm = visa.ResourceManager()
+        self.list = self.rm.list_resources()
+    except:
+        print(&#34;couldn&#39;t find resource manager&#34;)</code></pre>
+</details>
+</dd>
+<dt id="src.RFSA.RFSA.plot_waveform"><code class="name flex">
+<span>def <span class="ident">plot_waveform</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Plot the acquired waveform after function get_spectrum().</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def plot_waveform(self):
+    &#34;&#34;&#34;Plot the acquired waveform after function get_spectrum().
+    &#34;&#34;&#34;
+    frequencyArray = self.freqs
+    spectrumArray = self.spectrum
+    plt.plot(frequencyArray, spectrumArray,&#39;b&#39;)
+    plt.axis([min(frequencyArray), max(frequencyArray), min(spectrumArray), max(spectrumArray)])
+    plt.xlabel(&#39;Frequency (Hz)&#39;)
+    plt.ylabel(&#39;Output (dB)&#39;)
+    plt.show()</code></pre>
+</details>
+</dd>
+<dt id="src.RFSA.RFSA.print_message"><code class="name flex">
+<span>def <span class="ident">print_message</span></span>(<span>self, msg)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def print_message(self, msg):
+    if __name__ == &#34;__main__&#34;:
+        print(msg)</code></pre>
+</details>
+</dd>
+<dt id="src.RFSA.RFSA.save_csv"><code class="name flex">
+<span>def <span class="ident">save_csv</span></span>(<span>self, fileName)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def save_csv(self, fileName):
+        try:
+            with open(fileName, &#39;w&#39;,newline=&#39;&#39;) as fileWriter:
+                self.csvWriter = csv.writer(fileWriter, delimiter = &#39;\t&#39;)
+                now_ = datetime.datetime.now()
+                timestamp = now_.strftime(&#39;%m/%d/%Y %H:%M hrs&#39;)
+                self.csvWriter.writerow([timestamp])
+#                self.csvWriter.writerow([&#34;Reference Level: &#34; + self.reference_lvl + &#34; (dB)&#34;])
+#                self.csvWriter.writerow([&#34;Sensitivity: &#34; + self.sensitivity])
+                self.csvWriter.writerow([&#34;Resolution bandwidth: &#34; + self.resolutionBandwidth + &#34; (Hz)&#34;])
+                self.csvWriter.writerow([&#34;Video bandwidth: &#34; + self.videoBandwidth + &#34; (Hz)&#34;])
+                self.csvWriter.writerow([&#34;Cental frequency: &#34; + self.centralFrequency + &#34; (Hz)&#34;])
+#                self.csvWriter.writerow([&#34;Span: &#34; + self.span_wl + &#34; (nm)&#34;])
+#                self.csvWriter.writerow([&#34;Wavelength (nm) Amplitude (dB)&#34;])
+                for (x,y) in zip(self.freqs, self.spectrum):
+                    self.csvWriter.writerow((&#39;{0:.3f}&#39;.format(x),&#39;{0:.3f}&#39;.format(y)))
+        except:
+            self.close()
+            print(&#34;Error while saving &#34; + fileName + &#34; file&#34;)</code></pre>
+</details>
+</dd>
+<dt id="src.RFSA.RFSA.send_cmd"><code class="name flex">
+<span>def <span class="ident">send_cmd</span></span>(<span>self, cmd)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def send_cmd(self, cmd):     
+    self.handle.write(cmd)</code></pre>
+</details>
+</dd>
+<dt id="src.RFSA.RFSA.set_params"><code class="name flex">
+<span>def <span class="ident">set_params</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def set_params(self):
+        if self.connected:
+#            self.send_cmd(&#39;OUTPUT 718; &#34;*FA%dMZ;&#34;&#39; %(self.start_freq))
+#            self.send_cmd(&#39;OUTPUT 718; &#34;*FB%dMZ;&#34;&#39; %self.stop_freq)
+#            self.handle.write(&#39;STAWL&#39;+self.start_wl + &#39;, STPWL&#39;+self.stop_wl +
+#                              &#39;, RESOLN&#39;+self.resolution + &#39;, AVG&#39;+self.average +
+#                              &#39;, SMPL&#39;+ self.sampling_points + &#39;, &#39; + self.range)
+
+#            self.handle.write()
+            self.handle.timeout = GLOBAL_TOUT
+            ## Clear the instrument bus. This command resets the HPIB bus so we have to skip it
+#            self.handle.clear() 
+
+            ## Clear any previously encountered errors
+            self.handle.write(&#34;*CLS&#34;)            </code></pre>
+</details>
+</dd>
+<dt id="src.RFSA.RFSA.set_start_frequency"><code class="name flex">
+<span>def <span class="ident">set_start_frequency</span></span>(<span>self, startFrequency)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method sets the start frequency for the RFSA.</p>
+<p>This method sets the start frequency from the HP8566B using FA command.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>startFrequency</code></strong> :&ensp;<code>float</code></dt>
+<dd>Start frequency in Hz.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_start_frequency(self, startFrequency):
+    &#34;&#34;&#34;This method sets the start frequency for the RFSA.
+    
+    This method sets the start frequency from the HP8566B using FA command.
+    
+    Parameters
+    ----------
+    startFrequency: float
+        Start frequency in Hz.
+    &#34;&#34;&#34;
+    if startFrequency &gt;= START_FREQUENCY:
+        stopFrequency = self.get_stop_frequency()
+        if startFrequency &lt; stopFrequency:
+            startFrequencyCommand = self.convert_number_to_frequency_command(startFrequency)
+            self.handle.write(&#39;FA &#39; + startFrequencyCommand)
+        else:
+            print(&#34;Start frequency&#34;, startFrequency, &#34;Hz, higher than stop frequency&#34;, stopFrequency, &#34;Hz.&#34;)
+    else:
+        print(&#34;Start frequency&#34;, startFrequency, &#34;Hz, outside of RFSA limits.&#34;)</code></pre>
+</details>
+</dd>
+<dt id="src.RFSA.RFSA.set_stop_frequency"><code class="name flex">
+<span>def <span class="ident">set_stop_frequency</span></span>(<span>self, stopFrequency)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method sets the stop frequency for the RFSA.</p>
+<p>This method sets the stop frequency from the HP8566B using FB command.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>stopFrequency</code></strong> :&ensp;<code>float</code></dt>
+<dd>Stop frequency in Hz.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_stop_frequency(self, stopFrequency):
+    &#34;&#34;&#34;This method sets the stop frequency for the RFSA.
+    
+    This method sets the stop frequency from the HP8566B using FB command.
+    
+    Parameters
+    ----------
+    stopFrequency: float
+        Stop frequency in Hz.
+    &#34;&#34;&#34;
+    if startFrequency &lt;= STOP_FREQUENCY:
+        startFrequency = self.get_start_frequency()
+        if stopFrequency &gt; startFrequency:
+            stopFrequencyCommand = self.convert_number_to_frequency_command(stopFrequency)
+            self.handle.write(&#39;FB &#39; + stopFrequencyCommand)
+        else:
+            print(&#34;Stop frequency&#34;, stopFrequency, &#34;Hz, lower than start frequency&#34;, startFrequency, &#34;Hz.&#34;)
+    else:
+        print(&#34;Stop frequency&#34;, stopFrequency, &#34;Hz, outside of RFSA limits.&#34;)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="src" href="index.html">src</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="src.RFSA.RFSA" href="#src.RFSA.RFSA">RFSA</a></code></h4>
+<ul class="">
+<li><code><a title="src.RFSA.RFSA.close" href="#src.RFSA.RFSA.close">close</a></code></li>
+<li><code><a title="src.RFSA.RFSA.connect" href="#src.RFSA.RFSA.connect">connect</a></code></li>
+<li><code><a title="src.RFSA.RFSA.convert_frequency_command_to_number" href="#src.RFSA.RFSA.convert_frequency_command_to_number">convert_frequency_command_to_number</a></code></li>
+<li><code><a title="src.RFSA.RFSA.convert_number_to_frequency_command" href="#src.RFSA.RFSA.convert_number_to_frequency_command">convert_number_to_frequency_command</a></code></li>
+<li><code><a title="src.RFSA.RFSA.get_spectrum" href="#src.RFSA.RFSA.get_spectrum">get_spectrum</a></code></li>
+<li><code><a title="src.RFSA.RFSA.get_start_frequency" href="#src.RFSA.RFSA.get_start_frequency">get_start_frequency</a></code></li>
+<li><code><a title="src.RFSA.RFSA.get_stop_frequency" href="#src.RFSA.RFSA.get_stop_frequency">get_stop_frequency</a></code></li>
+<li><code><a title="src.RFSA.RFSA.list_devices" href="#src.RFSA.RFSA.list_devices">list_devices</a></code></li>
+<li><code><a title="src.RFSA.RFSA.plot_waveform" href="#src.RFSA.RFSA.plot_waveform">plot_waveform</a></code></li>
+<li><code><a title="src.RFSA.RFSA.print_message" href="#src.RFSA.RFSA.print_message">print_message</a></code></li>
+<li><code><a title="src.RFSA.RFSA.save_csv" href="#src.RFSA.RFSA.save_csv">save_csv</a></code></li>
+<li><code><a title="src.RFSA.RFSA.send_cmd" href="#src.RFSA.RFSA.send_cmd">send_cmd</a></code></li>
+<li><code><a title="src.RFSA.RFSA.set_params" href="#src.RFSA.RFSA.set_params">set_params</a></code></li>
+<li><code><a title="src.RFSA.RFSA.set_start_frequency" href="#src.RFSA.RFSA.set_start_frequency">set_start_frequency</a></code></li>
+<li><code><a title="src.RFSA.RFSA.set_stop_frequency" href="#src.RFSA.RFSA.set_stop_frequency">set_stop_frequency</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

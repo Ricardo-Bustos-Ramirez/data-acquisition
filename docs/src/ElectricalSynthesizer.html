@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>src.ElectricalSynthesizer API documentation</title>
+<meta name="description" content="Created on Thu Apr 30 16:40:47 2020 …" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>src.ElectricalSynthesizer</code></h1>
+</header>
+<section id="section-intro">
+<p>Created on Thu Apr 30 16:40:47 2020</p>
+<p>@author: ri679647</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># -*- coding: utf-8 -*-
+&#34;&#34;&#34;
+Created on Thu Apr 30 16:40:47 2020
+
+@author: ri679647
+&#34;&#34;&#34;
+
+# -*- coding: utf-8 -*-
+&#34;&#34;&#34;
+Created on Mon Mar 30 12:18:19 2020
+
+@author: ri679647
+&#34;&#34;&#34;
+
+import sys
+import pyvisa
+import time
+import numpy as np
+import matplotlib.pyplot as plt
+import datetime
+import csv
+#import types
+
+GLOBAL_TOUT =  100000   # IO time out in milliseconds
+MIN_FREQ = 10e6         # Minimum possible frequency 10 MHz
+MAX_FREQ = 40e9         # Maximum possible frequency 40 GHz
+
+class ElectricalSynthesizer():
+    def __init__(self,Port=None): 
+        self.connected = False
+        self.bool_sweep = False
+
+        self.parent=self
+        self.list_devices()
+        self.idn=&#39;IDN&#39;
+        self.idnMfg = &#39;XX&#39;
+        self.idnModel = &#39;XX&#39;
+        self.idnSerial = &#39;XX&#39;
+        self.idnFwRevision = &#39;XX&#39;
+        
+        self.psgFrequency = &#39;XX&#39;
+        self.powerAttenuation = &#39;XX&#39;
+           
+    def list_devices(self):
+        try:
+            self.rm = pyvisa.ResourceManager()
+            self.list = self.rm.list_resources()
+        except:
+            print(&#34;Couldn&#39;t find resource manager&#34;)
+                
+    def connect(self, device): 
+        try:          
+            self.handle = self.rm.open_resource(device)
+
+            self.print_message(&#39;connected to...&#39;)
+            self.idn = str(self.handle.query(&#34;*IDN?&#34;))
+            print(self.idn)
+            self.idn = self.idn.split(&#39;,&#39;)
+            self.idnMfg = self.idn[0]                                           # Manufacturer
+            self.idnModel = self.idn[1]                                         # Model number
+            self.idnSerialNumber = self.idn[2]                                  # Serial number
+            self.idnFwRevision = self.idn[3]                                    # Firmware revision
+            self.connected = True
+#            
+#            self.print_message(&#39;setting parameters&#39;)
+#            self.set_params()
+            
+        except Exception as e:
+            self.print_message(e)
+            self.print_message(&#39; Couldn\&#39;t connect to: &#39; + device)
+            sys.exit() # From InfiniiVision Script
+    
+    def reset_psg(self):
+        self.handle.write(&#34;*RST&#34;)
+    
+    def get_measurement_params(self):
+        self.handle.write(&#34;DCL&#34;)
+    
+    def set_params(self):
+        self.handle.timeout = GLOBAL_TOUT
+        ## Clear the instrument bus
+        self.handle.clear()
+
+        ## Clear any previously encountered errors
+        self.handle.write(&#34;*CLS&#34;)
+    
+    def get_psg_frequency(self):
+        self.psgFrequency = float(self.handle.query(&#34;FREQUENCY:FIXED?&#34;))
+        print(&#39;Output frequency: &#39; + str(self.psgFrequency) + &#39; Hz&#39;)
+        return self.psgFrequency
+    
+    def set_psg_frequency(self, psgFrequency):
+        if isinstance(psgFrequency, float):
+            if psgFrequency &gt;= MIN_FREQ and psgFrequency &lt;= MAX_FREQ:
+                self.handle.write(&#34;FREQUENCY:FIXED &#34; + str(psgFrequency))
+            else:
+                print(&#34;Set frequency outside of PSG limits.&#34;)
+        else:
+            print(&#34;Invalid type for set frequency.&#34;)
+
+    def get_psg_output_state(self):
+        psgOutputNumState = self.handle.query(&#34;OUTPUT?&#34;)
+        print(&#34;PSG output state: &#34; + psgOutputNumState)
+        if psgOutputNumState == &#39;0\n&#39;:
+            self.psgOutputState = &#39;OFF&#39;
+            print(&#39;PSG output is OFF.&#39;)
+        elif psgOutputNumState == &#39;1\n&#39;:
+            self.psgOutputState = &#39;ON&#39;
+            print(&#39;PSG output is ON.&#39;)
+        else:
+            self.psgOutputState = &#39;XX&#39;
+            print(&#39;PSG output is an unknown state.&#39;)
+        return self.psgOutputState
+    
+    def set_psg_output_state(self, psgState):
+        self.handle.write(&#34;OUTPUT &#34; + psgState)
+
+    def get_power_attenuation(self):
+        self.powerAttenuation = float(self.handle.query(&#34;POWER:ATTENUATION?&#34;))
+        print(&#39;Output attenuation: &#39; + str(self.powerAttenuation) + &#39; dB&#39;)
+        return self.powerAttenuation
+    
+    def set_power_attenuation(self, powerAttenuation):        
+        self.handle.write(&#34;POWER:ATTENUATION 10DB&#34;)# + powerAttenuation)
+    
+    def close(self):
+        
+        self.handle.write(&#34;*CLS&#34;)
+        time.sleep(1)
+        try:
+            self.rm.close()
+        except Exception as e:
+            self.print_message(e)
+            sys.exit() # From InfiniiVision Script                
+        time.sleep(1)
+        self.print_message(&#39;Connection to &#39; + self.idnMfg + &#39;: &#39; + self.idnModel + &#39; closed&#39;)
+        
+    def send_cmd(self, cmd):
+        
+        self.handle.write(cmd)
+         
+        response = self.handle.read_raw()
+        return response
+    
+    def print_message(self, msg):
+        if __name__ == &#34;__main__&#34;:
+            print(msg)
+   
+    def save_csv(self, fileName):
+        try:
+            with open(fileName, &#39;w&#39;,newline=&#39;&#39;) as fileWriter:
+                self.csvWriter = csv.writer(fileWriter, delimiter = &#39;\t&#39;)
+                now_ = datetime.datetime.now()
+                timestamp = now_.strftime(&#39;%m/%d/%Y %H:%M hrs&#39;)
+                self.csvWriter.writerow([timestamp])
+                self.csvWriter.writerow([&#34;Record length: &#34; + self.get_waveform_sample_points()])
+#                self.csvWriter.writerow([&#34;Sample interval: &#34; + self.sensitivity + &#34; (sec)&#34;])
+#                self.csvWriter.writerow([&#34;Trigger point: &#34; + self.rbw_wl + &#34; (samples)&#34;])
+                self.csvWriter.writerow([&#34;Source: &#34; + self.get_waveform_channel()])
+#                self.csvWriter.writerow([&#34;Vertical units: &#34; + self.span_wl])
+                self.csvWriter.writerow([&#34;Vertical scale: &#34; + self.get_waveform_vertical_scale()])
+#                self.csvWriter.writerow([&#34;Horizontal units: &#34; + self.span_wl])
+                self.csvWriter.writerow([&#34;Horizontal scale: &#34; + self.get_waveform_horizontal_scale()])
+                self.csvWriter.writerow([&#34;Acquisition mode: &#34; + self.get_waveform_mode()])
+#                self.csvWriter.writerow([&#34;Number of averages: &#34; + self.span_wl])
+                self.csvWriter.writerow([&#34;Time (s) Waveform (V)&#34;])
+                for (x,y) in zip(self.get_waveform_time(), self.get_waveform_volts()):
+                    self.csvWriter.writerow((&#39;{0:.12f}&#39;.format(x),&#39;{0:.12f}&#39;.format(y)))
+        except Exception as e:
+            print(e)
+            self.close()
+            print(&#34;Error while saving &#34; + fileName + &#34; file&#34;)
+
+if __name__ == &#34;__main__&#34;:
+    PSG = ElectricalSynthesizer()
+    print(PSG.list)
+    PSG.connect(&#39;GPIB0::19::INSTR&#39;)
+    PSG.set_params()
+    PSG.reset_psg()
+    PSG.get_psg_frequency()
+    PSG.set_psg_frequency(11.0125e9)
+    PSG.get_psg_frequency()
+#    PSG.set_power_attenuation(&#39;10DB&#39;)
+    PSG.get_power_attenuation()
+    PSG.get_psg_output_state()
+
+    PSG.close()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="src.ElectricalSynthesizer.ElectricalSynthesizer"><code class="flex name class">
+<span>class <span class="ident">ElectricalSynthesizer</span></span>
+<span>(</span><span>Port=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ElectricalSynthesizer():
+    def __init__(self,Port=None): 
+        self.connected = False
+        self.bool_sweep = False
+
+        self.parent=self
+        self.list_devices()
+        self.idn=&#39;IDN&#39;
+        self.idnMfg = &#39;XX&#39;
+        self.idnModel = &#39;XX&#39;
+        self.idnSerial = &#39;XX&#39;
+        self.idnFwRevision = &#39;XX&#39;
+        
+        self.psgFrequency = &#39;XX&#39;
+        self.powerAttenuation = &#39;XX&#39;
+           
+    def list_devices(self):
+        try:
+            self.rm = pyvisa.ResourceManager()
+            self.list = self.rm.list_resources()
+        except:
+            print(&#34;Couldn&#39;t find resource manager&#34;)
+                
+    def connect(self, device): 
+        try:          
+            self.handle = self.rm.open_resource(device)
+
+            self.print_message(&#39;connected to...&#39;)
+            self.idn = str(self.handle.query(&#34;*IDN?&#34;))
+            print(self.idn)
+            self.idn = self.idn.split(&#39;,&#39;)
+            self.idnMfg = self.idn[0]                                           # Manufacturer
+            self.idnModel = self.idn[1]                                         # Model number
+            self.idnSerialNumber = self.idn[2]                                  # Serial number
+            self.idnFwRevision = self.idn[3]                                    # Firmware revision
+            self.connected = True
+#            
+#            self.print_message(&#39;setting parameters&#39;)
+#            self.set_params()
+            
+        except Exception as e:
+            self.print_message(e)
+            self.print_message(&#39; Couldn\&#39;t connect to: &#39; + device)
+            sys.exit() # From InfiniiVision Script
+    
+    def reset_psg(self):
+        self.handle.write(&#34;*RST&#34;)
+    
+    def get_measurement_params(self):
+        self.handle.write(&#34;DCL&#34;)
+    
+    def set_params(self):
+        self.handle.timeout = GLOBAL_TOUT
+        ## Clear the instrument bus
+        self.handle.clear()
+
+        ## Clear any previously encountered errors
+        self.handle.write(&#34;*CLS&#34;)
+    
+    def get_psg_frequency(self):
+        self.psgFrequency = float(self.handle.query(&#34;FREQUENCY:FIXED?&#34;))
+        print(&#39;Output frequency: &#39; + str(self.psgFrequency) + &#39; Hz&#39;)
+        return self.psgFrequency
+    
+    def set_psg_frequency(self, psgFrequency):
+        if isinstance(psgFrequency, float):
+            if psgFrequency &gt;= MIN_FREQ and psgFrequency &lt;= MAX_FREQ:
+                self.handle.write(&#34;FREQUENCY:FIXED &#34; + str(psgFrequency))
+            else:
+                print(&#34;Set frequency outside of PSG limits.&#34;)
+        else:
+            print(&#34;Invalid type for set frequency.&#34;)
+
+    def get_psg_output_state(self):
+        psgOutputNumState = self.handle.query(&#34;OUTPUT?&#34;)
+        print(&#34;PSG output state: &#34; + psgOutputNumState)
+        if psgOutputNumState == &#39;0\n&#39;:
+            self.psgOutputState = &#39;OFF&#39;
+            print(&#39;PSG output is OFF.&#39;)
+        elif psgOutputNumState == &#39;1\n&#39;:
+            self.psgOutputState = &#39;ON&#39;
+            print(&#39;PSG output is ON.&#39;)
+        else:
+            self.psgOutputState = &#39;XX&#39;
+            print(&#39;PSG output is an unknown state.&#39;)
+        return self.psgOutputState
+    
+    def set_psg_output_state(self, psgState):
+        self.handle.write(&#34;OUTPUT &#34; + psgState)
+
+    def get_power_attenuation(self):
+        self.powerAttenuation = float(self.handle.query(&#34;POWER:ATTENUATION?&#34;))
+        print(&#39;Output attenuation: &#39; + str(self.powerAttenuation) + &#39; dB&#39;)
+        return self.powerAttenuation
+    
+    def set_power_attenuation(self, powerAttenuation):        
+        self.handle.write(&#34;POWER:ATTENUATION 10DB&#34;)# + powerAttenuation)
+    
+    def close(self):
+        
+        self.handle.write(&#34;*CLS&#34;)
+        time.sleep(1)
+        try:
+            self.rm.close()
+        except Exception as e:
+            self.print_message(e)
+            sys.exit() # From InfiniiVision Script                
+        time.sleep(1)
+        self.print_message(&#39;Connection to &#39; + self.idnMfg + &#39;: &#39; + self.idnModel + &#39; closed&#39;)
+        
+    def send_cmd(self, cmd):
+        
+        self.handle.write(cmd)
+         
+        response = self.handle.read_raw()
+        return response
+    
+    def print_message(self, msg):
+        if __name__ == &#34;__main__&#34;:
+            print(msg)
+   
+    def save_csv(self, fileName):
+        try:
+            with open(fileName, &#39;w&#39;,newline=&#39;&#39;) as fileWriter:
+                self.csvWriter = csv.writer(fileWriter, delimiter = &#39;\t&#39;)
+                now_ = datetime.datetime.now()
+                timestamp = now_.strftime(&#39;%m/%d/%Y %H:%M hrs&#39;)
+                self.csvWriter.writerow([timestamp])
+                self.csvWriter.writerow([&#34;Record length: &#34; + self.get_waveform_sample_points()])
+#                self.csvWriter.writerow([&#34;Sample interval: &#34; + self.sensitivity + &#34; (sec)&#34;])
+#                self.csvWriter.writerow([&#34;Trigger point: &#34; + self.rbw_wl + &#34; (samples)&#34;])
+                self.csvWriter.writerow([&#34;Source: &#34; + self.get_waveform_channel()])
+#                self.csvWriter.writerow([&#34;Vertical units: &#34; + self.span_wl])
+                self.csvWriter.writerow([&#34;Vertical scale: &#34; + self.get_waveform_vertical_scale()])
+#                self.csvWriter.writerow([&#34;Horizontal units: &#34; + self.span_wl])
+                self.csvWriter.writerow([&#34;Horizontal scale: &#34; + self.get_waveform_horizontal_scale()])
+                self.csvWriter.writerow([&#34;Acquisition mode: &#34; + self.get_waveform_mode()])
+#                self.csvWriter.writerow([&#34;Number of averages: &#34; + self.span_wl])
+                self.csvWriter.writerow([&#34;Time (s) Waveform (V)&#34;])
+                for (x,y) in zip(self.get_waveform_time(), self.get_waveform_volts()):
+                    self.csvWriter.writerow((&#39;{0:.12f}&#39;.format(x),&#39;{0:.12f}&#39;.format(y)))
+        except Exception as e:
+            print(e)
+            self.close()
+            print(&#34;Error while saving &#34; + fileName + &#34; file&#34;)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="src.ElectricalSynthesizer.ElectricalSynthesizer.close"><code class="name flex">
+<span>def <span class="ident">close</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def close(self):
+    
+    self.handle.write(&#34;*CLS&#34;)
+    time.sleep(1)
+    try:
+        self.rm.close()
+    except Exception as e:
+        self.print_message(e)
+        sys.exit() # From InfiniiVision Script                
+    time.sleep(1)
+    self.print_message(&#39;Connection to &#39; + self.idnMfg + &#39;: &#39; + self.idnModel + &#39; closed&#39;)</code></pre>
+</details>
+</dd>
+<dt id="src.ElectricalSynthesizer.ElectricalSynthesizer.connect"><code class="name flex">
+<span>def <span class="ident">connect</span></span>(<span>self, device)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def connect(self, device): 
+        try:          
+            self.handle = self.rm.open_resource(device)
+
+            self.print_message(&#39;connected to...&#39;)
+            self.idn = str(self.handle.query(&#34;*IDN?&#34;))
+            print(self.idn)
+            self.idn = self.idn.split(&#39;,&#39;)
+            self.idnMfg = self.idn[0]                                           # Manufacturer
+            self.idnModel = self.idn[1]                                         # Model number
+            self.idnSerialNumber = self.idn[2]                                  # Serial number
+            self.idnFwRevision = self.idn[3]                                    # Firmware revision
+            self.connected = True
+#            
+#            self.print_message(&#39;setting parameters&#39;)
+#            self.set_params()
+            
+        except Exception as e:
+            self.print_message(e)
+            self.print_message(&#39; Couldn\&#39;t connect to: &#39; + device)
+            sys.exit() # From InfiniiVision Script</code></pre>
+</details>
+</dd>
+<dt id="src.ElectricalSynthesizer.ElectricalSynthesizer.get_measurement_params"><code class="name flex">
+<span>def <span class="ident">get_measurement_params</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_measurement_params(self):
+    self.handle.write(&#34;DCL&#34;)</code></pre>
+</details>
+</dd>
+<dt id="src.ElectricalSynthesizer.ElectricalSynthesizer.get_power_attenuation"><code class="name flex">
+<span>def <span class="ident">get_power_attenuation</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_power_attenuation(self):
+    self.powerAttenuation = float(self.handle.query(&#34;POWER:ATTENUATION?&#34;))
+    print(&#39;Output attenuation: &#39; + str(self.powerAttenuation) + &#39; dB&#39;)
+    return self.powerAttenuation</code></pre>
+</details>
+</dd>
+<dt id="src.ElectricalSynthesizer.ElectricalSynthesizer.get_psg_frequency"><code class="name flex">
+<span>def <span class="ident">get_psg_frequency</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_psg_frequency(self):
+    self.psgFrequency = float(self.handle.query(&#34;FREQUENCY:FIXED?&#34;))
+    print(&#39;Output frequency: &#39; + str(self.psgFrequency) + &#39; Hz&#39;)
+    return self.psgFrequency</code></pre>
+</details>
+</dd>
+<dt id="src.ElectricalSynthesizer.ElectricalSynthesizer.get_psg_output_state"><code class="name flex">
+<span>def <span class="ident">get_psg_output_state</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_psg_output_state(self):
+    psgOutputNumState = self.handle.query(&#34;OUTPUT?&#34;)
+    print(&#34;PSG output state: &#34; + psgOutputNumState)
+    if psgOutputNumState == &#39;0\n&#39;:
+        self.psgOutputState = &#39;OFF&#39;
+        print(&#39;PSG output is OFF.&#39;)
+    elif psgOutputNumState == &#39;1\n&#39;:
+        self.psgOutputState = &#39;ON&#39;
+        print(&#39;PSG output is ON.&#39;)
+    else:
+        self.psgOutputState = &#39;XX&#39;
+        print(&#39;PSG output is an unknown state.&#39;)
+    return self.psgOutputState</code></pre>
+</details>
+</dd>
+<dt id="src.ElectricalSynthesizer.ElectricalSynthesizer.list_devices"><code class="name flex">
+<span>def <span class="ident">list_devices</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def list_devices(self):
+    try:
+        self.rm = pyvisa.ResourceManager()
+        self.list = self.rm.list_resources()
+    except:
+        print(&#34;Couldn&#39;t find resource manager&#34;)</code></pre>
+</details>
+</dd>
+<dt id="src.ElectricalSynthesizer.ElectricalSynthesizer.print_message"><code class="name flex">
+<span>def <span class="ident">print_message</span></span>(<span>self, msg)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def print_message(self, msg):
+    if __name__ == &#34;__main__&#34;:
+        print(msg)</code></pre>
+</details>
+</dd>
+<dt id="src.ElectricalSynthesizer.ElectricalSynthesizer.reset_psg"><code class="name flex">
+<span>def <span class="ident">reset_psg</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reset_psg(self):
+    self.handle.write(&#34;*RST&#34;)</code></pre>
+</details>
+</dd>
+<dt id="src.ElectricalSynthesizer.ElectricalSynthesizer.save_csv"><code class="name flex">
+<span>def <span class="ident">save_csv</span></span>(<span>self, fileName)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def save_csv(self, fileName):
+        try:
+            with open(fileName, &#39;w&#39;,newline=&#39;&#39;) as fileWriter:
+                self.csvWriter = csv.writer(fileWriter, delimiter = &#39;\t&#39;)
+                now_ = datetime.datetime.now()
+                timestamp = now_.strftime(&#39;%m/%d/%Y %H:%M hrs&#39;)
+                self.csvWriter.writerow([timestamp])
+                self.csvWriter.writerow([&#34;Record length: &#34; + self.get_waveform_sample_points()])
+#                self.csvWriter.writerow([&#34;Sample interval: &#34; + self.sensitivity + &#34; (sec)&#34;])
+#                self.csvWriter.writerow([&#34;Trigger point: &#34; + self.rbw_wl + &#34; (samples)&#34;])
+                self.csvWriter.writerow([&#34;Source: &#34; + self.get_waveform_channel()])
+#                self.csvWriter.writerow([&#34;Vertical units: &#34; + self.span_wl])
+                self.csvWriter.writerow([&#34;Vertical scale: &#34; + self.get_waveform_vertical_scale()])
+#                self.csvWriter.writerow([&#34;Horizontal units: &#34; + self.span_wl])
+                self.csvWriter.writerow([&#34;Horizontal scale: &#34; + self.get_waveform_horizontal_scale()])
+                self.csvWriter.writerow([&#34;Acquisition mode: &#34; + self.get_waveform_mode()])
+#                self.csvWriter.writerow([&#34;Number of averages: &#34; + self.span_wl])
+                self.csvWriter.writerow([&#34;Time (s) Waveform (V)&#34;])
+                for (x,y) in zip(self.get_waveform_time(), self.get_waveform_volts()):
+                    self.csvWriter.writerow((&#39;{0:.12f}&#39;.format(x),&#39;{0:.12f}&#39;.format(y)))
+        except Exception as e:
+            print(e)
+            self.close()
+            print(&#34;Error while saving &#34; + fileName + &#34; file&#34;)</code></pre>
+</details>
+</dd>
+<dt id="src.ElectricalSynthesizer.ElectricalSynthesizer.send_cmd"><code class="name flex">
+<span>def <span class="ident">send_cmd</span></span>(<span>self, cmd)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def send_cmd(self, cmd):
+    
+    self.handle.write(cmd)
+     
+    response = self.handle.read_raw()
+    return response</code></pre>
+</details>
+</dd>
+<dt id="src.ElectricalSynthesizer.ElectricalSynthesizer.set_params"><code class="name flex">
+<span>def <span class="ident">set_params</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_params(self):
+    self.handle.timeout = GLOBAL_TOUT
+    ## Clear the instrument bus
+    self.handle.clear()
+
+    ## Clear any previously encountered errors
+    self.handle.write(&#34;*CLS&#34;)</code></pre>
+</details>
+</dd>
+<dt id="src.ElectricalSynthesizer.ElectricalSynthesizer.set_power_attenuation"><code class="name flex">
+<span>def <span class="ident">set_power_attenuation</span></span>(<span>self, powerAttenuation)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_power_attenuation(self, powerAttenuation):        
+    self.handle.write(&#34;POWER:ATTENUATION 10DB&#34;)# + powerAttenuation)</code></pre>
+</details>
+</dd>
+<dt id="src.ElectricalSynthesizer.ElectricalSynthesizer.set_psg_frequency"><code class="name flex">
+<span>def <span class="ident">set_psg_frequency</span></span>(<span>self, psgFrequency)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_psg_frequency(self, psgFrequency):
+    if isinstance(psgFrequency, float):
+        if psgFrequency &gt;= MIN_FREQ and psgFrequency &lt;= MAX_FREQ:
+            self.handle.write(&#34;FREQUENCY:FIXED &#34; + str(psgFrequency))
+        else:
+            print(&#34;Set frequency outside of PSG limits.&#34;)
+    else:
+        print(&#34;Invalid type for set frequency.&#34;)</code></pre>
+</details>
+</dd>
+<dt id="src.ElectricalSynthesizer.ElectricalSynthesizer.set_psg_output_state"><code class="name flex">
+<span>def <span class="ident">set_psg_output_state</span></span>(<span>self, psgState)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_psg_output_state(self, psgState):
+    self.handle.write(&#34;OUTPUT &#34; + psgState)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="src" href="index.html">src</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="src.ElectricalSynthesizer.ElectricalSynthesizer" href="#src.ElectricalSynthesizer.ElectricalSynthesizer">ElectricalSynthesizer</a></code></h4>
+<ul class="">
+<li><code><a title="src.ElectricalSynthesizer.ElectricalSynthesizer.close" href="#src.ElectricalSynthesizer.ElectricalSynthesizer.close">close</a></code></li>
+<li><code><a title="src.ElectricalSynthesizer.ElectricalSynthesizer.connect" href="#src.ElectricalSynthesizer.ElectricalSynthesizer.connect">connect</a></code></li>
+<li><code><a title="src.ElectricalSynthesizer.ElectricalSynthesizer.get_measurement_params" href="#src.ElectricalSynthesizer.ElectricalSynthesizer.get_measurement_params">get_measurement_params</a></code></li>
+<li><code><a title="src.ElectricalSynthesizer.ElectricalSynthesizer.get_power_attenuation" href="#src.ElectricalSynthesizer.ElectricalSynthesizer.get_power_attenuation">get_power_attenuation</a></code></li>
+<li><code><a title="src.ElectricalSynthesizer.ElectricalSynthesizer.get_psg_frequency" href="#src.ElectricalSynthesizer.ElectricalSynthesizer.get_psg_frequency">get_psg_frequency</a></code></li>
+<li><code><a title="src.ElectricalSynthesizer.ElectricalSynthesizer.get_psg_output_state" href="#src.ElectricalSynthesizer.ElectricalSynthesizer.get_psg_output_state">get_psg_output_state</a></code></li>
+<li><code><a title="src.ElectricalSynthesizer.ElectricalSynthesizer.list_devices" href="#src.ElectricalSynthesizer.ElectricalSynthesizer.list_devices">list_devices</a></code></li>
+<li><code><a title="src.ElectricalSynthesizer.ElectricalSynthesizer.print_message" href="#src.ElectricalSynthesizer.ElectricalSynthesizer.print_message">print_message</a></code></li>
+<li><code><a title="src.ElectricalSynthesizer.ElectricalSynthesizer.reset_psg" href="#src.ElectricalSynthesizer.ElectricalSynthesizer.reset_psg">reset_psg</a></code></li>
+<li><code><a title="src.ElectricalSynthesizer.ElectricalSynthesizer.save_csv" href="#src.ElectricalSynthesizer.ElectricalSynthesizer.save_csv">save_csv</a></code></li>
+<li><code><a title="src.ElectricalSynthesizer.ElectricalSynthesizer.send_cmd" href="#src.ElectricalSynthesizer.ElectricalSynthesizer.send_cmd">send_cmd</a></code></li>
+<li><code><a title="src.ElectricalSynthesizer.ElectricalSynthesizer.set_params" href="#src.ElectricalSynthesizer.ElectricalSynthesizer.set_params">set_params</a></code></li>
+<li><code><a title="src.ElectricalSynthesizer.ElectricalSynthesizer.set_power_attenuation" href="#src.ElectricalSynthesizer.ElectricalSynthesizer.set_power_attenuation">set_power_attenuation</a></code></li>
+<li><code><a title="src.ElectricalSynthesizer.ElectricalSynthesizer.set_psg_frequency" href="#src.ElectricalSynthesizer.ElectricalSynthesizer.set_psg_frequency">set_psg_frequency</a></code></li>
+<li><code><a title="src.ElectricalSynthesizer.ElectricalSynthesizer.set_psg_output_state" href="#src.ElectricalSynthesizer.ElectricalSynthesizer.set_psg_output_state">set_psg_output_state</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

@@ -1,0 +1,1653 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>src.TDS API documentation</title>
+<meta name="description" content="Created on Mon Mar 30 12:18:19 2020 …" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>src.TDS</code></h1>
+</header>
+<section id="section-intro">
+<p>Created on Mon Mar 30 12:18:19 2020</p>
+<p>@author: ri679647</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># -*- coding: utf-8 -*-
+&#34;&#34;&#34;
+Created on Mon Mar 30 12:18:19 2020
+
+@author: ri679647
+&#34;&#34;&#34;
+
+import sys
+import pyvisa
+import time
+import numpy as np
+import matplotlib.pyplot as plt
+import datetime
+import csv
+#import types
+
+GLOBAL_TOUT =  100000 # IO time out in milliseconds
+
+class TDS():
+    def __init__(self,Port=None): 
+        self.connected = False
+        self.bool_sweep = False
+
+        self.parent=self
+        self.list_devices()
+        self.idn=&#39;IDN&#39;
+        self.idnMfg = &#39;XX&#39;
+        self.idnModel = &#39;XX&#39;
+        self.idnOscFwVersionNum = &#39;XX&#39;
+        self.idnModFwVersionNum = &#39;XX&#39;
+        
+        self.numAvg = &#39;0&#39;
+        self.channelBandwidth = [&#39;0&#39;,&#39;0&#39;]                                       # Full bandwidth of oscilloscope
+        self.channelCoupling = [&#39;0&#39;,&#39;0&#39;]                                        # For a 2 channel oscilloscope
+        self.channelInvert = [&#39;0&#39;,&#39;0&#39;]                                          # Channel inversion
+        self.channelPosition = [&#39;0&#39;,&#39;0&#39;]                                        # DC position of channel
+        self.channelProbe = [&#39;0&#39;,&#39;0&#39;]                                           # Channel probe
+        self.channelScale = [&#39;0&#39;,&#39;0&#39;]                                           # Channel scale
+        self.channelVolts = [&#39;0&#39;,&#39;0&#39;]                                           # Channel Volts multiplier
+        
+        self.waveformChannel = &#39;XX&#39;
+        self.waveformCoupling = &#39;XX&#39;
+        self.waveformVerScale = &#39;XX&#39;
+        self.waveformHorScale = &#39;XX&#39;
+        self.waveformSamplePoints = &#39;XX&#39;
+        self.waveformMode = &#39;XX&#39;   
+        self.timeArray = []
+        self.waveformArray = []
+            
+    def list_devices(self):
+        try:
+            self.rm = pyvisa.ResourceManager()
+            self.list = self.rm.list_resources()
+        except:
+            print(&#34;Couldn&#39;t find resource manager&#34;)
+                
+    def connect(self, device): 
+        try:          
+            self.handle = self.rm.open_resource(device)
+
+            self.print_message(&#39;connected to...&#39;)
+            self.idn = str(self.handle.query(&#34;*IDN?&#34;))
+#            print(self.idn)
+            self.idn = self.idn.split(&#39;,&#39;)
+            self.idnMfg = self.idn[0]                                           # Manufacturer
+            self.idnModel = self.idn[1]                                         # Model number
+            self.idnOscFwVersionNum = self.idn[3].split(&#39; &#39;)[1].split(&#39;:&#39;)[1]   # Oscilloscope firmware version number
+            self.idnModFwVersionNum = self.idn[3].split(&#39; &#39;)[2].split(&#39;:&#39;)[2]   # Module firmware version number
+            self.idnModType = self.idn[3].split(&#39; &#39;)[2].split(&#39;:&#39;)[1]           # Module type
+            print(self.idnMfg + &#39;\nModel: &#39; + self.idnModel, &#39;\nOscilloscope FW: &#39; + self.idnOscFwVersionNum 
+                  + &#39;\nModel FW: &#39; + self.idnModFwVersionNum + &#39;\nModule type: &#39; + self.idnModType)
+            self.connected = True
+            
+            self.print_message(&#39;setting parameters&#39;)
+            self.set_params()
+            
+        except Exception as e:
+            self.print_message(e)
+            self.print_message(&#39; Couldn\&#39;t connect to: &#39; + device)
+            sys.exit() # From InfiniiVision Script
+    
+    def get_measurement_params(self):
+        self.handle.write(&#34;DCL&#34;)
+    
+    def set_params(self):
+        self.handle.timeout = GLOBAL_TOUT
+        ## Clear the instrument bus
+        self.handle.clear()
+
+        ## Clear any previously encountered errors
+        self.handle.write(&#34;*CLS&#34;)
+        self.handle.write(&#34;HEADER OFF&#34;)
+#        print(&#34;Initial parameters set.&#34;)
+    
+    def get_number_averages(self):
+        self.numAvg = int(self.handle.query(&#34;ACQuire:NUMAVg?&#34;))
+        return self.numAvg
+        
+    def set_number_averages(self, numAvg):
+        if numAvg == 4 or 16 or 64 or 128:
+            self.handle.write(&#34;ACQuire:NUMAVg &#34; + str(numAvg))
+            print(&#39;Number of averages: &#39; + str(numAvg) + &#39; set&#39;)
+        else:
+            print(&#39;Incorrect number of averages: &#39; + str(numAvg))
+    
+    def get_osc_state(self):
+        print(self.handle.query(&#34;ACQuire:MODE?&#34;))
+        oscNumState = self.handle.query(&#34;ACQuire:STATE?&#34;)
+        print(&#39;Oscilloscope state: &#39; + oscNumState)
+        if oscNumState == &#39;0\n&#39;:
+            self.oscState = &#39;STOP&#39;
+        elif  oscNumState == &#39;1\n&#39;:
+            self.oscState = &#39;RUN&#39;
+        else:
+            self.oscState = &#39;ERROR&#39;
+        return self.oscState
+    
+    def set_osc_state(self, oscState): # RUN or STOP
+        if oscState != 0:#&#39;RUN&#39; or &#39;STOP&#39;:
+#            self.oscState = oscState
+            self.handle.write(&#34;ACQuire:STATE &#34; + oscState)      
+    
+    def get_channel_bandwidth(self, channelNumber):
+        if channelNumber == 1 or 2:
+            channelBandwidthState = self.handle.query(&#34;CH&#34; + str(channelNumber) + &#34;:BANdwidth?&#34;)
+            print(&#39;CH&#39; + str(channelNumber) + &#39; bandwidth state: &#39; + channelBandwidthState)
+            if channelBandwidthState == &#39;OFF\n&#39;:
+                self.channelBandwidth[channelNumber-1] = &#39;OFF&#39;      # 20 MHz
+            elif channelBandwidthState == &#39;ON\n&#39;:
+                self.channelBandwidth[channelNumber-1] = &#39;ON&#39;       # Full oscilloscope bandwidth
+            else:
+                self.channelBandwidth[channelNumber-1] = &#39;0&#39;
+                print(&#39;Invalid CH&#39; + str(channelNumber) + &#39; state: &#39; + channelBandwidthState)
+        else:
+            print(&#39;Invalid channel number: &#39; + str(channelNumber))           
+    
+    def set_channel_bandwidth(self, channelNumber, channelBandwidthState):
+        if channelNumber == 1 or 2:
+            if channelBandwidthState == &#39;ON&#39; or &#39;OFF&#39;:
+                self.handle.write(&#34;CH&#34; + str(channelNumber) + &#34;:BANdwidth &#34; + channelBandwidthState)
+            else:
+                print(&#39;Invalid CH&#39; + str(channelNumber) + &#39; state: &#39; + channelBandwidthState)
+        else:
+            print(&#39;Invalid channel number: &#39; + str(channelNumber))
+    
+    def get_channel_coupling(self, channelNumber):
+        if channelNumber == 1 or 2:
+            channelCoupling = self.handle.query(&#34;CH&#34; + str(channelNumber) + &#34;:COUPling?&#34;)
+            print(&#39;CH&#39; + str(channelNumber) + &#39; coupling: &#39; + channelCoupling)
+            if channelCoupling == &#39;DC\n&#39;:
+                self.channelBandwidth[channelNumber-1] = &#39;DC&#39;       # DC coupling
+            elif channelCoupling == &#39;AC\n&#39;:
+                self.channelBandwidth[channelNumber-1] = &#39;AC&#39;       # AC coupling
+            elif channelCoupling == &#39;GND\n&#39;:
+                self.channelBandwidth[channelNumber-1] = &#39;GND&#39;      # Ground coupling, only a flat ground-level waveform
+            else:
+                self.channelCoupling[channelNumber-1] = &#39;0&#39;
+                print(&#39;Invalid CH&#39; + str(channelNumber) + &#39; coupling: &#39; + channelCoupling)
+        else:
+            print(&#39;Invalid channel number: &#39; + str(channelNumber))
+        return self.channelBandwidth[channelNumber-1]
+    
+    def set_channel_coupling(self, channelNumber, channelCoupling):
+        if channelNumber == 1 or 2:
+            if channelCoupling == &#39;DC&#39; or &#39;AC&#39; or &#39;GND&#39;:
+                self.handle.write(&#34;CH&#34; + str(channelNumber) + &#34;:COUPLing &#34; + channelCoupling)
+            else:
+                print(&#39;Invalid CH&#39; + str(channelNumber) + &#39; coupling: &#39; + channelCoupling)
+        else:
+            print(&#39;Invalid channel number: &#39; + str(channelNumber))
+
+    def get_channel_scale(self, channelNumber):
+        if channelNumber == 1 or 2:
+            channelPosition = self.handle.query(&#34;CH&#34; + str(channelNumber) + &#34;:SCAle?&#34;)
+#            print(&#39;CH&#39; + str(channelNumber) + &#39; scale: &#39; + channelPosition + &#39; V/div&#39;)
+            self.channelPosition[channelNumber-1] = float(channelPosition)      # DC coupling
+        else:
+            print(&#39;Invalid channel number: &#39; + str(channelNumber))
+        return self.channelPosition[channelNumber-1]
+    
+    def set_channel_scale(self, channelNumber, channelScale):
+        if channelNumber == 1 or 2:
+            if isinstance(channelScale, float):
+                if abs(channelScale) &lt;= 5 and abs(channelScale) &gt;= 2e-3:            # 2mV/div &lt; x &lt; 5 V/div
+                    self.handle.write(&#34;CH&#34; + str(channelNumber) + &#34;:SCAle &#34; + str(channelScale))
+                else:
+                    print(&#39;Invalid CH&#39; + str(channelNumber) + &#39; scale, outside limits: &#39; + str(channelScale))
+            else:
+                print(&#39;Invalid CH&#39; + str(channelNumber) + &#39; scale type: &#39; + str(type(channelScale)))
+        else:
+            print(&#39;Invalid channel number: &#39; + str(channelNumber))
+    
+    def get_channel_position(self, channelNumber):
+        if channelNumber == 1 or 2:
+            channelPosition = self.handle.query(&#34;CH&#34; + str(channelNumber) + &#34;:POSITION?&#34;)
+#            print(&#39;CH&#39; + str(channelNumber) + &#39; position: &#39; + channelPosition)
+            self.channelPosition[channelNumber-1] = float(channelPosition)       # DC coupling
+        else:
+            print(&#39;Invalid channel number: &#39; + str(channelNumber))
+        return self.channelPosition[channelNumber-1]
+    
+    def set_channel_position(self, channelNumber, channelPosition):
+        if channelNumber == 1 or 2:
+            if isinstance(channelPosition, float):
+                if abs(channelPosition) &lt; abs(self.get_channel_scale(channelNumber)):
+                    self.handle.write(&#34;CH&#34; + str(channelNumber) + &#34;:POSITION &#34; + str(channelPosition))
+                else:
+                    print(&#39;Invalid CH&#39; + str(channelNumber) + &#39; position, bigger than scale: &#39; + str(channelPosition))
+            else:
+                print(&#39;Invalid CH&#39; + str(channelNumber) + &#39; position type: &#39; + str(type(channelPosition)))
+        else:
+            print(&#39;Invalid channel number: &#39; + str(channelNumber))
+    
+    def get_horizontal_parameters(self):
+        horizontalParams = self.handle.query(&#34;HORizontal?&#34;)
+        print(horizontalParams)
+    
+    def set_time_scale(self,timeScale):
+        self.handle.write(&#34;HORizontal:DELay:SCAle &#34; + str(timeScale))
+    
+    def set_waveform_parameters(self, waveformId):
+#        print(&#34;Waveform ID: &#34; + waveformId)
+        waveformId = waveformId.split(&#34;,&#34;)
+        self.waveformChannel = waveformId[0]
+        self.waveformCoupling = waveformId[1]
+        self.waveformVerScale = waveformId[2]
+        self.waveformHorScale = waveformId[3]
+        self.waveformSamplePoints = waveformId[4]
+        self.waveformMode = waveformId[5]
+#        print(&#34;Waveform parameters \nSource: &#34; + self.waveformChannel + &#34;\nCoupling: &#34; + self.waveformCoupling +
+#              &#34;\nVertical scale: &#34; + self.waveformVerScale + &#34;\nHorizontal scale: &#34; + self.waveformHorScale +
+#              &#34;\nSample points: &#34; + self.waveformSamplePoints + &#34;\nAcquisition mode: &#34; + self.waveformMode)
+    
+    def get_waveform_channel(self):
+        if self.waveformChannel != &#39;XX&#39;:
+            return self.waveformChannel
+        else:
+            print(&#39;Waveform channel error.&#39;)
+            return &#39;XX&#39;
+
+    def get_waveform_coupling(self):
+        if self.waveformCoupling != &#39;XX&#39;:
+            return self.waveformCoupling
+        else:
+            print(&#39;Waveform coupling error.&#39;)
+            return &#39;XX&#39; 
+        
+    def get_waveform_vertical_scale(self):
+        if self.waveformVerScale != &#39;XX&#39;:
+            return self.waveformVerScale
+        else:
+            print(&#39;Waveform vertical scale error.&#39;)
+            return &#39;XX&#39;
+
+    def get_waveform_horizontal_scale(self):
+        if self.waveformHorScale != &#39;XX&#39;:
+            return self.waveformHorScale
+        else:
+            print(&#39;Waveform horizontal scale error.&#39;)
+            return &#39;XX&#39;
+
+    def get_waveform_sample_points(self):
+        if self.waveformSamplePoints != &#39;XX&#39;:
+            return self.waveformSamplePoints
+        else:
+            print(&#39;Waveform sample points error.&#39;)
+            return &#39;XX&#39;
+
+    def get_waveform_mode(self):
+        if self.waveformMode != &#39;XX&#39;:
+            return self.waveformMode
+        else:
+            print(&#39;Waveform mode error.&#39;)
+            return &#39;XX&#39;
+        
+    def set_waveform_values(self, waveformAscii, xZero, xIncrement, pointsOffset, yZero, yMultiplier, yOffset):
+        waveformAscii = waveformAscii.split(&#39;,&#39;)
+        print(len(waveformAscii))
+        waveformTime = []
+        waveformVolts = []
+        y = 0
+        n = 0
+        for y in waveformAscii:
+            y = int(y)
+            waveformTime.append(  xZero + xIncrement  * ( n - pointsOffset) )
+            waveformVolts.append( yZero + yMultiplier * ( y - yOffset     ) )            
+            n = n + 1
+        self.timeArray = np.array(waveformTime)
+        self.waveformArray = np.array(waveformVolts)     
+    
+    def get_waveform_time(self):
+        return self.timeArray
+    
+    def get_waveform_volts(self):
+        return self.waveformArray
+        
+    def acquire_waveform(self):
+        self.handle.write(&#34;DATA:ENCDG ASCIi&#34;)
+        self.handle.write(&#34;DATA:WIDth 2&#34;)
+        waveformParameters = self.handle.query(&#34;WFMPre?&#34;)
+#        print(&#39;Waveform parameters: &#39; + waveformParameters)
+        waveformParameters = waveformParameters.split(&#34;;&#34;)
+        waveformId = waveformParameters[6].replace(&#39;&#34;&#39;,&#39;&#39;)  # WFID
+        xIncrement = float(waveformParameters[8])           # XINcr
+        pointsOffset = float(waveformParameters[9])         # PT_Off
+        xZero = float(waveformParameters[10])               # XZERo
+        xUnit = waveformParameters[11].replace(&#39;&#34;&#39;,&#39;&#39;)      # XUNit
+        yMultiplier = float(waveformParameters[12])         # YMUlt
+        yZero = float(waveformParameters[13])               # YZEro
+        yOffset = float(waveformParameters[14])             # YOFf
+        yUnit = waveformParameters[15].replace(&#39;&#34;&#39;,&#39;&#39;)      # YUNit
+#        print(&#34;\nXINcr: &#34; + str(xIncrement) + &#34;\nPT_Off: &#34; + str(pointsOffset) + &#34;\nXZEro: &#34; + str(xZero) +
+#              &#34;\nXUNit: &#34; + xUnit           + &#34;\nYMUlt: &#34;  + str(yMultiplier)  + &#34;\nYZEro: &#34; + str(yZero) + 
+#              &#34;\nYOFf: &#34;  + str(yOffset)    + &#34;\nYUNit: &#34;  + yUnit)
+        waveformAscii = self.handle.query(&#34;CURVE?&#34;)
+        self.set_waveform_parameters(waveformId)
+        self.set_waveform_values(waveformAscii, xZero, xIncrement, pointsOffset, yZero, yMultiplier, yOffset)
+        plt.plot(self.get_waveform_time(), self.get_waveform_volts(), &#39;b&#39;)
+    
+    def close(self):
+        try:
+            self.handle.write(&#34;*CLS&#34;)
+        except Exception as e:
+            self.print_message(e)
+            sys.exit() # From InfiniiVision Script                              
+        time.sleep(1)
+        try:
+            self.rm.close()
+        except Exception as e:
+            self.print_message(e)
+            sys.exit() # From InfiniiVision Script                
+        time.sleep(1)
+        self.print_message(&#39;Connection to &#39; + self.idnMfg + &#39;: &#39; + self.idnModel + &#39; closed&#39;)
+        
+    def send_cmd(self, cmd):
+        
+        self.handle.write(cmd)
+         
+        response = self.handle.read_raw()
+        return response
+    
+    def cont_sweep(self):
+
+        self.bool_sweep = True
+        self.handle.write(&#34;RPT&#34;)
+    
+    def single_sweep(self):
+
+        self.bool_sweep = True
+        self.handle.write(&#34;SGL&#34;)
+        time.sleep(1)
+        response = self.handle.query(&#34;SWEEP?&#34;)
+        while response != &#34;0\r\n&#34;:
+            time.sleep(1)
+            response = self.handle.query(&#34;SWEEP?&#34;)
+#            print(response)
+        self.bool_sweep = False
+
+    def print_message(self, msg):
+        if __name__ == &#34;__main__&#34;:
+            print(msg)
+            
+#    def get_measurement_parameters(channelNumber):
+#        measurementParameters.append(self.get_)
+    
+    def save_csv(self, fileName):
+        try:
+            with open(fileName, &#39;w&#39;,newline=&#39;&#39;) as fileWriter:
+                self.csvWriter = csv.writer(fileWriter, delimiter = &#39;\t&#39;)
+                now_ = datetime.datetime.now()
+                timestamp = now_.strftime(&#39;%m/%d/%Y %H:%M hrs&#39;)
+                self.csvWriter.writerow([timestamp])
+                self.csvWriter.writerow([&#34;Record length: &#34; + self.get_waveform_sample_points()])
+#                self.csvWriter.writerow([&#34;Sample interval: &#34; + self.sensitivity + &#34; (sec)&#34;])
+#                self.csvWriter.writerow([&#34;Trigger point: &#34; + self.rbw_wl + &#34; (samples)&#34;])
+                self.csvWriter.writerow([&#34;Source: &#34; + self.get_waveform_channel()])
+#                self.csvWriter.writerow([&#34;Vertical units: &#34; + self.span_wl])
+                self.csvWriter.writerow([&#34;Vertical scale: &#34; + self.get_waveform_vertical_scale()])
+#                self.csvWriter.writerow([&#34;Horizontal units: &#34; + self.span_wl])
+                self.csvWriter.writerow([&#34;Horizontal scale: &#34; + self.get_waveform_horizontal_scale()])
+                self.csvWriter.writerow([&#34;Acquisition mode: &#34; + self.get_waveform_mode()])
+#                self.csvWriter.writerow([&#34;Number of averages: &#34; + self.span_wl])
+                self.csvWriter.writerow([&#34;Time (s) Waveform (V)&#34;])
+                for (x,y) in zip(self.get_waveform_time(), self.get_waveform_volts()):
+                    self.csvWriter.writerow((&#39;{0:.12f}&#39;.format(x),&#39;{0:.12f}&#39;.format(y)))
+        except Exception as e:
+            print(e)
+            self.close()
+            print(&#34;Error while saving &#34; + fileName + &#34; file&#34;)
+    
+    def plot_waveform(self):
+        &#34;&#34;&#34;Plot the acquired waveform after function acquire_waveform().
+        &#34;&#34;&#34;
+        plt.plot(self.get_waveform_time(),self.get_waveform_volts(),&#39;b&#39;)
+        plt.axis([min(self.get_waveform_time()),max(self.get_waveform_time()),min(self.get_waveform_volts()),max(self.get_waveform_volts())])
+        plt.xlabel(&#39;Time (sec)&#39;)
+        plt.ylabel(&#39;Output (V)&#39;)
+        plt.show()
+
+if __name__ == &#34;__main__&#34;:
+    TDS = TDS()
+    print(TDS.list)
+    TDS.connect(&#39;GPIB0::5::INSTR&#39;)
+    TDS.get_measurement_params()
+#    TDS.acquire_waveform()
+    TDS.get_channel_bandwidth(1)
+#    TDS.set_channel_coupling(1,&#39;DC\n&#39;)
+    TDS.get_channel_coupling(1)
+    TDS.set_osc_state(&#39;RUN&#39;)
+    TDS.get_osc_state()    
+    TDS.set_channel_position(1,-4.0E0)
+    TDS.get_channel_position(1)
+    TDS.set_channel_scale(1,1E0)
+    TDS.get_channel_scale(1)
+    TDS.get_horizontal_parameters()
+    TDS.set_time_scale(2.0E-6)
+    TDS.get_horizontal_parameters()
+    TDS.acquire_waveform()
+    TDS.save_csv(&#34;H:\\Home\\UP\\Shared\\Ricardo\\Python Scripts\\Test files\\TDS210.csv&#34;)
+    time.sleep(10)
+    TDS.close()
+#    DCA.check_channel()
+#    filePath = &#39;H:\\Home\\UP\\Shared\\Ricardo\\Python Scripts\\Reference material&#39;
+#    fileName  = &#39;TDStest.txt&#39;
+#    DCA.save_waveform(filePath, fileName)
+    
+#    OSA.single_sweep()
+#    time.sleep(1)
+#    print(&#39;Now&#39;)
+#    OSA.get_span()
+#    OSA.get_rbw()
+#    OSA.get_sensitivity()
+#    OSA.get_ref_lvl()
+#    OSA.grab_spectrum(&#39;B&#39;)
+#    now_ = datetime.datetime.now()
+#    timestamp = now_.strftime(&#34;%Y-%m-%d_%H-%M&#34;)
+#    filePath = &#39;H:\\Home\\UP\\Shared\\Ricardo\\Dual Tone Injection Locking\\CW PDH Laser\\CW Homemade\\THz EOM Comb\\EOM Comb with CW-PDH\\OSA&#39;
+#    fileName = &#39;llCW-FPE-PDH_PM-IM-30.001GHz-10dBm-1.16V_SOA_150mA_HWEDFA_680mW_1000mSMF_100m-HNLF-ND_Att-10mW_WS-AllPass_50-50-2&#39; + &#39;.csv &#39;
+##    np.savez(filename, wavelength=OSA.wavelength, waveform=OSA.waveform)
+##    OSA.save_csv(filePath + &#39;\\&#39; + fileName)
+#    OSA.close()
+#    
+#    plt.plot(OSA.wavelength,OSA.waveform,&#39;b&#39;)
+#    plt.axis([min(OSA.wavelength),max(OSA.wavelength),max([min(OSA.waveform),-75]),max(OSA.waveform)])
+#    plt.xlabel(&#39;Wavelength (nm)&#39;)
+#    plt.ylabel(&#39;Output (dB)&#39;)
+#    plt.show()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="src.TDS.TDS"><code class="flex name class">
+<span>class <span class="ident">TDS</span></span>
+<span>(</span><span>Port=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TDS():
+    def __init__(self,Port=None): 
+        self.connected = False
+        self.bool_sweep = False
+
+        self.parent=self
+        self.list_devices()
+        self.idn=&#39;IDN&#39;
+        self.idnMfg = &#39;XX&#39;
+        self.idnModel = &#39;XX&#39;
+        self.idnOscFwVersionNum = &#39;XX&#39;
+        self.idnModFwVersionNum = &#39;XX&#39;
+        
+        self.numAvg = &#39;0&#39;
+        self.channelBandwidth = [&#39;0&#39;,&#39;0&#39;]                                       # Full bandwidth of oscilloscope
+        self.channelCoupling = [&#39;0&#39;,&#39;0&#39;]                                        # For a 2 channel oscilloscope
+        self.channelInvert = [&#39;0&#39;,&#39;0&#39;]                                          # Channel inversion
+        self.channelPosition = [&#39;0&#39;,&#39;0&#39;]                                        # DC position of channel
+        self.channelProbe = [&#39;0&#39;,&#39;0&#39;]                                           # Channel probe
+        self.channelScale = [&#39;0&#39;,&#39;0&#39;]                                           # Channel scale
+        self.channelVolts = [&#39;0&#39;,&#39;0&#39;]                                           # Channel Volts multiplier
+        
+        self.waveformChannel = &#39;XX&#39;
+        self.waveformCoupling = &#39;XX&#39;
+        self.waveformVerScale = &#39;XX&#39;
+        self.waveformHorScale = &#39;XX&#39;
+        self.waveformSamplePoints = &#39;XX&#39;
+        self.waveformMode = &#39;XX&#39;   
+        self.timeArray = []
+        self.waveformArray = []
+            
+    def list_devices(self):
+        try:
+            self.rm = pyvisa.ResourceManager()
+            self.list = self.rm.list_resources()
+        except:
+            print(&#34;Couldn&#39;t find resource manager&#34;)
+                
+    def connect(self, device): 
+        try:          
+            self.handle = self.rm.open_resource(device)
+
+            self.print_message(&#39;connected to...&#39;)
+            self.idn = str(self.handle.query(&#34;*IDN?&#34;))
+#            print(self.idn)
+            self.idn = self.idn.split(&#39;,&#39;)
+            self.idnMfg = self.idn[0]                                           # Manufacturer
+            self.idnModel = self.idn[1]                                         # Model number
+            self.idnOscFwVersionNum = self.idn[3].split(&#39; &#39;)[1].split(&#39;:&#39;)[1]   # Oscilloscope firmware version number
+            self.idnModFwVersionNum = self.idn[3].split(&#39; &#39;)[2].split(&#39;:&#39;)[2]   # Module firmware version number
+            self.idnModType = self.idn[3].split(&#39; &#39;)[2].split(&#39;:&#39;)[1]           # Module type
+            print(self.idnMfg + &#39;\nModel: &#39; + self.idnModel, &#39;\nOscilloscope FW: &#39; + self.idnOscFwVersionNum 
+                  + &#39;\nModel FW: &#39; + self.idnModFwVersionNum + &#39;\nModule type: &#39; + self.idnModType)
+            self.connected = True
+            
+            self.print_message(&#39;setting parameters&#39;)
+            self.set_params()
+            
+        except Exception as e:
+            self.print_message(e)
+            self.print_message(&#39; Couldn\&#39;t connect to: &#39; + device)
+            sys.exit() # From InfiniiVision Script
+    
+    def get_measurement_params(self):
+        self.handle.write(&#34;DCL&#34;)
+    
+    def set_params(self):
+        self.handle.timeout = GLOBAL_TOUT
+        ## Clear the instrument bus
+        self.handle.clear()
+
+        ## Clear any previously encountered errors
+        self.handle.write(&#34;*CLS&#34;)
+        self.handle.write(&#34;HEADER OFF&#34;)
+#        print(&#34;Initial parameters set.&#34;)
+    
+    def get_number_averages(self):
+        self.numAvg = int(self.handle.query(&#34;ACQuire:NUMAVg?&#34;))
+        return self.numAvg
+        
+    def set_number_averages(self, numAvg):
+        if numAvg == 4 or 16 or 64 or 128:
+            self.handle.write(&#34;ACQuire:NUMAVg &#34; + str(numAvg))
+            print(&#39;Number of averages: &#39; + str(numAvg) + &#39; set&#39;)
+        else:
+            print(&#39;Incorrect number of averages: &#39; + str(numAvg))
+    
+    def get_osc_state(self):
+        print(self.handle.query(&#34;ACQuire:MODE?&#34;))
+        oscNumState = self.handle.query(&#34;ACQuire:STATE?&#34;)
+        print(&#39;Oscilloscope state: &#39; + oscNumState)
+        if oscNumState == &#39;0\n&#39;:
+            self.oscState = &#39;STOP&#39;
+        elif  oscNumState == &#39;1\n&#39;:
+            self.oscState = &#39;RUN&#39;
+        else:
+            self.oscState = &#39;ERROR&#39;
+        return self.oscState
+    
+    def set_osc_state(self, oscState): # RUN or STOP
+        if oscState != 0:#&#39;RUN&#39; or &#39;STOP&#39;:
+#            self.oscState = oscState
+            self.handle.write(&#34;ACQuire:STATE &#34; + oscState)      
+    
+    def get_channel_bandwidth(self, channelNumber):
+        if channelNumber == 1 or 2:
+            channelBandwidthState = self.handle.query(&#34;CH&#34; + str(channelNumber) + &#34;:BANdwidth?&#34;)
+            print(&#39;CH&#39; + str(channelNumber) + &#39; bandwidth state: &#39; + channelBandwidthState)
+            if channelBandwidthState == &#39;OFF\n&#39;:
+                self.channelBandwidth[channelNumber-1] = &#39;OFF&#39;      # 20 MHz
+            elif channelBandwidthState == &#39;ON\n&#39;:
+                self.channelBandwidth[channelNumber-1] = &#39;ON&#39;       # Full oscilloscope bandwidth
+            else:
+                self.channelBandwidth[channelNumber-1] = &#39;0&#39;
+                print(&#39;Invalid CH&#39; + str(channelNumber) + &#39; state: &#39; + channelBandwidthState)
+        else:
+            print(&#39;Invalid channel number: &#39; + str(channelNumber))           
+    
+    def set_channel_bandwidth(self, channelNumber, channelBandwidthState):
+        if channelNumber == 1 or 2:
+            if channelBandwidthState == &#39;ON&#39; or &#39;OFF&#39;:
+                self.handle.write(&#34;CH&#34; + str(channelNumber) + &#34;:BANdwidth &#34; + channelBandwidthState)
+            else:
+                print(&#39;Invalid CH&#39; + str(channelNumber) + &#39; state: &#39; + channelBandwidthState)
+        else:
+            print(&#39;Invalid channel number: &#39; + str(channelNumber))
+    
+    def get_channel_coupling(self, channelNumber):
+        if channelNumber == 1 or 2:
+            channelCoupling = self.handle.query(&#34;CH&#34; + str(channelNumber) + &#34;:COUPling?&#34;)
+            print(&#39;CH&#39; + str(channelNumber) + &#39; coupling: &#39; + channelCoupling)
+            if channelCoupling == &#39;DC\n&#39;:
+                self.channelBandwidth[channelNumber-1] = &#39;DC&#39;       # DC coupling
+            elif channelCoupling == &#39;AC\n&#39;:
+                self.channelBandwidth[channelNumber-1] = &#39;AC&#39;       # AC coupling
+            elif channelCoupling == &#39;GND\n&#39;:
+                self.channelBandwidth[channelNumber-1] = &#39;GND&#39;      # Ground coupling, only a flat ground-level waveform
+            else:
+                self.channelCoupling[channelNumber-1] = &#39;0&#39;
+                print(&#39;Invalid CH&#39; + str(channelNumber) + &#39; coupling: &#39; + channelCoupling)
+        else:
+            print(&#39;Invalid channel number: &#39; + str(channelNumber))
+        return self.channelBandwidth[channelNumber-1]
+    
+    def set_channel_coupling(self, channelNumber, channelCoupling):
+        if channelNumber == 1 or 2:
+            if channelCoupling == &#39;DC&#39; or &#39;AC&#39; or &#39;GND&#39;:
+                self.handle.write(&#34;CH&#34; + str(channelNumber) + &#34;:COUPLing &#34; + channelCoupling)
+            else:
+                print(&#39;Invalid CH&#39; + str(channelNumber) + &#39; coupling: &#39; + channelCoupling)
+        else:
+            print(&#39;Invalid channel number: &#39; + str(channelNumber))
+
+    def get_channel_scale(self, channelNumber):
+        if channelNumber == 1 or 2:
+            channelPosition = self.handle.query(&#34;CH&#34; + str(channelNumber) + &#34;:SCAle?&#34;)
+#            print(&#39;CH&#39; + str(channelNumber) + &#39; scale: &#39; + channelPosition + &#39; V/div&#39;)
+            self.channelPosition[channelNumber-1] = float(channelPosition)      # DC coupling
+        else:
+            print(&#39;Invalid channel number: &#39; + str(channelNumber))
+        return self.channelPosition[channelNumber-1]
+    
+    def set_channel_scale(self, channelNumber, channelScale):
+        if channelNumber == 1 or 2:
+            if isinstance(channelScale, float):
+                if abs(channelScale) &lt;= 5 and abs(channelScale) &gt;= 2e-3:            # 2mV/div &lt; x &lt; 5 V/div
+                    self.handle.write(&#34;CH&#34; + str(channelNumber) + &#34;:SCAle &#34; + str(channelScale))
+                else:
+                    print(&#39;Invalid CH&#39; + str(channelNumber) + &#39; scale, outside limits: &#39; + str(channelScale))
+            else:
+                print(&#39;Invalid CH&#39; + str(channelNumber) + &#39; scale type: &#39; + str(type(channelScale)))
+        else:
+            print(&#39;Invalid channel number: &#39; + str(channelNumber))
+    
+    def get_channel_position(self, channelNumber):
+        if channelNumber == 1 or 2:
+            channelPosition = self.handle.query(&#34;CH&#34; + str(channelNumber) + &#34;:POSITION?&#34;)
+#            print(&#39;CH&#39; + str(channelNumber) + &#39; position: &#39; + channelPosition)
+            self.channelPosition[channelNumber-1] = float(channelPosition)       # DC coupling
+        else:
+            print(&#39;Invalid channel number: &#39; + str(channelNumber))
+        return self.channelPosition[channelNumber-1]
+    
+    def set_channel_position(self, channelNumber, channelPosition):
+        if channelNumber == 1 or 2:
+            if isinstance(channelPosition, float):
+                if abs(channelPosition) &lt; abs(self.get_channel_scale(channelNumber)):
+                    self.handle.write(&#34;CH&#34; + str(channelNumber) + &#34;:POSITION &#34; + str(channelPosition))
+                else:
+                    print(&#39;Invalid CH&#39; + str(channelNumber) + &#39; position, bigger than scale: &#39; + str(channelPosition))
+            else:
+                print(&#39;Invalid CH&#39; + str(channelNumber) + &#39; position type: &#39; + str(type(channelPosition)))
+        else:
+            print(&#39;Invalid channel number: &#39; + str(channelNumber))
+    
+    def get_horizontal_parameters(self):
+        horizontalParams = self.handle.query(&#34;HORizontal?&#34;)
+        print(horizontalParams)
+    
+    def set_time_scale(self,timeScale):
+        self.handle.write(&#34;HORizontal:DELay:SCAle &#34; + str(timeScale))
+    
+    def set_waveform_parameters(self, waveformId):
+#        print(&#34;Waveform ID: &#34; + waveformId)
+        waveformId = waveformId.split(&#34;,&#34;)
+        self.waveformChannel = waveformId[0]
+        self.waveformCoupling = waveformId[1]
+        self.waveformVerScale = waveformId[2]
+        self.waveformHorScale = waveformId[3]
+        self.waveformSamplePoints = waveformId[4]
+        self.waveformMode = waveformId[5]
+#        print(&#34;Waveform parameters \nSource: &#34; + self.waveformChannel + &#34;\nCoupling: &#34; + self.waveformCoupling +
+#              &#34;\nVertical scale: &#34; + self.waveformVerScale + &#34;\nHorizontal scale: &#34; + self.waveformHorScale +
+#              &#34;\nSample points: &#34; + self.waveformSamplePoints + &#34;\nAcquisition mode: &#34; + self.waveformMode)
+    
+    def get_waveform_channel(self):
+        if self.waveformChannel != &#39;XX&#39;:
+            return self.waveformChannel
+        else:
+            print(&#39;Waveform channel error.&#39;)
+            return &#39;XX&#39;
+
+    def get_waveform_coupling(self):
+        if self.waveformCoupling != &#39;XX&#39;:
+            return self.waveformCoupling
+        else:
+            print(&#39;Waveform coupling error.&#39;)
+            return &#39;XX&#39; 
+        
+    def get_waveform_vertical_scale(self):
+        if self.waveformVerScale != &#39;XX&#39;:
+            return self.waveformVerScale
+        else:
+            print(&#39;Waveform vertical scale error.&#39;)
+            return &#39;XX&#39;
+
+    def get_waveform_horizontal_scale(self):
+        if self.waveformHorScale != &#39;XX&#39;:
+            return self.waveformHorScale
+        else:
+            print(&#39;Waveform horizontal scale error.&#39;)
+            return &#39;XX&#39;
+
+    def get_waveform_sample_points(self):
+        if self.waveformSamplePoints != &#39;XX&#39;:
+            return self.waveformSamplePoints
+        else:
+            print(&#39;Waveform sample points error.&#39;)
+            return &#39;XX&#39;
+
+    def get_waveform_mode(self):
+        if self.waveformMode != &#39;XX&#39;:
+            return self.waveformMode
+        else:
+            print(&#39;Waveform mode error.&#39;)
+            return &#39;XX&#39;
+        
+    def set_waveform_values(self, waveformAscii, xZero, xIncrement, pointsOffset, yZero, yMultiplier, yOffset):
+        waveformAscii = waveformAscii.split(&#39;,&#39;)
+        print(len(waveformAscii))
+        waveformTime = []
+        waveformVolts = []
+        y = 0
+        n = 0
+        for y in waveformAscii:
+            y = int(y)
+            waveformTime.append(  xZero + xIncrement  * ( n - pointsOffset) )
+            waveformVolts.append( yZero + yMultiplier * ( y - yOffset     ) )            
+            n = n + 1
+        self.timeArray = np.array(waveformTime)
+        self.waveformArray = np.array(waveformVolts)     
+    
+    def get_waveform_time(self):
+        return self.timeArray
+    
+    def get_waveform_volts(self):
+        return self.waveformArray
+        
+    def acquire_waveform(self):
+        self.handle.write(&#34;DATA:ENCDG ASCIi&#34;)
+        self.handle.write(&#34;DATA:WIDth 2&#34;)
+        waveformParameters = self.handle.query(&#34;WFMPre?&#34;)
+#        print(&#39;Waveform parameters: &#39; + waveformParameters)
+        waveformParameters = waveformParameters.split(&#34;;&#34;)
+        waveformId = waveformParameters[6].replace(&#39;&#34;&#39;,&#39;&#39;)  # WFID
+        xIncrement = float(waveformParameters[8])           # XINcr
+        pointsOffset = float(waveformParameters[9])         # PT_Off
+        xZero = float(waveformParameters[10])               # XZERo
+        xUnit = waveformParameters[11].replace(&#39;&#34;&#39;,&#39;&#39;)      # XUNit
+        yMultiplier = float(waveformParameters[12])         # YMUlt
+        yZero = float(waveformParameters[13])               # YZEro
+        yOffset = float(waveformParameters[14])             # YOFf
+        yUnit = waveformParameters[15].replace(&#39;&#34;&#39;,&#39;&#39;)      # YUNit
+#        print(&#34;\nXINcr: &#34; + str(xIncrement) + &#34;\nPT_Off: &#34; + str(pointsOffset) + &#34;\nXZEro: &#34; + str(xZero) +
+#              &#34;\nXUNit: &#34; + xUnit           + &#34;\nYMUlt: &#34;  + str(yMultiplier)  + &#34;\nYZEro: &#34; + str(yZero) + 
+#              &#34;\nYOFf: &#34;  + str(yOffset)    + &#34;\nYUNit: &#34;  + yUnit)
+        waveformAscii = self.handle.query(&#34;CURVE?&#34;)
+        self.set_waveform_parameters(waveformId)
+        self.set_waveform_values(waveformAscii, xZero, xIncrement, pointsOffset, yZero, yMultiplier, yOffset)
+        plt.plot(self.get_waveform_time(), self.get_waveform_volts(), &#39;b&#39;)
+    
+    def close(self):
+        try:
+            self.handle.write(&#34;*CLS&#34;)
+        except Exception as e:
+            self.print_message(e)
+            sys.exit() # From InfiniiVision Script                              
+        time.sleep(1)
+        try:
+            self.rm.close()
+        except Exception as e:
+            self.print_message(e)
+            sys.exit() # From InfiniiVision Script                
+        time.sleep(1)
+        self.print_message(&#39;Connection to &#39; + self.idnMfg + &#39;: &#39; + self.idnModel + &#39; closed&#39;)
+        
+    def send_cmd(self, cmd):
+        
+        self.handle.write(cmd)
+         
+        response = self.handle.read_raw()
+        return response
+    
+    def cont_sweep(self):
+
+        self.bool_sweep = True
+        self.handle.write(&#34;RPT&#34;)
+    
+    def single_sweep(self):
+
+        self.bool_sweep = True
+        self.handle.write(&#34;SGL&#34;)
+        time.sleep(1)
+        response = self.handle.query(&#34;SWEEP?&#34;)
+        while response != &#34;0\r\n&#34;:
+            time.sleep(1)
+            response = self.handle.query(&#34;SWEEP?&#34;)
+#            print(response)
+        self.bool_sweep = False
+
+    def print_message(self, msg):
+        if __name__ == &#34;__main__&#34;:
+            print(msg)
+            
+#    def get_measurement_parameters(channelNumber):
+#        measurementParameters.append(self.get_)
+    
+    def save_csv(self, fileName):
+        try:
+            with open(fileName, &#39;w&#39;,newline=&#39;&#39;) as fileWriter:
+                self.csvWriter = csv.writer(fileWriter, delimiter = &#39;\t&#39;)
+                now_ = datetime.datetime.now()
+                timestamp = now_.strftime(&#39;%m/%d/%Y %H:%M hrs&#39;)
+                self.csvWriter.writerow([timestamp])
+                self.csvWriter.writerow([&#34;Record length: &#34; + self.get_waveform_sample_points()])
+#                self.csvWriter.writerow([&#34;Sample interval: &#34; + self.sensitivity + &#34; (sec)&#34;])
+#                self.csvWriter.writerow([&#34;Trigger point: &#34; + self.rbw_wl + &#34; (samples)&#34;])
+                self.csvWriter.writerow([&#34;Source: &#34; + self.get_waveform_channel()])
+#                self.csvWriter.writerow([&#34;Vertical units: &#34; + self.span_wl])
+                self.csvWriter.writerow([&#34;Vertical scale: &#34; + self.get_waveform_vertical_scale()])
+#                self.csvWriter.writerow([&#34;Horizontal units: &#34; + self.span_wl])
+                self.csvWriter.writerow([&#34;Horizontal scale: &#34; + self.get_waveform_horizontal_scale()])
+                self.csvWriter.writerow([&#34;Acquisition mode: &#34; + self.get_waveform_mode()])
+#                self.csvWriter.writerow([&#34;Number of averages: &#34; + self.span_wl])
+                self.csvWriter.writerow([&#34;Time (s) Waveform (V)&#34;])
+                for (x,y) in zip(self.get_waveform_time(), self.get_waveform_volts()):
+                    self.csvWriter.writerow((&#39;{0:.12f}&#39;.format(x),&#39;{0:.12f}&#39;.format(y)))
+        except Exception as e:
+            print(e)
+            self.close()
+            print(&#34;Error while saving &#34; + fileName + &#34; file&#34;)
+    
+    def plot_waveform(self):
+        &#34;&#34;&#34;Plot the acquired waveform after function acquire_waveform().
+        &#34;&#34;&#34;
+        plt.plot(self.get_waveform_time(),self.get_waveform_volts(),&#39;b&#39;)
+        plt.axis([min(self.get_waveform_time()),max(self.get_waveform_time()),min(self.get_waveform_volts()),max(self.get_waveform_volts())])
+        plt.xlabel(&#39;Time (sec)&#39;)
+        plt.ylabel(&#39;Output (V)&#39;)
+        plt.show()</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="src.TDS.TDS.acquire_waveform"><code class="name flex">
+<span>def <span class="ident">acquire_waveform</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def acquire_waveform(self):
+        self.handle.write(&#34;DATA:ENCDG ASCIi&#34;)
+        self.handle.write(&#34;DATA:WIDth 2&#34;)
+        waveformParameters = self.handle.query(&#34;WFMPre?&#34;)
+#        print(&#39;Waveform parameters: &#39; + waveformParameters)
+        waveformParameters = waveformParameters.split(&#34;;&#34;)
+        waveformId = waveformParameters[6].replace(&#39;&#34;&#39;,&#39;&#39;)  # WFID
+        xIncrement = float(waveformParameters[8])           # XINcr
+        pointsOffset = float(waveformParameters[9])         # PT_Off
+        xZero = float(waveformParameters[10])               # XZERo
+        xUnit = waveformParameters[11].replace(&#39;&#34;&#39;,&#39;&#39;)      # XUNit
+        yMultiplier = float(waveformParameters[12])         # YMUlt
+        yZero = float(waveformParameters[13])               # YZEro
+        yOffset = float(waveformParameters[14])             # YOFf
+        yUnit = waveformParameters[15].replace(&#39;&#34;&#39;,&#39;&#39;)      # YUNit
+#        print(&#34;\nXINcr: &#34; + str(xIncrement) + &#34;\nPT_Off: &#34; + str(pointsOffset) + &#34;\nXZEro: &#34; + str(xZero) +
+#              &#34;\nXUNit: &#34; + xUnit           + &#34;\nYMUlt: &#34;  + str(yMultiplier)  + &#34;\nYZEro: &#34; + str(yZero) + 
+#              &#34;\nYOFf: &#34;  + str(yOffset)    + &#34;\nYUNit: &#34;  + yUnit)
+        waveformAscii = self.handle.query(&#34;CURVE?&#34;)
+        self.set_waveform_parameters(waveformId)
+        self.set_waveform_values(waveformAscii, xZero, xIncrement, pointsOffset, yZero, yMultiplier, yOffset)
+        plt.plot(self.get_waveform_time(), self.get_waveform_volts(), &#39;b&#39;)</code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.close"><code class="name flex">
+<span>def <span class="ident">close</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def close(self):
+    try:
+        self.handle.write(&#34;*CLS&#34;)
+    except Exception as e:
+        self.print_message(e)
+        sys.exit() # From InfiniiVision Script                              
+    time.sleep(1)
+    try:
+        self.rm.close()
+    except Exception as e:
+        self.print_message(e)
+        sys.exit() # From InfiniiVision Script                
+    time.sleep(1)
+    self.print_message(&#39;Connection to &#39; + self.idnMfg + &#39;: &#39; + self.idnModel + &#39; closed&#39;)</code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.connect"><code class="name flex">
+<span>def <span class="ident">connect</span></span>(<span>self, device)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def connect(self, device): 
+        try:          
+            self.handle = self.rm.open_resource(device)
+
+            self.print_message(&#39;connected to...&#39;)
+            self.idn = str(self.handle.query(&#34;*IDN?&#34;))
+#            print(self.idn)
+            self.idn = self.idn.split(&#39;,&#39;)
+            self.idnMfg = self.idn[0]                                           # Manufacturer
+            self.idnModel = self.idn[1]                                         # Model number
+            self.idnOscFwVersionNum = self.idn[3].split(&#39; &#39;)[1].split(&#39;:&#39;)[1]   # Oscilloscope firmware version number
+            self.idnModFwVersionNum = self.idn[3].split(&#39; &#39;)[2].split(&#39;:&#39;)[2]   # Module firmware version number
+            self.idnModType = self.idn[3].split(&#39; &#39;)[2].split(&#39;:&#39;)[1]           # Module type
+            print(self.idnMfg + &#39;\nModel: &#39; + self.idnModel, &#39;\nOscilloscope FW: &#39; + self.idnOscFwVersionNum 
+                  + &#39;\nModel FW: &#39; + self.idnModFwVersionNum + &#39;\nModule type: &#39; + self.idnModType)
+            self.connected = True
+            
+            self.print_message(&#39;setting parameters&#39;)
+            self.set_params()
+            
+        except Exception as e:
+            self.print_message(e)
+            self.print_message(&#39; Couldn\&#39;t connect to: &#39; + device)
+            sys.exit() # From InfiniiVision Script</code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.cont_sweep"><code class="name flex">
+<span>def <span class="ident">cont_sweep</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def cont_sweep(self):
+
+    self.bool_sweep = True
+    self.handle.write(&#34;RPT&#34;)</code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.get_channel_bandwidth"><code class="name flex">
+<span>def <span class="ident">get_channel_bandwidth</span></span>(<span>self, channelNumber)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_channel_bandwidth(self, channelNumber):
+    if channelNumber == 1 or 2:
+        channelBandwidthState = self.handle.query(&#34;CH&#34; + str(channelNumber) + &#34;:BANdwidth?&#34;)
+        print(&#39;CH&#39; + str(channelNumber) + &#39; bandwidth state: &#39; + channelBandwidthState)
+        if channelBandwidthState == &#39;OFF\n&#39;:
+            self.channelBandwidth[channelNumber-1] = &#39;OFF&#39;      # 20 MHz
+        elif channelBandwidthState == &#39;ON\n&#39;:
+            self.channelBandwidth[channelNumber-1] = &#39;ON&#39;       # Full oscilloscope bandwidth
+        else:
+            self.channelBandwidth[channelNumber-1] = &#39;0&#39;
+            print(&#39;Invalid CH&#39; + str(channelNumber) + &#39; state: &#39; + channelBandwidthState)
+    else:
+        print(&#39;Invalid channel number: &#39; + str(channelNumber))           </code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.get_channel_coupling"><code class="name flex">
+<span>def <span class="ident">get_channel_coupling</span></span>(<span>self, channelNumber)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_channel_coupling(self, channelNumber):
+    if channelNumber == 1 or 2:
+        channelCoupling = self.handle.query(&#34;CH&#34; + str(channelNumber) + &#34;:COUPling?&#34;)
+        print(&#39;CH&#39; + str(channelNumber) + &#39; coupling: &#39; + channelCoupling)
+        if channelCoupling == &#39;DC\n&#39;:
+            self.channelBandwidth[channelNumber-1] = &#39;DC&#39;       # DC coupling
+        elif channelCoupling == &#39;AC\n&#39;:
+            self.channelBandwidth[channelNumber-1] = &#39;AC&#39;       # AC coupling
+        elif channelCoupling == &#39;GND\n&#39;:
+            self.channelBandwidth[channelNumber-1] = &#39;GND&#39;      # Ground coupling, only a flat ground-level waveform
+        else:
+            self.channelCoupling[channelNumber-1] = &#39;0&#39;
+            print(&#39;Invalid CH&#39; + str(channelNumber) + &#39; coupling: &#39; + channelCoupling)
+    else:
+        print(&#39;Invalid channel number: &#39; + str(channelNumber))
+    return self.channelBandwidth[channelNumber-1]</code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.get_channel_position"><code class="name flex">
+<span>def <span class="ident">get_channel_position</span></span>(<span>self, channelNumber)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def get_channel_position(self, channelNumber):
+        if channelNumber == 1 or 2:
+            channelPosition = self.handle.query(&#34;CH&#34; + str(channelNumber) + &#34;:POSITION?&#34;)
+#            print(&#39;CH&#39; + str(channelNumber) + &#39; position: &#39; + channelPosition)
+            self.channelPosition[channelNumber-1] = float(channelPosition)       # DC coupling
+        else:
+            print(&#39;Invalid channel number: &#39; + str(channelNumber))
+        return self.channelPosition[channelNumber-1]</code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.get_channel_scale"><code class="name flex">
+<span>def <span class="ident">get_channel_scale</span></span>(<span>self, channelNumber)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def get_channel_scale(self, channelNumber):
+        if channelNumber == 1 or 2:
+            channelPosition = self.handle.query(&#34;CH&#34; + str(channelNumber) + &#34;:SCAle?&#34;)
+#            print(&#39;CH&#39; + str(channelNumber) + &#39; scale: &#39; + channelPosition + &#39; V/div&#39;)
+            self.channelPosition[channelNumber-1] = float(channelPosition)      # DC coupling
+        else:
+            print(&#39;Invalid channel number: &#39; + str(channelNumber))
+        return self.channelPosition[channelNumber-1]</code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.get_horizontal_parameters"><code class="name flex">
+<span>def <span class="ident">get_horizontal_parameters</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_horizontal_parameters(self):
+    horizontalParams = self.handle.query(&#34;HORizontal?&#34;)
+    print(horizontalParams)</code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.get_measurement_params"><code class="name flex">
+<span>def <span class="ident">get_measurement_params</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_measurement_params(self):
+    self.handle.write(&#34;DCL&#34;)</code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.get_number_averages"><code class="name flex">
+<span>def <span class="ident">get_number_averages</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_number_averages(self):
+    self.numAvg = int(self.handle.query(&#34;ACQuire:NUMAVg?&#34;))
+    return self.numAvg</code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.get_osc_state"><code class="name flex">
+<span>def <span class="ident">get_osc_state</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_osc_state(self):
+    print(self.handle.query(&#34;ACQuire:MODE?&#34;))
+    oscNumState = self.handle.query(&#34;ACQuire:STATE?&#34;)
+    print(&#39;Oscilloscope state: &#39; + oscNumState)
+    if oscNumState == &#39;0\n&#39;:
+        self.oscState = &#39;STOP&#39;
+    elif  oscNumState == &#39;1\n&#39;:
+        self.oscState = &#39;RUN&#39;
+    else:
+        self.oscState = &#39;ERROR&#39;
+    return self.oscState</code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.get_waveform_channel"><code class="name flex">
+<span>def <span class="ident">get_waveform_channel</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_waveform_channel(self):
+    if self.waveformChannel != &#39;XX&#39;:
+        return self.waveformChannel
+    else:
+        print(&#39;Waveform channel error.&#39;)
+        return &#39;XX&#39;</code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.get_waveform_coupling"><code class="name flex">
+<span>def <span class="ident">get_waveform_coupling</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_waveform_coupling(self):
+    if self.waveformCoupling != &#39;XX&#39;:
+        return self.waveformCoupling
+    else:
+        print(&#39;Waveform coupling error.&#39;)
+        return &#39;XX&#39; </code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.get_waveform_horizontal_scale"><code class="name flex">
+<span>def <span class="ident">get_waveform_horizontal_scale</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_waveform_horizontal_scale(self):
+    if self.waveformHorScale != &#39;XX&#39;:
+        return self.waveformHorScale
+    else:
+        print(&#39;Waveform horizontal scale error.&#39;)
+        return &#39;XX&#39;</code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.get_waveform_mode"><code class="name flex">
+<span>def <span class="ident">get_waveform_mode</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_waveform_mode(self):
+    if self.waveformMode != &#39;XX&#39;:
+        return self.waveformMode
+    else:
+        print(&#39;Waveform mode error.&#39;)
+        return &#39;XX&#39;</code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.get_waveform_sample_points"><code class="name flex">
+<span>def <span class="ident">get_waveform_sample_points</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_waveform_sample_points(self):
+    if self.waveformSamplePoints != &#39;XX&#39;:
+        return self.waveformSamplePoints
+    else:
+        print(&#39;Waveform sample points error.&#39;)
+        return &#39;XX&#39;</code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.get_waveform_time"><code class="name flex">
+<span>def <span class="ident">get_waveform_time</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_waveform_time(self):
+    return self.timeArray</code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.get_waveform_vertical_scale"><code class="name flex">
+<span>def <span class="ident">get_waveform_vertical_scale</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_waveform_vertical_scale(self):
+    if self.waveformVerScale != &#39;XX&#39;:
+        return self.waveformVerScale
+    else:
+        print(&#39;Waveform vertical scale error.&#39;)
+        return &#39;XX&#39;</code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.get_waveform_volts"><code class="name flex">
+<span>def <span class="ident">get_waveform_volts</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_waveform_volts(self):
+    return self.waveformArray</code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.list_devices"><code class="name flex">
+<span>def <span class="ident">list_devices</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def list_devices(self):
+    try:
+        self.rm = pyvisa.ResourceManager()
+        self.list = self.rm.list_resources()
+    except:
+        print(&#34;Couldn&#39;t find resource manager&#34;)</code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.plot_waveform"><code class="name flex">
+<span>def <span class="ident">plot_waveform</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Plot the acquired waveform after function acquire_waveform().</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def plot_waveform(self):
+    &#34;&#34;&#34;Plot the acquired waveform after function acquire_waveform().
+    &#34;&#34;&#34;
+    plt.plot(self.get_waveform_time(),self.get_waveform_volts(),&#39;b&#39;)
+    plt.axis([min(self.get_waveform_time()),max(self.get_waveform_time()),min(self.get_waveform_volts()),max(self.get_waveform_volts())])
+    plt.xlabel(&#39;Time (sec)&#39;)
+    plt.ylabel(&#39;Output (V)&#39;)
+    plt.show()</code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.print_message"><code class="name flex">
+<span>def <span class="ident">print_message</span></span>(<span>self, msg)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def print_message(self, msg):
+    if __name__ == &#34;__main__&#34;:
+        print(msg)</code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.save_csv"><code class="name flex">
+<span>def <span class="ident">save_csv</span></span>(<span>self, fileName)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def save_csv(self, fileName):
+        try:
+            with open(fileName, &#39;w&#39;,newline=&#39;&#39;) as fileWriter:
+                self.csvWriter = csv.writer(fileWriter, delimiter = &#39;\t&#39;)
+                now_ = datetime.datetime.now()
+                timestamp = now_.strftime(&#39;%m/%d/%Y %H:%M hrs&#39;)
+                self.csvWriter.writerow([timestamp])
+                self.csvWriter.writerow([&#34;Record length: &#34; + self.get_waveform_sample_points()])
+#                self.csvWriter.writerow([&#34;Sample interval: &#34; + self.sensitivity + &#34; (sec)&#34;])
+#                self.csvWriter.writerow([&#34;Trigger point: &#34; + self.rbw_wl + &#34; (samples)&#34;])
+                self.csvWriter.writerow([&#34;Source: &#34; + self.get_waveform_channel()])
+#                self.csvWriter.writerow([&#34;Vertical units: &#34; + self.span_wl])
+                self.csvWriter.writerow([&#34;Vertical scale: &#34; + self.get_waveform_vertical_scale()])
+#                self.csvWriter.writerow([&#34;Horizontal units: &#34; + self.span_wl])
+                self.csvWriter.writerow([&#34;Horizontal scale: &#34; + self.get_waveform_horizontal_scale()])
+                self.csvWriter.writerow([&#34;Acquisition mode: &#34; + self.get_waveform_mode()])
+#                self.csvWriter.writerow([&#34;Number of averages: &#34; + self.span_wl])
+                self.csvWriter.writerow([&#34;Time (s) Waveform (V)&#34;])
+                for (x,y) in zip(self.get_waveform_time(), self.get_waveform_volts()):
+                    self.csvWriter.writerow((&#39;{0:.12f}&#39;.format(x),&#39;{0:.12f}&#39;.format(y)))
+        except Exception as e:
+            print(e)
+            self.close()
+            print(&#34;Error while saving &#34; + fileName + &#34; file&#34;)</code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.send_cmd"><code class="name flex">
+<span>def <span class="ident">send_cmd</span></span>(<span>self, cmd)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def send_cmd(self, cmd):
+    
+    self.handle.write(cmd)
+     
+    response = self.handle.read_raw()
+    return response</code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.set_channel_bandwidth"><code class="name flex">
+<span>def <span class="ident">set_channel_bandwidth</span></span>(<span>self, channelNumber, channelBandwidthState)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_channel_bandwidth(self, channelNumber, channelBandwidthState):
+    if channelNumber == 1 or 2:
+        if channelBandwidthState == &#39;ON&#39; or &#39;OFF&#39;:
+            self.handle.write(&#34;CH&#34; + str(channelNumber) + &#34;:BANdwidth &#34; + channelBandwidthState)
+        else:
+            print(&#39;Invalid CH&#39; + str(channelNumber) + &#39; state: &#39; + channelBandwidthState)
+    else:
+        print(&#39;Invalid channel number: &#39; + str(channelNumber))</code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.set_channel_coupling"><code class="name flex">
+<span>def <span class="ident">set_channel_coupling</span></span>(<span>self, channelNumber, channelCoupling)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_channel_coupling(self, channelNumber, channelCoupling):
+    if channelNumber == 1 or 2:
+        if channelCoupling == &#39;DC&#39; or &#39;AC&#39; or &#39;GND&#39;:
+            self.handle.write(&#34;CH&#34; + str(channelNumber) + &#34;:COUPLing &#34; + channelCoupling)
+        else:
+            print(&#39;Invalid CH&#39; + str(channelNumber) + &#39; coupling: &#39; + channelCoupling)
+    else:
+        print(&#39;Invalid channel number: &#39; + str(channelNumber))</code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.set_channel_position"><code class="name flex">
+<span>def <span class="ident">set_channel_position</span></span>(<span>self, channelNumber, channelPosition)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_channel_position(self, channelNumber, channelPosition):
+    if channelNumber == 1 or 2:
+        if isinstance(channelPosition, float):
+            if abs(channelPosition) &lt; abs(self.get_channel_scale(channelNumber)):
+                self.handle.write(&#34;CH&#34; + str(channelNumber) + &#34;:POSITION &#34; + str(channelPosition))
+            else:
+                print(&#39;Invalid CH&#39; + str(channelNumber) + &#39; position, bigger than scale: &#39; + str(channelPosition))
+        else:
+            print(&#39;Invalid CH&#39; + str(channelNumber) + &#39; position type: &#39; + str(type(channelPosition)))
+    else:
+        print(&#39;Invalid channel number: &#39; + str(channelNumber))</code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.set_channel_scale"><code class="name flex">
+<span>def <span class="ident">set_channel_scale</span></span>(<span>self, channelNumber, channelScale)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_channel_scale(self, channelNumber, channelScale):
+    if channelNumber == 1 or 2:
+        if isinstance(channelScale, float):
+            if abs(channelScale) &lt;= 5 and abs(channelScale) &gt;= 2e-3:            # 2mV/div &lt; x &lt; 5 V/div
+                self.handle.write(&#34;CH&#34; + str(channelNumber) + &#34;:SCAle &#34; + str(channelScale))
+            else:
+                print(&#39;Invalid CH&#39; + str(channelNumber) + &#39; scale, outside limits: &#39; + str(channelScale))
+        else:
+            print(&#39;Invalid CH&#39; + str(channelNumber) + &#39; scale type: &#39; + str(type(channelScale)))
+    else:
+        print(&#39;Invalid channel number: &#39; + str(channelNumber))</code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.set_number_averages"><code class="name flex">
+<span>def <span class="ident">set_number_averages</span></span>(<span>self, numAvg)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_number_averages(self, numAvg):
+    if numAvg == 4 or 16 or 64 or 128:
+        self.handle.write(&#34;ACQuire:NUMAVg &#34; + str(numAvg))
+        print(&#39;Number of averages: &#39; + str(numAvg) + &#39; set&#39;)
+    else:
+        print(&#39;Incorrect number of averages: &#39; + str(numAvg))</code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.set_osc_state"><code class="name flex">
+<span>def <span class="ident">set_osc_state</span></span>(<span>self, oscState)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def set_osc_state(self, oscState): # RUN or STOP
+        if oscState != 0:#&#39;RUN&#39; or &#39;STOP&#39;:
+#            self.oscState = oscState
+            self.handle.write(&#34;ACQuire:STATE &#34; + oscState)      </code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.set_params"><code class="name flex">
+<span>def <span class="ident">set_params</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_params(self):
+    self.handle.timeout = GLOBAL_TOUT
+    ## Clear the instrument bus
+    self.handle.clear()
+
+    ## Clear any previously encountered errors
+    self.handle.write(&#34;*CLS&#34;)
+    self.handle.write(&#34;HEADER OFF&#34;)</code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.set_time_scale"><code class="name flex">
+<span>def <span class="ident">set_time_scale</span></span>(<span>self, timeScale)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_time_scale(self,timeScale):
+    self.handle.write(&#34;HORizontal:DELay:SCAle &#34; + str(timeScale))</code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.set_waveform_parameters"><code class="name flex">
+<span>def <span class="ident">set_waveform_parameters</span></span>(<span>self, waveformId)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def set_waveform_parameters(self, waveformId):
+#        print(&#34;Waveform ID: &#34; + waveformId)
+        waveformId = waveformId.split(&#34;,&#34;)
+        self.waveformChannel = waveformId[0]
+        self.waveformCoupling = waveformId[1]
+        self.waveformVerScale = waveformId[2]
+        self.waveformHorScale = waveformId[3]
+        self.waveformSamplePoints = waveformId[4]
+        self.waveformMode = waveformId[5]</code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.set_waveform_values"><code class="name flex">
+<span>def <span class="ident">set_waveform_values</span></span>(<span>self, waveformAscii, xZero, xIncrement, pointsOffset, yZero, yMultiplier, yOffset)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_waveform_values(self, waveformAscii, xZero, xIncrement, pointsOffset, yZero, yMultiplier, yOffset):
+    waveformAscii = waveformAscii.split(&#39;,&#39;)
+    print(len(waveformAscii))
+    waveformTime = []
+    waveformVolts = []
+    y = 0
+    n = 0
+    for y in waveformAscii:
+        y = int(y)
+        waveformTime.append(  xZero + xIncrement  * ( n - pointsOffset) )
+        waveformVolts.append( yZero + yMultiplier * ( y - yOffset     ) )            
+        n = n + 1
+    self.timeArray = np.array(waveformTime)
+    self.waveformArray = np.array(waveformVolts)     </code></pre>
+</details>
+</dd>
+<dt id="src.TDS.TDS.single_sweep"><code class="name flex">
+<span>def <span class="ident">single_sweep</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def single_sweep(self):
+
+        self.bool_sweep = True
+        self.handle.write(&#34;SGL&#34;)
+        time.sleep(1)
+        response = self.handle.query(&#34;SWEEP?&#34;)
+        while response != &#34;0\r\n&#34;:
+            time.sleep(1)
+            response = self.handle.query(&#34;SWEEP?&#34;)
+#            print(response)
+        self.bool_sweep = False</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="src" href="index.html">src</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="src.TDS.TDS" href="#src.TDS.TDS">TDS</a></code></h4>
+<ul class="">
+<li><code><a title="src.TDS.TDS.acquire_waveform" href="#src.TDS.TDS.acquire_waveform">acquire_waveform</a></code></li>
+<li><code><a title="src.TDS.TDS.close" href="#src.TDS.TDS.close">close</a></code></li>
+<li><code><a title="src.TDS.TDS.connect" href="#src.TDS.TDS.connect">connect</a></code></li>
+<li><code><a title="src.TDS.TDS.cont_sweep" href="#src.TDS.TDS.cont_sweep">cont_sweep</a></code></li>
+<li><code><a title="src.TDS.TDS.get_channel_bandwidth" href="#src.TDS.TDS.get_channel_bandwidth">get_channel_bandwidth</a></code></li>
+<li><code><a title="src.TDS.TDS.get_channel_coupling" href="#src.TDS.TDS.get_channel_coupling">get_channel_coupling</a></code></li>
+<li><code><a title="src.TDS.TDS.get_channel_position" href="#src.TDS.TDS.get_channel_position">get_channel_position</a></code></li>
+<li><code><a title="src.TDS.TDS.get_channel_scale" href="#src.TDS.TDS.get_channel_scale">get_channel_scale</a></code></li>
+<li><code><a title="src.TDS.TDS.get_horizontal_parameters" href="#src.TDS.TDS.get_horizontal_parameters">get_horizontal_parameters</a></code></li>
+<li><code><a title="src.TDS.TDS.get_measurement_params" href="#src.TDS.TDS.get_measurement_params">get_measurement_params</a></code></li>
+<li><code><a title="src.TDS.TDS.get_number_averages" href="#src.TDS.TDS.get_number_averages">get_number_averages</a></code></li>
+<li><code><a title="src.TDS.TDS.get_osc_state" href="#src.TDS.TDS.get_osc_state">get_osc_state</a></code></li>
+<li><code><a title="src.TDS.TDS.get_waveform_channel" href="#src.TDS.TDS.get_waveform_channel">get_waveform_channel</a></code></li>
+<li><code><a title="src.TDS.TDS.get_waveform_coupling" href="#src.TDS.TDS.get_waveform_coupling">get_waveform_coupling</a></code></li>
+<li><code><a title="src.TDS.TDS.get_waveform_horizontal_scale" href="#src.TDS.TDS.get_waveform_horizontal_scale">get_waveform_horizontal_scale</a></code></li>
+<li><code><a title="src.TDS.TDS.get_waveform_mode" href="#src.TDS.TDS.get_waveform_mode">get_waveform_mode</a></code></li>
+<li><code><a title="src.TDS.TDS.get_waveform_sample_points" href="#src.TDS.TDS.get_waveform_sample_points">get_waveform_sample_points</a></code></li>
+<li><code><a title="src.TDS.TDS.get_waveform_time" href="#src.TDS.TDS.get_waveform_time">get_waveform_time</a></code></li>
+<li><code><a title="src.TDS.TDS.get_waveform_vertical_scale" href="#src.TDS.TDS.get_waveform_vertical_scale">get_waveform_vertical_scale</a></code></li>
+<li><code><a title="src.TDS.TDS.get_waveform_volts" href="#src.TDS.TDS.get_waveform_volts">get_waveform_volts</a></code></li>
+<li><code><a title="src.TDS.TDS.list_devices" href="#src.TDS.TDS.list_devices">list_devices</a></code></li>
+<li><code><a title="src.TDS.TDS.plot_waveform" href="#src.TDS.TDS.plot_waveform">plot_waveform</a></code></li>
+<li><code><a title="src.TDS.TDS.print_message" href="#src.TDS.TDS.print_message">print_message</a></code></li>
+<li><code><a title="src.TDS.TDS.save_csv" href="#src.TDS.TDS.save_csv">save_csv</a></code></li>
+<li><code><a title="src.TDS.TDS.send_cmd" href="#src.TDS.TDS.send_cmd">send_cmd</a></code></li>
+<li><code><a title="src.TDS.TDS.set_channel_bandwidth" href="#src.TDS.TDS.set_channel_bandwidth">set_channel_bandwidth</a></code></li>
+<li><code><a title="src.TDS.TDS.set_channel_coupling" href="#src.TDS.TDS.set_channel_coupling">set_channel_coupling</a></code></li>
+<li><code><a title="src.TDS.TDS.set_channel_position" href="#src.TDS.TDS.set_channel_position">set_channel_position</a></code></li>
+<li><code><a title="src.TDS.TDS.set_channel_scale" href="#src.TDS.TDS.set_channel_scale">set_channel_scale</a></code></li>
+<li><code><a title="src.TDS.TDS.set_number_averages" href="#src.TDS.TDS.set_number_averages">set_number_averages</a></code></li>
+<li><code><a title="src.TDS.TDS.set_osc_state" href="#src.TDS.TDS.set_osc_state">set_osc_state</a></code></li>
+<li><code><a title="src.TDS.TDS.set_params" href="#src.TDS.TDS.set_params">set_params</a></code></li>
+<li><code><a title="src.TDS.TDS.set_time_scale" href="#src.TDS.TDS.set_time_scale">set_time_scale</a></code></li>
+<li><code><a title="src.TDS.TDS.set_waveform_parameters" href="#src.TDS.TDS.set_waveform_parameters">set_waveform_parameters</a></code></li>
+<li><code><a title="src.TDS.TDS.set_waveform_values" href="#src.TDS.TDS.set_waveform_values">set_waveform_values</a></code></li>
+<li><code><a title="src.TDS.TDS.single_sweep" href="#src.TDS.TDS.single_sweep">single_sweep</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

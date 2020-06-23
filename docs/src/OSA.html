@@ -1,0 +1,855 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>src.OSA API documentation</title>
+<meta name="description" content="Created on Sat Jan 26 15:59:17 2019 …" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>src.OSA</code></h1>
+</header>
+<section id="section-intro">
+<p>Created on Sat Jan 26 15:59:17 2019</p>
+<p>@author: st452223</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># -*- coding: utf-8 -*-
+&#34;&#34;&#34;
+Created on Sat Jan 26 15:59:17 2019
+
+@author: st452223
+&#34;&#34;&#34;
+
+# -*- coding: utf-8 -*-
+&#34;&#34;&#34;
+Created on Mon Jun 11 16:46:27 2018
+
+@author: st452223
+&#34;&#34;&#34;
+
+import pyvisa
+import time
+import numpy as np
+import matplotlib.pyplot as plt
+import datetime
+import csv
+
+class OSA():
+    def __init__(self,Port=None):
+        &#34;&#34;&#34;
+        Initialization process of OSA script
+        &#34;&#34;&#34;
+        self.connected = False
+        self.bool_sweep = False
+        
+        self.start_wl = &#39;900.00&#39;
+        self.stop_wl = &#39;1100.00&#39;
+        self.span_wl = &#39;200.00&#39;
+        self.rbw_wl = &#39;0.1&#39;
+        self.sampling_points = &#39;1001&#39;
+        self.range = &#39;SNHD&#39;
+        self.average = &#39;1&#39;
+        self.sensitivity = &#39;None&#39;
+        self.reference_lvl = &#39;-00&#39;
+        
+        self.waveform = np.empty((0,1), dtype=np.float64)
+        self.wavelength = np.empty((0,1), dtype=np.float64)
+        self.parent=self
+        self.list_devices()
+#        self.connect()
+        
+#        self.csv_ctl = csv()
+        
+#    def OSA_acquireDATA(self, ch=&#39;A&#39;):
+#        tmp = OSA.ask(&#39;LDAT&#39;+ch)
+#        time.sleep(0.2)
+#        tmp2 = [float(k) for k in tmp.split(&#39;,&#39;)]
+#        waveform = array(tmp2[1:])
+#        tmp = OSA.ask(&#39;WDAT&#39;+ch)
+#        time.sleep(0.2)
+#        tmp2 = [float(k) for k in tmp.split(&#39;,&#39;)]
+#        wavelength = array(tmp2[1:])
+#        return waveform, wavelength
+#
+#    def createFilename(self, sMeaningful):
+#        timestamp = strftime(&#34;%Y-%m-%d_%H-%M-%S_&#34;, gmtime())
+#        return timestamp + sMeaningful +&#39;.npy&#39;
+    
+    def list_devices(self):
+        try:
+            self.rm = pyvisa.ResourceManager()
+            self.list = self.rm.list_resources()
+        except:
+            print(&#34;Couldn&#39;t find resource manager&#34;)
+                
+    def connect(self, device): 
+        try:
+#            self.ser=serial.Serial(self.port,self.baud,bytesize=self.bytesize, 
+#                                   timeout = self.timeout, stopbits = self.stopbits,
+#                                   parity = self.parity, rtscts=self.rtscts)
+#            if self.ser.isOpen():
+#                self.print_message(&#39;Connected to laser &#39; + self.name + &#39; on port &#39; + self.port)
+#                self.connected = True
+            
+            self.handle = self.rm.open_resource(device)
+
+            self.print_message(&#39;connected to&#39;)
+            print(self.handle.query(&#34;*IDN?&#34;))
+            self.connected = True
+            
+            self.print_message(&#39;setting parameters&#39;)
+#            self.set_params()
+#            self.send_cmd(&#34;REN&#34;)
+#            time.sleep(1)
+            
+        except Exception as e:
+            self.print_message(e)
+            self.print_message(&#39; Couldn\&#39;t connect&#39;)
+            
+    def set_params(self):
+        if self.connected:
+#            self.handle.write(&#39;STAWL&#39;+self.start_wl + &#39;, STPWL&#39;+self.stop_wl +
+#                              &#39;, RESOLN&#39;+self.resolution + &#39;, AVG&#39;+self.average +
+#                              &#39;, SMPL&#39;+ self.sampling_points + &#39;, &#39; + self.range)
+
+#            self.handle.write()
+            pass
+                
+    def close(self):
+        
+        self.handle.write(&#34;GTL&#34;)
+        time.sleep(1)
+        self.rm.close()
+        self.print_message(&#39;Connection to OSA closed&#39;)
+        
+    def send_cmd(self, cmd):
+        
+        self.handle.write(cmd)
+         
+        response = self.handle.read_raw()
+        return response
+    
+    def cont_sweep(self):
+
+        self.bool_sweep = True
+        self.handle.write(&#34;RPT&#34;)
+    
+    def single_sweep(self):
+
+        self.bool_sweep = True
+        self.handle.write(&#34;SGL&#34;)
+        time.sleep(1)
+        response = self.handle.query(&#34;SWEEP?&#34;)
+        while response != &#34;0\r\n&#34;:
+            time.sleep(1)
+            response = self.handle.query(&#34;SWEEP?&#34;)
+#            print(response)
+        self.bool_sweep = False
+
+    def grab_spectrum(self, channel = &#39;A&#39;):
+            try:            
+                tmp = self.handle.query(&#39;LDAT&#39;+channel)
+#                print(tmp)
+                time.sleep(1)
+                tmp2 = [float(k) for k in tmp.split(&#39;,&#39;)]
+                self.waveform = np.array(tmp2[1:])
+#                print(self.waveform)
+            except ValueError:
+                self.close()
+                print(&#39;Acquisition error with spectrum values\r\n&#39;)
+            
+            try:                
+                tmp = self.handle.query(&#39;WDAT&#39;+channel)
+#                print(tmp)
+                time.sleep(1)
+                tmp2 = [float(k) for k in tmp.split(&#39;,&#39;)]
+                self.wavelength = np.array(tmp2[1:])
+#                print(self.wavelength)
+            except ValueError:
+                self.close()
+                print(&#39;Acquisition error with wavelength values\r\n&#39;)  
+    
+    def get_span(self):
+        self.span_wl = self.handle.query(&#34;SPAN?&#34;)
+        time.sleep(1)
+        self.span_wl = self.span_wl.replace(&#34;\r&#34;,&#34;&#34;)
+        self.span_wl = self.span_wl.replace(&#34;\n&#34;,&#34;&#34;) 
+    
+    def get_rbw(self):
+        self.rbw_wl = self.handle.query(&#34;RESLN?&#34;)
+        time.sleep(1)
+        self.rbw_wl = self.rbw_wl.replace(&#34;\r&#34;,&#34;&#34;)
+        self.rbw_wl = self.rbw_wl.replace(&#34;\n&#34;,&#34;&#34;) 
+
+    def get_sensitivity(self):
+        sensitivity_num = self.handle.query(&#34;SENS?&#34;)
+        time.sleep(1)
+        sensitivity_num = sensitivity_num.replace(&#34;\r&#34;,&#34;&#34;)
+        sensitivity_num = sensitivity_num.replace(&#34;\n&#34;,&#34;&#34;)
+        sensitivity_num = int(sensitivity_num)
+        sensitivity_lvl = {
+                1: &#39;HIGH1&#39;,
+                2: &#39;HIGH2&#39;,
+                3: &#39;HIGH3&#39;,
+                4: &#39;NORM RANG HOLD&#39;,
+                5: &#39;NORM RANG AUTO&#39;,
+                6: &#39;MID&#39;
+                }
+        self.sensitivity = sensitivity_lvl.get(sensitivity_num)
+    
+    def get_ref_lvl(self):
+        self.reference_lvl = self.handle.query(&#34;REFL?&#34;)
+        time.sleep(1)
+        self.reference_lvl = self.reference_lvl.replace(&#34;\r&#34;,&#34;&#34;)
+        self.reference_lvl = self.reference_lvl.replace(&#34;\n&#34;,&#34;&#34;)
+        
+    def print_message(self, msg):
+        if __name__ == &#34;__main__&#34;:
+            print(msg)
+    
+    def save_csv(self, fileName):
+        try:
+            with open(fileName, &#39;w&#39;,newline=&#39;&#39;) as fileWriter:
+                self.csvWriter = csv.writer(fileWriter, delimiter = &#39;\t&#39;)
+                now_ = datetime.datetime.now()
+                timestamp = now_.strftime(&#39;%m/%d/%Y %H:%M hrs&#39;)
+                self.csvWriter.writerow([timestamp])
+                self.csvWriter.writerow([&#34;Reference Level: &#34; + self.reference_lvl + &#34; (dB)&#34;])
+                self.csvWriter.writerow([&#34;Sensitivity: &#34; + self.sensitivity])
+                self.csvWriter.writerow([&#34;Resolution bandwidth: &#34; + self.rbw_wl + &#34; (nm)&#34;])
+                self.csvWriter.writerow([&#34;Span: &#34; + self.span_wl + &#34; (nm)&#34;])
+                self.csvWriter.writerow([&#34;Wavelength (nm) Amplitude (dB)&#34;])
+                for (x,y) in zip(self.wavelength, self.waveform):
+                    self.csvWriter.writerow((&#39;{0:.3f}&#39;.format(x),&#39;{0:.3f}&#39;.format(y)))
+        except:
+            self.close()
+            print(&#34;Error while saving &#34; + fileName + &#34; file&#34;)
+
+    def plot_waveform(self):
+        &#34;&#34;&#34;Plot the acquired waveform after function grab_spectrum().
+        &#34;&#34;&#34;
+        plt.plot(self.wavelength, self.waveform,&#39;b&#39;)
+        plt.axis([min(self.wavelength),max(self.wavelength),max([min(self.waveform),-90]),max(self.waveform)])
+        plt.xlabel(&#39;Wavelength (nm)&#39;)
+        plt.ylabel(&#39;Output (dB)&#39;)
+        plt.show()
+
+if __name__ == &#34;__main__&#34;:
+    OSA = OSA()
+    OSA.connect(&#39;GPIB0::27::INSTR&#39;)
+#    OSA.single_sweep()
+    time.sleep(1)
+    print(&#39;Now&#39;)
+    OSA.get_span()
+    OSA.get_rbw()
+    OSA.get_sensitivity()
+    OSA.get_ref_lvl()
+    OSA.grab_spectrum(&#39;A&#39;)
+    now_ = datetime.datetime.now()
+    timestamp = now_.strftime(&#34;%Y-%m-%d_%H-%M&#34;)
+    filePath = &#39;H:\\Home\\UP\\Shared\\Ricardo\\Dual Tone Injection Locking\\CW PDH Laser\\CW Homemade\\THz EOM Comb\\EOM Comb with CW-PDH\\OSA&#39;
+    fileName = &#39;llCW-FPE-PDH_PM-IM-30.001GHz-10dBm-1.16V_SOA_150mA_HWEDFA_680mW_1000mSMF_100m-HNLF-ND_Att-10mW_WS-AllPass_50-50-2&#39; + &#39;.csv &#39;
+#    np.savez(filename, wavelength=OSA.wavelength, waveform=OSA.waveform)
+#    OSA.save_csv(filePath + &#39;\\&#39; + fileName)
+    OSA.close()
+    
+    plt.plot(OSA.wavelength,OSA.waveform,&#39;b&#39;)
+    plt.axis([min(OSA.wavelength),max(OSA.wavelength),max([min(OSA.waveform),-90]),max(OSA.waveform)])
+    plt.xlabel(&#39;Wavelength (nm)&#39;)
+    plt.ylabel(&#39;Output (dB)&#39;)
+    plt.show()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="src.OSA.OSA"><code class="flex name class">
+<span>class <span class="ident">OSA</span></span>
+<span>(</span><span>Port=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Initialization process of OSA script</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class OSA():
+    def __init__(self,Port=None):
+        &#34;&#34;&#34;
+        Initialization process of OSA script
+        &#34;&#34;&#34;
+        self.connected = False
+        self.bool_sweep = False
+        
+        self.start_wl = &#39;900.00&#39;
+        self.stop_wl = &#39;1100.00&#39;
+        self.span_wl = &#39;200.00&#39;
+        self.rbw_wl = &#39;0.1&#39;
+        self.sampling_points = &#39;1001&#39;
+        self.range = &#39;SNHD&#39;
+        self.average = &#39;1&#39;
+        self.sensitivity = &#39;None&#39;
+        self.reference_lvl = &#39;-00&#39;
+        
+        self.waveform = np.empty((0,1), dtype=np.float64)
+        self.wavelength = np.empty((0,1), dtype=np.float64)
+        self.parent=self
+        self.list_devices()
+#        self.connect()
+        
+#        self.csv_ctl = csv()
+        
+#    def OSA_acquireDATA(self, ch=&#39;A&#39;):
+#        tmp = OSA.ask(&#39;LDAT&#39;+ch)
+#        time.sleep(0.2)
+#        tmp2 = [float(k) for k in tmp.split(&#39;,&#39;)]
+#        waveform = array(tmp2[1:])
+#        tmp = OSA.ask(&#39;WDAT&#39;+ch)
+#        time.sleep(0.2)
+#        tmp2 = [float(k) for k in tmp.split(&#39;,&#39;)]
+#        wavelength = array(tmp2[1:])
+#        return waveform, wavelength
+#
+#    def createFilename(self, sMeaningful):
+#        timestamp = strftime(&#34;%Y-%m-%d_%H-%M-%S_&#34;, gmtime())
+#        return timestamp + sMeaningful +&#39;.npy&#39;
+    
+    def list_devices(self):
+        try:
+            self.rm = pyvisa.ResourceManager()
+            self.list = self.rm.list_resources()
+        except:
+            print(&#34;Couldn&#39;t find resource manager&#34;)
+                
+    def connect(self, device): 
+        try:
+#            self.ser=serial.Serial(self.port,self.baud,bytesize=self.bytesize, 
+#                                   timeout = self.timeout, stopbits = self.stopbits,
+#                                   parity = self.parity, rtscts=self.rtscts)
+#            if self.ser.isOpen():
+#                self.print_message(&#39;Connected to laser &#39; + self.name + &#39; on port &#39; + self.port)
+#                self.connected = True
+            
+            self.handle = self.rm.open_resource(device)
+
+            self.print_message(&#39;connected to&#39;)
+            print(self.handle.query(&#34;*IDN?&#34;))
+            self.connected = True
+            
+            self.print_message(&#39;setting parameters&#39;)
+#            self.set_params()
+#            self.send_cmd(&#34;REN&#34;)
+#            time.sleep(1)
+            
+        except Exception as e:
+            self.print_message(e)
+            self.print_message(&#39; Couldn\&#39;t connect&#39;)
+            
+    def set_params(self):
+        if self.connected:
+#            self.handle.write(&#39;STAWL&#39;+self.start_wl + &#39;, STPWL&#39;+self.stop_wl +
+#                              &#39;, RESOLN&#39;+self.resolution + &#39;, AVG&#39;+self.average +
+#                              &#39;, SMPL&#39;+ self.sampling_points + &#39;, &#39; + self.range)
+
+#            self.handle.write()
+            pass
+                
+    def close(self):
+        
+        self.handle.write(&#34;GTL&#34;)
+        time.sleep(1)
+        self.rm.close()
+        self.print_message(&#39;Connection to OSA closed&#39;)
+        
+    def send_cmd(self, cmd):
+        
+        self.handle.write(cmd)
+         
+        response = self.handle.read_raw()
+        return response
+    
+    def cont_sweep(self):
+
+        self.bool_sweep = True
+        self.handle.write(&#34;RPT&#34;)
+    
+    def single_sweep(self):
+
+        self.bool_sweep = True
+        self.handle.write(&#34;SGL&#34;)
+        time.sleep(1)
+        response = self.handle.query(&#34;SWEEP?&#34;)
+        while response != &#34;0\r\n&#34;:
+            time.sleep(1)
+            response = self.handle.query(&#34;SWEEP?&#34;)
+#            print(response)
+        self.bool_sweep = False
+
+    def grab_spectrum(self, channel = &#39;A&#39;):
+            try:            
+                tmp = self.handle.query(&#39;LDAT&#39;+channel)
+#                print(tmp)
+                time.sleep(1)
+                tmp2 = [float(k) for k in tmp.split(&#39;,&#39;)]
+                self.waveform = np.array(tmp2[1:])
+#                print(self.waveform)
+            except ValueError:
+                self.close()
+                print(&#39;Acquisition error with spectrum values\r\n&#39;)
+            
+            try:                
+                tmp = self.handle.query(&#39;WDAT&#39;+channel)
+#                print(tmp)
+                time.sleep(1)
+                tmp2 = [float(k) for k in tmp.split(&#39;,&#39;)]
+                self.wavelength = np.array(tmp2[1:])
+#                print(self.wavelength)
+            except ValueError:
+                self.close()
+                print(&#39;Acquisition error with wavelength values\r\n&#39;)  
+    
+    def get_span(self):
+        self.span_wl = self.handle.query(&#34;SPAN?&#34;)
+        time.sleep(1)
+        self.span_wl = self.span_wl.replace(&#34;\r&#34;,&#34;&#34;)
+        self.span_wl = self.span_wl.replace(&#34;\n&#34;,&#34;&#34;) 
+    
+    def get_rbw(self):
+        self.rbw_wl = self.handle.query(&#34;RESLN?&#34;)
+        time.sleep(1)
+        self.rbw_wl = self.rbw_wl.replace(&#34;\r&#34;,&#34;&#34;)
+        self.rbw_wl = self.rbw_wl.replace(&#34;\n&#34;,&#34;&#34;) 
+
+    def get_sensitivity(self):
+        sensitivity_num = self.handle.query(&#34;SENS?&#34;)
+        time.sleep(1)
+        sensitivity_num = sensitivity_num.replace(&#34;\r&#34;,&#34;&#34;)
+        sensitivity_num = sensitivity_num.replace(&#34;\n&#34;,&#34;&#34;)
+        sensitivity_num = int(sensitivity_num)
+        sensitivity_lvl = {
+                1: &#39;HIGH1&#39;,
+                2: &#39;HIGH2&#39;,
+                3: &#39;HIGH3&#39;,
+                4: &#39;NORM RANG HOLD&#39;,
+                5: &#39;NORM RANG AUTO&#39;,
+                6: &#39;MID&#39;
+                }
+        self.sensitivity = sensitivity_lvl.get(sensitivity_num)
+    
+    def get_ref_lvl(self):
+        self.reference_lvl = self.handle.query(&#34;REFL?&#34;)
+        time.sleep(1)
+        self.reference_lvl = self.reference_lvl.replace(&#34;\r&#34;,&#34;&#34;)
+        self.reference_lvl = self.reference_lvl.replace(&#34;\n&#34;,&#34;&#34;)
+        
+    def print_message(self, msg):
+        if __name__ == &#34;__main__&#34;:
+            print(msg)
+    
+    def save_csv(self, fileName):
+        try:
+            with open(fileName, &#39;w&#39;,newline=&#39;&#39;) as fileWriter:
+                self.csvWriter = csv.writer(fileWriter, delimiter = &#39;\t&#39;)
+                now_ = datetime.datetime.now()
+                timestamp = now_.strftime(&#39;%m/%d/%Y %H:%M hrs&#39;)
+                self.csvWriter.writerow([timestamp])
+                self.csvWriter.writerow([&#34;Reference Level: &#34; + self.reference_lvl + &#34; (dB)&#34;])
+                self.csvWriter.writerow([&#34;Sensitivity: &#34; + self.sensitivity])
+                self.csvWriter.writerow([&#34;Resolution bandwidth: &#34; + self.rbw_wl + &#34; (nm)&#34;])
+                self.csvWriter.writerow([&#34;Span: &#34; + self.span_wl + &#34; (nm)&#34;])
+                self.csvWriter.writerow([&#34;Wavelength (nm) Amplitude (dB)&#34;])
+                for (x,y) in zip(self.wavelength, self.waveform):
+                    self.csvWriter.writerow((&#39;{0:.3f}&#39;.format(x),&#39;{0:.3f}&#39;.format(y)))
+        except:
+            self.close()
+            print(&#34;Error while saving &#34; + fileName + &#34; file&#34;)
+
+    def plot_waveform(self):
+        &#34;&#34;&#34;Plot the acquired waveform after function grab_spectrum().
+        &#34;&#34;&#34;
+        plt.plot(self.wavelength, self.waveform,&#39;b&#39;)
+        plt.axis([min(self.wavelength),max(self.wavelength),max([min(self.waveform),-90]),max(self.waveform)])
+        plt.xlabel(&#39;Wavelength (nm)&#39;)
+        plt.ylabel(&#39;Output (dB)&#39;)
+        plt.show()</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="src.OSA.OSA.close"><code class="name flex">
+<span>def <span class="ident">close</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def close(self):
+    
+    self.handle.write(&#34;GTL&#34;)
+    time.sleep(1)
+    self.rm.close()
+    self.print_message(&#39;Connection to OSA closed&#39;)</code></pre>
+</details>
+</dd>
+<dt id="src.OSA.OSA.connect"><code class="name flex">
+<span>def <span class="ident">connect</span></span>(<span>self, device)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def connect(self, device): 
+        try:
+#            self.ser=serial.Serial(self.port,self.baud,bytesize=self.bytesize, 
+#                                   timeout = self.timeout, stopbits = self.stopbits,
+#                                   parity = self.parity, rtscts=self.rtscts)
+#            if self.ser.isOpen():
+#                self.print_message(&#39;Connected to laser &#39; + self.name + &#39; on port &#39; + self.port)
+#                self.connected = True
+            
+            self.handle = self.rm.open_resource(device)
+
+            self.print_message(&#39;connected to&#39;)
+            print(self.handle.query(&#34;*IDN?&#34;))
+            self.connected = True
+            
+            self.print_message(&#39;setting parameters&#39;)
+#            self.set_params()
+#            self.send_cmd(&#34;REN&#34;)
+#            time.sleep(1)
+            
+        except Exception as e:
+            self.print_message(e)
+            self.print_message(&#39; Couldn\&#39;t connect&#39;)</code></pre>
+</details>
+</dd>
+<dt id="src.OSA.OSA.cont_sweep"><code class="name flex">
+<span>def <span class="ident">cont_sweep</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def cont_sweep(self):
+
+    self.bool_sweep = True
+    self.handle.write(&#34;RPT&#34;)</code></pre>
+</details>
+</dd>
+<dt id="src.OSA.OSA.get_rbw"><code class="name flex">
+<span>def <span class="ident">get_rbw</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_rbw(self):
+    self.rbw_wl = self.handle.query(&#34;RESLN?&#34;)
+    time.sleep(1)
+    self.rbw_wl = self.rbw_wl.replace(&#34;\r&#34;,&#34;&#34;)
+    self.rbw_wl = self.rbw_wl.replace(&#34;\n&#34;,&#34;&#34;) </code></pre>
+</details>
+</dd>
+<dt id="src.OSA.OSA.get_ref_lvl"><code class="name flex">
+<span>def <span class="ident">get_ref_lvl</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_ref_lvl(self):
+    self.reference_lvl = self.handle.query(&#34;REFL?&#34;)
+    time.sleep(1)
+    self.reference_lvl = self.reference_lvl.replace(&#34;\r&#34;,&#34;&#34;)
+    self.reference_lvl = self.reference_lvl.replace(&#34;\n&#34;,&#34;&#34;)</code></pre>
+</details>
+</dd>
+<dt id="src.OSA.OSA.get_sensitivity"><code class="name flex">
+<span>def <span class="ident">get_sensitivity</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_sensitivity(self):
+    sensitivity_num = self.handle.query(&#34;SENS?&#34;)
+    time.sleep(1)
+    sensitivity_num = sensitivity_num.replace(&#34;\r&#34;,&#34;&#34;)
+    sensitivity_num = sensitivity_num.replace(&#34;\n&#34;,&#34;&#34;)
+    sensitivity_num = int(sensitivity_num)
+    sensitivity_lvl = {
+            1: &#39;HIGH1&#39;,
+            2: &#39;HIGH2&#39;,
+            3: &#39;HIGH3&#39;,
+            4: &#39;NORM RANG HOLD&#39;,
+            5: &#39;NORM RANG AUTO&#39;,
+            6: &#39;MID&#39;
+            }
+    self.sensitivity = sensitivity_lvl.get(sensitivity_num)</code></pre>
+</details>
+</dd>
+<dt id="src.OSA.OSA.get_span"><code class="name flex">
+<span>def <span class="ident">get_span</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_span(self):
+    self.span_wl = self.handle.query(&#34;SPAN?&#34;)
+    time.sleep(1)
+    self.span_wl = self.span_wl.replace(&#34;\r&#34;,&#34;&#34;)
+    self.span_wl = self.span_wl.replace(&#34;\n&#34;,&#34;&#34;) </code></pre>
+</details>
+</dd>
+<dt id="src.OSA.OSA.grab_spectrum"><code class="name flex">
+<span>def <span class="ident">grab_spectrum</span></span>(<span>self, channel='A')</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def grab_spectrum(self, channel = &#39;A&#39;):
+            try:            
+                tmp = self.handle.query(&#39;LDAT&#39;+channel)
+#                print(tmp)
+                time.sleep(1)
+                tmp2 = [float(k) for k in tmp.split(&#39;,&#39;)]
+                self.waveform = np.array(tmp2[1:])
+#                print(self.waveform)
+            except ValueError:
+                self.close()
+                print(&#39;Acquisition error with spectrum values\r\n&#39;)
+            
+            try:                
+                tmp = self.handle.query(&#39;WDAT&#39;+channel)
+#                print(tmp)
+                time.sleep(1)
+                tmp2 = [float(k) for k in tmp.split(&#39;,&#39;)]
+                self.wavelength = np.array(tmp2[1:])
+#                print(self.wavelength)
+            except ValueError:
+                self.close()
+                print(&#39;Acquisition error with wavelength values\r\n&#39;)  </code></pre>
+</details>
+</dd>
+<dt id="src.OSA.OSA.list_devices"><code class="name flex">
+<span>def <span class="ident">list_devices</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def list_devices(self):
+    try:
+        self.rm = pyvisa.ResourceManager()
+        self.list = self.rm.list_resources()
+    except:
+        print(&#34;Couldn&#39;t find resource manager&#34;)</code></pre>
+</details>
+</dd>
+<dt id="src.OSA.OSA.plot_waveform"><code class="name flex">
+<span>def <span class="ident">plot_waveform</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Plot the acquired waveform after function grab_spectrum().</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def plot_waveform(self):
+    &#34;&#34;&#34;Plot the acquired waveform after function grab_spectrum().
+    &#34;&#34;&#34;
+    plt.plot(self.wavelength, self.waveform,&#39;b&#39;)
+    plt.axis([min(self.wavelength),max(self.wavelength),max([min(self.waveform),-90]),max(self.waveform)])
+    plt.xlabel(&#39;Wavelength (nm)&#39;)
+    plt.ylabel(&#39;Output (dB)&#39;)
+    plt.show()</code></pre>
+</details>
+</dd>
+<dt id="src.OSA.OSA.print_message"><code class="name flex">
+<span>def <span class="ident">print_message</span></span>(<span>self, msg)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def print_message(self, msg):
+    if __name__ == &#34;__main__&#34;:
+        print(msg)</code></pre>
+</details>
+</dd>
+<dt id="src.OSA.OSA.save_csv"><code class="name flex">
+<span>def <span class="ident">save_csv</span></span>(<span>self, fileName)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_csv(self, fileName):
+    try:
+        with open(fileName, &#39;w&#39;,newline=&#39;&#39;) as fileWriter:
+            self.csvWriter = csv.writer(fileWriter, delimiter = &#39;\t&#39;)
+            now_ = datetime.datetime.now()
+            timestamp = now_.strftime(&#39;%m/%d/%Y %H:%M hrs&#39;)
+            self.csvWriter.writerow([timestamp])
+            self.csvWriter.writerow([&#34;Reference Level: &#34; + self.reference_lvl + &#34; (dB)&#34;])
+            self.csvWriter.writerow([&#34;Sensitivity: &#34; + self.sensitivity])
+            self.csvWriter.writerow([&#34;Resolution bandwidth: &#34; + self.rbw_wl + &#34; (nm)&#34;])
+            self.csvWriter.writerow([&#34;Span: &#34; + self.span_wl + &#34; (nm)&#34;])
+            self.csvWriter.writerow([&#34;Wavelength (nm) Amplitude (dB)&#34;])
+            for (x,y) in zip(self.wavelength, self.waveform):
+                self.csvWriter.writerow((&#39;{0:.3f}&#39;.format(x),&#39;{0:.3f}&#39;.format(y)))
+    except:
+        self.close()
+        print(&#34;Error while saving &#34; + fileName + &#34; file&#34;)</code></pre>
+</details>
+</dd>
+<dt id="src.OSA.OSA.send_cmd"><code class="name flex">
+<span>def <span class="ident">send_cmd</span></span>(<span>self, cmd)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def send_cmd(self, cmd):
+    
+    self.handle.write(cmd)
+     
+    response = self.handle.read_raw()
+    return response</code></pre>
+</details>
+</dd>
+<dt id="src.OSA.OSA.set_params"><code class="name flex">
+<span>def <span class="ident">set_params</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def set_params(self):
+        if self.connected:
+#            self.handle.write(&#39;STAWL&#39;+self.start_wl + &#39;, STPWL&#39;+self.stop_wl +
+#                              &#39;, RESOLN&#39;+self.resolution + &#39;, AVG&#39;+self.average +
+#                              &#39;, SMPL&#39;+ self.sampling_points + &#39;, &#39; + self.range)
+
+#            self.handle.write()
+            pass</code></pre>
+</details>
+</dd>
+<dt id="src.OSA.OSA.single_sweep"><code class="name flex">
+<span>def <span class="ident">single_sweep</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def single_sweep(self):
+
+        self.bool_sweep = True
+        self.handle.write(&#34;SGL&#34;)
+        time.sleep(1)
+        response = self.handle.query(&#34;SWEEP?&#34;)
+        while response != &#34;0\r\n&#34;:
+            time.sleep(1)
+            response = self.handle.query(&#34;SWEEP?&#34;)
+#            print(response)
+        self.bool_sweep = False</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="src" href="index.html">src</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="src.OSA.OSA" href="#src.OSA.OSA">OSA</a></code></h4>
+<ul class="two-column">
+<li><code><a title="src.OSA.OSA.close" href="#src.OSA.OSA.close">close</a></code></li>
+<li><code><a title="src.OSA.OSA.connect" href="#src.OSA.OSA.connect">connect</a></code></li>
+<li><code><a title="src.OSA.OSA.cont_sweep" href="#src.OSA.OSA.cont_sweep">cont_sweep</a></code></li>
+<li><code><a title="src.OSA.OSA.get_rbw" href="#src.OSA.OSA.get_rbw">get_rbw</a></code></li>
+<li><code><a title="src.OSA.OSA.get_ref_lvl" href="#src.OSA.OSA.get_ref_lvl">get_ref_lvl</a></code></li>
+<li><code><a title="src.OSA.OSA.get_sensitivity" href="#src.OSA.OSA.get_sensitivity">get_sensitivity</a></code></li>
+<li><code><a title="src.OSA.OSA.get_span" href="#src.OSA.OSA.get_span">get_span</a></code></li>
+<li><code><a title="src.OSA.OSA.grab_spectrum" href="#src.OSA.OSA.grab_spectrum">grab_spectrum</a></code></li>
+<li><code><a title="src.OSA.OSA.list_devices" href="#src.OSA.OSA.list_devices">list_devices</a></code></li>
+<li><code><a title="src.OSA.OSA.plot_waveform" href="#src.OSA.OSA.plot_waveform">plot_waveform</a></code></li>
+<li><code><a title="src.OSA.OSA.print_message" href="#src.OSA.OSA.print_message">print_message</a></code></li>
+<li><code><a title="src.OSA.OSA.save_csv" href="#src.OSA.OSA.save_csv">save_csv</a></code></li>
+<li><code><a title="src.OSA.OSA.send_cmd" href="#src.OSA.OSA.send_cmd">send_cmd</a></code></li>
+<li><code><a title="src.OSA.OSA.set_params" href="#src.OSA.OSA.set_params">set_params</a></code></li>
+<li><code><a title="src.OSA.OSA.single_sweep" href="#src.OSA.OSA.single_sweep">single_sweep</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>
