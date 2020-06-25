@@ -273,20 +273,24 @@ class TDS():
             print('Waveform mode error.')
             return 'XX'
         
-    def set_waveform_values(self, waveformAscii, xZero, xIncrement, pointsOffset, yZero, yMultiplier, yOffset):
+    def set_waveform_values(self, waveformAscii, xZero, xIncrement, pointsOffset, yZero, yScale, yOffset):
         waveformAscii = waveformAscii.split(',')
-        print(len(waveformAscii))
+        print("Length of waveformAscii:", len(waveformAscii))
+#        print("Characters:", waveformAscii)
         waveformTime = []
         waveformVolts = []
         y = 0
         n = 0
         for y in waveformAscii:
             y = int(y)
-            waveformTime.append(  xZero + xIncrement  * ( n - pointsOffset) )
-            waveformVolts.append( yZero + yMultiplier * ( y - yOffset     ) )            
+            waveformTime.append(  xZero + xIncrement  * ( n ) )
+            waveformVolts.append( yZero + yScale * ( y - yOffset     ) )            
             n = n + 1
         self.timeArray = np.array(waveformTime)
-        self.waveformArray = np.array(waveformVolts)     
+        self.waveformArray = np.array(waveformVolts)
+        print(self.timeArray[0])
+        print(self.timeArray[-1])
+        print("Total time scale:", self.timeArray[-1]-self.timeArray[0], "s")
     
     def get_waveform_time(self):
         return self.timeArray
@@ -296,30 +300,40 @@ class TDS():
         
     def acquire_waveform(self):
         self.handle.write("DATA:ENCDG ASCIi")
-        print(self.handle.query("DATA:ENCDG?"))
-        self.handle.write("DATA:WIDth 2")
+#        self.handle.write("DATA:WIDth 2")
+        self.handle.write("CH1:UNITS VOLT")
+#        self.handle.write('WFMInPre:YUNit "V"')
+        print("Number of points transferred:", self.handle.query("WFMOUTPre:NR_PT?"))
+        print("Number of bytes per sample point:", self.handle.query("WFMOUTPre:BYT_NR?"))
+        self.handle.write("DATA:START 1")
+        self.handle.write("DATA:STOP 2000")
+        print("Initial point transferred:", self.handle.query("DATA:START?"))
+        print("Last point transferred:", self.handle.query("DATA:STOP?"))
+        print("Horizontal scale [s/div]:", self.handle.query("HORIZONTAL:REF1:MAIN:SCALE?"))
+        print("Number of points transferred:", self.handle.query("WFMOUTPre:NR_PT?"))
+        
+        
         waveformAscii = self.handle.query("CURVE?")
-#        print(waveformAscii)
-        waveformParameters = self.handle.query("WFMOutPre?")
-        print('Waveform parameters: ' + waveformParameters)
-        waveformParameters = waveformParameters.split(";")
+        print(self.handle.query("DATA?"))
+#        waveformParameters = self.handle.query("WFMOutPre?")
+#        print('Waveform parameters: ' + waveformParameters)
+#        waveformParameters = waveformParameters.split(";")
 #        waveformId = waveformParameters[6].replace('"','')  # WFID
-#        xIncrement = float(waveformParameters[8])           # XINcr
-#        pointsOffset = float(waveformParameters[9])         # PT_Off
-#        xZero = float(waveformParameters[10])               # XZERo
-#        xUnit = waveformParameters[11].replace('"','')      # XUNit
-#        yMultiplier = float(waveformParameters[12])         # YMUlt
-#        yZero = float(waveformParameters[13])               # YZEro
-#        yOffset = float(waveformParameters[14])             # YOFf
-#        yUnit = waveformParameters[15].replace('"','')      # YUNit
-##        print("\nXINcr: " + str(xIncrement) + "\nPT_Off: " + str(pointsOffset) + "\nXZEro: " + str(xZero) +
-##              "\nXUNit: " + xUnit           + "\nYMUlt: "  + str(yMultiplier)  + "\nYZEro: " + str(yZero) + 
-##              "\nYOFf: "  + str(yOffset)    + "\nYUNit: "  + yUnit)
-#        waveformAscii = self.handle.query("CURVE?")
-#        print(waveformAscii)
-#        waveformAscii = self.handle.query("CURVE?")
-#        print(waveformAscii)
-        self.set_waveform_parameters(waveformId)
+        xIncrement = float(self.handle.query("WFMOutPre:XINcr?"))           # XINcr
+        pointsOffset = float(self.handle.query("WFMOutPre:XOFf?"))         # PT_Off
+        xZero = float(self.handle.query("WFMOutPre:XZEro?"))               # XZERo
+        xUnit = self.handle.query("WFMOutPre:XUNit?")      # XUNit
+        yMultiplier = float(self.handle.query("WFMOutPre:YSCALE?"))         # YSCale
+        yZero = float(self.handle.query("WFMOutPre:YZEro?"))               # YZEro
+        yOffset = float(self.handle.query("WFMOutPre:YOFf?"))             # YOFf
+        yUnit =self.handle.query("WFMOutPre:YUNit?")      # YUNit
+        print(self.handle.query("WFMOutPre:XMULT?"))
+        print(self.handle.query("WFMOutPre:YSCALE?"))
+        print("\nXINcr: " + str(xIncrement) + "\nPT_Off: " + str(pointsOffset) + "\nXZEro: " + str(xZero) +
+              "\nXUNit: " + xUnit           + "\nYMUlt: "  + str(yMultiplier)  + "\nYZEro: " + str(yZero) + 
+              "\nYOFf: "  + str(yOffset)    + "\nYUNit: "  + yUnit)
+
+#        self.set_waveform_parameters(waveformId)
         self.set_waveform_values(waveformAscii, xZero, xIncrement, pointsOffset, yZero, yMultiplier, yOffset)
         plt.plot(self.get_waveform_time(), self.get_waveform_volts(), 'b')
     
@@ -422,7 +436,7 @@ if __name__ == "__main__":
 #    TDS.set_time_scale(2.0E-6)
 #    TDS.get_horizontal_parameters()
     TDS.acquire_waveform()
-    TDS.save_csv("H:\\Home\\UP\\Shared\\Ricardo\\Python Scripts\\Test files\\TDS210.csv")
+#    TDS.save_csv("H:\\Home\\UP\\Shared\\Ricardo\\Python Scripts\\Test files\\TDS210.csv")
     time.sleep(10)
     TDS.close()
 #    DCA.check_channel()
