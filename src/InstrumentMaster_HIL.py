@@ -9,7 +9,7 @@ Created on Tue Jun 25 12:36:00 2019
 
 #import RFSA
 from src.OSA import OSA
-from src.DCA import DCA
+from src.CSA import CSA
 from src.TDS import TDS
 from src.ElectricalSynthesizer import ElectricalSynthesizer
 from src.RFSA import RFSA
@@ -21,7 +21,7 @@ import os
 
 TDS_ACTIVE = False
 OSA_ACTIVE = False
-DCA_ACTIVE = False
+CSA_ACTIVE = False
 RFSA_ACTIVE = False
 PSG_ACTIVE = False
 
@@ -29,9 +29,9 @@ TESTING_MODE = False
 SWEEP_SCOPE = False
 INDEX_WRITE = False
 
-fileNameHilMll = "062220-60GHz-HIL-MLL"
-fileNameMll = "062220-60GHz-MLL"
-fileNameOfc = "062220-60GHz-OFC"
+fileNameHilMll = "062520-30GHz-HIL-MLL"
+fileNameMll = "062520-30GHz-MLL"
+fileNameOfc = "062520-30GHz-OFC"
 fileNameAdditionRFSA = "-1MHz"
 #CAPTURE_STATUS = "HIL-MLL All"
 #CAPTURE_STATUS = "HIL-MLL RFSA HR"
@@ -40,6 +40,8 @@ fileNameAdditionRFSA = "-1MHz"
 #CAPTURE_STATUS = "MLL RFSA HR"
 #CAPTURE_STATUS = "MLL RFSA 10 MHz"
 CAPTURE_STATUS = "OFC All"
+#CAPTURE_STATUS = "Test"
+
 
 #def capture_mode_selector(captureStatus):
 if CAPTURE_STATUS == "HIL-MLL All":
@@ -47,6 +49,7 @@ if CAPTURE_STATUS == "HIL-MLL All":
     TDS_ACTIVE = True
     OSA_ACTIVE = True
     RFSA_ACTIVE = True
+    CSA_ACTIVE = True
     INDEX_WRITE = True
     # File names
     fileName = fileNameHilMll
@@ -77,6 +80,7 @@ elif CAPTURE_STATUS == "MLL All":
     TDS_ACTIVE = True
     OSA_ACTIVE = True
     RFSA_ACTIVE = True
+    CSA_ACTIVE = True
     INDEX_WRITE = True
     # File names
     fileName = fileNameMll
@@ -106,19 +110,19 @@ elif CAPTURE_STATUS == "OFC All":
     # Used instruments
     TDS_ACTIVE = False
     OSA_ACTIVE = True
-    RFSA_ACTIVE = True
+    RFSA_ACTIVE = False
     INDEX_WRITE = True
     # File names
     fileName = fileNameOfc
     measuredDevice = "OFC"
-    fileNameAdditionRFSA = '-AOM'
+#    fileNameAdditionRFSA = '-AOM'
 else:
     # Used instruments
     TDS_ACTIVE = True
     OSA_ACTIVE = True
-    DCA_ACTIVE = True
+    CSA_ACTIVE = True
     RFSA_ACTIVE = True
-    PSG_ACTIVE = True
+    PSG_ACTIVE = False
     
     TESTING_MODE = True
     SWEEP_SCOPE = False
@@ -137,18 +141,18 @@ if __name__ == "__main__":
         filePath = 'H:\\Home\\UP\\Shared\\Ricardo\\Dual Tone Injection Locking\\300 GHz EOM Comb\\HIL-MLL'
         fileType = '.csv'
         rTec = 15       # Measured resistance of TEC for MLL-PIC (kOhm)
-        iGain = 93    # Current in the gain section (mA)
+        iGain = 95.4    # Current in the gain section (mA)
         iPsNum = 2      # Phase shifter used.
-        iPs = 64      # Current in asymmetric MZIs of DCF (PS3) that move the spectrum (mA)
-        vSa = 3.97      # Reverse bias voltage in saturable absorber (V)
-        vEam = 0.00     # Reverse bias voltage in intracavity EAM (V)
-        ixSoa = 102.7     # Current in the external SOA (mA)
-        pMllInj = 9.69  # Power measured in the monitor coupler (~10%) of the MLL-PIC injection locking port (uW)
-        pMllOut = 130   # Power measured in the monitor coupler (~50%) of the autocorrelator EDFA of the MLL-PIC output port (uW)
-        pOfcInj = 41.5   # Power measured in the monitor coupler (<50% )of the injected OFC power (uW)
-        fRepSynth = 29.9598  # Driving frequency of the EOM comb that generates OFC (~3frep) in GHz
+        iPs = 70.00      # Current in asymmetric MZIs of DCF (PS3) that move the spectrum (mA)
+        vSa = 4.07      # Reverse bias voltage in saturable absorber (V)
+        vEam = 0.97     # Reverse bias voltage in intracavity EAM (V)
+        ixSoa = 153.2     # Current in the external SOA (mA)
+        pMllInj = 25.6  # Power measured in the monitor coupler (~10%) of the MLL-PIC injection locking port (uW)
+        pMllOut = 150   # Power measured in the monitor coupler (~50%) of the autocorrelator EDFA of the MLL-PIC output port (uW)
+        pOfcInj = 66.7   # Power measured in the monitor coupler (<50% )of the injected OFC power (uW)
+        fRepSynth = 29.9634  # Driving frequency of the EOM comb that generates OFC (~3frep) in GHz
     
-    if INDEX_WRITE:    
+    if INDEX_WRITE:
         if os.path.isfile(filePath + "\\" + "indexFile.csv") == False:
             with open(filePath + "\\" + "indexFile.csv", "w+", newline='') as fileWriter:
                 csvWriter = csv.writer(fileWriter, delimiter = ',', lineterminator='\n')
@@ -185,20 +189,20 @@ if __name__ == "__main__":
     if OSA_ACTIVE:    
         OSA_243A = OSA()
         OSA_243A.connect('GPIB0::27::INSTR')
-        OSA_243A.grab_spectrum('B')
+        OSA_243A.grab_spectrum('C')
         fileSubPathOsa = 'OSA'
         fileNameAddition = ''
         OSA_243A.save_csv(filePath + '\\' + fileSubPathOsa + '\\' + fileName + fileNameAddition + fileType)
         OSA_243A.plot_waveform()
     
-    if DCA_ACTIVE:
-        DCA_89100C = DCA()
-        DCA_89100C.connect('GPIB0::7::INSTR')
-        DCA_89100C.acquire_waveform()
-        fileSubPathDca = 'SHG'
+    if CSA_ACTIVE:
+        CSA_8200 = CSA()
+        CSA_8200.connect('GPIB0::4::INSTR')
+        CSA_8200.acquire_waveform()
+        fileSubPathCsa = 'CSA'
         fileNameAddition = ''
-        DCA_89100C.save_csv(filePath + '\\' + fileSubPathDca + '\\' + fileName + fileNameAddition + fileType)
-        DCA_89100C.plot_waveform()
+        CSA_8200.save_csv(filePath + '\\' + fileSubPathCsa + '\\' + fileName + fileNameAddition + fileType)
+        CSA_8200.plot_waveform()
     
     if TDS_ACTIVE:
         TDS210 = TDS()
