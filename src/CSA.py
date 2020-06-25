@@ -16,7 +16,7 @@ import csv
 
 GLOBAL_TOUT =  100000 # IO time out in milliseconds
 
-class TDS():
+class CSA():
     def __init__(self,Port=None): 
         self.connected = False
         self.bool_sweep = False
@@ -387,18 +387,18 @@ class TDS():
         try:
             with open(fileName, 'w',newline='') as fileWriter:
                 self.csvWriter = csv.writer(fileWriter, delimiter = '\t')
-                now_ = datetime.datetime.now()
-                timestamp = now_.strftime('%m/%d/%Y %H:%M hrs')
-                self.csvWriter.writerow([timestamp])
-                self.csvWriter.writerow(["Record length: " + self.get_waveform_sample_points()])
-#                self.csvWriter.writerow(["Sample interval: " + self.sensitivity + " (sec)"])
-#                self.csvWriter.writerow(["Trigger point: " + self.rbw_wl + " (samples)"])
-                self.csvWriter.writerow(["Source: " + self.get_waveform_channel()])
-#                self.csvWriter.writerow(["Vertical units: " + self.span_wl])
-                self.csvWriter.writerow(["Vertical scale: " + self.get_waveform_vertical_scale()])
-#                self.csvWriter.writerow(["Horizontal units: " + self.span_wl])
-                self.csvWriter.writerow(["Horizontal scale: " + self.get_waveform_horizontal_scale()])
-                self.csvWriter.writerow(["Acquisition mode: " + self.get_waveform_mode()])
+#                now_ = datetime.datetime.now()
+#                timestamp = now_.strftime('%m/%d/%Y %H:%M hrs')
+#                self.csvWriter.writerow([timestamp])
+#                self.csvWriter.writerow(["Record length: " + self.get_waveform_sample_points()])
+##                self.csvWriter.writerow(["Sample interval: " + self.sensitivity + " (sec)"])
+##                self.csvWriter.writerow(["Trigger point: " + self.rbw_wl + " (samples)"])
+#                self.csvWriter.writerow(["Source: " + self.get_waveform_channel()])
+##                self.csvWriter.writerow(["Vertical units: " + self.span_wl])
+#                self.csvWriter.writerow(["Vertical scale: " + self.get_waveform_vertical_scale()])
+##                self.csvWriter.writerow(["Horizontal units: " + self.span_wl])
+#                self.csvWriter.writerow(["Horizontal scale: " + self.get_waveform_horizontal_scale()])
+#                self.csvWriter.writerow(["Acquisition mode: " + self.get_waveform_mode()])
 #                self.csvWriter.writerow(["Number of averages: " + self.span_wl])
                 self.csvWriter.writerow(["Time (s) Waveform (V)"])
                 for (x,y) in zip(self.get_waveform_time(), self.get_waveform_volts()):
@@ -418,9 +418,9 @@ class TDS():
         plt.show()
 
 if __name__ == "__main__":
-    TDS = TDS()
-    print(TDS.list)
-    TDS.connect('GPIB0::4::INSTR')
+    CSA = CSA()
+    print(CSA.list)
+    CSA.connect('GPIB0::4::INSTR')
 #    TDS.get_measurement_params()
 ##    TDS.acquire_waveform()
 #    TDS.get_channel_bandwidth(1)
@@ -435,10 +435,10 @@ if __name__ == "__main__":
 #    TDS.get_horizontal_parameters()
 #    TDS.set_time_scale(2.0E-6)
 #    TDS.get_horizontal_parameters()
-    TDS.acquire_waveform()
-#    TDS.save_csv("H:\\Home\\UP\\Shared\\Ricardo\\Python Scripts\\Test files\\TDS210.csv")
+    CSA.acquire_waveform()
+    CSA.save_csv("H:\\Home\\UP\\Shared\\Ricardo\\Python Scripts\\Test files\\TDS210.csv")
     time.sleep(10)
-    TDS.close()
+    CSA.close()
 #    DCA.check_channel()
 #    filePath = 'H:\\Home\\UP\\Shared\\Ricardo\\Python Scripts\\Reference material'
 #    fileName  = 'TDStest.txt'
