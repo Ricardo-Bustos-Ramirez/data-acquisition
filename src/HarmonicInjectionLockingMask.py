@@ -109,7 +109,7 @@ class MasterOpticalFrequencyCombManager():
         # Create harmonic masks
         self.maskCalc.createSet3ToneHarmonicMask(self.filePathWS, minFreqSpacing, maxFreqSpacing)
         
-    def createMultiToneThzMask(self, fileNameOFC, minFreqSpacing, maxFreqSpacing, flatSpectrum):
+    def createMultiToneThzMask(self, fileNameOFC, minFreqSpacing, maxFreqSpacing, flatSpectrum, minThreshold):
         # Read file and create mask array
         self.maskCalc.read_csv(self.filePathOsa + '\\' + fileNameOFC)
         self.maskCalc.createMaskArray()
@@ -122,7 +122,7 @@ class MasterOpticalFrequencyCombManager():
         plt.show()
         
         # Create 30 GHz flat mask
-        self.maskCalc.createFlatMask()
+        self.maskCalc.createFlatMaskWithThreshold(minThreshold)
         # Save flat mask
         self.maskCalc.printMask(self.maskCalc.frequency_waveshaper, self.maskCalc.spectrum_waveshaper)
         fileName = '30GHz-Spacing-Flat.wsp'
@@ -166,23 +166,23 @@ if __name__ == "__main__":
     fileName = 'OEW_FPE_EOM-29.934GHz_HNLF-ZD.csv'
     masterOfcMngr = MasterOpticalFrequencyCombManager()
     masterOfcMngr.setOfcAllPass()
-    masterOfcMngr.saveOsaSpectrum(fileName, 'B')
+    masterOfcMngr.saveOsaSpectrum(fileName, 'C')
     
 #    Create Mask Array
-#    masterOfcMngr.createMultiToneThzMask(fileName, 60, 300, False)
-    masterOfcMngr.createThzMask(fileName, 60, 300)
+    masterOfcMngr.createMultiToneThzMask(fileName, 60, 300, True, -30)
+#    masterOfcMngr.createThzMask(fileName, 60, 300)
     
-    # Save harmonic OFC master
+#     Save harmonic OFC master
     fileBaseline = 'OEW_FPE_EOM-29.934GHz_HNLF-ZD_WS_'
-#    ofcSpacingList = ['60','90','120','150','180','210','240','270','300']
-    ofcSpacingList = ['60','120','180']
+    ofcSpacingList = ['60','90','120','150','180','210','240','270','300']
+#    ofcSpacingList20 = ['60','120','180']
     for ofcSpacing in ofcSpacingList:
         print('OFC Spacing: ' + ofcSpacing + ' GHz')
         input("Press Enter to continue...")
         ofcFileName = fileBaseline + ofcSpacing + 'GHz-Spacing.csv '
         masterOfcMngr.loadHarmonicProfile(ofcSpacing)
         masterOfcMngr.setHarmonicProfile(ofcSpacing)
-        masterOfcMngr.saveOsaSpectrum(ofcFileName, 'B')
+        masterOfcMngr.saveOsaSpectrum(ofcFileName, 'C')
 
     masterOfcMngr.closePorts()
         
