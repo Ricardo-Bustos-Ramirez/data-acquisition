@@ -285,6 +285,47 @@ class MaskCalculator():
             self.spectrum_waveshaper.append(x-min_combline_spectrum)
         self.spectrum_waveshaper.append(50)
         self.spectrum_waveshaper.append(50)
+
+    def createFlatMaskWithThreshold(self, minThreshold = -30.00):
+        """This method creates a flat mask for the spectrum with a threshold for minimum values.
+        
+        This method creates two lists:
+        
+        1. frequency_waveshaper: List with frequency values centered at axial mode (stored in frequency_waveshaper) peaks +/- waveshaper minimum step size.        
+        2. spectrum_waveshaper: List with corresponding spectral values that attenuate to create a flat spectral output with a threshold limit (using value stored in combline_spectrum).        
+        .. math:: f_{WS}=[f_{0}-4\Delta_{WS},f_{0}-2\Delta_{WS},f_{0}-\Delta_{WS} ,f_{0}+\Delta_{WS} ,...,f_{N-1}-\Delta_{WS} ,f_{N-1}+\Delta_{WS} ,f_{N}-\Delta_{WS} ,f_{N}+\Delta_{WS} ,f_{N}+2\Delta_{WS},f_{N}+4\Delta_{WS}]        
+        .. math:: A_{WS}=[             50 dB,             50 dB,A_{0}-min\{A_{n}\},A_{0}-min\{A_{n}\},...,A_{N-1}-min\{A_{n}\},A_{N-1}-min\{A_{n}\},A_{N}-min\{A_{n}\},A_{N}-min\{A_{n}\},             50 dB,             50 dB]
+        """
+        # Now we are going to make the mask for the waveshaper       
+        delta_waveshaper = 0.005    # Delta/2 between points in the waveshaper
+
+        for x in self.combline_frequency:
+            self.frequency_waveshaper.append(x-delta_waveshaper)
+            self.frequency_waveshaper.append(x+delta_waveshaper)
+        self.frequency_waveshaper.append(self.frequency_waveshaper[-1]+(delta_waveshaper*2))
+        self.frequency_waveshaper.append(self.frequency_waveshaper[-1]+(delta_waveshaper*2))
+        self.frequency_waveshaper.append(self.frequency_waveshaper[0]-(delta_waveshaper*2))
+        self.frequency_waveshaper.append(self.frequency_waveshaper[0]-(delta_waveshaper*4))
+        
+        self.frequency_waveshaper.sort()
+    #    print(frequency_waveshaper)
+        min_combline_spectrum_with_limit = []
+        for y in self.combline_spectrum:
+            if y >= minThreshold:
+                min_combline_spectrum_with_limit.append(y)
+        min_combline_spectrum = min(min_combline_spectrum_with_limit)
+        
+        self.spectrum_waveshaper.append(50)
+        self.spectrum_waveshaper.append(50)
+        for x in self.combline_spectrum:
+            if x >= minThreshold:
+                self.spectrum_waveshaper.append(x-min_combline_spectrum)
+                self.spectrum_waveshaper.append(x-min_combline_spectrum)
+            else: # If value is below threshold just eliminate it.
+                self.spectrum_waveshaper.append(50)
+                self.spectrum_waveshaper.append(50)
+        self.spectrum_waveshaper.append(50)
+        self.spectrum_waveshaper.append(50)
     
     def createHarmonicMask(self, maskFilePath, maskFileName,combLineNumber):
         spectrum_waveshaper_harmonic = self.calculateHarmonicMask(self.spectrum_waveshaper,-combLineNumber,combLineNumber)
