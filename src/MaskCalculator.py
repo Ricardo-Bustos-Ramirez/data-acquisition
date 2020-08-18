@@ -34,8 +34,8 @@ class MaskCalculator():
         List containing the spectral values of the peaks of the comb lines of the optical spectrum used to generate mask.
         .. math:: A_{OFC}=[]
     """
-    def __init__(self):
-        self.wsPhase = 0
+    def __init__(self, wsPhaseArray):
+        self.wsPhase = wsPhaseArray
         self.wsPort = 1
         self.header = []
         self.wavelength = []
@@ -73,11 +73,11 @@ class MaskCalculator():
         spectrum_waveshaper: list
             Mask attenuation values (in dB ranging 0-50).
         """
-        for x, y in zip(frequency_waveshaper,spectrum_waveshaper):
+        for x, y, z in zip(frequency_waveshaper,spectrum_waveshaper, self.wsPhase):
             if abs(y) < 10:
-                print("{0:.3f}\t0{1:.3f}\t{2}\t{3}".format(x,y,self.wsPhase,self.wsPort))
+                print("{0:.3f}\t0{1:.3f}\t{2:.3f}\t{3}".format(x,y,z,self.wsPort))
             else:
-                print("{0:.3f}\t{1:.3f}\t{2}\t{3}".format(x,y,self.wsPhase,self.wsPort))
+                print("{0:.3f}\t{1:.3f}\t{2:.3f}\t{3}".format(x,y,z,self.wsPort))
    
     def saveMask(self,filePath,fileName,frequency_waveshaper_mask,spectrum_waveshaper_mask):
         """This method saves in a WSP file the frequency and attenuation array in a Finisar 1000M compatible format.
@@ -103,11 +103,11 @@ class MaskCalculator():
             Mask attenuation values (in dB ranging 0-50).
         """
         fileWriter = open(filePath + '\\' + fileName, 'w')
-        for x, y in zip(frequency_waveshaper_mask,spectrum_waveshaper_mask):
+        for x, y, z in zip(frequency_waveshaper_mask,spectrum_waveshaper_mask,self.wsPhase):
             if abs(y) < 10:
-                fileWriter.write("{0:.3f}\t0{1:.3f}\t{2}\t{3}\r".format(x,y,self.wsPhase,self.wsPort))
+                fileWriter.write("{0:.3f}\t0{1:.3f}\t{2:.3f}\t{3}\r".format(x,y,z,self.wsPort))
             else:
-                fileWriter.write("{0:.3f}\t{1:.3f}\t{2}\t{3}\r".format(x,y,self.wsPhase,self.wsPort))
+                fileWriter.write("{0:.3f}\t{1:.3f}\t{2:.3f}\t{3}\r".format(x,y,z,self.wsPort))
         fileWriter.close()
         
     

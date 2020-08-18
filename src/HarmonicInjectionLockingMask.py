@@ -7,20 +7,37 @@ Created on Wed Oct 30 11:49:40 2019
 
 from src.MaskCalculator import MaskCalculator
 from src.OSA import OSA as OSA6317B
+from src.TDS import TDS as TDS210
 from src.WaveShaperManager import WaveShaperManager
 import time
 #import datetime
 import matplotlib.pyplot as plt
 
+phaseMask = [0,0,-7.4000,-7.4000,-6.6761,-6.6761,-5.9895,-5.9895,-5.3401,-5.3401,
+                 -4.7280,-4.7280,-4.1532,-4.1532,-3.6155,-3.6155,-3.1152,-3.1152,
+                 -2.6521,-2.6521,-2.2262,-2.2262,-1.8376,-1.8376,-1.4862,-1.4862,
+                 -1.1721,-1.1721,-0.8952,-0.8952,-0.6556,-0.6556,-0.4532,-0.4532,
+                 -0.2881,-0.2881,-0.1602,-0.1602,-0.0696,-0.0696,-0.0162,-0.0162,
+                 -0.0001,-0.0001,-0.0212,-0.0212,-0.0796,-0.0796,-0.1752,-0.1752,
+                 -0.3081,-0.3081,-0.4782,-0.4782,-0.6856,-0.6856,-0.9302,-0.9302,
+                 -1.2121,-1.2121,-1.5312,-1.5312,-1.8876,-1.8876,-2.2812,-2.2812,
+                 -2.7121,-2.7121,-3.1802,-3.1802,-3.6855,-3.6855,-4.2282,-4.2282,
+                 -4.8080,-4.8080,-5.4251,-5.4251,-6.0795,-6.0795,-6.7711,-6.7711,
+                 -7.5000,-7.5000,0,0]
+
 class MasterOpticalFrequencyCombManager():
     def __init__(self):
         self.osaGpibAddress = 'GPIB0::27::INSTR'
+        self.tdsGpibAddress = 'GPIB0::5::INSTR'
         self.filePathOsa = 'H:\\Home\\UP\\Shared\\Ricardo\\Dual Tone Injection Locking\\OEWaves\\Python\\OSA'
+        self.filePathTds = 'H:\\Home\\UP\\Shared\\Ricardo\\Dual Tone Injection Locking\\OEWaves\\Python\\TDS'        
         self.filePathWS = 'C:\\Users\\ri679647\\Desktop\\Dual Tone IL Mask\\2020\\Python'
         self.osaManager = OSA6317B()
+        self.tdsManager = TDS210()
         self.wvmngr = WaveShaperManager("ws1")
-        self.maskCalc = MaskCalculator()
+        self.maskCalc = MaskCalculator(phaseMask)
         self.osaManager.connect(self.osaGpibAddress)
+        self.tdsManager.connect(self.tdsGpibAddress)
     
     def saveOsaSpectrum(self, fileName, channel):
         self.osaManager.connect(self.osaGpibAddress)
@@ -34,11 +51,15 @@ class MasterOpticalFrequencyCombManager():
         self.osaManager.save_csv(self.filePathOsa + '\\' + fileName)
 #        self.osaManager.close()
         # Print captured spectrum
-        plt.plot(self.osaManager.wavelength, self.osaManager.waveform,'b')
-        plt.axis([min(self.osaManager.wavelength),max(self.osaManager.wavelength),max([min(self.osaManager.waveform),-75]),max(self.osaManager.waveform)])
-        plt.xlabel('Wavelength (nm)')
-        plt.ylabel('Output (dB)')
-        plt.show()
+        self.osaManager.plot_waveform()
+
+    def saveTdsSpectrum(self, fileName):
+        self.tdsManager.connect(self.tdsGpibAddress)
+        self.tdsManager.acquire_waveform()
+        self.tdsManager.save_csv(self.filePathTds + '\\' + fileName)
+#        self.osaManager.close()
+        # Print captured spectrum
+        self.tdsManager.plot_waveform()
     
     def createThzMask(self, fileNameOFC, minFreqSpacing, maxFreqSpacing):
         # Read file and create mask array
@@ -156,6 +177,7 @@ class MasterOpticalFrequencyCombManager():
     
     def closePorts(self):
         self.osaManager.close()
+        self.tdsManager.close()
         
 
 if __name__ == "__main__":
@@ -166,23 +188,24 @@ if __name__ == "__main__":
     fileName = 'OEW_FPE_EOM-29.934GHz_HNLF-ZD.csv'
     masterOfcMngr = MasterOpticalFrequencyCombManager()
     masterOfcMngr.setOfcAllPass()
-    masterOfcMngr.saveOsaSpectrum(fileName, 'C')
+#    masterOfcMngr.saveOsaSpectrum(fileName, 'A')
     
 #    Create Mask Array
-    masterOfcMngr.createMultiToneThzMask(fileName, 60, 300, True, -30)
+#    masterOfcMngr.createMultiToneThzMask(fileName, 60, 300, True, -40)
 #    masterOfcMngr.createThzMask(fileName, 60, 300)
     
 #     Save harmonic OFC master
     fileBaseline = 'OEW_FPE_EOM-29.934GHz_HNLF-ZD_WS_'
     ofcSpacingList = ['60','90','120','150','180','210','240','270','300']
-#    ofcSpacingList20 = ['60','120','180']
+#    ofcSpacingList = ['90']
     for ofcSpacing in ofcSpacingList:
         print('OFC Spacing: ' + ofcSpacing + ' GHz')
         input("Press Enter to continue...")
         ofcFileName = fileBaseline + ofcSpacing + 'GHz-Spacing.csv '
         masterOfcMngr.loadHarmonicProfile(ofcSpacing)
         masterOfcMngr.setHarmonicProfile(ofcSpacing)
-        masterOfcMngr.saveOsaSpectrum(ofcFileName, 'C')
+#        masterOfcMngr.saveOsaSpectrum(ofcFileName, 'A')
+#        masterOfcMngr.saveTdsSpectrum(ofcFileName)
 
     masterOfcMngr.closePorts()
         
