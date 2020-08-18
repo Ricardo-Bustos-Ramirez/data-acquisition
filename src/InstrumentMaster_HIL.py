@@ -29,9 +29,9 @@ TESTING_MODE = False
 SWEEP_SCOPE = False
 INDEX_WRITE = False
 
-fileNameHilMll = "071420-150GHz-COEO-50m-HIL-MLL"
-fileNameMll = "071420-150GHz-MLL"
-fileNameOfc = "071420-150GHz-OFC-COEO-50m"
+fileNameHilMll = "081720-210GHz-COEO-50m-HIL-MLL-PID-locked-compressed"
+fileNameMll = "081720-210GHz-MLL-PID-locked"
+fileNameOfc = "081720-210GHz-OFC-COEO-50m-PID-locked-compressed"
 fileNameAdditionRFSA = "-1MHz"
 CAPTURE_STATUS = "HIL-MLL All"
 #CAPTURE_STATUS = "HIL-MLL RFSA HR"
@@ -39,7 +39,7 @@ CAPTURE_STATUS = "HIL-MLL All"
 #CAPTURE_STATUS = "MLL All"
 #CAPTURE_STATUS = "MLL RFSA HR"
 #CAPTURE_STATUS = "MLL RFSA 10 MHz"
-CAPTURE_STATUS = "OFC All"
+#CAPTURE_STATUS = "OFC All"
 #CAPTURE_STATUS = "HIL-MLL Locking Power"
 #CAPTURE_STATUS = "Test"
 
@@ -110,10 +110,10 @@ elif CAPTURE_STATUS == "MLL RFSA 10 MHz":
     fileNameAdditionRFSA = '-10MHz'
 elif CAPTURE_STATUS == "OFC All":
     # Used instruments
-    TDS_ACTIVE = False
+    TDS_ACTIVE = True
     OSA_ACTIVE = True
     RFSA_ACTIVE = False
-    CSA_ACTIVE = False
+    CSA_ACTIVE = True
     INDEX_WRITE = True
     # File names
     fileName = fileNameOfc
@@ -121,15 +121,16 @@ elif CAPTURE_STATUS == "OFC All":
 #    fileNameAdditionRFSA = '-AOM'
 elif CAPTURE_STATUS == "HIL-MLL Locking Power":
     # Used instruments
-    TDS_ACTIVE = False
-    OSA_ACTIVE = False
+    TDS_ACTIVE = True
+    OSA_ACTIVE = True
     RFSA_ACTIVE = True
+    CSA_ACTIVE = True
     INDEX_WRITE = True
     # File names
-    fileName = fileNameHilMll
     measuredDevice = "HIL-MLL"
-    pOfcInj = 10.0
-    fileNameAdditionRFSA = '-20MHz-P-' + str(pOfcInj) + 'uW'
+    pOfcInj = 30
+    fileName = fileNameHilMll + '-P-' + str(pOfcInj) + 'uW'
+    fileNameAdditionRFSA = '-20MHz'
 else:
     # Used instruments
     TDS_ACTIVE = True
@@ -155,15 +156,15 @@ if __name__ == "__main__":
         filePath = 'H:\\Home\\UP\\Shared\\Ricardo\\Dual Tone Injection Locking\\300 GHz EOM Comb\\HIL-MLL'
         fileType = '.csv'
         rTec = 15       # Measured resistance of TEC for MLL-PIC (kOhm)
-        iGain = 87.8    # Current in the gain section (mA)
+        iGain = 93.2    # Current in the gain section (mA)
         iPsNum = 2      # Phase shifter used.
         iPs = 70.0      # Current in asymmetric MZIs of DCF (PS3) that move the spectrum (mA)
-        vSa = 4.21      # Reverse bias voltage in saturable absorber (V)
-        vEam = 1.44     # Reverse bias voltage in intracavity EAM (V)
-        ixSoa = 161.0     # Current in the external SOA (mA)
-        pMllInj = 22.57  # Power measured in the monitor coupler (~10%) of the MLL-PIC injection locking port (uW)
-        pMllOut = 170   # Power measured in the monitor coupler (~50%) of the autocorrelator EDFA of the MLL-PIC output port (uW)
-        pOfcInj = 84.4   # Power measured in the monitor coupler (<50% )of the injected OFC power (uW)
+        vSa = 4.29      # Reverse bias voltage in saturable absorber (V)
+        vEam = 0.12     # Reverse bias voltage in intracavity EAM (V)
+        ixSoa = 151.9   # Current in the external SOA (mA)
+        pMllInj = 33.3    # Power measured in the monitor coupler (~10%) of the MLL-PIC injection locking port (uW)
+        pMllOut = 0   # Power measured in the monitor coupler (~50%) of the autocorrelator EDFA of the MLL-PIC output port (uW)
+        pOfcInj = 88.4  # Power measured in the monitor coupler (<50% )of the injected OFC power (uW)
         fRepSynth = 29.9634  # Driving frequency of the EOM comb that generates OFC (~3frep) in GHz
     
     if INDEX_WRITE:
