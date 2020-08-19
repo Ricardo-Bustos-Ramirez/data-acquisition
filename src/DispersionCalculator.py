@@ -26,11 +26,11 @@ class DispersionCalculator():
     spectrum: list
         List that contains the current output values of the optical spectrum (from OSA) used to generate mask.
         .. math:: A_{opt}=[A_{opt,0},A_{opt,1},...,A_{opt,N-1},A_{opt,N}]
-    freq_sep: int
+    freqSep: int
         Nominal repetition rate of the EOM comb used to generate mask, currently 30 GHz.
-    freq_sep: float
+    freqSep: float
         Nominal repetition rate in wavelength at 1550 nm, currently 0.24 nm.
-    combline_spectrum: list
+    comblineSpectrum: list
         List containing the spectral values of the peaks of the comb lines of the optical spectrum used to generate mask.
         .. math:: A_{OFC}=[]
     """
@@ -40,26 +40,27 @@ class DispersionCalculator():
         self.header = []
         self.wavelength = []
         self.spectrum = []
-        self.freq_sep = 10 # 10 GHz
-        self.wavelength_sep = 0.08 # Equivalent nm to 10 GHz at 1550 nm
+        self.freqSep = 10                      # f_rep = 10 GHz
+        self.wavelengthSep = 0.08              # Equivalent nm to 10 GHz at 1550 nm
         # Spectrum points for mask
-        self.combline_spectrum = []
-        self.combline_wavelength = []
-        self.combline_frequency = []
-        self.c0 = 299792458  # Light speed in m/s
-        self.frequency_offset = 192.682-192.63 # Difference between waveshaper and OSA
-        self.frequency_waveshaper = []
+        self.comblineSpectrum = []
+        self.comblineWavelength = []
+        self.comblineFrequency = []
+        self.c0 = 299792458                     # Light speed in m/s
+        self.frequencyOffset = 192.682-192.63  # Difference between waveshaper and OSA
+        self.frequencyWaveshaper = []
         self.spectrum_waveshaper = []
-        self.max_wavelength = 0#max(self.wavelength)
-        self.min_wavelength = 0#min(self.wavelength)            
-        self.len_wavelength = 0#len(self.wavelength)
-        self.wavelength_span = 0#self.max_wavelength - self.min_wavelength
-        self.max_spectrum = 0#max(self.spectrum)
-        self.min_spectrum = 0#min(self.spectrum)            
-        self.len_spectrum = 0#len(self.spectrum)
-        self.spectrum_span = 0#self.max_spectrum - self.min_spectrum
+        self.lenWaveshaperValues = 0
+        self.maxWavelength = 0                 # max(self.wavelength)
+        self.minWavelength = 0                 # min(self.wavelength)            
+        self.lenWavelength = 0                 # len(self.wavelength)
+        self.wavelengthSpan = 0                # self.maxWavelength - self.minWavelength
+        self.maxSpectrum = 0                   # max(self.spectrum)
+        self.minSpectrum = 0                   # min(self.spectrum)            
+        self.lenSpectrum = 0                   # len(self.spectrum)
+        self.spectrumSpan = 0                  # self.maxSpectrum - self.minSpectrum
     
-    def printMask(self):
+    def print_mask(self):
         """This method prints the frequency and attenuation array in a Finisar 1000M compatible format.
         
         The method prints the frequency and corresponding spectral output as:
@@ -73,18 +74,18 @@ class DispersionCalculator():
         
         Parameters
         ----------
-        frequency_waveshaper: list
+        frequencyWaveshaper: list
             Mask frequency values (in THz).
         spectrum_waveshaper: list
             Mask attenuation values (in dB ranging 0-50).
         """
-        for w, x, y, z  in zip(self.frequency_waveshaper,self.spectrum_waveshaper, self.wsPhase, self.wsPort):
+        for w, x, y, z  in zip(self.frequencyWaveshaper,self.spectrum_waveshaper, self.wsPhase, self.wsPort):
             if abs(x) < 10:
                 print("{0:.3f}\t0{1:.3f}\t{2:.3f}\t{3}".format(w,x,y,z))
             else:
                 print("{0:.3f}\t{1:.3f}\t{2:.3f}\t{3}".format(w,x,y,z))
    
-    def saveMask(self,filePath,fileName):
+    def save_mask(self,filePath,fileName):
         """This method saves in a WSP file the frequency and attenuation array in a Finisar 1000M compatible format.
         
         The method saves a WSP file that contains the frequency and corresponding spectral output as:
@@ -102,25 +103,38 @@ class DispersionCalculator():
             Path for saving the file.
         fileName: str
             Mask file name.
-        frequency_waveshaper: list
+        frequencyWaveshaper: list
             Mask frequency values (in THz).
         spectrum_waveshaper: list
             Mask attenuation values (in dB ranging 0-50).
         """
         fileWriter = open(filePath + '\\' + fileName, 'w')
-        for w, x, y, z in zip(self.frequency_waveshaper, self.spectrum_waveshaper, self.wsPhase, self.wsPort):
+        for w, x, y, z in zip(self.frequencyWaveshaper, self.spectrum_waveshaper, self.wsPhase, self.wsPort):
             if abs(x) < 10:
                 fileWriter.write("{0:.3f}\t0{1:.3f}\t{2:.3f}\t{3}\r".format(w,x,y,z))
             else:
                 fileWriter.write("{0:.3f}\t{1:.3f}\t{2:.3f}\t{3}\r".format(w,x,y,z))
         fileWriter.close()  
     
-    def plotMaskAndOriginal(self):
+    def plot_mask_and_original(self):
         plt.plot(self.wavelength, self.spectrum,'b')
-        plt.plot(self.combline_wavelength, self.combline_spectrum,'ro')
+        plt.plot(self.comblineWavelength, self.comblineSpectrum,'ro')
         plt.axis([min(self.wavelength), max(self.wavelength), max([min(self.spectrum),-80]), max(self.spectrum)+5])
         plt.xlabel('Wavelength (nm)')
         plt.ylabel('Output (dB)')
+        plt.show()
+    
+    def plot_waveshaper_mask(self):
+        fig, leftAxis = plt.subplots()
+        leftAxis.plot(self.frequencyWaveshaper, self.spectrum_waveshaper, 'ro')
+        leftAxis.axis([min(self.frequencyWaveshaper), max(self.frequencyWaveshaper), -60, 10])
+        leftAxis.set_xlabel('Frequency (THz)')
+        leftAxis.set_ylabel('Attenuation (dB)')
+        rightAxis = leftAxis.twinx()
+        rightAxis.plot(self.frequencyWaveshaper, self.wsPhase, 'bo')
+        rightAxis.axis([min(self.frequencyWaveshaper), max(self.frequencyWaveshaper), min(self.wsPhase), max(self.wsPhase)])
+        rightAxis.set_xlabel('Frequency (THz)')
+        rightAxis.set_ylabel('Spectral phase (rad)')
         plt.show()
     
     def read_csv(self, fileName):
@@ -128,30 +142,26 @@ class DispersionCalculator():
             self.csvReader = csv.reader(fileReader, delimiter ='\t')
             for row in self.csvReader:
                 if(len(row) > 1):
-#                separated_row = row[0].split(',')
-#                my_array = np.asarray(separated_row)
-#                self.wavelength.append(float(my_array[0]))
-#                self.spectrum.append(float(my_array[-1]))
                     self.wavelength.append(float(row[0]))
                     self.spectrum.append(float(row[1]))
                 else:
                     self.header.append(row)
             # Define useful constants for mask calculation
-            self.max_wavelength = max(self.wavelength)
-            self.min_wavelength = min(self.wavelength)            
-            self.len_wavelength = len(self.wavelength)
-            self.wavelength_span = self.max_wavelength - self.min_wavelength
-            self.max_spectrum = max(self.spectrum)
-            self.min_spectrum = min(self.spectrum)            
-            self.len_spectrum = len(self.spectrum)
-            self.spectrum_span = self.max_spectrum - self.min_spectrum       
+            self.maxWavelength  =  max(self.wavelength)
+            self.minWavelength  =  min(self.wavelength)            
+            self.lenWavelength  =  len(self.wavelength)
+            self.wavelengthSpan =  self.maxWavelength - self.minWavelength
+            self.maxSpectrum    =  max(self.spectrum)
+            self.minSpectrum    =  min(self.spectrum)            
+            self.lenSpectrum    =  len(self.spectrum)
+            self.spectrumSpan   =  self.maxSpectrum - self.minSpectrum       
             
-    def createMaskArray(self):        
-        section_wavelength = self.wavelength_span/self.wavelength_sep
+    def create_mask_array(self):        
+        section_wavelength = self.wavelengthSpan/self.wavelengthSep
 #        print(section_wavelength)
-        index_frep_span = int(self.len_wavelength/section_wavelength)
+        index_frep_span = int(self.lenWavelength/section_wavelength)
 #        print(index_frep_span)
-        spectrum_max_index = self.spectrum.index(self.max_spectrum)
+        spectrum_max_index = self.spectrum.index(self.maxSpectrum)
 #        print(self.spectrum[spectrum_max_index])
         if int((spectrum_max_index%index_frep_span)-(index_frep_span/2)) > 0:
             initial_index = int((spectrum_max_index%index_frep_span)-(index_frep_span/2))
@@ -165,70 +175,76 @@ class DispersionCalculator():
         for i in range(section_wavelength):
 #            print(i)
             sub_spectrum = self.spectrum[initial_index+i*index_frep_span:initial_index+(i+1)*index_frep_span]
-            self.combline_spectrum.append(max(sub_spectrum))
-            max_index = initial_index + i*index_frep_span + sub_spectrum.index(self.combline_spectrum[i])
-            self.combline_wavelength.append(self.wavelength[max_index])
-        for x in self.combline_wavelength:
-            self.combline_frequency.append(((self.c0/(x*1e-9))*1e-12)-self.frequency_offset)
-        self.combline_frequency.sort()
-#        print(self.combline_frequency) 
+            self.comblineSpectrum.append(max(sub_spectrum))
+            max_index = initial_index + i*index_frep_span + sub_spectrum.index(self.comblineSpectrum[i])
+            self.comblineWavelength.append(self.wavelength[max_index])
+        for x in self.comblineWavelength:
+            self.comblineFrequency.append(((self.c0/(x*1e-9))*1e-12)-self.frequencyOffset)
+        self.comblineFrequency.sort()
+#        print(self.comblineFrequency) 
     
-    def createWaveshaperMask(self):
+    def create_waveshaper_mask(self):
         """This method creates a flat mask for the spectrum.
         
         This method creates two lists:
         
-        1. frequency_waveshaper: List with frequency values centered at axial mode (stored in frequency_waveshaper) peaks +/- waveshaper minimum step size.        
-        2. spectrum_waveshaper: List with corresponding spectral values that attenuate to create a flat spectral output (using value stored in combline_spectrum).        
-        .. math:: f_{WS}=[f_{0}-4\Delta_{WS},f_{0}-2\Delta_{WS},f_{0}-\Delta_{WS} ,f_{0}+\Delta_{WS} ,...,f_{N-1}-\Delta_{WS} ,f_{N-1}+\Delta_{WS} ,f_{N}-\Delta_{WS} ,f_{N}+\Delta_{WS} ,f_{N}+2\Delta_{WS},f_{N}+4\Delta_{WS}]        
-        .. math:: A_{WS}=[             50 dB,             50 dB,A_{0}-min\{A_{n}\},A_{0}-min\{A_{n}\},...,A_{N-1}-min\{A_{n}\},A_{N-1}-min\{A_{n}\},A_{N}-min\{A_{n}\},A_{N}-min\{A_{n}\},             50 dB,             50 dB]
+        1. frequencyWaveshaper: List with frequency values centered at axial mode (stored in frequencyWaveshaper) peaks +/- waveshaper minimum step size.        
+        2. spectrum_waveshaper: List with corresponding spectral values that attenuate to create a flat spectral output (using value stored in comblineSpectrum).        
+        .. math:: f_{WS}=[f_{0} ,f_{1}, ... , f_{N-1}, f_{N}]        
+        .. math:: A_{WS}=[A_{0} ,A_{1}, ... , A_{N-1}, A_{N}]
         """
 
-        for x in self.combline_frequency:
-            self.frequency_waveshaper.append(x)
+        for x in self.comblineFrequency:
+            self.frequencyWaveshaper.append(x)
         
-        self.frequency_waveshaper.sort()
-    #    print(self.frequency_waveshaper)
+        self.frequencyWaveshaper.sort()
+    #    print(self.frequencyWaveshaper)
         
-        for x in self.combline_spectrum:
+        for x in self.comblineSpectrum:
             self.spectrum_waveshaper.append(x)
-        print(self.spectrum_waveshaper)
+            
+#        print(self.spectrum_waveshaper)        
+        self.lenWaveshaperValues = len(self.spectrum_waveshaper)
 
-    def createWaveshaperMaskWithThreshold(self, minThreshold = -30.00):
+    def create_waveshaper_mask_with_threshold(self, minThreshold = -30.00):
         """This method creates a flat mask for the spectrum with a threshold for minimum values.
         
         This method creates two lists:
         
-        1. frequency_waveshaper: List with frequency values centered at axial mode (stored in frequency_waveshaper).        
-        2. spectrum_waveshaper: List with corresponding spectral values with a threshold limit (using value stored in combline_spectrum).        
-        .. math:: f_{WS}=[f_{0}-4\Delta_{WS},f_{0}-2\Delta_{WS},f_{0}-\Delta_{WS} ,f_{0}+\Delta_{WS} ,...,f_{N-1}-\Delta_{WS} ,f_{N-1}+\Delta_{WS} ,f_{N}-\Delta_{WS} ,f_{N}+\Delta_{WS} ,f_{N}+2\Delta_{WS},f_{N}+4\Delta_{WS}]        
-        .. math:: A_{WS}=[             50 dB,             50 dB,A_{0}-min\{A_{n}\},A_{0}-min\{A_{n}\},...,A_{N-1}-min\{A_{n}\},A_{N-1}-min\{A_{n}\},A_{N}-min\{A_{n}\},A_{N}-min\{A_{n}\},             50 dB,             50 dB]
+        1. frequencyWaveshaper: List with frequency values centered at axial mode (stored in frequencyWaveshaper).        
+        2. spectrum_waveshaper: List with corresponding spectral values with a threshold limit (using value stored in comblineSpectrum).        
+        .. math:: f_{WS}=[f_{0} ,f_{1}, ... , f_{N-1}, f_{N}]        
+        .. math:: A_{WS}=[A_{0} ,A_{1}, ... , A_{N-1}, A_{N}]
         """
-        # Now we are going to make the mask for the waveshaper       
-        delta_waveshaper = 0.005    # Delta/2 between points in the waveshaper
+        # Now we are going to make the mask for the waveshaper
 
-        for x in self.combline_frequency:
-            self.frequency_waveshaper.append(x)
+        for x in self.comblineFrequency:
+            self.frequencyWaveshaper.append(x)
         
-        self.frequency_waveshaper.sort()
-    #    print(frequency_waveshaper)
-        for x in self.combline_spectrum:
+        self.frequencyWaveshaper.sort()
+    #    print(frequencyWaveshaper)
+        for x in self.comblineSpectrum:
             if x >= minThreshold:
                 self.spectrum_waveshaper.append(x)
             else: # If value is below threshold just eliminate it.
                 self.spectrum_waveshaper.append(50)
+                
+#        print(self.spectrum_waveshaper)
+        self.set_len_ws_values(len(self.spectrum_waveshaper))
     
-    def setWaveshaperSpectralPhase(self):
-        # Temporary fix.
-        len_optical_spectrum = len(self.frequency_waveshaper)
-        for x in range(len_optical_spectrum):
-            self.wsPhase.append(0)
+    def set_len_ws_values(self, lenWaveshaperValues):
+        self.lenWaveshaperValues = lenWaveshaperValues
     
-    def setWaveshaperPort(self):
-        # Temporary fix.
-        len_optical_spectrum = len(self.frequency_waveshaper)
-        for x in range(len_optical_spectrum):
-            self.wsPort.append(0)
+    def get_len_ws_values(self):
+        return self.lenWaveshaperValues
+    
+    def set_waveshaper_spectral_phase(self, wsPhase):
+        if len(wsPhase) == self.get_len_ws_values():
+            self.wsPhase = wsPhase
+    
+    def set_waveshaper_port(self, wsPort):
+        if len(wsPort) == self.get_len_ws_values():
+            self.wsPort = wsPort
 
 if __name__ == "__main__":
     
@@ -240,15 +256,22 @@ if __name__ == "__main__":
     fileName = filedialog.askopenfilename()
     
     dispCalc.read_csv(fileName)
-    dispCalc.createMaskArray()
-    dispCalc.plotMaskAndOriginal()
+    dispCalc.create_mask_array()
+    dispCalc.plot_mask_and_original()
 
-    dispCalc.createWaveshaperMask()
-    dispCalc.setWaveshaperSpectralPhase()
-    dispCalc.setWaveshaperPort()
+    dispCalc.create_waveshaper_mask()
+    wsPhase = []
+    wsPort = []
+    for i in range(dispCalc.get_len_ws_values()):
+        wsPhase.append(0.000)
+        wsPort.append(1)
+    dispCalc.set_waveshaper_spectral_phase(wsPhase)
+    dispCalc.set_waveshaper_port(wsPort)
     
     filePath = 'C:\\Users\\ri679647\\Desktop\\Dual Tone IL Mask\\2020\\Python\\DCF-MLL-PIC'
     # Save flat etalon response
-    dispCalc.printMask()
+    dispCalc.print_mask()
     fileName = 'MLL-PIC-10GHz.wsp'
-    dispCalc.saveMask(filePath,fileName)
+    dispCalc.save_mask(filePath,fileName)
+
+    dispCalc.plot_waveshaper_mask()
