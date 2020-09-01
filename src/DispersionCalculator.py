@@ -59,6 +59,8 @@ class DispersionCalculator():
         self.minSpectrum = 0                   # min(self.spectrum)            
         self.lenSpectrum = 0                   # len(self.spectrum)
         self.spectrumSpan = 0                  # self.maxSpectrum - self.minSpectrum
+        self.delayPs = []
+        self.shgIntensity = []
     
     def print_mask(self):
         """This method prints the frequency and attenuation array in a Finisar 1000M compatible format.
@@ -136,8 +138,15 @@ class DispersionCalculator():
         rightAxis.set_xlabel('Frequency (THz)')
         rightAxis.set_ylabel('Spectral phase (rad)')
         plt.show()
+
+    def plot_autocorrelation_pulse(self):
+        plt.plot(self.delayPs, self.shgIntensity,'b')
+        plt.axis([min(self.delayPs), max(self.delayPs), min(self.shgIntensity), max(self.shgIntensity)])
+        plt.xlabel('Delay (ps)')
+        plt.ylabel('SHG intensity (a.u.)')
+        plt.show()
     
-    def read_csv(self, fileName):
+    def read_csv_optical_spectrum(self, fileName):
         with open(fileName, 'r') as fileReader:
             self.csvReader = csv.reader(fileReader, delimiter ='\t')
             for row in self.csvReader:
@@ -154,7 +163,24 @@ class DispersionCalculator():
             self.maxSpectrum    =  max(self.spectrum)
             self.minSpectrum    =  min(self.spectrum)            
             self.lenSpectrum    =  len(self.spectrum)
-            self.spectrumSpan   =  self.maxSpectrum - self.minSpectrum       
+            self.spectrumSpan   =  self.maxSpectrum - self.minSpectrum
+
+    def read_csv_optical_pulses(self, fileName):
+        with open(fileName, 'r') as fileReader:
+            self.csvReader = csv.reader(fileReader, delimiter ='\t')
+            timeOutput = []
+            voltageOutput = []
+            for row in self.csvReader:
+                if(len(row) > 1):
+                    timeOutput.append(float(row[0]))
+                    voltageOutput.append(float(row[1]))
+                else:
+                    self.header.append(row)
+            # Define useful constants for SHG intensity autocorrelation
+            maxVoltageOutput = max(voltageOutput)            
+            for timeElement, voltageElement in zip(timeOutput, voltageOutput):
+                self.delayPs.append(timeElement * 31.6 * 1e3)
+                self.shgIntensity.append(voltageElement/maxVoltageOutput)
             
     def create_mask_array(self):        
         section_wavelength = self.wavelengthSpan/self.wavelengthSep
@@ -245,6 +271,25 @@ class DispersionCalculator():
     def set_waveshaper_port(self, wsPort):
         if len(wsPort) == self.get_len_ws_values():
             self.wsPort = wsPort
+    
+    def get_autocorrelation_pulse_width(self):
+        i = 0
+        while True:            
+            if self.shgIntensity[i] > 0.5:
+                pulsewidthValue1 = self.delayPs[i]
+                break
+            else:
+                i = i + 1
+        
+        i = len(self.shgIntensity) - 1
+        while True:
+            if self.shgIntensity[i] > 0.5:
+                pulsewidthValue2 = self.delayPs[i]
+                break
+            else:
+                i = i - 1
+        return pulsewidthValue2 - pulsewidthValue1
+    
 
 if __name__ == "__main__":
     
@@ -255,9 +300,14 @@ if __name__ == "__main__":
     
     fileName = filedialog.askopenfilename()
     
-    dispCalc.read_csv(fileName)
+    dispCalc.read_csv_optical_spectrum(fileName)
     dispCalc.create_mask_array()
     dispCalc.plot_mask_and_original()
+    
+    fileName = filedialog.askopenfilename()
+    dispCalc.read_csv_optical_pulses(fileName)
+    dispCalc.plot_autocorrelation_pulse()
+    print(dispCalc.get_autocorrelation_pulse_width())
 
     dispCalc.create_waveshaper_mask()
     wsPhase = []
@@ -270,7 +320,7 @@ if __name__ == "__main__":
     
     filePath = 'C:\\Users\\ri679647\\Desktop\\Dual Tone IL Mask\\2020\\Python\\DCF-MLL-PIC'
     # Save flat etalon response
-    dispCalc.print_mask()
+#    dispCalc.print_mask()
     fileName = 'MLL-PIC-10GHz.wsp'
     dispCalc.save_mask(filePath,fileName)
 
