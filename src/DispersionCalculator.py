@@ -47,6 +47,7 @@ class DispersionCalculator():
         self.comblineSpectrumWavelength = []
         self.comblineFrequency = []
         self.comblineSpectrumFrequency = []
+        self.comblineSpectralPhase = []
         self.c0 = 299792458                     # Light speed in m/s
         self.frequencyOffset = 192.682-192.63  # Difference between waveshaper and OSA
         self.frequencyWaveshaper = []
@@ -141,6 +142,22 @@ class DispersionCalculator():
         rightAxis.set_xlabel('Frequency (THz)')
         rightAxis.set_ylabel('Spectral phase (rad)')
         plt.show()
+    
+    def plot_spectral_output(self):
+        fig, leftAxis = plt.subplots()
+        comblineFrequency = self.get_frequency_combline()
+        comblineSpectrumFrequency = self.get_spectrum_combline_frequency()
+        comblineSpectralPhase = self.get_spectrum_combline_phase()
+        leftAxis.plot(comblineFrequency, comblineSpectrumFrequency, 'ro')
+        leftAxis.axis([min(comblineFrequency), max(comblineFrequency), min(comblineSpectrumFrequency) - 5, max(comblineSpectrumFrequency) + 5])
+        leftAxis.set_xlabel('Frequency (THz)')
+        leftAxis.set_ylabel('Spectral output (dB)')
+        rightAxis = leftAxis.twinx()
+        rightAxis.plot(comblineFrequency, self.wsPhase, 'bo')
+        rightAxis.axis([min(comblineFrequency), max(comblineFrequency), min(comblineSpectralPhase) - 0.1 * np.pi, max(comblineSpectralPhase) + 0.1 * np.pi])
+        rightAxis.set_xlabel('Frequency (THz)')
+        rightAxis.set_ylabel('Spectral phase (rad)')
+        plt.show()    
 
     def plot_autocorrelation_pulse(self):
         plt.plot(self.delayPs, self.shgIntensity,'b')
@@ -229,7 +246,8 @@ class DispersionCalculator():
             self.comblineFrequency.append(((self.c0/(x*1e-9))*1e-12)-self.frequencyOffset)
         self.comblineFrequency.reverse()
         comblineTemp = [x for x in self.comblineSpectrumWavelength]
-        self.comblineSpectrumFrequency = comblineTemp.reverse()
+        comblineTemp.reverse()
+        self.comblineSpectrumFrequency = comblineTemp
 #        print(self.comblineFrequency)
     
     def get_wavelength_combline(self):
@@ -243,6 +261,13 @@ class DispersionCalculator():
 
     def get_spectrum_combline_frequency(self):
         return self.comblineSpectrumFrequency
+    
+    def set_spectrum_combline_phase(self, spectralPhase):
+        if len(spectralPhase) == len(self.get_frequency_combline()):
+            self.comblineSpectralPhase = spectralPhase
+    
+    def get_spectrum_combline_phase(self):
+        return self.comblineSpectralPhase
     
     def create_waveshaper_mask(self):
         """This method creates a flat mask for the spectrum.
@@ -364,3 +389,5 @@ if __name__ == "__main__":
     dispCalc.save_mask(filePath,fileName)
 
     dispCalc.plot_waveshaper_mask()
+    dispCalc.set_spectrum_combline_phase([-x for x in dispCalc.get_waveshaper_spectral_phase()])
+    dispCalc.plot_spectral_output()
