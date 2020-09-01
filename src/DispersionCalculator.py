@@ -166,6 +166,12 @@ class DispersionCalculator():
             self.minSpectrum    =  min(self.spectrum)            
             self.lenSpectrum    =  len(self.spectrum)
             self.spectrumSpan   =  self.maxSpectrum - self.minSpectrum
+    
+    def get_wavelength_output(self):
+        return self.wavelength
+    
+    def get_spectrum_output(self):
+        return self.spectrum
 
     def read_csv_optical_pulses(self, fileName):
         with open(fileName, 'r') as fileReader:
@@ -196,32 +202,41 @@ class DispersionCalculator():
     def get_shg_intensity(self):
         return self.shgIntensity
             
-    def create_mask_array(self):        
+    def set_optical_spectrum_array(self, wavelengthOutput, spectrumOutput):        
         section_wavelength = self.wavelengthSpan/self.wavelengthSep
 #        print(section_wavelength)
         index_frep_span = int(self.lenWavelength/section_wavelength)
 #        print(index_frep_span)
-        spectrum_max_index = self.spectrum.index(self.maxSpectrum)
-#        print(self.spectrum[spectrum_max_index])
+        spectrum_max_index = spectrumOutput.index(self.maxSpectrum)
+#        print(spectrumOutput[spectrum_max_index])
         if int((spectrum_max_index%index_frep_span)-(index_frep_span/2)) > 0:
             initial_index = int((spectrum_max_index%index_frep_span)-(index_frep_span/2))
         else:
             initial_index = int((spectrum_max_index%index_frep_span)+(index_frep_span/2))
 #        print(initial_index)
-#        print(self.wavelength[initial_index])
+#        print(wavelengthOutput[initial_index])
         # Make sure is only an even number of comblines
         section_wavelength = int(section_wavelength)
 #        print(section_wavelength)
         for i in range(section_wavelength):
 #            print(i)
-            sub_spectrum = self.spectrum[initial_index+i*index_frep_span:initial_index+(i+1)*index_frep_span]
+            sub_spectrum = spectrumOutput[initial_index+i*index_frep_span:initial_index+(i+1)*index_frep_span]
             self.comblineSpectrum.append(max(sub_spectrum))
             max_index = initial_index + i*index_frep_span + sub_spectrum.index(self.comblineSpectrum[i])
-            self.comblineWavelength.append(self.wavelength[max_index])
+            self.comblineWavelength.append(wavelengthOutput[max_index])
         for x in self.comblineWavelength:
             self.comblineFrequency.append(((self.c0/(x*1e-9))*1e-12)-self.frequencyOffset)
         self.comblineFrequency.sort()
-#        print(self.comblineFrequency) 
+#        print(self.comblineFrequency)
+    
+    def get_wavelength_combline(self):
+        return self.comblineWavelength
+    
+    def get_frequency_combline(self):
+        return self.comblineFrequency
+    
+    def get_spectrum_combline(self):
+        return self.comblineSpectrum
     
     def create_waveshaper_mask(self):
         """This method creates a flat mask for the spectrum.
@@ -234,13 +249,13 @@ class DispersionCalculator():
         .. math:: A_{WS}=[A_{0} ,A_{1}, ... , A_{N-1}, A_{N}]
         """
 
-        for x in self.comblineFrequency:
+        for x in self.get_frequency_combline():
             self.frequencyWaveshaper.append(x)
         
         self.frequencyWaveshaper.sort()
     #    print(self.frequencyWaveshaper)
         
-        for x in self.comblineSpectrum:
+        for x in self.get_spectrum_combline():
             self.spectrumWaveshaper.append(x)
             
 #        print(self.spectrumWaveshaper)        
@@ -327,7 +342,9 @@ if __name__ == "__main__":
     fileName = filedialog.askopenfilename()
     
     dispCalc.read_csv_optical_spectrum(fileName)
-    dispCalc.create_mask_array()
+    wavelengthOutput = dispCalc.get_wavelength_output()
+    spectrumOutput = dispCalc.get_spectrum_output()
+    dispCalc.set_optical_spectrum_array(wavelengthOutput, spectrumOutput)
     dispCalc.plot_mask_and_original()
     
     fileName = filedialog.askopenfilename()
