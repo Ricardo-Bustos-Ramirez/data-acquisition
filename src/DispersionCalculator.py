@@ -49,7 +49,7 @@ class DispersionCalculator():
         self.c0 = 299792458                     # Light speed in m/s
         self.frequencyOffset = 192.682-192.63  # Difference between waveshaper and OSA
         self.frequencyWaveshaper = []
-        self.spectrum_waveshaper = []
+        self.spectrumWaveshaper = []
         self.lenWaveshaperValues = 0
         self.maxWavelength = 0                 # max(self.wavelength)
         self.minWavelength = 0                 # min(self.wavelength)            
@@ -59,6 +59,8 @@ class DispersionCalculator():
         self.minSpectrum = 0                   # min(self.spectrum)            
         self.lenSpectrum = 0                   # len(self.spectrum)
         self.spectrumSpan = 0                  # self.maxSpectrum - self.minSpectrum
+        self.timeOutput = []
+        self.voltageOutput = []
         self.delayPs = []
         self.shgIntensity = []
     
@@ -78,10 +80,10 @@ class DispersionCalculator():
         ----------
         frequencyWaveshaper: list
             Mask frequency values (in THz).
-        spectrum_waveshaper: list
+        spectrumWaveshaper: list
             Mask attenuation values (in dB ranging 0-50).
         """
-        for w, x, y, z  in zip(self.frequencyWaveshaper,self.spectrum_waveshaper, self.wsPhase, self.wsPort):
+        for w, x, y, z  in zip(self.frequencyWaveshaper,self.spectrumWaveshaper, self.wsPhase, self.wsPort):
             if abs(x) < 10:
                 print("{0:.3f}\t0{1:.3f}\t{2:.3f}\t{3}".format(w,x,y,z))
             else:
@@ -107,11 +109,11 @@ class DispersionCalculator():
             Mask file name.
         frequencyWaveshaper: list
             Mask frequency values (in THz).
-        spectrum_waveshaper: list
+        spectrumWaveshaper: list
             Mask attenuation values (in dB ranging 0-50).
         """
         fileWriter = open(filePath + '\\' + fileName, 'w')
-        for w, x, y, z in zip(self.frequencyWaveshaper, self.spectrum_waveshaper, self.wsPhase, self.wsPort):
+        for w, x, y, z in zip(self.frequencyWaveshaper, self.spectrumWaveshaper, self.wsPhase, self.wsPort):
             if abs(x) < 10:
                 fileWriter.write("{0:.3f}\t0{1:.3f}\t{2:.3f}\t{3}\r".format(w,x,y,z))
             else:
@@ -128,7 +130,7 @@ class DispersionCalculator():
     
     def plot_waveshaper_mask(self):
         fig, leftAxis = plt.subplots()
-        leftAxis.plot(self.frequencyWaveshaper, self.spectrum_waveshaper, 'ro')
+        leftAxis.plot(self.frequencyWaveshaper, self.spectrumWaveshaper, 'ro')
         leftAxis.axis([min(self.frequencyWaveshaper), max(self.frequencyWaveshaper), -60, 10])
         leftAxis.set_xlabel('Frequency (THz)')
         leftAxis.set_ylabel('Attenuation (dB)')
@@ -168,19 +170,31 @@ class DispersionCalculator():
     def read_csv_optical_pulses(self, fileName):
         with open(fileName, 'r') as fileReader:
             self.csvReader = csv.reader(fileReader, delimiter ='\t')
-            timeOutput = []
-            voltageOutput = []
             for row in self.csvReader:
                 if(len(row) > 1):
-                    timeOutput.append(float(row[0]))
-                    voltageOutput.append(float(row[1]))
+                    self.timeOutput.append(float(row[0]))
+                    self.voltageOutput.append(float(row[1]))
                 else:
                     self.header.append(row)
-            # Define useful constants for SHG intensity autocorrelation
-            maxVoltageOutput = max(voltageOutput)            
-            for timeElement, voltageElement in zip(timeOutput, voltageOutput):
-                self.delayPs.append(timeElement * 31.6 * 1e3)
-                self.shgIntensity.append(voltageElement/maxVoltageOutput)
+    
+    def get_time_output(self):
+        return self.timeOutput
+    
+    def get_voltage_output(self):
+        return self.voltageOutput
+    
+    def set_autocorrelation_values(self, timeOutput, voltageOutput):
+        # Define useful constants for SHG intensity autocorrelation
+        maxVoltageOutput = max(voltageOutput)            
+        for timeElement, voltageElement in zip(timeOutput, voltageOutput):
+            self.delayPs.append(timeElement * 31.6 * 1e3)
+            self.shgIntensity.append(voltageElement/maxVoltageOutput)
+    
+    def get_delay_ps(self):
+        return self.delayPs
+    
+    def get_shg_intensity(self):
+        return self.shgIntensity
             
     def create_mask_array(self):        
         section_wavelength = self.wavelengthSpan/self.wavelengthSep
@@ -215,7 +229,7 @@ class DispersionCalculator():
         This method creates two lists:
         
         1. frequencyWaveshaper: List with frequency values centered at axial mode (stored in frequencyWaveshaper) peaks +/- waveshaper minimum step size.        
-        2. spectrum_waveshaper: List with corresponding spectral values that attenuate to create a flat spectral output (using value stored in comblineSpectrum).        
+        2. spectrumWaveshaper: List with corresponding spectral values that attenuate to create a flat spectral output (using value stored in comblineSpectrum).        
         .. math:: f_{WS}=[f_{0} ,f_{1}, ... , f_{N-1}, f_{N}]        
         .. math:: A_{WS}=[A_{0} ,A_{1}, ... , A_{N-1}, A_{N}]
         """
@@ -227,10 +241,10 @@ class DispersionCalculator():
     #    print(self.frequencyWaveshaper)
         
         for x in self.comblineSpectrum:
-            self.spectrum_waveshaper.append(x)
+            self.spectrumWaveshaper.append(x)
             
-#        print(self.spectrum_waveshaper)        
-        self.lenWaveshaperValues = len(self.spectrum_waveshaper)
+#        print(self.spectrumWaveshaper)        
+        self.lenWaveshaperValues = len(self.spectrumWaveshaper)
 
     def create_waveshaper_mask_with_threshold(self, minThreshold = -30.00):
         """This method creates a flat mask for the spectrum with a threshold for minimum values.
@@ -238,7 +252,7 @@ class DispersionCalculator():
         This method creates two lists:
         
         1. frequencyWaveshaper: List with frequency values centered at axial mode (stored in frequencyWaveshaper).        
-        2. spectrum_waveshaper: List with corresponding spectral values with a threshold limit (using value stored in comblineSpectrum).        
+        2. spectrumWaveshaper: List with corresponding spectral values with a threshold limit (using value stored in comblineSpectrum).        
         .. math:: f_{WS}=[f_{0} ,f_{1}, ... , f_{N-1}, f_{N}]        
         .. math:: A_{WS}=[A_{0} ,A_{1}, ... , A_{N-1}, A_{N}]
         """
@@ -251,12 +265,12 @@ class DispersionCalculator():
     #    print(frequencyWaveshaper)
         for x in self.comblineSpectrum:
             if x >= minThreshold:
-                self.spectrum_waveshaper.append(x)
+                self.spectrumWaveshaper.append(x)
             else: # If value is below threshold just eliminate it.
-                self.spectrum_waveshaper.append(50)
+                self.spectrumWaveshaper.append(50)
                 
-#        print(self.spectrum_waveshaper)
-        self.set_len_ws_values(len(self.spectrum_waveshaper))
+#        print(self.spectrumWaveshaper)
+        self.set_len_ws_values(len(self.spectrumWaveshaper))
     
     def set_len_ws_values(self, lenWaveshaperValues):
         self.lenWaveshaperValues = lenWaveshaperValues
@@ -268,27 +282,39 @@ class DispersionCalculator():
         if len(wsPhase) == self.get_len_ws_values():
             self.wsPhase = wsPhase
     
+    def get_waveshaper_spectral_phase(self):
+        return self.wsPhase
+    
     def set_waveshaper_port(self, wsPort):
         if len(wsPort) == self.get_len_ws_values():
             self.wsPort = wsPort
     
+    def get_waveshaper_port(self):
+        return self.wsPort
+    
     def get_autocorrelation_pulse_width(self):
+        delayPs = self.get_delay_ps()
+        shgIntensity = self.get_shg_intensity()
         i = 0
         while True:            
-            if self.shgIntensity[i] > 0.5:
-                pulsewidthValue1 = self.delayPs[i]
+            if shgIntensity[i] > 0.5:
+                pulsewidthValue1 = delayPs[i]
                 break
             else:
                 i = i + 1
         
-        i = len(self.shgIntensity) - 1
+        i = len(shgIntensity) - 1
         while True:
-            if self.shgIntensity[i] > 0.5:
-                pulsewidthValue2 = self.delayPs[i]
+            if shgIntensity[i] > 0.5:
+                pulsewidthValue2 = delayPs[i]
                 break
             else:
                 i = i - 1
         return pulsewidthValue2 - pulsewidthValue1
+    
+    def get_autocorrelation_peak_value(self):
+        shgVoltageOutput = self.get_voltage_output()
+        return max(shgVoltageOutput)
     
 
 if __name__ == "__main__":
@@ -306,8 +332,12 @@ if __name__ == "__main__":
     
     fileName = filedialog.askopenfilename()
     dispCalc.read_csv_optical_pulses(fileName)
+    timeOutput = dispCalc.get_time_output()
+    voltageOutput = dispCalc.get_voltage_output()
+    dispCalc.set_autocorrelation_values(timeOutput, voltageOutput)
     dispCalc.plot_autocorrelation_pulse()
-    print(dispCalc.get_autocorrelation_pulse_width())
+    print("SHG pulse intensity autocorrelation width: " + str(dispCalc.get_autocorrelation_pulse_width()) + " ps")
+    print("SHG pulse intensity autocorrelation peak value: " + str(dispCalc.get_autocorrelation_peak_value()) + " V")
 
     dispCalc.create_waveshaper_mask()
     wsPhase = []
