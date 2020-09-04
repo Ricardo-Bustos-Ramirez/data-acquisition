@@ -10,6 +10,7 @@ import csv
 import numpy as np
 import tkinter as tk
 from tkinter import filedialog
+import os
 
 class DispersionCalculator():
     """This class calculates the mask for harmonic injection locking.
@@ -166,7 +167,23 @@ class DispersionCalculator():
         plt.ylabel('SHG intensity (a.u.)')
         plt.show()
     
+    def plot_autocorrelation_values(self, acDispersionArray, acPulseWidthArray, acPulsePeakArray):
+        fig, leftAxis = plt.subplots()
+        leftAxis.plot(acDispersionArray, acPulseWidthArray, 'r')
+        leftAxis.axis([min(acDispersionArray), max(acDispersionArray), min(acPulseWidthArray), max(acPulseWidthArray)])
+        leftAxis.set_xlabel('Dispersion (ps/nm)')
+        leftAxis.set_ylabel('AC pulse width (ps)')
+        rightAxis = leftAxis.twinx()
+        rightAxis.plot(acDispersionArray, acPulsePeakArray, 'b')
+        rightAxis.axis([min(acDispersionArray), max(acDispersionArray), min(acPulsePeakArray), max(acPulsePeakArray)])
+        rightAxis.set_xlabel('Dispersion (ps/nm)')
+        rightAxis.set_ylabel('AC pulse peak (V)')
+        plt.show()        
+    
     def read_csv_optical_spectrum(self, fileName):
+        self.wavelength = []
+        self.spectrum = []
+        self.header = []
         with open(fileName, 'r') as fileReader:
             self.csvReader = csv.reader(fileReader, delimiter ='\t')
             for row in self.csvReader:
@@ -192,6 +209,9 @@ class DispersionCalculator():
         return self.spectrum
 
     def read_csv_optical_pulses(self, fileName):
+        self.timeOutput = []
+        self.voltageOutput = []
+        self.header = []
         with open(fileName, 'r') as fileReader:
             self.csvReader = csv.reader(fileReader, delimiter ='\t')
             for row in self.csvReader:
@@ -208,6 +228,8 @@ class DispersionCalculator():
         return self.voltageOutput
     
     def set_autocorrelation_values(self, timeOutput, voltageOutput):
+        self.delayPs = []
+        self.shgIntensity = []
         # Define useful constants for SHG intensity autocorrelation
         maxVoltageOutput = max(voltageOutput)            
         for timeElement, voltageElement in zip(timeOutput, voltageOutput):
@@ -220,7 +242,11 @@ class DispersionCalculator():
     def get_shg_intensity(self):
         return self.shgIntensity
             
-    def set_optical_spectrum_array(self, wavelengthOutput, spectrumOutput):        
+    def set_optical_spectrum_array(self, wavelengthOutput, spectrumOutput): 
+        self.comblineWavelength = []
+        self.comblineSpectrumWavelength = []
+        self.comblineFrequency = []
+        self.comblineSpectrumFrequency = []
         section_wavelength = self.wavelengthSpan/self.wavelengthSep
 #        print(section_wavelength)
         index_frep_span = int(self.lenWavelength/section_wavelength)
@@ -279,7 +305,8 @@ class DispersionCalculator():
         .. math:: f_{WS}=[f_{0} ,f_{1}, ... , f_{N-1}, f_{N}]        
         .. math:: A_{WS}=[A_{0} ,A_{1}, ... , A_{N-1}, A_{N}]
         """
-
+        self.frequencyWaveshaper = []
+        
         for x in self.get_frequency_combline():
             self.frequencyWaveshaper.append(x)
             
@@ -297,6 +324,8 @@ class DispersionCalculator():
             self.wsAttenuation = wsAttenuation
     
     def set_waveshaper_attenuation_with_threshold(self, wsAttenuation, minThreshold):
+        self.wsAttenuation = []
+        
         if len(wsAttenuation) == self.get_len_ws_values():
             for x, y in zip(self.get_spectrum_combline_frequency(), wsAttenuation):
                 if x >= minThreshold:
@@ -345,6 +374,43 @@ class DispersionCalculator():
         shgVoltageOutput = self.get_voltage_output()
         return max(shgVoltageOutput)
     
+    def get_autocorrelation_values(self, fileName, filePath):
+        acFileNameArray = []
+        acDispersionArray = []
+        acPulseWidthArray = []
+        acPulsePeakArray = []
+        if os.path.isfile(fileName) == True:
+            with open(fileName, "r", newline='') as fileReader:
+                self.csvReader = csv.reader(fileReader, delimiter =',', lineterminator='\n')
+                for row in self.csvReader:
+                    acFileNameArray.append(filePath + "\\SHG\\" + str(row[0]) + ".csv")
+                    acDispersionArray.append(float(row[11]))
+        else:
+            print("Index file does not exist.")
+            
+        for acDispersion,acFileName in zip(acDispersionArray, acFileNameArray):
+            self.read_csv_optical_pulses(acFileName)
+            timeOutput = self.get_time_output()
+            voltageOutput = self.get_voltage_output()
+            self.set_autocorrelation_values(timeOutput, voltageOutput)
+#            self.plot_autocorrelation_pulse()
+#            print("SHG pulse intensity autocorrelation width: " + str(self.get_autocorrelation_pulse_width()) + " ps")
+#            print("SHG pulse intensity autocorrelation peak value: " + str(self.get_autocorrelation_peak_value()) + " V")
+            acPulseWidthArray.append(self.get_autocorrelation_pulse_width())
+            acPulsePeakArray.append(self.get_autocorrelation_peak_value())
+            
+        zippedListAcPulseWidth = zip(acDispersionArray, acPulseWidthArray)
+        sortedZippedList = sorted(zippedListAcPulseWidth)        
+        acPulseWidthArray = [pulsewidth for _, pulsewidth in sortedZippedList]
+        
+        zippedListAcPulsePeak = zip(acDispersionArray, acPulsePeakArray)
+        sortedZippedList = sorted(zippedListAcPulsePeak)        
+        acPulsePeakArray = [pulsewidth for _, pulsewidth in sortedZippedList]
+        
+        acDispersionArray = sorted(acDispersionArray)
+        
+        self.plot_autocorrelation_values(acDispersionArray, acPulseWidthArray, acPulsePeakArray)
+        return (acPulseWidthArray, acPulsePeakArray)
 
 if __name__ == "__main__":
     
@@ -353,41 +419,45 @@ if __name__ == "__main__":
     root = tk.Tk()
     root.withdraw()
     
+#    fileName = filedialog.askopenfilename()
+#    
+#    dispCalc.read_csv_optical_spectrum(fileName)
+#    wavelengthOutput = dispCalc.get_wavelength_output()
+#    spectrumOutput = dispCalc.get_spectrum_output()
+#    dispCalc.set_optical_spectrum_array(wavelengthOutput, spectrumOutput)
+#    dispCalc.plot_mask_and_original()
+#    
+#    fileName = filedialog.askopenfilename()
+#    dispCalc.read_csv_optical_pulses(fileName)
+#    timeOutput = dispCalc.get_time_output()
+#    voltageOutput = dispCalc.get_voltage_output()
+#    dispCalc.set_autocorrelation_values(timeOutput, voltageOutput)
+#    dispCalc.plot_autocorrelation_pulse()
+#    print("SHG pulse intensity autocorrelation width: " + str(dispCalc.get_autocorrelation_pulse_width()) + " ps")
+#    print("SHG pulse intensity autocorrelation peak value: " + str(dispCalc.get_autocorrelation_peak_value()) + " V")
+#
+#    dispCalc.create_waveshaper_mask()
+#    wsAttenuation = []
+#    wsPhase = []
+#    wsPort = []
+#    for i in range(dispCalc.get_len_ws_values()):
+#        wsAttenuation.append(0.000)
+#        wsPhase.append(0.000)
+#        wsPort.append(1)
+#    dispCalc.set_waveshaper_attenuation(wsAttenuation)
+#    dispCalc.set_waveshaper_spectral_phase(wsPhase)
+#    dispCalc.set_waveshaper_port(wsPort)
+#    
+#    filePath = 'C:\\Users\\ri679647\\Desktop\\Dual Tone IL Mask\\2020\\Python\\DCF-MLL-PIC'
+#    # Save flat etalon response
+##    dispCalc.print_mask()
+#    fileName = 'MLL-PIC-10GHz.wsp'
+#    dispCalc.save_mask(filePath,fileName)
+#
+#    dispCalc.plot_waveshaper_mask()
+#    dispCalc.set_spectrum_combline_phase([-x for x in dispCalc.get_waveshaper_spectral_phase()])
+#    dispCalc.plot_spectral_output()
+#
     fileName = filedialog.askopenfilename()
-    
-    dispCalc.read_csv_optical_spectrum(fileName)
-    wavelengthOutput = dispCalc.get_wavelength_output()
-    spectrumOutput = dispCalc.get_spectrum_output()
-    dispCalc.set_optical_spectrum_array(wavelengthOutput, spectrumOutput)
-    dispCalc.plot_mask_and_original()
-    
-    fileName = filedialog.askopenfilename()
-    dispCalc.read_csv_optical_pulses(fileName)
-    timeOutput = dispCalc.get_time_output()
-    voltageOutput = dispCalc.get_voltage_output()
-    dispCalc.set_autocorrelation_values(timeOutput, voltageOutput)
-    dispCalc.plot_autocorrelation_pulse()
-    print("SHG pulse intensity autocorrelation width: " + str(dispCalc.get_autocorrelation_pulse_width()) + " ps")
-    print("SHG pulse intensity autocorrelation peak value: " + str(dispCalc.get_autocorrelation_peak_value()) + " V")
-
-    dispCalc.create_waveshaper_mask()
-    wsAttenuation = []
-    wsPhase = []
-    wsPort = []
-    for i in range(dispCalc.get_len_ws_values()):
-        wsAttenuation.append(0.000)
-        wsPhase.append(0.000)
-        wsPort.append(1)
-    dispCalc.set_waveshaper_attenuation(wsAttenuation)
-    dispCalc.set_waveshaper_spectral_phase(wsPhase)
-    dispCalc.set_waveshaper_port(wsPort)
-    
-    filePath = 'C:\\Users\\ri679647\\Desktop\\Dual Tone IL Mask\\2020\\Python\\DCF-MLL-PIC'
-    # Save flat etalon response
-#    dispCalc.print_mask()
-    fileName = 'MLL-PIC-10GHz.wsp'
-    dispCalc.save_mask(filePath,fileName)
-
-    dispCalc.plot_waveshaper_mask()
-    dispCalc.set_spectrum_combline_phase([-x for x in dispCalc.get_waveshaper_spectral_phase()])
-    dispCalc.plot_spectral_output()
+    filePath = "H:\\Home\\UP\\Shared\\Ricardo\\DODOS\\DCF Characterization\\DCF OL paper"
+    acValues = dispCalc.get_autocorrelation_values(fileName,filePath)
