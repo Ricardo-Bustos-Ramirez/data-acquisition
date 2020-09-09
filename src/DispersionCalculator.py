@@ -6,6 +6,7 @@ Created on Tue Jun 25 15:52:45 2019
 """
 
 import matplotlib.pyplot as plt
+from scipy import integrate
 import csv
 import numpy as np
 import tkinter as tk
@@ -154,8 +155,8 @@ class DispersionCalculator():
         leftAxis.set_xlabel('Frequency (THz)')
         leftAxis.set_ylabel('Spectral output (dB)')
         rightAxis = leftAxis.twinx()
-        rightAxis.plot(comblineFrequency, self.wsPhase, 'bo')
-        rightAxis.axis([min(comblineFrequency), max(comblineFrequency), min(comblineSpectralPhase) - 0.1 * np.pi, max(comblineSpectralPhase) + 0.1 * np.pi])
+        rightAxis.plot(comblineFrequency, comblineSpectralPhase, 'bo')
+        rightAxis.axis([min(comblineFrequency), max(comblineFrequency), min(comblineSpectralPhase) - np.pi, max(comblineSpectralPhase) + np.pi])
         rightAxis.set_xlabel('Frequency (THz)')
         rightAxis.set_ylabel('Spectral phase (rad)')
         plt.show()    
@@ -411,6 +412,44 @@ class DispersionCalculator():
         
         self.plot_autocorrelation_values(acDispersionArray, acPulseWidthArray, acPulsePeakArray)
         return (acPulseWidthArray, acPulsePeakArray)
+    
+    def create_spectral_phase_from_gdd(self, tauPerNm, comblineWavelength, comblineFrequency, comblineSpectrumWavelength, comblineSpectrumFrequency):
+        # Spectrum points for mask
+#        initialWavelength = comblineWavelength[0]
+        indexMaxSpectrumWavelength = comblineSpectrumWavelength.index(max(comblineSpectrumWavelength))
+        centralWavelength = comblineWavelength[indexMaxSpectrumWavelength]
+        tempGroupDelayDispersion = [(wavelength-centralWavelength)*tauPerNm for wavelength in comblineWavelength]
+#        minGdd = min(tempGroupDelayDispersion)
+#        maxGdd = max(tempGroupDelayDispersion)
+#        groupDelayDispersion = [x-(minGdd + (maxGdd + minGdd)/2) for x in tempGroupDelayDispersion]
+        groupDelayDispersion = [x for x in tempGroupDelayDispersion]
+#        plt.plot(comblineWavelength, groupDelayDispersion,'r')
+#        plt.xlabel('Wavelength (nm)')
+#        plt.ylabel('Delay (ps)')
+#        plt.show()
+        groupDelayDispersionFrequency = [x for x in groupDelayDispersion]
+        groupDelayDispersionFrequency.reverse()
+#        plt.plot(comblineFrequency, groupDelayDispersionFrequency,'b')
+#        plt.xlabel('Frequency (THz)')
+#        plt.ylabel('Delay (ps)')
+#        plt.show()
+        spectralPhase = -2*np.pi*integrate.cumtrapz(groupDelayDispersionFrequency, comblineFrequency, initial = 0)
+#        if tauPerNm > 0:
+#            spectralPhase = spectralPhase + max(abs(spectralPhase))
+#        elif tauPerNm < 0:
+#            spectralPhase = spectralPhase - max(abs(spectralPhase))
+#        else:
+#            spectralPhase = spectralPhase + 0
+#        spectralPhase = [-2*np.pi*x for x in spectralPhaseIntegral]
+        indexMaxSpectrumFrequency = comblineSpectrumFrequency.index(max(comblineSpectrumFrequency))
+#        centralFrequency = comblineFrequency[comblineSpectrumFrequency]        
+        spectralPhase = spectralPhase - spectralPhase[indexMaxSpectrumFrequency]
+        plt.plot(comblineFrequency, spectralPhase, 'go')
+        plt.xlabel('Frequency (THz)')
+        plt.ylabel('Spectral phase (rad)')
+        plt.show()
+        return spectralPhase
+
 
 if __name__ == "__main__":
     
@@ -419,45 +458,57 @@ if __name__ == "__main__":
     root = tk.Tk()
     root.withdraw()
     
-#    fileName = filedialog.askopenfilename()
-#    
-#    dispCalc.read_csv_optical_spectrum(fileName)
-#    wavelengthOutput = dispCalc.get_wavelength_output()
-#    spectrumOutput = dispCalc.get_spectrum_output()
-#    dispCalc.set_optical_spectrum_array(wavelengthOutput, spectrumOutput)
-#    dispCalc.plot_mask_and_original()
-#    
-#    fileName = filedialog.askopenfilename()
-#    dispCalc.read_csv_optical_pulses(fileName)
-#    timeOutput = dispCalc.get_time_output()
-#    voltageOutput = dispCalc.get_voltage_output()
-#    dispCalc.set_autocorrelation_values(timeOutput, voltageOutput)
-#    dispCalc.plot_autocorrelation_pulse()
-#    print("SHG pulse intensity autocorrelation width: " + str(dispCalc.get_autocorrelation_pulse_width()) + " ps")
-#    print("SHG pulse intensity autocorrelation peak value: " + str(dispCalc.get_autocorrelation_peak_value()) + " V")
-#
-#    dispCalc.create_waveshaper_mask()
-#    wsAttenuation = []
-#    wsPhase = []
-#    wsPort = []
-#    for i in range(dispCalc.get_len_ws_values()):
-#        wsAttenuation.append(0.000)
+    """
+    fileName = filedialog.askopenfilename()
+    
+    dispCalc.read_csv_optical_spectrum(fileName)
+    wavelengthOutput = dispCalc.get_wavelength_output()
+    spectrumOutput = dispCalc.get_spectrum_output()
+    dispCalc.set_optical_spectrum_array(wavelengthOutput, spectrumOutput)
+    dispCalc.plot_mask_and_original()
+
+    
+    fileName = filedialog.askopenfilename()
+    dispCalc.read_csv_optical_pulses(fileName)
+    timeOutput = dispCalc.get_time_output()
+    voltageOutput = dispCalc.get_voltage_output()
+    dispCalc.set_autocorrelation_values(timeOutput, voltageOutput)
+    dispCalc.plot_autocorrelation_pulse()
+    print("SHG pulse intensity autocorrelation width: " + str(dispCalc.get_autocorrelation_pulse_width()) + " ps")
+    print("SHG pulse intensity autocorrelation peak value: " + str(dispCalc.get_autocorrelation_peak_value()) + " V")
+
+    tauPerNm = 2.7
+    comblineWavelength = dispCalc.get_wavelength_combline()
+    comblineFrequency = dispCalc.get_frequency_combline()
+    comblineSpectrumWavelength = dispCalc.get_spectrum_combline_wavelength()
+    comblineSpectrumFrequency = dispCalc.get_spectrum_combline_frequency()
+    spectralPhase = dispCalc.create_spectral_phase_from_gdd(tauPerNm, comblineWavelength, comblineFrequency, comblineSpectrumWavelength, comblineSpectrumFrequency)
+
+    dispCalc.create_waveshaper_mask()
+    wsAttenuation = []
+    wsPhase = [x for x in spectralPhase]
+    wsPort = []
+    for i in range(dispCalc.get_len_ws_values()):
+        wsAttenuation.append(0.000)
 #        wsPhase.append(0.000)
-#        wsPort.append(1)
-#    dispCalc.set_waveshaper_attenuation(wsAttenuation)
-#    dispCalc.set_waveshaper_spectral_phase(wsPhase)
-#    dispCalc.set_waveshaper_port(wsPort)
-#    
-#    filePath = 'C:\\Users\\ri679647\\Desktop\\Dual Tone IL Mask\\2020\\Python\\DCF-MLL-PIC'
-#    # Save flat etalon response
-##    dispCalc.print_mask()
-#    fileName = 'MLL-PIC-10GHz.wsp'
-#    dispCalc.save_mask(filePath,fileName)
+        wsPort.append(1)
+    dispCalc.set_waveshaper_attenuation(wsAttenuation)
+    dispCalc.set_waveshaper_spectral_phase(wsPhase)
+    dispCalc.set_waveshaper_port(wsPort)
+    
+    filePath = 'C:\\Users\\ri679647\\Desktop\\Dual Tone IL Mask\\2020\\Python\\DCF-MLL-PIC'
+    # Save flat etalon response
+#    dispCalc.print_mask()
+    fileName = 'MLL-PIC-10GHz.wsp'
+    dispCalc.save_mask(filePath,fileName)
+
+    dispCalc.plot_waveshaper_mask()
+    dispCalc.set_spectrum_combline_phase([-x for x in dispCalc.get_waveshaper_spectral_phase()])
+    dispCalc.plot_spectral_output()
 #
-#    dispCalc.plot_waveshaper_mask()
-#    dispCalc.set_spectrum_combline_phase([-x for x in dispCalc.get_waveshaper_spectral_phase()])
-#    dispCalc.plot_spectral_output()
-#
+    """
     fileName = filedialog.askopenfilename()
     filePath = "H:\\Home\\UP\\Shared\\Ricardo\\DODOS\\DCF Characterization\\DCF OL paper"
     acValues = dispCalc.get_autocorrelation_values(fileName,filePath)
+
+    
