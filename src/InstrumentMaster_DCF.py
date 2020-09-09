@@ -29,11 +29,12 @@ TESTING_MODE = False
 SWEEP_SCOPE = True
 INDEX_WRITE = False
 
-fileNameHilMll = "090220-DCF-MLL-PIC-Dispersion_4.5psnm"
+dispersionWs = 2.7
+fileNameHilMll = "090920-DCF-MLL-PIC-Dispersion" + str(dispersionWs) + "psnm-wv_1564"
 fileNameMll = "082520-30GHz-MLL-PID-unlocked-uncompressed"
 fileNameOfc = "090220-30GHz-OFC"
 fileNameAdditionRFSA = "-1MHz"
-CAPTURE_STATUS = "HIL-MLL All"
+CAPTURE_STATUS = "DCF-MLL All"
 #CAPTURE_STATUS = "HIL-MLL RFSA HR"
 #CAPTURE_STATUS = "HIL-MLL RFSA 10 MHz"
 #CAPTURE_STATUS = "MLL All"
@@ -45,7 +46,7 @@ CAPTURE_STATUS = "HIL-MLL All"
 
 
 #def capture_mode_selector(captureStatus):
-if CAPTURE_STATUS == "HIL-MLL All":
+if CAPTURE_STATUS == "DCF-MLL All":
     # Used instruments
     TDS_ACTIVE = True
     OSA_ACTIVE = True
@@ -54,7 +55,7 @@ if CAPTURE_STATUS == "HIL-MLL All":
     INDEX_WRITE = True
     # File names
     fileName = fileNameHilMll
-    measuredDevice = "HIL-MLL"
+    measuredDevice = "DCF-MLL"
     fileNameAdditionRFSA = '-1MHz'
 elif CAPTURE_STATUS == "HIL-MLL RFSA HR":
     # Used instruments
@@ -155,27 +156,27 @@ if __name__ == "__main__":
 #        filePath = 'H:\\Home\\UP\\Shared\\Ricardo\\Dual Tone Injection Locking\\300 GHz EOM Comb\\Master OFC'
         filePath = 'H:\\Home\\UP\\Shared\\Ricardo\\DODOS\\DCF Characterization\\DCF OL paper'
         fileType = '.csv'
-        rTec = 15       # Measured resistance of TEC for MLL-PIC (kOhm)
-        iGain = 92    # Current in the gain section (mA)
+        rTec = 12       # Measured resistance of TEC for MLL-PIC (kOhm)
+        iGain = 90    # Current in the gain section (mA)
         iPsNum = 2      # Phase shifter used.
-        iPs = 69.9      # Current in asymmetric MZIs of DCF (PS3) that move the spectrum (mA)
-        vSa = 4.10      # Reverse bias voltage in saturable absorber (V)
-        vEam = 0.80     # Reverse bias voltage in intracavity EAM (V)
-        ixSoa = 152.8   # Current in the external SOA (mA)
-        pMllInj = 62.8    # Power measured in the monitor coupler (~10%) of the MLL-PIC injection locking port (uW)
-        pMllOut = 3.53   # Power measured in the monitor coupler (~50%) of the autocorrelator EDFA of the MLL-PIC output port (uW)
-#        pOfcInj = 54.5  # Power measured in the monitor coupler (<50% )of the injected OFC power (uW)
-        fRepSynth = 29.9634  # Driving frequency of the EOM comb that generates OFC (~3frep) in GHz
+        iPs = 0.0      # Current in asymmetric MZIs of DCF (PS3) that move the spectrum (mA)
+        vSa = 4.00      # Reverse bias voltage in saturable absorber (V)
+        vEam = 0.00     # Reverse bias voltage in intracavity EAM (V)
+        ixSoa = 120.0   # Current in the external SOA (mA)
+        pMllInj = 0.0    # Power measured in the monitor coupler (~10%) of the MLL-PIC injection locking port (uW)
+        pMllOut = 2.35  # Power measured in the monitor coupler (~50%) of the autocorrelator EDFA of the MLL-PIC output port (uW)
+#        dispersionWs = 4.0  # Power measured in the monitor coupler (<50% )of the injected OFC power (uW)
+#        fRepSynth = 29.9634  # Driving frequency of the EOM comb that generates OFC (~3frep) in GHz
     
     if INDEX_WRITE:
         if os.path.isfile(filePath + "\\" + "indexFile.csv") == False:
             with open(filePath + "\\" + "indexFile.csv", "w+", newline='') as fileWriter:
                 csvWriter = csv.writer(fileWriter, delimiter = ',', lineterminator='\n')
-                csvWriter.writerow(("File name", "Measured device", "TEC value (kOhm)", "Igain (mA)", "PS used", "Ips (mA)", "V_SA (V)", "V_EAM (V)", "IxSOA (mA)", "P_MLL-inj 10% (uW)", "P_MLL-out 1% (uW)", "P_OFC-inj 50% (uW)", "f_rep-EOM (GHz)"))
+                csvWriter.writerow(("File name", "Measured device", "TEC value (kOhm)", "Igain (mA)", "PS used", "Ips (mA)", "V_SA (V)", "V_EAM (V)", "IxSOA (mA)", "P_MLL-inj 10% (uW)", "P_MLL-out 1% (uW)", "Dispersion (ps/nm)"))
     
         with open(filePath + "\\" + "indexFile.csv", "a", newline='') as fileWriter:
             csvWriter = csv.writer(fileWriter, delimiter = ',', lineterminator='\n')
-            csvWriter.writerow((fileName, measuredDevice, rTec, iGain, iPsNum, iPs, vSa, vEam, ixSoa, pMllInj, pMllOut, pOfcInj, fRepSynth))
+            csvWriter.writerow((fileName, measuredDevice, rTec, iGain, iPsNum, iPs, vSa, vEam, ixSoa, pMllInj, pMllOut, dispersionWs))
         
     if RFSA_ACTIVE:
         RFSA_8566B = RFSA()
