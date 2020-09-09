@@ -31,15 +31,15 @@ INDEX_WRITE = False
 
 fileNameHilMll = "082820-30GHz-MLL-PID-mixed-10MHz"
 fileNameMll = "082520-30GHz-MLL-PID-unlocked-uncompressed"
-fileNameOfc = "082520-30GHz-50m-OFC-PID-unlocked-uncompressed"
+fileNameOfc = "090220-30GHz-OFC"
 fileNameAdditionRFSA = "-1MHz"
 #CAPTURE_STATUS = "HIL-MLL All"
-CAPTURE_STATUS = "HIL-MLL RFSA HR"
+#CAPTURE_STATUS = "HIL-MLL RFSA HR"
 #CAPTURE_STATUS = "HIL-MLL RFSA 10 MHz"
 #CAPTURE_STATUS = "MLL All"
 #CAPTURE_STATUS = "MLL RFSA HR"
 #CAPTURE_STATUS = "MLL RFSA 10 MHz"
-#CAPTURE_STATUS = "OFC All"
+CAPTURE_STATUS = "OFC All"
 #CAPTURE_STATUS = "HIL-MLL Locking Power"
 #CAPTURE_STATUS = "Test"
 
@@ -204,7 +204,7 @@ if __name__ == "__main__":
     if OSA_ACTIVE:    
         OSA_243A = OSA()
         OSA_243A.connect('GPIB0::27::INSTR')
-        OSA_243A.grab_spectrum('A')
+        OSA_243A.grab_spectrum('C')
         fileSubPathOsa = 'OSA'
         fileNameAddition = ''
         OSA_243A.save_csv(filePath + '\\' + fileSubPathOsa + '\\' + fileName + fileNameAddition + fileType)
