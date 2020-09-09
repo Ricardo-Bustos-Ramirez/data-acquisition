@@ -176,7 +176,7 @@ class DispersionCalculator():
         leftAxis.set_ylabel('AC pulse width (ps)')
         rightAxis = leftAxis.twinx()
         rightAxis.plot(acDispersionArray, acPulsePeakArray, 'b')
-        rightAxis.axis([min(acDispersionArray), max(acDispersionArray), min(acPulsePeakArray), max(acPulsePeakArray)])
+        rightAxis.axis([min(acDispersionArray), max(acDispersionArray), min(acPulsePeakArray)-0.1, max(acPulsePeakArray)+0.1])
         rightAxis.set_xlabel('Dispersion (ps/nm)')
         rightAxis.set_ylabel('AC pulse peak (V)')
         plt.show()        
@@ -415,32 +415,24 @@ class DispersionCalculator():
     
     def create_spectral_phase_from_gdd(self, tauPerNm, comblineWavelength, comblineFrequency, comblineSpectrumWavelength, comblineSpectrumFrequency):
         # Spectrum points for mask
-#        initialWavelength = comblineWavelength[0]
+
         indexMaxSpectrumWavelength = comblineSpectrumWavelength.index(max(comblineSpectrumWavelength))
         centralWavelength = comblineWavelength[indexMaxSpectrumWavelength]
         tempGroupDelayDispersion = [(wavelength-centralWavelength)*tauPerNm for wavelength in comblineWavelength]
-#        minGdd = min(tempGroupDelayDispersion)
-#        maxGdd = max(tempGroupDelayDispersion)
-#        groupDelayDispersion = [x-(minGdd + (maxGdd + minGdd)/2) for x in tempGroupDelayDispersion]
         groupDelayDispersion = [x for x in tempGroupDelayDispersion]
 #        plt.plot(comblineWavelength, groupDelayDispersion,'r')
 #        plt.xlabel('Wavelength (nm)')
 #        plt.ylabel('Delay (ps)')
 #        plt.show()
+        
         groupDelayDispersionFrequency = [x for x in groupDelayDispersion]
         groupDelayDispersionFrequency.reverse()
 #        plt.plot(comblineFrequency, groupDelayDispersionFrequency,'b')
 #        plt.xlabel('Frequency (THz)')
 #        plt.ylabel('Delay (ps)')
 #        plt.show()
+
         spectralPhase = -2*np.pi*integrate.cumtrapz(groupDelayDispersionFrequency, comblineFrequency, initial = 0)
-#        if tauPerNm > 0:
-#            spectralPhase = spectralPhase + max(abs(spectralPhase))
-#        elif tauPerNm < 0:
-#            spectralPhase = spectralPhase - max(abs(spectralPhase))
-#        else:
-#            spectralPhase = spectralPhase + 0
-#        spectralPhase = [-2*np.pi*x for x in spectralPhaseIntegral]
         indexMaxSpectrumFrequency = comblineSpectrumFrequency.index(max(comblineSpectrumFrequency))
 #        centralFrequency = comblineFrequency[comblineSpectrumFrequency]        
         spectralPhase = spectralPhase - spectralPhase[indexMaxSpectrumFrequency]
@@ -450,6 +442,55 @@ class DispersionCalculator():
         plt.show()
         return spectralPhase
 
+    def set_optical_spectrum_from_file(self, fileName = None):
+        if fileName == None:
+            fileName = filedialog.askopenfilename()
+    
+        self.read_csv_optical_spectrum(fileName)
+        wavelengthOutput = self.get_wavelength_output()
+        spectrumOutput = self.get_spectrum_output()
+        self.set_optical_spectrum_array(wavelengthOutput, spectrumOutput)
+        self.plot_mask_and_original()
+    
+    def set_autocorrelation_from_file(self, fileName = None):
+        if fileName == None:
+            fileName = filedialog.askopenfilename()
+        
+        self.read_csv_optical_pulses(fileName)
+        timeOutput = self.get_time_output()
+        voltageOutput = self.get_voltage_output()
+        self.set_autocorrelation_values(timeOutput, voltageOutput)
+        self.plot_autocorrelation_pulse()
+        print("SHG pulse intensity autocorrelation width: " + str(self.get_autocorrelation_pulse_width()) + " ps")
+        print("SHG pulse intensity autocorrelation peak value: " + str(self.get_autocorrelation_peak_value()) + " V")
+
+    def set_quadratic_spectral_phase_mask_from_acquired_spectrum(self, tauPerNm, filePath, fileName):
+        comblineWavelength = self.get_wavelength_combline()
+        comblineFrequency = self.get_frequency_combline()
+        comblineSpectrumWavelength = self.get_spectrum_combline_wavelength()
+        comblineSpectrumFrequency = self.get_spectrum_combline_frequency()
+        
+        if comblineWavelength == []:
+            print("No spectrum has been stored from a file.")
+        else:
+            spectralPhase = self.create_spectral_phase_from_gdd(tauPerNm, comblineWavelength, comblineFrequency, comblineSpectrumWavelength, comblineSpectrumFrequency)
+        
+            self.create_waveshaper_mask()
+            wsAttenuation = []
+            wsPhase = [x for x in spectralPhase]
+            wsPort = []
+            for i in range(self.get_len_ws_values()):
+                wsAttenuation.append(0.000)
+#                wsPhase.append(0.000)
+                wsPort.append(1)
+            self.set_waveshaper_attenuation(wsAttenuation)
+            self.set_waveshaper_spectral_phase(wsPhase)
+            self.set_waveshaper_port(wsPort)
+            
+#            Save spectral phase mask
+#            self.print_mask()
+            self.save_mask(filePath, fileName)
+            self.plot_waveshaper_mask()        
 
 if __name__ == "__main__":
     
@@ -457,58 +498,24 @@ if __name__ == "__main__":
 
     root = tk.Tk()
     root.withdraw()
+    filePath = "H:\\Home\\UP\\Shared\\Ricardo\\DODOS\\DCF Characterization\\DCF OL paper"
     
-    """
-    fileName = filedialog.askopenfilename()
-    
-    dispCalc.read_csv_optical_spectrum(fileName)
-    wavelengthOutput = dispCalc.get_wavelength_output()
-    spectrumOutput = dispCalc.get_spectrum_output()
-    dispCalc.set_optical_spectrum_array(wavelengthOutput, spectrumOutput)
-    dispCalc.plot_mask_and_original()
-
-    
-    fileName = filedialog.askopenfilename()
-    dispCalc.read_csv_optical_pulses(fileName)
-    timeOutput = dispCalc.get_time_output()
-    voltageOutput = dispCalc.get_voltage_output()
-    dispCalc.set_autocorrelation_values(timeOutput, voltageOutput)
-    dispCalc.plot_autocorrelation_pulse()
-    print("SHG pulse intensity autocorrelation width: " + str(dispCalc.get_autocorrelation_pulse_width()) + " ps")
-    print("SHG pulse intensity autocorrelation peak value: " + str(dispCalc.get_autocorrelation_peak_value()) + " V")
-
-    tauPerNm = 2.7
-    comblineWavelength = dispCalc.get_wavelength_combline()
-    comblineFrequency = dispCalc.get_frequency_combline()
-    comblineSpectrumWavelength = dispCalc.get_spectrum_combline_wavelength()
-    comblineSpectrumFrequency = dispCalc.get_spectrum_combline_frequency()
-    spectralPhase = dispCalc.create_spectral_phase_from_gdd(tauPerNm, comblineWavelength, comblineFrequency, comblineSpectrumWavelength, comblineSpectrumFrequency)
-
-    dispCalc.create_waveshaper_mask()
-    wsAttenuation = []
-    wsPhase = [x for x in spectralPhase]
-    wsPort = []
-    for i in range(dispCalc.get_len_ws_values()):
-        wsAttenuation.append(0.000)
-#        wsPhase.append(0.000)
-        wsPort.append(1)
-    dispCalc.set_waveshaper_attenuation(wsAttenuation)
-    dispCalc.set_waveshaper_spectral_phase(wsPhase)
-    dispCalc.set_waveshaper_port(wsPort)
+    fileName = filePath + "\\OSA\\" + "090920-DCF-MLL-PIC-Dispersion2.7psnm-4.csv"
+    dispCalc.set_optical_spectrum_from_file(fileName)
+    fileName = filePath + "\\SHG\\" + "090920-DCF-MLL-PIC-Dispersion2.7psnm-4.csv"
+    dispCalc.set_autocorrelation_from_file(fileName)
     
     filePath = 'C:\\Users\\ri679647\\Desktop\\Dual Tone IL Mask\\2020\\Python\\DCF-MLL-PIC'
-    # Save flat etalon response
-#    dispCalc.print_mask()
     fileName = 'MLL-PIC-10GHz.wsp'
-    dispCalc.save_mask(filePath,fileName)
+    dispCalc.set_quadratic_spectral_phase_mask_from_acquired_spectrum(2.4, filePath, fileName)
 
-    dispCalc.plot_waveshaper_mask()
+
     dispCalc.set_spectrum_combline_phase([-x for x in dispCalc.get_waveshaper_spectral_phase()])
     dispCalc.plot_spectral_output()
 #
     """
-    fileName = filedialog.askopenfilename()
-    filePath = "H:\\Home\\UP\\Shared\\Ricardo\\DODOS\\DCF Characterization\\DCF OL paper"
-    acValues = dispCalc.get_autocorrelation_values(fileName,filePath)
-
+    fileName = filedialog.askopenfilename()    
+    acValues = dispCalc.get_autocorrelation_values(fileName, filePath)
+    """
+    
     
