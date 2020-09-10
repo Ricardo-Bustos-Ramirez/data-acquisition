@@ -29,8 +29,8 @@ TESTING_MODE = False
 SWEEP_SCOPE = True
 INDEX_WRITE = False
 
-dispersionWs = 2.7
-fileNameHilMll = "090920-DCF-MLL-PIC-Dispersion" + str(dispersionWs) + "psnm-wv_1564"
+dispersionWs = 2.4
+fileNameHilMll = "090920-DCF-MLL-PIC-Dispersion" + str(dispersionWs) + "psnm-Python"
 fileNameMll = "082520-30GHz-MLL-PID-unlocked-uncompressed"
 fileNameOfc = "090220-30GHz-OFC"
 fileNameAdditionRFSA = "-1MHz"
