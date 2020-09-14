@@ -352,7 +352,7 @@ class DispersionCalculator():
     def get_waveshaper_port(self):
         return self.wsPort
     
-    def get_optical_spectrum_bandwidth(self):
+    def get_optical_spectrum_bandwidth_and_tlp(self):
         wavelength = self.get_wavelength_combline()
         comblineWavelength = self.get_spectrum_combline_wavelength()
         linearCombline = [math.pow(10, x/10) for x in comblineWavelength]

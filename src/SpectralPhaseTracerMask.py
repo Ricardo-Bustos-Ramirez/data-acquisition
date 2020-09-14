@@ -30,7 +30,7 @@ class MllOpticalFrequencyCombManager():
     
     def saveOsaSpectrum(self, fileName, channel):
         self.osaManager.connect(self.osaGpibAddress)
-        self.osaManager.single_sweep()
+#        self.osaManager.single_sweep()
         time.sleep(1)
         self.osaManager.get_span()
         self.osaManager.get_rbw()
@@ -98,13 +98,26 @@ class MllOpticalFrequencyCombManager():
         self.tdsManager.close()
     
     def calculate_bandwidth_and_tlp(self):
-        opticalBandwidth = self.maskCalc.get_optical_spectrum_bandwidth()
-        return opticalBandwidth
+        opticalBandwidthAndTlp = self.maskCalc.get_optical_spectrum_bandwidth_and_tlp()
+        return opticalBandwidthAndTlp
     
     def calculate_dispersion_and_pulse_width(self, fileArray, tauPerNmArray):
         filePath = self.filePathTds
         acValues = self.maskCalc.get_autocorrelation_values_from_file_array(fileArray, tauPerNmArray, filePath)
         return acValues
+    
+    def calculate_tlp_from_parameter_sweep(self, opticalBandwidthNm, transformLimitedPulsePs, opticalPulsewidthPsList, parameterSweep, parameterSweepUnits):
+        print("Optical bandwidth: " + str(opticalBandwidthNm) + " nm.")
+        print("Transform limited pulse: " + str(transformLimitedPulsePs) + " ps.")
+        timesTlp = [x*0.7071/transformLimitedPulsePs for x in opticalPulsewidthPsList]
+        plt.plot(parameterSweep, timesTlp)
+        plt.axis([min(parameterSweep), max(parameterSweep), min(timesTlp)-0.1, max(timesTlp)+0.1])
+        plt.xlabel('Dispersion ' + '[' + parameterSweepUnits + ']')
+        plt.ylabel('TLP times (a.u.)')
+        plt.show()
+#        print("Minimum TLPx = " + min(timesTlp) + "at)
+        return timesTlp
+        
 
 if __name__ == "__main__":
     
@@ -125,12 +138,10 @@ if __name__ == "__main__":
     tauPerNmList = [round(x,2) for x in tauPerNmArray]
     print(tauPerNmList)
 #    input("Press Enter to continue...")
-#    tauPerNmArray = [-10, -7.5, -5, -2.5, 0, 2.5, 5, 7.5, 10]
-#    tauPerNmArray = [-10, -5, 0, 5, 10]
     fileArray = []
     cubicConstant = 0
     for tauPerNm in tauPerNmList:
-        print('OFC Dispersion: ' + str(tauPerNm) + ' ps/nm')
+        print('OFC Dispersion: ' + str(tauPerNm) + ' ps/nm, ' + str(cubicConstant) + ' [rad]^3.')
 #        input("Press Enter to continue...")
         ofcFileName = fileBaseline + str(tauPerNm) + 'ps-nm' + str(cubicConstant) + 'rad.wsp'
         masterOfcMngr.createLinearChirpAndCubicPhaseMask(fileNameOsa, tauPerNm, cubicConstant)
@@ -148,11 +159,9 @@ if __name__ == "__main__":
     dispersionMaxPulsePeak = tauPerNmList[indexMaxPulsePeak]
     print("Min pulsewidth: " + str(minPulsewidth) + " ps at: " + str(dispersionMinPulsewidth) + "ps/nm")
     print("Max pulse peak: " + str(maxPulsePeak) + " V at: " + str(dispersionMaxPulsePeak) + "ps/nm")
-    (opticalBandwidth, transformLimitedPulsePs) = masterOfcMngr.calculate_bandwidth_and_tlp()
-    print(opticalBandwidth, transformLimitedPulsePs)
-    timesTlp = [x*0.7071/transformLimitedPulsePs for x in acValues[0]]
-    plt.plot(tauPerNmList, timesTlp)
-    plt.show()
+    (opticalBandwidthNm, transformLimitedPulsePs) = masterOfcMngr.calculate_bandwidth_and_tlp()
+    masterOfcMngr.calculate_tlp_from_parameter_sweep(opticalBandwidthNm, transformLimitedPulsePs, acValues[0], tauPerNmList, "ps/nm")
+
 #    masterOfcMngr.closePorts()
     
 #    masterOfcMngr.setDispersionProfile(str(dispersionMinPulsewidth))
@@ -160,13 +169,12 @@ if __name__ == "__main__":
     initialCubicConstant = -10
     endCubicConstant = 10
     cubiConstantArray = np.linspace(initialCubicConstant, endCubicConstant, 101)
-    cubicConstantList = [round(x,2)*1e-5 for x in cubiConstantArray]
+    cubicConstantList = [round(x,2)*1e-6 for x in cubiConstantArray]
     print(cubicConstantList)
 #    input("Press Enter to continue...")
     fileArrayCubic = []
     for cubicConstant in cubicConstantList:
-        cubicConstantStr = str(cubicConstant)
-        print('OFC Dispersion: ' + cubicConstantStr + 'x10^-10 [rad]')
+        print('OFC Dispersion: '  + str(dispersionMinPulsewidth) + ' ps/nm, ' + str(cubicConstant) + ' [rad]^3')
 #        input("Press Enter to continue...")
         ofcFileName = fileBaseline + str(dispersionMinPulsewidth) + 'ps-nm' + str(cubicConstant) + 'rad.wsp'
         masterOfcMngr.createLinearChirpAndCubicPhaseMask(fileNameOsa, dispersionMinPulsewidth, cubicConstant)
@@ -183,18 +191,15 @@ if __name__ == "__main__":
     cubicPhaseMinPulsewidth = cubicConstantList[indexMinPulseWidth2]
     cubicPhaseMaxPulsePeak = cubicConstantList[indexMaxPulsePeak2]
 
-    print("Min pulsewidth: " + str(minPulsewidth) + " ps at: " + str(dispersionMinPulsewidth) + "ps/nm")
-    print("Max pulse peak: " + str(maxPulsePeak) + " V at: " + str(dispersionMaxPulsePeak) + "ps/nm")
-    plt.plot(tauPerNmList, timesTlp)
-    plt.show()
+    print("Min pulsewidth: " + str(minPulsewidth) + " ps at: " + str(dispersionMinPulsewidth) + " ps/nm")
+    print("Max pulse peak: " + str(maxPulsePeak) + " V at: " + str(dispersionMaxPulsePeak) + " ps/nm")
+    masterOfcMngr.calculate_tlp_from_parameter_sweep(opticalBandwidthNm, transformLimitedPulsePs, acValues[0], tauPerNmList, "ps/nm")
     
-    print("Min pulsewidth: " + str(minPulsewidth2) + " ps at: " + str(cubicPhaseMinPulsewidth) + " [rad]")
-    print("Max pulse peak: " + str(maxPulsePeak2) + " V at: " + str(cubicPhaseMaxPulsePeak) + " [rad]")
-    timesTlp2 = [x*0.7071/transformLimitedPulsePs for x in acValues2[0]]
-    plt.plot(cubicConstantList, timesTlp2)
-    plt.show()
+    print("Min pulsewidth: " + str(minPulsewidth2) + " ps at: " + str(cubicPhaseMinPulsewidth) + " [rad]^3")
+    print("Max pulse peak: " + str(maxPulsePeak2) + " V at: " + str(cubicPhaseMaxPulsePeak) + " [rad]^3")
+    masterOfcMngr.calculate_tlp_from_parameter_sweep(opticalBandwidthNm, transformLimitedPulsePs, acValues2[0], cubicConstantList, "rad^3")
         
-
+    masterOfcMngr.setDispersionProfile(dispersionMinPulsewidth, cubicPhaseMinPulsewidth)
     
     
     
