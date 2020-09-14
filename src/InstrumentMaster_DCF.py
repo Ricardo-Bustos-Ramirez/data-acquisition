@@ -29,8 +29,9 @@ TESTING_MODE = False
 SWEEP_SCOPE = True
 INDEX_WRITE = False
 
-dispersionWs = 2.4
-fileNameHilMll = "090920-DCF-MLL-PIC-Dispersion" + str(dispersionWs) + "psnm-Python"
+dispersionPsNm = 0.0
+cubicDispersion = 0.0
+fileNameHilMll = "090920-DCF-MLL-PIC-Dispersion" + str(dispersionPsNm) + "psnm-" + str(cubicDispersion) + "rad-Python"
 fileNameMll = "082520-30GHz-MLL-PID-unlocked-uncompressed"
 fileNameOfc = "090220-30GHz-OFC"
 fileNameAdditionRFSA = "-1MHz"
@@ -165,18 +166,18 @@ if __name__ == "__main__":
         ixSoa = 120.0   # Current in the external SOA (mA)
         pMllInj = 0.0    # Power measured in the monitor coupler (~10%) of the MLL-PIC injection locking port (uW)
         pMllOut = 2.35  # Power measured in the monitor coupler (~50%) of the autocorrelator EDFA of the MLL-PIC output port (uW)
-#        dispersionWs = 4.0  # Power measured in the monitor coupler (<50% )of the injected OFC power (uW)
+#        dispersionPsNm = 4.0  # Power measured in the monitor coupler (<50% )of the injected OFC power (uW)
 #        fRepSynth = 29.9634  # Driving frequency of the EOM comb that generates OFC (~3frep) in GHz
     
     if INDEX_WRITE:
         if os.path.isfile(filePath + "\\" + "indexFile.csv") == False:
             with open(filePath + "\\" + "indexFile.csv", "w+", newline='') as fileWriter:
                 csvWriter = csv.writer(fileWriter, delimiter = ',', lineterminator='\n')
-                csvWriter.writerow(("File name", "Measured device", "TEC value (kOhm)", "Igain (mA)", "PS used", "Ips (mA)", "V_SA (V)", "V_EAM (V)", "IxSOA (mA)", "P_MLL-inj 10% (uW)", "P_MLL-out 1% (uW)", "Dispersion (ps/nm)"))
+                csvWriter.writerow(("File name", "Measured device", "TEC value (kOhm)", "Igain (mA)", "PS used", "Ips (mA)", "V_SA (V)", "V_EAM (V)", "IxSOA (mA)", "P_MLL-inj 10% (uW)", "P_MLL-out 1% (uW)", "Dispersion (ps/nm)", "Cubic dispersion (rad^3)"))
     
         with open(filePath + "\\" + "indexFile.csv", "a", newline='') as fileWriter:
             csvWriter = csv.writer(fileWriter, delimiter = ',', lineterminator='\n')
-            csvWriter.writerow((fileName, measuredDevice, rTec, iGain, iPsNum, iPs, vSa, vEam, ixSoa, pMllInj, pMllOut, dispersionWs))
+            csvWriter.writerow((fileName, measuredDevice, rTec, iGain, iPsNum, iPs, vSa, vEam, ixSoa, pMllInj, pMllOut, dispersionPsNm, cubicDispersion))
         
     if RFSA_ACTIVE:
         RFSA_8566B = RFSA()
