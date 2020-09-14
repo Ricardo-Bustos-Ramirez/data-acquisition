@@ -275,7 +275,7 @@ class TDS():
         
     def set_waveform_values(self, waveformAscii, xZero, xIncrement, pointsOffset, yZero, yMultiplier, yOffset):
         waveformAscii = waveformAscii.split(',')
-        print(len(waveformAscii))
+#        print("Number of waveform samples: " + str(len(waveformAscii)))
         waveformTime = []
         waveformVolts = []
         y = 0
@@ -315,7 +315,6 @@ class TDS():
         waveformAscii = self.handle.query("CURVE?")
         self.set_waveform_parameters(waveformId)
         self.set_waveform_values(waveformAscii, xZero, xIncrement, pointsOffset, yZero, yMultiplier, yOffset)
-        plt.plot(self.get_waveform_time(), self.get_waveform_volts(), 'b')
     
     def close(self):
         try:
