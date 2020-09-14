@@ -67,8 +67,8 @@ class TDS():
             self.idnOscFwVersionNum = self.idn[3].split(' ')[1].split(':')[1]   # Oscilloscope firmware version number
             self.idnModFwVersionNum = self.idn[3].split(' ')[2].split(':')[2]   # Module firmware version number
             self.idnModType = self.idn[3].split(' ')[2].split(':')[1]           # Module type
-            print(self.idnMfg + '\nModel: ' + self.idnModel, '\nOscilloscope FW: ' + self.idnOscFwVersionNum 
-                  + '\nModel FW: ' + self.idnModFwVersionNum + '\nModule type: ' + self.idnModType)
+#            print(self.idnMfg + '\nModel: ' + self.idnModel, '\nOscilloscope FW: ' + self.idnOscFwVersionNum 
+#                  + '\nModel FW: ' + self.idnModFwVersionNum + '\nModule type: ' + self.idnModType)
             self.connected = True
             
             self.print_message('setting parameters')
