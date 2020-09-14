@@ -528,15 +528,16 @@ class DispersionCalculator():
 #        plt.show()
 
         quadraticSpectralPhase = -2*np.pi*integrate.cumtrapz(groupDelayDispersionFrequency, comblineFrequency, initial = 0)
-        cubicSpectralPhase = [qubicConstant*x**3 for x in range(len(quadraticSpectralPhase) + 1)]
-        spectralPhase = [x + y for (x,y) in zip(quadraticSpectralPhase, cubicSpectralPhase)]
         indexMaxSpectrumFrequency = comblineSpectrumFrequency.index(max(comblineSpectrumFrequency))
 #        centralFrequency = comblineFrequency[comblineSpectrumFrequency]        
-        spectralPhase = spectralPhase - spectralPhase[indexMaxSpectrumFrequency]
-#        plt.plot(comblineFrequency, spectralPhase, 'go')
-#        plt.xlabel('Frequency (THz)')
-#        plt.ylabel('Spectral phase (rad)')
-#        plt.show()
+        quadraticSpectralPhase = quadraticSpectralPhase - quadraticSpectralPhase[indexMaxSpectrumFrequency]
+        x0 = indexMaxSpectrumFrequency
+        cubicSpectralPhase = [qubicConstant*(x-x0)**3 for x in range(len(quadraticSpectralPhase) + 1)]
+        spectralPhase = [x + y for (x,y) in zip(quadraticSpectralPhase, cubicSpectralPhase)]
+        plt.plot(comblineFrequency, spectralPhase, 'go')
+        plt.xlabel('Frequency (THz)')
+        plt.ylabel('Spectral phase (rad)')
+        plt.show()
         return spectralPhase
     
     def set_optical_spectrum_from_file(self, fileName = None):
@@ -632,8 +633,8 @@ if __name__ == "__main__":
     
     filePath = 'C:\\Users\\ri679647\\Desktop\\Dual Tone IL Mask\\2020\\Python\\DCF-MLL-PIC'
     fileName = 'MLL-PIC-10GHz.wsp'
-    dispCalc.set_quadratic_spectral_phase_mask_from_acquired_spectrum(2.4, filePath, fileName)
-    dispCalc.set_quadratic_and_cubic_spectral_phase_mask_from_acquired_spectrum(2.4, 0, filePath, fileName)
+#    dispCalc.set_quadratic_spectral_phase_mask_from_acquired_spectrum(2.4, filePath, fileName)
+    dispCalc.set_quadratic_and_cubic_spectral_phase_mask_from_acquired_spectrum(2.4, 1*1e-5, filePath, fileName)
 
     dispCalc.set_spectrum_combline_phase([-x for x in dispCalc.get_waveshaper_spectral_phase()])
     dispCalc.plot_spectral_output()
