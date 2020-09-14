@@ -508,7 +508,7 @@ class DispersionCalculator():
 #        plt.show()
         return spectralPhase
     
-    def create_quadratic_and_cubic_spectral_phase(self, tauPerNm, qubicConstant, comblineWavelength, comblineFrequency, comblineSpectrumWavelength, comblineSpectrumFrequency):
+    def create_quadratic_and_cubic_spectral_phase(self, tauPerNm, cubicDispersionPs3, comblineWavelength, comblineFrequency, comblineSpectrumWavelength, comblineSpectrumFrequency):
         # Spectrum points for mask
 
         indexMaxSpectrumWavelength = comblineSpectrumWavelength.index(max(comblineSpectrumWavelength))
@@ -531,9 +531,13 @@ class DispersionCalculator():
         indexMaxSpectrumFrequency = comblineSpectrumFrequency.index(max(comblineSpectrumFrequency))
 #        centralFrequency = comblineFrequency[comblineSpectrumFrequency]        
         quadraticSpectralPhase = quadraticSpectralPhase - quadraticSpectralPhase[indexMaxSpectrumFrequency]
-        x0 = indexMaxSpectrumFrequency
-        cubicSpectralPhase = [qubicConstant*(x-x0)**3 for x in range(len(quadraticSpectralPhase) + 1)]
+        
+        centralFrequencyThz = comblineFrequency[indexMaxSpectrumFrequency]
+        # Spectral phase calculated as: [k''' (ps^3)] * [2pi (f-f0 (THz))]^3 where k''' is given in ps^3. Normal values around 10^-6 [rad].
+        cubicSpectralPhase = [((2*np.pi)**3)*cubicDispersionPs3*((x-centralFrequencyThz)**3) for x in comblineFrequency]
+        
         spectralPhase = [x + y for (x,y) in zip(quadraticSpectralPhase, cubicSpectralPhase)]
+        
         plt.plot(comblineFrequency, spectralPhase, 'go')
         plt.xlabel('Frequency (THz)')
         plt.ylabel('Spectral phase (rad)')
@@ -590,7 +594,7 @@ class DispersionCalculator():
             self.save_mask(filePath, fileName)
 #            self.plot_waveshaper_mask()
     
-    def set_quadratic_and_cubic_spectral_phase_mask_from_acquired_spectrum(self, tauPerNm, qubicConstant, filePath, fileName):
+    def set_quadratic_and_cubic_spectral_phase_mask_from_acquired_spectrum(self, tauPerNm, cubicDispersionPs3, filePath, fileName):
         comblineWavelength = self.get_wavelength_combline()
         comblineFrequency = self.get_frequency_combline()
         comblineSpectrumWavelength = self.get_spectrum_combline_wavelength()
@@ -599,7 +603,7 @@ class DispersionCalculator():
         if comblineWavelength == []:
             print("No spectrum has been stored from a file.")
         else:
-            spectralPhase = self.create_quadratic_and_cubic_spectral_phase(tauPerNm, qubicConstant, comblineWavelength, comblineFrequency, comblineSpectrumWavelength, comblineSpectrumFrequency)
+            spectralPhase = self.create_quadratic_and_cubic_spectral_phase(tauPerNm, cubicDispersionPs3, comblineWavelength, comblineFrequency, comblineSpectrumWavelength, comblineSpectrumFrequency)
         
             self.create_waveshaper_mask()
             wsAttenuation = []
@@ -634,7 +638,7 @@ if __name__ == "__main__":
     filePath = 'C:\\Users\\ri679647\\Desktop\\Dual Tone IL Mask\\2020\\Python\\DCF-MLL-PIC'
     fileName = 'MLL-PIC-10GHz.wsp'
 #    dispCalc.set_quadratic_spectral_phase_mask_from_acquired_spectrum(2.4, filePath, fileName)
-    dispCalc.set_quadratic_and_cubic_spectral_phase_mask_from_acquired_spectrum(2.4, 1*1e-5, filePath, fileName)
+    dispCalc.set_quadratic_and_cubic_spectral_phase_mask_from_acquired_spectrum(2.4, 0.015, filePath, fileName)
 
     dispCalc.set_spectrum_combline_phase([-x for x in dispCalc.get_waveshaper_spectral_phase()])
     dispCalc.plot_spectral_output()
