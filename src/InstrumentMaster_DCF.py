@@ -29,9 +29,9 @@ TESTING_MODE = False
 SWEEP_SCOPE = True
 INDEX_WRITE = False
 
-dispersionPsNm = 0.0
-cubicDispersion = 0.0
-fileNameHilMll = "090920-DCF-MLL-PIC-Dispersion" + str(dispersionPsNm) + "psnm-" + str(cubicDispersion) + "rad-Python"
+dispersionPsNm = 2.8
+cubicDispersion = -0.4
+fileNameHilMll = "090920-DCF-MLL-PIC-Dispersion" + str(dispersionPsNm) + "psnm-" + str(cubicDispersion) + "ps3-Python"
 fileNameMll = "082520-30GHz-MLL-PID-unlocked-uncompressed"
 fileNameOfc = "090220-30GHz-OFC"
 fileNameAdditionRFSA = "-1MHz"
@@ -227,7 +227,7 @@ if __name__ == "__main__":
         if SWEEP_SCOPE:
             TDS210.set_osc_state('STOP')
             print("TDS Stopped...")
-            time.sleep(10)
+            time.sleep(1)
             TDS210.set_osc_state('RUN')
             print("TDS Running...")
             time.sleep(10)
