@@ -479,35 +479,6 @@ class DispersionCalculator():
         self.plot_autocorrelation_values(acDispersionArray, acPulseWidthArray, acPulsePeakArray)
         return (acPulseWidthArray, acPulsePeakArray)
     
-    def create_spectral_phase_from_gdd(self, tauPerNm, comblineWavelength, comblineFrequency, comblineSpectrumWavelength, comblineSpectrumFrequency):
-        # Spectrum points for mask
-
-        indexMaxSpectrumWavelength = comblineSpectrumWavelength.index(max(comblineSpectrumWavelength))
-        centralWavelength = comblineWavelength[indexMaxSpectrumWavelength]
-        tempGroupDelayDispersion = [(wavelength-centralWavelength)*tauPerNm for wavelength in comblineWavelength]
-        groupDelayDispersion = [x for x in tempGroupDelayDispersion]
-#        plt.plot(comblineWavelength, groupDelayDispersion,'r')
-#        plt.xlabel('Wavelength (nm)')
-#        plt.ylabel('Delay (ps)')
-#        plt.show()
-        
-        groupDelayDispersionFrequency = [x for x in groupDelayDispersion]
-        groupDelayDispersionFrequency.reverse()
-#        plt.plot(comblineFrequency, groupDelayDispersionFrequency,'b')
-#        plt.xlabel('Frequency (THz)')
-#        plt.ylabel('Delay (ps)')
-#        plt.show()
-
-        spectralPhase = -2*np.pi*integrate.cumtrapz(groupDelayDispersionFrequency, comblineFrequency, initial = 0)
-        indexMaxSpectrumFrequency = comblineSpectrumFrequency.index(max(comblineSpectrumFrequency))
-#        centralFrequency = comblineFrequency[comblineSpectrumFrequency]        
-        spectralPhase = spectralPhase - spectralPhase[indexMaxSpectrumFrequency]
-#        plt.plot(comblineFrequency, spectralPhase, 'go')
-#        plt.xlabel('Frequency (THz)')
-#        plt.ylabel('Spectral phase (rad)')
-#        plt.show()
-        return spectralPhase
-    
     def create_quadratic_and_cubic_spectral_phase(self, centralFrequencyOffset, tauPerNm, cubicDispersionPs3, comblineWavelength, comblineFrequency, comblineSpectrumWavelength, comblineSpectrumFrequency):
         # Spectrum points for mask
 
@@ -566,34 +537,6 @@ class DispersionCalculator():
         print("SHG pulse intensity autocorrelation width: " + str(self.get_autocorrelation_pulse_width()) + " ps")
         print("SHG pulse intensity autocorrelation peak value: " + str(self.get_autocorrelation_peak_value()) + " V")
 
-    def set_quadratic_spectral_phase_mask_from_acquired_spectrum(self, tauPerNm, filePath, fileName):
-        comblineWavelength = self.get_wavelength_combline()
-        comblineFrequency = self.get_frequency_combline()
-        comblineSpectrumWavelength = self.get_spectrum_combline_wavelength()
-        comblineSpectrumFrequency = self.get_spectrum_combline_frequency()
-        
-        if comblineWavelength == []:
-            print("No spectrum has been stored from a file.")
-        else:
-            spectralPhase = self.create_spectral_phase_from_gdd(tauPerNm, comblineWavelength, comblineFrequency, comblineSpectrumWavelength, comblineSpectrumFrequency)
-        
-            self.create_waveshaper_mask()
-            wsAttenuation = []
-            wsPhase = [x for x in spectralPhase]
-            wsPort = []
-            for i in range(self.get_len_ws_values()):
-                wsAttenuation.append(0.000)
-#                wsPhase.append(0.000)
-                wsPort.append(1)
-            self.set_waveshaper_attenuation(wsAttenuation)
-            self.set_waveshaper_spectral_phase(wsPhase)
-            self.set_waveshaper_port(wsPort)
-            
-#            Save spectral phase mask
-#            self.print_mask()
-            self.save_mask(filePath, fileName)
-#            self.plot_waveshaper_mask()
-    
     def set_quadratic_and_cubic_spectral_phase_mask_from_acquired_spectrum(self, centralFrequencyOffset, tauPerNm, cubicDispersionPs3, filePath, fileName):
         comblineWavelength = self.get_wavelength_combline()
         comblineFrequency = self.get_frequency_combline()
@@ -620,7 +563,7 @@ class DispersionCalculator():
 #            Save spectral phase mask
 #            self.print_mask()
             self.save_mask(filePath, fileName)
-#            self.plot_waveshaper_mask()    
+#            self.plot_waveshaper_mask()
 
 if __name__ == "__main__":
     

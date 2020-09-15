@@ -57,13 +57,6 @@ class MllOpticalFrequencyCombManager():
         # Print captured spectrum
         self.tdsManager.plot_waveform()
     
-    def createLinearChirpMask(self, fileNameOsa, tauPerNm):
-        # Read file and create mask array
-        fileName = self.filePathOsa + '\\' + fileNameOsa
-        self.maskCalc.set_optical_spectrum_from_file(fileName)
-        profileName = str(tauPerNm) + 'ps-nm.wsp'
-        self.maskCalc.set_quadratic_spectral_phase_mask_from_acquired_spectrum(tauPerNm, self.filePathWS, profileName)
-
     def createLinearChirpAndCubicPhaseMask(self, fileNameOsa, centralFrequencyOffset, tauPerNm, cubicDispersionPs3):
         # Read file and create mask array
         fileName = self.filePathOsa + '\\' + fileNameOsa
