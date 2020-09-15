@@ -29,9 +29,9 @@ TESTING_MODE = False
 SWEEP_SCOPE = True
 INDEX_WRITE = False
 
-dispersionPsNm = 2.8
-cubicDispersion = -0.4
-fileNameHilMll = "090920-DCF-MLL-PIC-Dispersion" + str(dispersionPsNm) + "psnm-" + str(cubicDispersion) + "ps3-Python"
+dispersionPsNm = 0
+cubicDispersion = 0.0
+fileNameHilMll = "091520-DCF-MLL-PIC-Dispersion" + str(dispersionPsNm) + "psnm-" + str(cubicDispersion) + "ps3-Python"
 fileNameMll = "082520-30GHz-MLL-PID-unlocked-uncompressed"
 fileNameOfc = "090220-30GHz-OFC"
 fileNameAdditionRFSA = "-1MHz"
@@ -161,11 +161,11 @@ if __name__ == "__main__":
         iGain = 90    # Current in the gain section (mA)
         iPsNum = 2      # Phase shifter used.
         iPs = 0.0      # Current in asymmetric MZIs of DCF (PS3) that move the spectrum (mA)
-        vSa = 4.00      # Reverse bias voltage in saturable absorber (V)
+        vSa = 5.00      # Reverse bias voltage in saturable absorber (V)
         vEam = 0.00     # Reverse bias voltage in intracavity EAM (V)
         ixSoa = 120.0   # Current in the external SOA (mA)
         pMllInj = 0.0    # Power measured in the monitor coupler (~10%) of the MLL-PIC injection locking port (uW)
-        pMllOut = 2.35  # Power measured in the monitor coupler (~50%) of the autocorrelator EDFA of the MLL-PIC output port (uW)
+        pMllOut = 1.73  # Power measured in the monitor coupler (~50%) of the autocorrelator EDFA of the MLL-PIC output port (uW)
 #        dispersionPsNm = 4.0  # Power measured in the monitor coupler (<50% )of the injected OFC power (uW)
 #        fRepSynth = 29.9634  # Driving frequency of the EOM comb that generates OFC (~3frep) in GHz
     
