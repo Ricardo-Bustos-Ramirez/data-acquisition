@@ -505,7 +505,7 @@ class DispersionCalculator():
         
         centralFrequencyThz = comblineFrequency[indexMaxSpectrumFrequency + centralFrequencyOffset]
         # Spectral phase calculated as: [k''' (ps^3)] * [2pi (f-f0 (THz))]^3 where k''' is given in ps^3. Normal values around 10^-6 [rad].
-        cubicSpectralPhase = [((2*np.pi)**3)*cubicDispersionPs3*((x-centralFrequencyThz)**3) for x in comblineFrequency]
+        cubicSpectralPhase = [(1/6)*((2*np.pi)**3)*cubicDispersionPs3*((x-centralFrequencyThz)**3) for x in comblineFrequency]
         
         spectralPhase = [x + y for (x,y) in zip(quadraticSpectralPhase, cubicSpectralPhase)]
         
