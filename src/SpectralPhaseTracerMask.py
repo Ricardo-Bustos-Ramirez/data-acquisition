@@ -210,7 +210,7 @@ if __name__ == "__main__":
     
     initialCentralFrequencyOffset = -20
     endCentralFrequencyOffset = 20
-    numberOfSamples = 41
+    numberOfSamples = 3
     (acValues3, centralFrequencyOffsetList, minPulsewidth3, maxPulsePeak3, centralFreqOffsetMinPulsewidth, centralFreqOffsetMaxPulsePeak) = masterOfcMngr.sweep_central_frequancy_offset_dispersion_parameter(fileNameOsa, dispersionMinPulsewidth, cubicDispersionMinPulsewidth, initialCentralFrequencyOffset, endCentralFrequencyOffset, numberOfSamples)
 
     print("Min pulsewidth: " + str(minPulsewidth) + " [ps] at: " + str(dispersionMinPulsewidth) + " [ps^3]")

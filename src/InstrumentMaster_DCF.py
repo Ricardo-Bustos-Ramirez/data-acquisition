@@ -29,9 +29,9 @@ TESTING_MODE = False
 SWEEP_SCOPE = True
 INDEX_WRITE = False
 
-dispersionPsNm = 0
+dispersionPsNm = 0.0
 cubicDispersion = 0.0
-fileNameHilMll = "091520-DCF-MLL-PIC-Dispersion" + str(dispersionPsNm) + "psnm-" + str(cubicDispersion) + "ps3-Python"
+fileNameHilMll = "091520-DCF-MLL-PIC-Dispersion" + str(dispersionPsNm) + "psnm-" + str(cubicDispersion) + "ps3-Python-InjOuput"
 fileNameMll = "082520-30GHz-MLL-PID-unlocked-uncompressed"
 fileNameOfc = "090220-30GHz-OFC"
 fileNameAdditionRFSA = "-1MHz"
@@ -163,7 +163,7 @@ if __name__ == "__main__":
         iPs = 0.0      # Current in asymmetric MZIs of DCF (PS3) that move the spectrum (mA)
         vSa = 5.00      # Reverse bias voltage in saturable absorber (V)
         vEam = 0.00     # Reverse bias voltage in intracavity EAM (V)
-        ixSoa = 120.0   # Current in the external SOA (mA)
+        ixSoa = 0.0   # Current in the external SOA (mA)
         pMllInj = 0.0    # Power measured in the monitor coupler (~10%) of the MLL-PIC injection locking port (uW)
         pMllOut = 1.73  # Power measured in the monitor coupler (~50%) of the autocorrelator EDFA of the MLL-PIC output port (uW)
 #        dispersionPsNm = 4.0  # Power measured in the monitor coupler (<50% )of the injected OFC power (uW)
