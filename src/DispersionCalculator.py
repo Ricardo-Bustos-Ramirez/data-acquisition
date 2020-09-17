@@ -315,6 +315,9 @@ class DispersionCalculator():
 #        print(self.spectrumWaveshaper)        
         self.lenWaveshaperValues = len(self.frequencyWaveshaper)
     
+    def get_waveshaper_frequency(self):
+        return self.frequencyWaveshaper
+    
     def set_len_ws_values(self, lenWaveshaperValues):
         self.lenWaveshaperValues = lenWaveshaperValues
     
@@ -515,6 +518,22 @@ class DispersionCalculator():
         plt.show()
         return spectralPhase
     
+    def modify_custom_spectral_phase(self, axialModeOffset, spectralPhaseDelta, comblineFrequency, comblineSpectralPhase):
+        # Spectrum points for mask
+        
+        numberOfAxialModes = len(comblineSpectralPhase)
+        numberOfSpectralPhaseComponents = len(comblineSpectralPhase)
+        if numberOfAxialModes == numberOfSpectralPhaseComponents:
+            if axialModeOffset <= numberOfSpectralPhaseComponents:
+                currentSpectralPhase = comblineSpectralPhase[axialModeOffset]
+                comblineSpectralPhase[axialModeOffset] = currentSpectralPhase + spectralPhaseDelta
+            else:
+                print("Axial mode specified exceeds spectral phase components.")
+        else:
+            print("Number of axial modes and spectral phase components do not match.")
+        modifiedComblineSpectralPhase = comblineSpectralPhase
+        return modifiedComblineSpectralPhase
+    
     def set_optical_spectrum_from_file(self, fileName = None):
         if fileName == None:
             fileName = filedialog.askopenfilename()
@@ -547,8 +566,33 @@ class DispersionCalculator():
             print("No spectrum has been stored from a file.")
         else:
             spectralPhase = self.create_quadratic_and_cubic_spectral_phase(centralFrequencyOffset, tauPerNm, cubicDispersionPs3, comblineWavelength, comblineFrequency, comblineSpectrumWavelength, comblineSpectrumFrequency)
-        
+                
             self.create_waveshaper_mask()
+            wsAttenuation = []
+            wsPhase = [x for x in spectralPhase]
+            wsPort = []
+            for i in range(self.get_len_ws_values()):
+                wsAttenuation.append(0.000)
+#                wsPhase.append(0.000)
+                wsPort.append(1)
+            self.set_waveshaper_attenuation(wsAttenuation)
+            self.set_waveshaper_spectral_phase(wsPhase)
+            self.set_waveshaper_port(wsPort)
+            
+#            Save spectral phase mask
+#            self.print_mask()
+            self.save_mask(filePath, fileName)
+#            self.plot_waveshaper_mask()
+
+    def set_modified_spectral_phase_mask_from_waveshaper_spectral_phase(self, axialModeOffset, spectralPhaseDelta, filePath, fileName):
+        waveshaperFrequency = self.get_waveshaper_frequency()
+        waveshaperSpectralPhase = self.get_waveshaper_spectral_phase()
+        
+        if waveshaperSpectralPhase == []:
+            print("No spectral phase has been stored from a file.")
+        else:
+            spectralPhase = self.modify_custom_spectral_phase(axialModeOffset, spectralPhaseDelta, waveshaperFrequency, waveshaperSpectralPhase)
+
             wsAttenuation = []
             wsPhase = [x for x in spectralPhase]
             wsPort = []
@@ -582,7 +626,7 @@ if __name__ == "__main__":
     fileName = 'MLL-PIC-10GHz.wsp'
 #    dispCalc.set_quadratic_spectral_phase_mask_from_acquired_spectrum(2.4, filePath, fileName)
     dispCalc.set_quadratic_and_cubic_spectral_phase_mask_from_acquired_spectrum(0, 2.4, 0.015, filePath, fileName)
-
+    dispCalc.set_modified_spectral_phase_mask_from_waveshaper_spectral_phase(15, np.pi, filePath, fileName)
     dispCalc.set_spectrum_combline_phase([-x for x in dispCalc.get_waveshaper_spectral_phase()])
     dispCalc.plot_spectral_output()
 #

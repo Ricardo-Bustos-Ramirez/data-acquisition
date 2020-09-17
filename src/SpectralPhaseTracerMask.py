@@ -64,6 +64,10 @@ class MllOpticalFrequencyCombManager():
         profileName = str(centralFrequencyOffset) + 'AxMo' + str(tauPerNm) + 'ps-nm' + str(cubicDispersionPs3) + 'ps3.wsp'
         self.maskCalc.set_quadratic_and_cubic_spectral_phase_mask_from_acquired_spectrum(centralFrequencyOffset, tauPerNm, cubicDispersionPs3, self.filePathWS, profileName)
 
+    def createModifiedPhaseMaskFromCurrentMask(self, axialModeOffset, spectralPhaseDelta):
+        profileName = 'current' + str(axialModeOffset) + 'AxMo' + str(spectralPhaseDelta) + 'rad.wsp'
+        self.maskCalc.set_modified_spectral_phase_mask_from_waveshaper_spectral_phase(axialModeOffset, spectralPhaseDelta, self.filePathWS, profileName)
+
     def setOfcBlocked(self):
         self.wvmngr.connect_to_waveshaper()
         self.wvmngr.block_all()
@@ -86,6 +90,18 @@ class MllOpticalFrequencyCombManager():
         self.wvmngr.load_profile_to_waveshaper(profileName)
         self.wvmngr.disconnect_from_waveshaper()
     
+    def loadModifiedDispersionProfile(self, axialModeOffset, spectralPhaseDelta):
+        fileProfile = self.filePathWS + '\\' + profileName = 'current' + str(axialModeOffset) + 'AxMo' + str(spectralPhaseDelta) + 'rad.wsp'
+        profileName = 'current' + str(axialModeOffset) + 'AxMo' + str(spectralPhaseDelta) + 'rad.wsp'
+        self.wvmngr.load_profile_from_file(fileProfile, profileName)
+
+    def setModifiedDispersionProfile(self, axialModeOffset, spectralPhaseDelta):
+        profileName = 'current' + str(axialModeOffset) + 'AxMo' + str(spectralPhaseDelta) + 'rad.wsp'
+        self.wvmngr.connect_to_waveshaper()
+        self.wvmngr.block_all()
+        self.wvmngr.load_profile_to_waveshaper(profileName)
+        self.wvmngr.disconnect_from_waveshaper()
+    
     def closePorts(self):
         self.osaManager.close()
         self.tdsManager.close()
@@ -94,9 +110,9 @@ class MllOpticalFrequencyCombManager():
         opticalBandwidthAndTlp = self.maskCalc.get_optical_spectrum_bandwidth_and_tlp()
         return opticalBandwidthAndTlp
     
-    def calculate_dispersion_and_pulse_width(self, fileArray, tauPerNmArray):
+    def calculate_dispersion_and_pulse_width(self, fileArray, dispersionParameter):
         filePath = self.filePathTds
-        acValues = self.maskCalc.get_autocorrelation_values_from_file_array(fileArray, tauPerNmArray, filePath)
+        acValues = self.maskCalc.get_autocorrelation_values_from_file_array(fileArray, dispersionParameter, filePath)
         return acValues
     
     def calculate_tlp_from_parameter_sweep(self, opticalBandwidthNm, transformLimitedPulsePs, opticalPulsewidthPsList, parameterSweep, parameterSweepUnits):
@@ -114,10 +130,33 @@ class MllOpticalFrequencyCombManager():
     def set_dispersion_profile_and_save_autocorrelation_trace(self, fileNameOsa, fileNameShg, centralFrequencyOffset, tauPerNm, cubicDispersionPs3):
         print('OFC Dispersion: ' + str(tauPerNm) + ' [ps/nm], ' + str(cubicDispersionPs3) + ' [ps^3], offset from central frequency: ' + str(centralFrequencyOffset) + ' axial modes.')
 #        input("Press Enter to continue...")
-        shgAcFileName = fileNameShg + str(tauPerNm) + 'ps-nm' + str(cubicDispersionPs3) + 'ps3.csv'
+        shgAcFileName = fileNameShg + str(tauPerNm) + 'ps-nm' + str(cubicDispersionPs3) + 'ps3' + str(centralFrequencyOffset) + 'offset.csv'
         self.createLinearChirpAndCubicPhaseMask(fileNameOsa, centralFrequencyOffset, tauPerNm, cubicDispersionPs3)
         self.loadDispersionProfile(centralFrequencyOffset, tauPerNm, cubicDispersionPs3)
         self.setDispersionProfile(centralFrequencyOffset, tauPerNm, cubicDispersionPs3)
+#        masterOfcMngr.saveOsaSpectrum(ofcFileName, 'A')
+        self.saveTdsSpectrum(shgAcFileName)
+        return shgAcFileName
+    
+    def set_modified_dispersion_profile_and_save_autocorrelation_trace(self, fileNameOsa, fileNameShg, axialModeOffset, spectralPhaseDelta):
+        """
+        The method starts from the current spectral phase mask applied in the waveshaper by method:
+        + set_dispersion_profile_and_save_autocorrelation_trace
+            + createLinearChirpAndCubicPhaseMask
+                + maskCalc.set_quadratic_and_cubic_spectral_phase_mask_from_acquired_spectrum
+                    + maskCalc.set_waveshaper_spectral_phase
+        Or this method through the following path:
+        + set_modified_dispersion_profile_and_save_autocorrelation_trace
+            + createModifiedPhaseMaskFromCurrentMask
+                + maskCalc.set_modified_spectral_phase_mask_from_waveshaper_spectral_phase
+                    + maskCalc.set_waveshaper_spectral_phase
+        """
+        print('OFC axial mode offset: ' + str(axialModeOffset) + ', spectral phase delta: ' + str(spectralPhaseDelta) + ' [rad].')
+#        input("Press Enter to continue...")
+        shgAcFileName = fileNameShg + 'modified' + str(axialModeOffset) + 'ax-mod' + str(spectralPhaseDelta) + 'rad.csv'
+        self.createModifiedPhaseMaskFromCurrentMask(axialModeOffset, spectralPhaseDelta)
+        self.loadModifiedDispersionProfile(self, axialModeOffset, spectralPhaseDelta)
+        self.setModifiedDispersionProfile(axialModeOffset, spectralPhaseDelta)
 #        masterOfcMngr.saveOsaSpectrum(ofcFileName, 'A')
         self.saveTdsSpectrum(shgAcFileName)
         return shgAcFileName
