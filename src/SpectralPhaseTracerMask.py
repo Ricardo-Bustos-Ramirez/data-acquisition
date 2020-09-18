@@ -222,6 +222,29 @@ class MllOpticalFrequencyCombManager():
         print("Max pulse peak: " + str(maxPulsePeak) + " [V] at: " + str(centralFreqOffsetMaxPulsePeak) + " [axial modes]")
         return (acValues, centralFrequencyOffsetList, minPulsewidth, maxPulsePeak, centralFreqOffsetMinPulsewidth, centralFreqOffsetMaxPulsePeak)
     
+    def sweep_quadratic_and_cubic_dispersion_parameter(self, fileNameOsa, initialDispersion, endDispersion, numberOfSamplesQuadratic, initialCubicDispersionPs3, endCubicDispersionPs3, numberOfSamplesCubic, centralFreqOffset):
+        tauPerNmArray = np.linspace(initialDispersion, endDispersion, numberOfSamples)
+        tauPerNmList = [round(x,3) for x in tauPerNmArray]
+        print(tauPerNmList)
+#        input("Press Enter to continue...")
+        acValues2D3D = []
+        for tauPerNm in tauPerNmList:
+            (acValues, cubicDispersionPs3List, minPulsewidth, maxPulsePeak, cubicDispersionMinPulsewidth, cubicDispersionMaxPulsePeak) = self.sweep_cubic_dispersion_parameter(fileNameOsa, tauPerNm, initialCubicDispersionPs3, endCubicDispersionPs3, numberOfSamplesCubic, centralFreqOffset)
+            acValues2D3D.append(acValues)     
+        x = np.array(tauPerNmList)
+        y = np.array(cubicDispersionPs3List)
+        z = np.array(acValues2D3D)
+        
+        hf = plt.figure()
+        ha = hf.add_subplot(111, projection = "3d")
+        
+        X, Y = np.meshgrid(x, y)
+        ha.plot_surface(X, Y, z)
+        plt.show
+        
+        return (acValues2D3D, tauPerNmList, cubicDispersionPs3List)
+        
+    
     def sweep_modified_spectral_phase_by_axial_mode(self, fileNameOsa, tauPerNm, cubicDispersionPs3, centralFrequencyOffset, initialAxialModeOffset, endAxialModeOffset, initSpectralPhaseDelta, endSpectralPhaseDelta, numberOfSamples):
         # Set initial frequency.
         shgAcFileName = self.set_dispersion_profile_and_save_autocorrelation_trace(fileNameOsa, fileNameShg, centralFrequencyOffset, tauPerNm, cubicDispersionPs3)
@@ -298,4 +321,8 @@ if __name__ == "__main__":
         
     masterOfcMngr.setDispersionProfile(centralFreqOffsetMinPulsewidth, dispersionMinPulsewidth, cubicDispersionMinPulsewidth)        
     
+    """
+    """
+    (acValues2D3D, tauPerNmList2, cubicDispersionPs3List2) = masterOfcMngr.sweep_quadratic_and_cubic_dispersion_parameter(fileNameOsa, 0, 1, 3, -1, 1, 3, 0)
+        
     
