@@ -29,10 +29,11 @@ TESTING_MODE = False
 SWEEP_SCOPE = True
 INDEX_WRITE = False
 
-dispersionPsNm = 1.0
-cubicDispersion = 0.9
-axialModeOffset = 7
-fileNameHilMll = "091820-DCF-MLL-PIC-Dispersion" + str(dispersionPsNm) + "psnm-" + str(cubicDispersion) + "ps3-" + str(axialModeOffset) + "AxMo-Python"
+dispersionPsNm = -0.12
+quadraticDispersion = 1.04
+cubicDispersion = -0.192
+axialModeOffset = 0
+fileNameHilMll = "092220-DCF-MLL-PIC-Dispersion" + str(dispersionPsNm) + "psnm-" + str(quadraticDispersion) + "ps2-" + str(cubicDispersion) + "ps3-" + str(axialModeOffset) + "AxMo-Python-PC6226"
 fileNameMll = "082520-30GHz-MLL-PID-unlocked-uncompressed"
 fileNameOfc = "090220-30GHz-OFC"
 fileNameAdditionRFSA = "-1MHz"
@@ -174,11 +175,11 @@ if __name__ == "__main__":
         if os.path.isfile(filePath + "\\" + "indexFile.csv") == False:
             with open(filePath + "\\" + "indexFile.csv", "w+", newline='') as fileWriter:
                 csvWriter = csv.writer(fileWriter, delimiter = ',', lineterminator='\n')
-                csvWriter.writerow(("File name", "Measured device", "TEC value (kOhm)", "Igain (mA)", "PS used", "Ips (mA)", "V_SA (V)", "V_EAM (V)", "IxSOA (mA)", "P_MLL-inj 10% (uW)", "P_MLL-out 1% (uW)", "Dispersion (ps/nm)", "Cubic dispersion (rad^3)", "Central axial mode offset (#)"))
+                csvWriter.writerow(("File name", "Measured device", "TEC value (kOhm)", "Igain (mA)", "PS used", "Ips (mA)", "V_SA (V)", "V_EAM (V)", "IxSOA (mA)", "P_MLL-inj 10% (uW)", "P_MLL-out 1% (uW)", "Dispersion (ps/nm)", "Quadratic dispersion (ps^)", "Cubic dispersion (ps^3)", "Central axial mode offset (#)"))
     
         with open(filePath + "\\" + "indexFile.csv", "a", newline='') as fileWriter:
             csvWriter = csv.writer(fileWriter, delimiter = ',', lineterminator='\n')
-            csvWriter.writerow((fileName, measuredDevice, rTec, iGain, iPsNum, iPs, vSa, vEam, ixSoa, pMllInj, pMllOut, dispersionPsNm, cubicDispersion, axialModeOffset))
+            csvWriter.writerow((fileName, measuredDevice, rTec, iGain, iPsNum, iPs, vSa, vEam, ixSoa, pMllInj, pMllOut, dispersionPsNm, quadraticDispersion, cubicDispersion, axialModeOffset))
         
     if RFSA_ACTIVE:
         RFSA_8566B = RFSA()

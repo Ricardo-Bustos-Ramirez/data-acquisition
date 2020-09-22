@@ -364,9 +364,9 @@ if __name__ == "__main__":
     
     
     masterOfcMngr.setDispersionProfile(centralFreqOffsetMinPulsewidth, quadraticDispersionMinPulsewidth1_2, cubicDispersionMinPulsewidth2_2)
+#    (acValues2D3D, quadraticDispersionPs2List2, cubicDispersionPs3List2, surf) = masterOfcMngr.sweep_quadratic_and_cubic_dispersion_parameter(fileNameOsa, tauPerNm, 0, 1, 11, -1, 1, 11, 0)
  
     
-#    (acValues2D3D, tauPerNmList2, cubicDispersionPs3List2, surf) = masterOfcMngr.sweep_quadratic_and_cubic_dispersion_parameter(fileNameOsa, 0, 1, 11, -1, 1, 11, 0)
 
 
             
