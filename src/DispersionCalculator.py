@@ -507,11 +507,11 @@ class DispersionCalculator():
         quadraticSpectralPhasePsNm = quadraticSpectralPhasePsNm - quadraticSpectralPhasePsNm[indexMaxSpectrumFrequency]
         
         centralFrequencyThz = comblineFrequency[indexMaxSpectrumFrequency + centralFrequencyOffset]
-        # Spectral phase calculated as: [(1/2)*k'' (ps^2)] * [2pi (f-f0 (THz))]^3 where k''' is given in ps^2. Normal values around ?? [rad].
+        # Spectral phase calculated as: [(1/2)*k'' (ps^2)] * [2pi (f-f0 (THz))]^3 where k''' is given in ps^2/rad. Normal values around 1.27 [ps^2].
         quadraticSpectralPhase = [(1/2)*((2*np.pi)**2)*quadraticDispersionPs2*((x-centralFrequencyThz)**2) for x in comblineFrequency]
         # Spectral phase calculated as: [(1/6)*k''' (ps^3)] * [2pi (f-f0 (THz))]^3 where k''' is given in ps^3. Normal values around 0.015 [ps^3].
         cubicSpectralPhase = [(1/6)*((2*np.pi)**3)*cubicDispersionPs3*((x-centralFrequencyThz)**3) for x in comblineFrequency]
-        # 1.0 ps/nm = 1.3 ps^2 ... aproximately
+        # 1.0 ps/nm = 8 ps/THz => (8/(2*pi)) ps/(THz * rad) = 1.2732 ps/(THz * rad) = 1.2732 ps^2/rad ... aproximately.
         spectralPhase = [x + y + z for (x,y,z) in zip(quadraticSpectralPhasePsNm, quadraticSpectralPhase, cubicSpectralPhase)]
         
         plt.plot(comblineFrequency, spectralPhase, 'go')
