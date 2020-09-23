@@ -223,14 +223,50 @@ class MllOpticalFrequencyCombManager():
         print("Max pulse peak: " + str(maxPulsePeak) + " [V] at: " + str(centralFreqOffsetMaxPulsePeak) + " [axial modes]")
         return (acValues, centralFrequencyOffsetList, minPulsewidth, maxPulsePeak, centralFreqOffsetMinPulsewidth, centralFreqOffsetMaxPulsePeak)
     
-    def sweep_quadratic_and_cubic_dispersion_parameter(self, fileNameOsa, tauPerNm, initialQuadraticDispersionPs2, endQuadraticDispersionPs2, numberOfSamplesQuadratic, initialCubicDispersionPs3, endCubicDispersionPs3, numberOfSamplesCubic, centralFreqOffset):
+    def sweep_axial_mode_quadratic_and_cubic_dispersion_parameter(self, fileNameOsa, tauPerNm, initialQuadraticDispersionPs2, endQuadraticDispersionPs2, numberOfSamplesQuadratic, initialCubicDispersionPs3, endCubicDispersionPs3, numberOfSamplesCubic, initialCentralFrequencyOffset, endCentralFrequencyOffset, numberOfSamplesCentralFrequencyOffset):
+        centralFrequencyOffsetArray = np.linspace(initialCentralFrequencyOffset, endCentralFrequencyOffset, numberOfSamplesCentralFrequencyOffset)
+        centralFrequencyOffsetList = [int(x) for x in centralFrequencyOffsetArray]
+        print(centralFrequencyOffsetList)
+#        print(tauPerNmList)
+#        input("Press Enter to continue...")
+        minPulsewidthList = []
+        minQuadraticDispersionPs2List = []
+        minCubicDispersionPs3List = []
+        for centralFrequencyOffset in centralFrequencyOffsetList:
+            (acValues1, quadraticDispersionPs2List, minPulsewidth, maxPulsePeak, quadraticDispersionMinPulsewidth, quadraticDispersionMaxPulsePeak) = self.sweep_quadratic_dispersion_parameter(fileNameOsa, tauPerNm, initialQuadraticDispersionPs2, endQuadraticDispersionPs2, numberOfSamplesQuadratic, cubicDispersionPs3, centralFrequencyOffset)
+            (acValues2, cubicDispersionPs3List, minPulsewidth, maxPulsePeak, cubicDispersionMinPulsewidth, cubicDispersionMaxPulsePeak) = self.sweep_cubic_dispersion_parameter(fileNameOsa, tauPerNm, quadraticDispersionMinPulsewidth, initialCubicDispersionPs3, endCubicDispersionPs3, numberOfSamplesCubic, centralFrequencyOffset)
+            minQuadraticDispersionPs2List.append(quadraticDispersionMinPulsewidth)
+            minCubicDispersionPs3List.append(cubicDispersionMinPulsewidth) 
+            minPulsewidthList.append(minPulsewidth)            
+        x = np.array(centralFrequencyOffsetList)
+        y1 = np.array(minQuadraticDispersionPs2List)
+        y2 = np.array(minCubicDispersionPs3List)
+        y3 = np.array(minPulsewidthList)
+        
+        plt.plot(x,y1)
+        plt.xlabel('Central axual mode offset')
+        plt.ylabel('Quadratic dispersion (ps^2)')        
+        plt.show()
+        plt.plot(x,y2)
+        plt.xlabel('Central axual mode offset')
+        plt.ylabel('Cubic dispersion (ps^3)')
+        plt.show()
+        plt.plot(x,y3)
+        plt.xlabel('Central axual mode offset')
+        plt.ylabel('Minimum pulsewidth (ps)')
+        plt.show()        
+        
+        return (centralFrequencyOffsetList, minQuadraticDispersionPs2List, minCubicDispersionPs3List, minPulsewidthList)
+    
+    def sweep_quadratic_and_cubic_dispersion_parameter(self, fileNameOsa, tauPerNm, initialQuadraticDispersionPs2, endQuadraticDispersionPs2, numberOfSamplesQuadratic, initialCubicDispersionPs3, endCubicDispersionPs3, numberOfSamplesCubic, centralFrequencyOffset):
         quadraticDispersionPs2Array = np.linspace(initialQuadraticDispersionPs2, endQuadraticDispersionPs2, numberOfSamplesQuadratic)
         quadraticDispersionPs2List = [round(x,3) for x in quadraticDispersionPs2Array]
 #        print(tauPerNmList)
 #        input("Press Enter to continue...")
         acValues2D3D = []
         for quadraticDispersionPs2 in quadraticDispersionPs2List:
-            (acValues, cubicDispersionPs3List, minPulsewidth, maxPulsePeak, cubicDispersionMinPulsewidth, cubicDispersionMaxPulsePeak) = self.sweep_cubic_dispersion_parameter(fileNameOsa, tauPerNm, initialCubicDispersionPs3, endCubicDispersionPs3, numberOfSamplesCubic, centralFreqOffset)
+            
+            (acValues, cubicDispersionPs3List, minPulsewidth, maxPulsePeak, cubicDispersionMinPulsewidth, cubicDispersionMaxPulsePeak) = self.sweep_cubic_dispersion_parameter(fileNameOsa, tauPerNm, quadraticDispersionPs2, initialCubicDispersionPs3, endCubicDispersionPs3, numberOfSamplesCubic, centralFrequencyOffset)
 #            cubiConstantArray = np.linspace(initialCubicDispersionPs3, endCubicDispersionPs3, numberOfSamplesCubic)
 #            cubicDispersionPs3List = [round(x,4) for x in cubiConstantArray]
 #            print(cubicDispersionPs3List)
@@ -239,8 +275,8 @@ class MllOpticalFrequencyCombManager():
 #            acValues = (acValues1, acValues2)
             acPulseWidthArray = acValues[0]
             acValues2D3D.append(acPulseWidthArray)     
-        x = np.array(quadraticDispersionPs2List)
-        y = np.array(cubicDispersionPs3List)
+        x = np.array(cubicDispersionPs3List)
+        y = np.array(quadraticDispersionPs2List)
         Z = np.array(acValues2D3D)
         
         fig = plt.figure()    
@@ -299,7 +335,7 @@ if __name__ == "__main__":
     centralFrequencyOffset = 0
     masterOfcMngr.set_dispersion_profile_and_save_autocorrelation_trace(fileNameOsa, fileNameShg, centralFrequencyOffset, tauPerNm, quadraticDispersionPs2, cubicDispersionPs3)
     (opticalBandwidthNm, transformLimitedPulsePs) = masterOfcMngr.calculate_bandwidth_and_tlp()
-    
+    """  
 #    input("Press Enter to continue (ps^2) 1...")
     initialQuadraticDispersionPs2 = -2
     endQuadraticDispersionPs2 = 2
@@ -362,11 +398,8 @@ if __name__ == "__main__":
     print("Max pulse peak: " + str(maxPulsePeak2_2) + " [V] at: " + str(cubicDispersionMaxPulsePeak2_2) + " [ps^3]")
     masterOfcMngr.calculate_tlp_from_parameter_sweep(opticalBandwidthNm, transformLimitedPulsePs, acValues2_2[0], cubicDispersionPs3List2_2, "ps^3")
     
-    
     masterOfcMngr.setDispersionProfile(centralFreqOffsetMinPulsewidth, quadraticDispersionMinPulsewidth1_2, cubicDispersionMinPulsewidth2_2)
-#    (acValues2D3D, quadraticDispersionPs2List2, cubicDispersionPs3List2, surf) = masterOfcMngr.sweep_quadratic_and_cubic_dispersion_parameter(fileNameOsa, tauPerNm, 0, 1, 11, -1, 1, 11, 0)
- 
+    """
+#    (acValues2D3D, quadraticDispersionPs2List2, cubicDispersionPs3List2, surf) = masterOfcMngr.sweep_quadratic_and_cubic_dispersion_parameter(fileNameOsa, tauPerNm, 0.8, 1.2, 11, -0.4, 0.1, 11, 15)
     
-
-
-            
+    (centralFrequencyOffsetList3, minQuadraticDispersionPs2List3, minCubicDispersionPs3List3, minPulsewidthList3) = masterOfcMngr.sweep_axial_mode_quadratic_and_cubic_dispersion_parameter(fileNameOsa, tauPerNm, 0.8, 1.2, 11, -0.4, 0.1, 11, 11, 19, 9)

@@ -30,10 +30,10 @@ SWEEP_SCOPE = True
 INDEX_WRITE = False
 
 dispersionPsNm = -0.12
-quadraticDispersion = 1.04
-cubicDispersion = -0.192
-axialModeOffset = 0
-fileNameHilMll = "092220-DCF-MLL-PIC-Dispersion" + str(dispersionPsNm) + "psnm-" + str(quadraticDispersion) + "ps2-" + str(cubicDispersion) + "ps3-" + str(axialModeOffset) + "AxMo-Python-PC6226"
+quadraticDispersion = 0.8
+cubicDispersion = -0.2
+axialModeOffset = 15
+fileNameHilMll = "092320-DCF-MLL-PIC-Dispersion" + str(dispersionPsNm) + "psnm-" + str(quadraticDispersion) + "ps2-" + str(cubicDispersion) + "ps3-" + str(axialModeOffset) + "AxMo-Python-PC6226"
 fileNameMll = "082520-30GHz-MLL-PID-unlocked-uncompressed"
 fileNameOfc = "090220-30GHz-OFC"
 fileNameAdditionRFSA = "-1MHz"
