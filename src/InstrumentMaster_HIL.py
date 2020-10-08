@@ -29,17 +29,17 @@ TESTING_MODE = False
 SWEEP_SCOPE = False
 INDEX_WRITE = False
 
-fileNameHilMll = "082820-30GHz-MLL-PID-mixed-10MHz"
-fileNameMll = "082520-30GHz-MLL-PID-unlocked-uncompressed"
-fileNameOfc = "090220-30GHz-OFC"
+fileNameHilMll = "092820-300GHz-RHIL-MLL-6226-Ch2-unlocked-compressed-400us"
+fileNameMll = "092820-300GHz-PML-MLL-6226-Ch2-unlocked-compressed-400us"
+fileNameOfc = "092820-300GHz-RHIL-OFC-unlocked-compressed-400us-3"
 fileNameAdditionRFSA = "-1MHz"
 #CAPTURE_STATUS = "HIL-MLL All"
 #CAPTURE_STATUS = "HIL-MLL RFSA HR"
 #CAPTURE_STATUS = "HIL-MLL RFSA 10 MHz"
-#CAPTURE_STATUS = "MLL All"
+CAPTURE_STATUS = "MLL All"
 #CAPTURE_STATUS = "MLL RFSA HR"
 #CAPTURE_STATUS = "MLL RFSA 10 MHz"
-CAPTURE_STATUS = "OFC All"
+#CAPTURE_STATUS = "OFC All"
 #CAPTURE_STATUS = "HIL-MLL Locking Power"
 #CAPTURE_STATUS = "Test"
 
@@ -155,27 +155,28 @@ if __name__ == "__main__":
 #        filePath = 'H:\\Home\\UP\\Shared\\Ricardo\\Dual Tone Injection Locking\\300 GHz EOM Comb\\Master OFC'
         filePath = 'H:\\Home\\UP\\Shared\\Ricardo\\Dual Tone Injection Locking\\300 GHz EOM Comb\\HIL-MLL'
         fileType = '.csv'
-        rTec = 15       # Measured resistance of TEC for MLL-PIC (kOhm)
-        iGain = 92    # Current in the gain section (mA)
+        rTec = 14       # Measured resistance of TEC for MLL-PIC (kOhm)
+        iGain = 87.0    # Current in the gain section (mA)
         iPsNum = 2      # Phase shifter used.
-        iPs = 69.9      # Current in asymmetric MZIs of DCF (PS3) that move the spectrum (mA)
-        vSa = 4.10      # Reverse bias voltage in saturable absorber (V)
-        vEam = 0.80     # Reverse bias voltage in intracavity EAM (V)
-        ixSoa = 152.8   # Current in the external SOA (mA)
-        pMllInj = 62.8    # Power measured in the monitor coupler (~10%) of the MLL-PIC injection locking port (uW)
-        pMllOut = 3.53   # Power measured in the monitor coupler (~50%) of the autocorrelator EDFA of the MLL-PIC output port (uW)
-#        pOfcInj = 54.5  # Power measured in the monitor coupler (<50% )of the injected OFC power (uW)
-        fRepSynth = 29.9634  # Driving frequency of the EOM comb that generates OFC (~3frep) in GHz
+        iPs = 0.0      # Current in asymmetric MZIs of DCF (PS3) that move the spectrum (mA)
+        vSa = 3.79      # Reverse bias voltage in saturable absorber (V)
+        vEam = 0.00     # Reverse bias voltage in intracavity EAM (V)
+        ixSoa = 120.8   # Current in the external SOA (mA)
+        pMllInj = 24.0    # Power measured in the monitor coupler (~10%) of the MLL-PIC injection locking port (uW)
+        pMllOut = 0.93   # Power measured in the monitor coupler (~50%) of the autocorrelator EDFA of the MLL-PIC output port (uW)
+        pOfcInj = 82.7  # Power measured in the monitor coupler (<50% )of the injected OFC power (uW)
+        fRepSynth = 29.9391  # Driving frequency of the EOM comb that generates OFC (~3frep) in GHz
+        mzmBias = 6.360 # COEO MZM bias.
     
     if INDEX_WRITE:
         if os.path.isfile(filePath + "\\" + "indexFile.csv") == False:
             with open(filePath + "\\" + "indexFile.csv", "w+", newline='') as fileWriter:
                 csvWriter = csv.writer(fileWriter, delimiter = ',', lineterminator='\n')
-                csvWriter.writerow(("File name", "Measured device", "TEC value (kOhm)", "Igain (mA)", "PS used", "Ips (mA)", "V_SA (V)", "V_EAM (V)", "IxSOA (mA)", "P_MLL-inj 10% (uW)", "P_MLL-out 1% (uW)", "P_OFC-inj 50% (uW)", "f_rep-EOM (GHz)"))
+                csvWriter.writerow(("File name", "Measured device", "TEC value (kOhm)", "Igain (mA)", "PS used", "Ips (mA)", "V_SA (V)", "V_EAM (V)", "IxSOA (mA)", "P_MLL-inj 10% (uW)", "P_MLL-out 1% (uW)", "P_OFC-inj 50% (uW)", "f_rep-EOM (GHz)", "COEO MZM bias (V)"))
     
         with open(filePath + "\\" + "indexFile.csv", "a", newline='') as fileWriter:
             csvWriter = csv.writer(fileWriter, delimiter = ',', lineterminator='\n')
-            csvWriter.writerow((fileName, measuredDevice, rTec, iGain, iPsNum, iPs, vSa, vEam, ixSoa, pMllInj, pMllOut, pOfcInj, fRepSynth))
+            csvWriter.writerow((fileName, measuredDevice, rTec, iGain, iPsNum, iPs, vSa, vEam, ixSoa, pMllInj, pMllOut, pOfcInj, fRepSynth, mzmBias))
         
     if RFSA_ACTIVE:
         RFSA_8566B = RFSA()
@@ -204,7 +205,7 @@ if __name__ == "__main__":
     if OSA_ACTIVE:    
         OSA_243A = OSA()
         OSA_243A.connect('GPIB0::27::INSTR')
-        OSA_243A.grab_spectrum('C')
+        OSA_243A.grab_spectrum('B')
         fileSubPathOsa = 'OSA'
         fileNameAddition = ''
         OSA_243A.save_csv(filePath + '\\' + fileSubPathOsa + '\\' + fileName + fileNameAddition + fileType)
