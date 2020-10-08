@@ -77,7 +77,7 @@ class TDS():
         except Exception as e:
             self.print_message(e)
             self.print_message(' Couldn\'t connect to: ' + device)
-            sys.exit() # From InfiniiVision Script
+#            sys.exit() # From InfiniiVision Script
     
     def get_measurement_params(self):
         self.handle.write("DCL")

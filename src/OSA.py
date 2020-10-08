@@ -229,7 +229,7 @@ if __name__ == "__main__":
     OSA.get_rbw()
     OSA.get_sensitivity()
     OSA.get_ref_lvl()
-    OSA.grab_spectrum('A')
+    OSA.grab_spectrum('B')
     now_ = datetime.datetime.now()
     timestamp = now_.strftime("%Y-%m-%d_%H-%M")
     filePath = 'H:\\Home\\UP\\Shared\\Ricardo\\Dual Tone Injection Locking\\CW PDH Laser\\CW Homemade\\THz EOM Comb\\EOM Comb with CW-PDH\\OSA'

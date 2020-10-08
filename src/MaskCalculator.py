@@ -251,7 +251,7 @@ class MaskCalculator():
         for x in self.combline_wavelength:
             self.combline_frequency.append(((self.c0/(x*1e-9))*1e-12)-self.frequency_offset)
         self.combline_frequency.sort()
-#        print(self.combline_frequency) 
+        self.combline_spectrum.reverse()
     
     def createFlatMask(self):
         """This method creates a flat mask for the spectrum.
