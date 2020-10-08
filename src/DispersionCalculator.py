@@ -151,7 +151,12 @@ class DispersionCalculator():
         comblineFrequency = self.get_frequency_combline()
         comblineSpectrumFrequency = self.get_spectrum_combline_frequency()
         comblineSpectralPhase = self.get_spectrum_combline_phase()
+        spectralOutputFrequency = [x for x in self.spectrum]
+        spectralOutputFrequency.reverse()
+        frequencyTHz = [((self.c0/(x*1e-9))*1e-12)-self.frequencyOffset for x in self.wavelength]
+        frequencyTHz.reverse()
         leftAxis.plot(comblineFrequency, comblineSpectrumFrequency, 'ro')
+        leftAxis.plot(frequencyTHz, spectralOutputFrequency, 'r')
         leftAxis.axis([min(comblineFrequency), max(comblineFrequency), min(comblineSpectrumFrequency) - 5, max(comblineSpectrumFrequency) + 5])
         leftAxis.set_xlabel('Frequency (THz)')
         leftAxis.set_ylabel('Spectral output (dB)')
@@ -160,7 +165,8 @@ class DispersionCalculator():
         rightAxis.axis([min(comblineFrequency), max(comblineFrequency), min(comblineSpectralPhase) - np.pi, max(comblineSpectralPhase) + np.pi])
         rightAxis.set_xlabel('Frequency (THz)')
         rightAxis.set_ylabel('Spectral phase (rad)')
-        plt.show()    
+        plt.show()
+        return (frequencyTHz, spectralOutputFrequency, comblineFrequency, comblineSpectrumFrequency, comblineSpectralPhase)
 
     def plot_autocorrelation_pulse(self):
         plt.plot(self.delayPs, self.shgIntensity,'b')
