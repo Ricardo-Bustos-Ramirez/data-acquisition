@@ -31,11 +31,11 @@ INDEX_WRITE = False
 
 dispersionPsNm = -0.12
 quadraticDispersion = 0.8
-cubicDispersion = -0.2
-axialModeOffset = 15
-fileNameHilMll = "092320-DCF-MLL-PIC-Dispersion" + str(dispersionPsNm) + "psnm-" + str(quadraticDispersion) + "ps2-" + str(cubicDispersion) + "ps3-" + str(axialModeOffset) + "AxMo-Python-PC6226"
-fileNameMll = "082520-30GHz-MLL-PID-unlocked-uncompressed"
-fileNameOfc = "090220-30GHz-OFC"
+cubicDispersion = 0.04
+axialModeOffset = 0
+fileNameHilMll = "100120-DCF-MLL-PIC-Dispersion" + str(dispersionPsNm) + "psnm-" + str(quadraticDispersion) + "ps2-" + str(cubicDispersion) + "ps3-" + str(axialModeOffset) + "AxMo-Python-PC6226-Ch4"
+fileNameMll = "100120-30GHz-MLL-PID-unlocked-uncompressed"
+fileNameOfc = "100120-30GHz-OFC"
 fileNameAdditionRFSA = "-1MHz"
 CAPTURE_STATUS = "DCF-MLL All"
 #CAPTURE_STATUS = "HIL-MLL RFSA HR"
@@ -53,7 +53,7 @@ if CAPTURE_STATUS == "DCF-MLL All":
     # Used instruments
     TDS_ACTIVE = True
     OSA_ACTIVE = True
-    RFSA_ACTIVE = True
+    RFSA_ACTIVE = False
     CSA_ACTIVE = False
     INDEX_WRITE = True
     # File names
@@ -159,15 +159,15 @@ if __name__ == "__main__":
 #        filePath = 'H:\\Home\\UP\\Shared\\Ricardo\\Dual Tone Injection Locking\\300 GHz EOM Comb\\Master OFC'
         filePath = 'H:\\Home\\UP\\Shared\\Ricardo\\DODOS\\DCF Characterization\\DCF OL paper'
         fileType = '.csv'
-        rTec = 12       # Measured resistance of TEC for MLL-PIC (kOhm)
+        rTec = 14       # Measured resistance of TEC for MLL-PIC (kOhm)
         iGain = 90    # Current in the gain section (mA)
         iPsNum = 2      # Phase shifter used.
         iPs = 0.0      # Current in asymmetric MZIs of DCF (PS3) that move the spectrum (mA)
-        vSa = 5.00      # Reverse bias voltage in saturable absorber (V)
+        vSa = 3.85      # Reverse bias voltage in saturable absorber (V)
         vEam = 0.00     # Reverse bias voltage in intracavity EAM (V)
         ixSoa = 120.0   # Current in the external SOA (mA)
         pMllInj = 0.0    # Power measured in the monitor coupler (~10%) of the MLL-PIC injection locking port (uW)
-        pMllOut = 1.45  # Power measured in the monitor coupler (~50%) of the autocorrelator EDFA of the MLL-PIC output port (uW)
+        pMllOut = 1.20  # Power measured in the monitor coupler (~50%) of the autocorrelator EDFA of the MLL-PIC output port (uW)
 #        dispersionPsNm = 4.0  # Power measured in the monitor coupler (<50% )of the injected OFC power (uW)
 #        fRepSynth = 29.9634  # Driving frequency of the EOM comb that generates OFC (~3frep) in GHz
     
@@ -208,7 +208,7 @@ if __name__ == "__main__":
     if OSA_ACTIVE:    
         OSA_243A = OSA()
         OSA_243A.connect('GPIB0::27::INSTR')
-        OSA_243A.grab_spectrum('A')
+        OSA_243A.grab_spectrum('B')
         fileSubPathOsa = 'OSA'
         fileNameAddition = ''
         OSA_243A.save_csv(filePath + '\\' + fileSubPathOsa + '\\' + fileName + fileNameAddition + fileType)
