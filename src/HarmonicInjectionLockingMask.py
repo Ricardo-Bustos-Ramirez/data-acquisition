@@ -188,10 +188,10 @@ if __name__ == "__main__":
     fileName = 'OEW_FPE_EOM-29.934GHz_HNLF-ZD.csv'
     masterOfcMngr = MasterOpticalFrequencyCombManager()
     masterOfcMngr.setOfcAllPass()
-#    masterOfcMngr.saveOsaSpectrum(fileName, 'A')
+#    masterOfcMngr.saveOsaSpectrum(fileName, 'B')
     
 #    Create Mask Array
-#    masterOfcMngr.createMultiToneThzMask(fileName, 60, 300, True, -40)
+#    masterOfcMngr.createMultiToneThzMask(fileName, 60, 300, True, -38)
 #    masterOfcMngr.createThzMask(fileName, 60, 300)
     
 #     Save harmonic OFC master
@@ -204,7 +204,7 @@ if __name__ == "__main__":
         ofcFileName = fileBaseline + ofcSpacing + 'GHz-Spacing.csv '
         masterOfcMngr.loadHarmonicProfile(ofcSpacing)
         masterOfcMngr.setHarmonicProfile(ofcSpacing)
-#        masterOfcMngr.saveOsaSpectrum(ofcFileName, 'A')
+#        masterOfcMngr.saveOsaSpectrum(ofcFileName, 'B')
 #        masterOfcMngr.saveTdsSpectrum(ofcFileName)
 
     masterOfcMngr.closePorts()
